@@ -1,5 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with
-[`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Stack
+
+- [Next.js](https://nextjs.org/) - React framework for production
+- [TypeScript](https://www.typescriptlang.org/) - JavaScript with syntax for
+  types
+- [React](https://reactjs.org/) - A JavaScript library for building user
+  interfaces
+- [ESLint](https://eslint.org/) - A tool for identifying and reporting on
+  patterns in JavaScript
+- [Prettier](https://prettier.io/) - An opinionated code formatter
+- [Husky](https://typicode.github.io/husky/#/) - Git hooks made easy
+- [Pnpm](https://pnpm.io/) - Fast, disk space efficient package manager
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+- [PostCSS](https://postcss.org/) - A tool for transforming CSS with JavaScript
+- [SCSS](https://sass-lang.com/) - Syntactically Awesome Style Sheets
+- [Styleint](https://stylelint.io/) - A mighty, modern linter that helps you
+  avoid errors and enforce conventions in your styles
+- [Nix Flakes](https://nixos.wiki/wiki/Flakes) - A new way to manage Nix
+  packages and configurations
+- [Lint Staged](https://github.com/okonet/lint-staged) - A git hook manager
 
 ## Getting Started
 

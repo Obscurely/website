@@ -1,1 +1,2 @@
 pnpm test
+pnpm dlx husky add .husky/pre-push "pnpm run lighthouse"
