@@ -1,3 +1,8 @@
+import defaultTheme from "tailwindcss/defaultTheme";
+import typography from "@tailwindcss/typography";
+import forms from "@tailwindcss/forms";
+import aspectRatio from "@tailwindcss/aspect-ratio";
+
 /** @type {import('tailwindcss').Config} */
 const config = {
   content: [
@@ -62,9 +67,9 @@ const config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", ...fontFamily.sans],
-        display: ["var(--font-lexend)", ...fontFamily.sans],
-        mono: ["var(--font-fira-code)", ...fontFamily.mono],
+        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+        display: ["var(--font-lexend)", ...defaultTheme.fontFamily.sans],
+        mono: ["var(--font-fira-code)", ...defaultTheme.fontFamily.mono],
       },
       fontSize: {
         xs: ["0.75rem", { lineHeight: "1rem" }],
@@ -119,11 +124,7 @@ const config = {
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/aspect-ratio"),
-  ],
+  plugins: [typography, forms, aspectRatio],
 };
 
 export default config;
