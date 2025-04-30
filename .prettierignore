@@ -1,0 +1,23 @@
+node_modules
+.next
+build
+public
+
+# Package files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Generated files
+dist
+coverage
+.vercel
+.turbo
+
+# Environment and config files
+.env*
+.DS_Store
+
+# Cache directories
+.cache
+.eslintcache
