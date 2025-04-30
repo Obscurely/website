@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.scss";
+import "./globals.css";
 import { Inter, Lexend, Fira_Code } from "next/font/google";
 
 const inter = Inter({
