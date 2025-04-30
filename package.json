@@ -7,7 +7,7 @@
     "dev": "next dev --turbopack",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "lighthouse": "lhci autorun --config=lighthouserc.mjs",
+    "lighthouse": "lhci autorun --config=lighthouserc.cjs",
     "lint": "next lint",
     "prepare": "husky",
     "start": "next start",

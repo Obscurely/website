@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
   ci: {
     collect: {
       startServerCommand: "pnpm run build && pnpm run start",
@@ -19,5 +19,3 @@ const config = {
     },
   },
 };
-
-export default config;
