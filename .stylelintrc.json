@@ -9,7 +9,13 @@
     "scss/at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": ["theme", "tailwind", "apply", "layer"]
+        "ignoreAtRules": [
+          "theme",
+          "tailwind",
+          "apply",
+          "layer",
+          "custom-variant"
+        ]
       }
     ]
   }
