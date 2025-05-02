@@ -29,6 +29,7 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="flex-1 text-center md:text-left"
           >
+            {/* Animated gradient text with pulse effect for the welcome text */}
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-4 py-2 backdrop-blur-sm">
               <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400"></span>
               <h2 className="text-xl font-medium text-cyan-400 md:text-2xl">
@@ -36,6 +37,7 @@ export default function Hero() {
               </h2>
             </div>
 
+            {/* Name with netral color and underline effect */}
             <h1 className="mb-6 text-3xl font-bold tracking-tight text-slate-400 md:text-6xl lg:text-5xl">
               <span className="relative">
                 Adrian Crîșmaruc
@@ -43,6 +45,7 @@ export default function Hero() {
               </span>
             </h1>
 
+            {/* Animated text with TypeAnimation */}
             <div className="mb-4 h-12 text-2xl font-semibold md:text-2xl lg:text-3xl">
               <TypeAnimation
                 sequence={[
@@ -73,6 +76,8 @@ export default function Hero() {
                 className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent"
               />
             </div>
+
+            {/* Description */}
             <div className="mb-8 max-w-xl">
               <p className="mb-4 text-lg leading-relaxed text-slate-300 md:text-xl">
                 I am a{" "}
@@ -117,6 +122,8 @@ export default function Hero() {
                 ...and many more technologies + skills in my toolkit
               </p>
             </div>
+
+            {/* Call to action buttons */}
             <div className="flex flex-wrap justify-center gap-4 md:justify-start">
               <Button
                 className="group relative cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-7 py-6 text-white transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20"
@@ -159,6 +166,7 @@ export default function Hero() {
                 View Projects
               </Button>
             </div>
+
             <div className="mt-8 flex justify-center gap-5 md:justify-start">
               {[
                 { icon: IconBrandGithub, href: "https://github.com/Obscurely" },
@@ -188,6 +196,8 @@ export default function Hero() {
               ))}
             </div>
           </motion.div>
+
+          {/* Profile image with glow effect */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -217,6 +227,8 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
+
+        {/* Arrow down button for scrolling */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
