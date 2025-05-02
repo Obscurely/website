@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-screen bg-slate-950 text-slate-200"
+      className="relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-200"
     >
       <Navbar />
       <main className="relative">

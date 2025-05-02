@@ -29,13 +29,15 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="flex-1 text-center md:text-left"
           >
-            <h2 className="mb-2 text-xl font-medium text-cyan-400 md:text-2xl">
-              Hello, I'm
-            </h2>
+            <div>
+              <h2 className="mb-3 inline-block rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-4 py-1 text-lg font-medium text-cyan-400 backdrop-blur-sm md:text-2xl">
+                Hello, I'm
+              </h2>
+            </div>
             <h1 className="mb-4 text-4xl font-bold text-slate-100 md:text-6xl lg:text-7xl">
               <span className="block">Adrian Crîșmaruc</span>
             </h1>
-            <div className="mb-6 h-12 text-xl font-semibold text-slate-300 md:text-2xl lg:text-3xl">
+            <div className="mb-4 h-12 text-xl font-semibold text-slate-300 md:text-2xl lg:text-3xl">
               <TypeAnimation
                 sequence={[
                   "Full Stack Developer",
@@ -65,7 +67,7 @@ export default function Hero() {
                 className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
               />
             </div>
-            <p className="mb-8 max-w-xl text-lg text-slate-400 md:text-xl">
+            <p className="mb-8 max-w-xl text-lg leading-relaxed text-slate-300 md:text-xl">
               I am a Full-Stack Developer specializing in Rust, Python, React,
               Typescript, Next.js, Flask and cloud-native technologies. I build
               secure and scalable systems from the backend and infrastructure to
@@ -74,44 +76,57 @@ export default function Hero() {
               to deliver optimized and automated solutions across all platforms.
             </p>
             <div className="flex flex-wrap justify-center gap-4 md:justify-start">
-              <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-6 text-white hover:from-cyan-600 hover:to-blue-600">
-                Get in Touch
+              <Button
+                className="relative cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-6 text-white transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document
+                    .querySelector("#contact")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <span className="relative z-10">Get in Touch</span>
               </Button>
               <Button
                 variant="outline"
-                className="border-slate-700 px-6 py-6 text-slate-300 hover:border-slate-500 hover:text-white"
+                className="cursor-pointer rounded-lg border-slate-700 px-6 py-6 text-slate-300 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document
+                    .querySelector("#projects")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
               >
                 View Projects
               </Button>
             </div>
-            <div className="mt-8 flex justify-center gap-4 md:justify-start">
-              <motion.a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, scale: 1.1 }}
-                className="rounded-full bg-slate-800 p-3 text-slate-400 transition-colors hover:text-cyan-400"
-              >
-                <IconBrandGithub size={20} />
-              </motion.a>
-              <motion.a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, scale: 1.1 }}
-                className="rounded-full bg-slate-800 p-3 text-slate-400 transition-colors hover:text-cyan-400"
-              >
-                <IconBrandLinkedin size={20} />
-              </motion.a>
-              <motion.a
-                href="https://reddit.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, scale: 1.1 }}
-                className="rounded-full bg-slate-800 p-3 text-slate-400 transition-colors hover:text-cyan-400"
-              >
-                <IconBrandReddit size={20} />
-              </motion.a>
+            <div className="mt-8 flex justify-center gap-5 md:justify-start">
+              {[
+                { icon: IconBrandGithub, href: "https://github.com/Obscurely" },
+                {
+                  icon: IconBrandLinkedin,
+                  href: "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0/",
+                },
+                {
+                  icon: IconBrandReddit,
+                  href: "https://www.reddit.com/user/CrismarucAdrian/",
+                },
+              ].map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  className="group flex h-12 w-12 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 backdrop-blur-sm transition-all duration-50 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white"
+                >
+                  <social.icon
+                    size={22}
+                    strokeWidth={2.5}
+                    className="transition-transform duration-50 group-hover:scale-110"
+                  />
+                </motion.a>
+              ))}
             </div>
           </motion.div>
           <motion.div
@@ -128,7 +143,7 @@ export default function Hero() {
                   width={512}
                   height={512}
                   alt="John Doe"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   priority
                 />
               </div>
@@ -139,7 +154,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 transform"
+          className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 transform sm:block"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -148,7 +163,7 @@ export default function Hero() {
             <Button
               variant="ghost"
               size="icon"
-              className="rounded-full border border-slate-700 text-slate-400"
+              className="cursor-pointer rounded-full border border-slate-700 text-slate-400"
               onClick={() => {
                 document
                   .querySelector("#about")

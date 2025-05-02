@@ -44,14 +44,14 @@ export default function Navbar() {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2"
           >
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-3xl font-extrabold text-transparent">
+            <span className="truncate bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-xl font-extrabold text-transparent sm:text-2xl md:text-3xl">
               Adrian's Portfolio
             </span>
           </motion.div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-4 md:flex lg:gap-6">
           {navItems.map((item, i) => (
             <motion.div
               key={item.name}
@@ -61,7 +61,7 @@ export default function Navbar() {
             >
               <Link
                 href={item.href}
-                className="group relative text-slate-300 transition-colors hover:text-white"
+                className="group relative text-sm text-slate-300 transition-colors hover:text-white lg:text-base"
                 onClick={(e) => {
                   e.preventDefault();
                   document
@@ -80,7 +80,7 @@ export default function Navbar() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-600 hover:to-blue-600">
+            <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 text-sm text-white hover:from-cyan-600 hover:to-blue-600">
               Resume
             </Button>
           </motion.div>
