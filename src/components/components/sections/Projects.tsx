@@ -2,9 +2,9 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import { Card, CardContent, CardFooter } from "../ui/card";
+import { Badge } from "@ui/badge";
+import { Button } from "@ui/button";
+import { Card, CardContent, CardFooter } from "@ui/card";
 import {
   IconBrandGithub,
   IconArrowRight,

@@ -2,8 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Card, CardContent } from "../ui/card";
-import { Badge } from "../ui/badge";
+import { Card, CardContent } from "@ui/card";
+import { Badge } from "@ui/badge";
 import {
   IconBriefcase,
   IconExclamationCircleFilled,

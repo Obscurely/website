@@ -2,9 +2,9 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Card, CardContent, CardFooter } from "../ui/card";
-import { Button } from "../ui/button";
-import { Badge } from "../ui/badge";
+import { Card, CardContent, CardFooter } from "@ui/card";
+import { Button } from "@ui/button";
+import { Badge } from "@ui/badge";
 import { IconArrowRight, IconCalendar, IconClock } from "@tabler/icons-react";
 import Image from "next/image";
 

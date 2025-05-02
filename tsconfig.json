@@ -39,11 +39,11 @@
     ],
     "paths": {
       "@app/*": ["./src/app/*"],
-      "components": ["@components/components/*"],
-      "utils": ["@components/lib/utils/*"],
-      "ui": ["@components/components/ui/*"],
-      "lib": ["@components/lib/*"],
-      "hooks": ["@components/hooks/*"]
+      "@components/*": ["./src/components/components/*"],
+      "@utils/*": ["./src/components/lib/utils/*"],
+      "@ui/*": ["./src/components/components/ui/*"],
+      "@lib/*": ["./src/components/lib/*"],
+      "@hooks/*": ["./src/components/hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

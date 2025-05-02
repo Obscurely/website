@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconMenu2, IconBrandX } from "@tabler/icons-react";
-import { Button } from "../ui/button";
-import ThemeToggle from "../ThemeToggle";
+import { Button } from "@ui/button";
+import ThemeToggle from "@components/ThemeToggle";
 
 const navItems = [
   { name: "Home", href: "#home" },

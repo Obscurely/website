@@ -17,5 +17,5 @@
     "lib": "@components/lib",
     "hooks": "@components/hooks"
   },
-  "iconLibrary": "lucide"
+  "iconLibrary": "tabler"
 }

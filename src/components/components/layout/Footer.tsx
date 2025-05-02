@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { IconArrowUp } from "@tabler/icons-react";
-import { Button } from "../ui/button";
+import { Button } from "@ui/button";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

@@ -2,14 +2,14 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Hero from "../components/components/sections/Hero";
-import About from "../components/components/sections/About";
-import Projects from "../components/components/sections/Projects";
-import Experience from "../components/components/sections/Experience";
-import Blog from "../components/components/sections/Blog";
-import Contact from "../components/components/sections/Contact";
-import Navbar from "../components/components/layout/Navbar";
-import Footer from "../components/components/layout/Footer";
+import Hero from "@components/sections/Hero";
+import About from "@components/sections/About";
+import Projects from "@components/sections/Projects";
+import Experience from "@components/sections/Experience";
+import Blog from "@components/sections/Blog";
+import Contact from "@components/sections/Contact";
+import Navbar from "@components/layout/Navbar";
+import Footer from "@components/layout/Footer";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
