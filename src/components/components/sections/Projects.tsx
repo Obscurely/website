@@ -5,7 +5,11 @@ import { motion, useInView } from "framer-motion";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter } from "../ui/card";
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import {
+  IconBrandGithub,
+  IconArrowRight,
+  IconExternalLink,
+} from "@tabler/icons-react";
 import Image from "next/image";
 
 const projects = [
@@ -189,7 +193,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-1"
                     >
-                      <Github size={16} />
+                      <IconBrandGithub size={16} />
                       <span>Code</span>
                     </a>
                   </Button>
@@ -206,7 +210,7 @@ export default function Projects() {
                       className="flex items-center gap-1"
                     >
                       <span>Live Demo</span>
-                      <ExternalLink size={16} />
+                      <IconExternalLink size={16} />
                     </a>
                   </Button>
                 </CardFooter>
@@ -222,7 +226,7 @@ export default function Projects() {
               className="bg-slate-800 text-slate-200 hover:bg-slate-700"
             >
               Load More Projects
-              <ArrowRight size={16} className="ml-2" />
+              <IconArrowRight size={16} className="ml-2" />
             </Button>
           </div>
         )}

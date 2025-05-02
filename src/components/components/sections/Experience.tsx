@@ -4,7 +4,11 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
-import { Briefcase, GraduationCap, Award } from "lucide-react";
+import {
+  IconBriefcase,
+  IconExclamationCircleFilled,
+  IconAward,
+} from "@tabler/icons-react";
 
 const experiences = [
   {
@@ -97,13 +101,15 @@ export default function Experience() {
   const getIcon = (type: string) => {
     switch (type) {
       case "work":
-        return <Briefcase className="h-5 w-5 text-cyan-400" />;
+        return <IconBriefcase className="h-5 w-5 text-cyan-400" />;
       case "education":
-        return <GraduationCap className="h-5 w-5 text-cyan-400" />;
+        return (
+          <IconExclamationCircleFilled className="h-5 w-5 text-cyan-400" />
+        );
       case "award":
-        return <Award className="h-5 w-5 text-cyan-400" />;
+        return <IconAward className="h-5 w-5 text-cyan-400" />;
       default:
-        return <Briefcase className="h-5 w-5 text-cyan-400" />;
+        return <IconBriefcase className="h-5 w-5 text-cyan-400" />;
     }
   };
 

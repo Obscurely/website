@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { IconMenu2, IconBrandX } from "@tabler/icons-react";
 import { Button } from "../ui/button";
 import ThemeToggle from "../ThemeToggle";
 
@@ -95,7 +95,11 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="ml-2 text-slate-200"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? (
+              <IconBrandX size={24} />
+            ) : (
+              <IconMenu2 size={24} />
+            )}
           </Button>
         </div>
       </div>

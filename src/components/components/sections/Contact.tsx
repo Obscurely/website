@@ -6,7 +6,13 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Card, CardContent } from "../ui/card";
-import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
+import {
+  IconMail,
+  IconPhone,
+  IconMapPin2,
+  IconSend,
+  IconLoader2,
+} from "@tabler/icons-react";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -48,19 +54,19 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: <Mail className="h-6 w-6 text-cyan-400" />,
+      icon: <IconMail className="h-6 w-6 text-cyan-400" />,
       title: "Email",
       value: "contact@johndoe.com",
       link: "mailto:contact@johndoe.com",
     },
     {
-      icon: <Phone className="h-6 w-6 text-cyan-400" />,
+      icon: <IconPhone className="h-6 w-6 text-cyan-400" />,
       title: "Phone",
       value: "+1 (123) 456-7890",
       link: "tel:+11234567890",
     },
     {
-      icon: <MapPin className="h-6 w-6 text-cyan-400" />,
+      icon: <IconMapPin2 className="h-6 w-6 text-cyan-400" />,
       title: "Location",
       value: "San Francisco, CA",
       link: "https://maps.google.com/?q=San+Francisco,+CA",
@@ -278,12 +284,12 @@ export default function Contact() {
                     >
                       {isSubmitting ? (
                         <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          <IconLoader2 className="mr-2 h-4 w-4 animate-spin" />
                           Sending...
                         </>
                       ) : (
                         <>
-                          <Send className="mr-2 h-4 w-4" />
+                          <IconSend className="mr-2 h-4 w-4" />
                           Send Message
                         </>
                       )}

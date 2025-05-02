@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUp } from "lucide-react";
+import { IconArrowUp } from "@tabler/icons-react";
 import { Button } from "../ui/button";
 
 export default function Footer() {
@@ -203,7 +203,7 @@ export default function Footer() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <ArrowUp size={20} />
+            <IconArrowUp size={20} />
           </Button>
         </div>
       </div>

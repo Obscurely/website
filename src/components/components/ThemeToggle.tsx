@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
-import { Moon, Sun } from "lucide-react";
+import { IconMoon, IconSun } from "@tabler/icons-react";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -24,7 +24,7 @@ export default function ThemeToggle() {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="text-slate-400 hover:text-slate-200"
     >
-      {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+      {theme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
     </Button>
   );
 }

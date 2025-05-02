@@ -2,7 +2,12 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Twitter } from "lucide-react";
+import {
+  IconArrowDown,
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandReddit,
+} from "@tabler/icons-react";
 import { Button } from "../ui/button";
 import { TypeAnimation } from "react-type-animation";
 import Image from "next/image";
@@ -87,7 +92,7 @@ export default function Hero() {
                 whileHover={{ y: -5, scale: 1.1 }}
                 className="rounded-full bg-slate-800 p-3 text-slate-400 transition-colors hover:text-cyan-400"
               >
-                <Github size={20} />
+                <IconBrandGithub size={20} />
               </motion.a>
               <motion.a
                 href="https://linkedin.com"
@@ -96,16 +101,16 @@ export default function Hero() {
                 whileHover={{ y: -5, scale: 1.1 }}
                 className="rounded-full bg-slate-800 p-3 text-slate-400 transition-colors hover:text-cyan-400"
               >
-                <Linkedin size={20} />
+                <IconBrandLinkedin size={20} />
               </motion.a>
               <motion.a
-                href="https://twitter.com"
+                href="https://reddit.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -5, scale: 1.1 }}
                 className="rounded-full bg-slate-800 p-3 text-slate-400 transition-colors hover:text-cyan-400"
               >
-                <Twitter size={20} />
+                <IconBrandReddit size={20} />
               </motion.a>
             </div>
           </motion.div>
@@ -124,6 +129,7 @@ export default function Hero() {
                   height={512}
                   alt="John Doe"
                   className="h-full w-full object-cover"
+                  priority
                 />
               </div>
             </div>
@@ -149,7 +155,7 @@ export default function Hero() {
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              <ArrowDown size={20} />
+              <IconArrowDown size={20} />
             </Button>
           </motion.div>
         </motion.div>

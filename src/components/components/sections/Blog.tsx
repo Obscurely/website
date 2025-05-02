@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { Card, CardContent, CardFooter } from "../ui/card";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { IconArrowRight, IconCalendar, IconClock } from "@tabler/icons-react";
 import Image from "next/image";
 
 const blogPosts = [
@@ -109,11 +109,11 @@ export default function Blog() {
                 <CardContent className="flex-grow p-6">
                   <div className="mb-3 flex items-center gap-4 text-sm text-slate-400">
                     <div className="flex items-center gap-1">
-                      <Calendar size={14} />
+                      <IconCalendar size={14} />
                       <span>{post.date}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Clock size={14} />
+                      <IconClock size={14} />
                       <span>{post.readTime}</span>
                     </div>
                   </div>
@@ -130,7 +130,7 @@ export default function Blog() {
                   >
                     <a href={post.url} className="flex items-center gap-1">
                       <span>Read Article</span>
-                      <ArrowRight size={16} />
+                      <IconArrowRight size={16} />
                     </a>
                   </Button>
                 </CardFooter>
@@ -142,7 +142,7 @@ export default function Blog() {
         <div className="mt-12 text-center">
           <Button className="bg-slate-800 text-slate-200 hover:bg-slate-700">
             View All Articles
-            <ArrowRight size={16} className="ml-2" />
+            <IconArrowRight size={16} className="ml-2" />
           </Button>
         </div>
       </div>

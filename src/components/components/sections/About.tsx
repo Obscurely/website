@@ -5,7 +5,12 @@ import { motion, useInView } from "framer-motion";
 import { Badge } from "../ui/badge";
 import { Card, CardContent } from "../ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { Code, Palette, Lightbulb, Rocket } from "lucide-react";
+import {
+  IconCode,
+  IconPalette,
+  IconBulb,
+  IconRocket,
+} from "@tabler/icons-react";
 
 const skills = {
   frontend: [
@@ -72,25 +77,25 @@ export default function About() {
 
   const services = [
     {
-      icon: <Code className="h-10 w-10 text-cyan-400" />,
+      icon: <IconCode className="h-10 w-10 text-cyan-400" />,
       title: "Web Development",
       description:
         "Building responsive and performant web applications with modern technologies and best practices.",
     },
     {
-      icon: <Palette className="h-10 w-10 text-cyan-400" />,
+      icon: <IconPalette className="h-10 w-10 text-cyan-400" />,
       title: "UI/UX Design",
       description:
         "Creating intuitive and beautiful user interfaces with a focus on user experience and accessibility.",
     },
     {
-      icon: <Lightbulb className="h-10 w-10 text-cyan-400" />,
+      icon: <IconBulb className="h-10 w-10 text-cyan-400" />,
       title: "Consultation",
       description:
         "Providing expert advice on web technologies, architecture, and development strategies.",
     },
     {
-      icon: <Rocket className="h-10 w-10 text-cyan-400" />,
+      icon: <IconRocket className="h-10 w-10 text-cyan-400" />,
       title: "Performance Optimization",
       description:
         "Improving website speed and performance for better user experience and SEO rankings.",
