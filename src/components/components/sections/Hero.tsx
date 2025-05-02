@@ -29,15 +29,21 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="flex-1 text-center md:text-left"
           >
-            <div>
-              <h2 className="mb-3 inline-block rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-4 py-1 text-lg font-medium text-cyan-400 backdrop-blur-sm md:text-2xl">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-4 py-2 backdrop-blur-sm">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400"></span>
+              <h2 className="text-xl font-medium text-cyan-400 md:text-2xl">
                 Hello, I'm
               </h2>
             </div>
-            <h1 className="mb-4 text-4xl font-bold text-slate-100 md:text-6xl lg:text-7xl">
-              <span className="block">Adrian Crîșmaruc</span>
+
+            <h1 className="mb-6 text-3xl font-bold tracking-tight text-slate-400 md:text-6xl lg:text-5xl">
+              <span className="relative">
+                Adrian Crîșmaruc
+                <span className="absolute -bottom-2 left-0 h-1 w-24 bg-gradient-to-r from-cyan-500 to-blue-500"></span>
+              </span>
             </h1>
-            <div className="mb-4 h-12 text-xl font-semibold text-slate-300 md:text-2xl lg:text-3xl">
+
+            <div className="mb-4 h-12 text-2xl font-semibold md:text-2xl lg:text-3xl">
               <TypeAnimation
                 sequence={[
                   "Full Stack Developer",
@@ -54,7 +60,7 @@ export default function Hero() {
                   1000,
                   "Linux Power User",
                   1000,
-                  "Infrastructure Engineer",
+                  "Infrastructure Engineering",
                   1000,
                   "Home Lab Administrator",
                   1000,
@@ -64,20 +70,56 @@ export default function Hero() {
                 wrapper="span"
                 speed={50}
                 repeat={Infinity}
-                className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent"
               />
             </div>
-            <p className="mb-8 max-w-xl text-lg leading-relaxed text-slate-300 md:text-xl">
-              I am a Full-Stack Developer specializing in Rust, Python, React,
-              Typescript, Next.js, Flask and cloud-native technologies. I build
-              secure and scalable systems from the backend and infrastructure to
-              the user interface while leveraging my certified knowledge of AWS
-              and Kubernetes and my experience using the best DevOps practices
-              to deliver optimized and automated solutions across all platforms.
-            </p>
+            <div className="mb-8 max-w-xl">
+              <p className="mb-4 text-lg leading-relaxed text-slate-300 md:text-xl">
+                I am a{" "}
+                <strong className="text-white">Full-Stack Developer</strong>{" "}
+                specializing in
+                <span className="relative mx-1">
+                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
+                    Rust, Python, React, TypeScript, Next.js, Flask
+                  </span>
+                  <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-gradient-to-r from-cyan-500/50 to-blue-500/50"></span>
+                </span>
+                and{" "}
+                <strong className="text-white">
+                  cloud-native technologies
+                </strong>
+                . I build{" "}
+                <strong className="text-white">
+                  secure and scalable systems
+                </strong>{" "}
+                from the backend and infrastructure to the user interface while
+                leveraging my
+                <span className="relative mx-1">
+                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
+                    certified knowledge of AWS and Kubernetes
+                  </span>
+                  <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-gradient-to-r from-cyan-500/50 to-blue-500/50"></span>
+                </span>
+                and my experience using the best
+                <span className="relative mx-1">
+                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
+                    DevOps practices
+                  </span>
+                  <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-gradient-to-r from-cyan-500/50 to-blue-500/50"></span>
+                </span>
+                to deliver{" "}
+                <strong className="text-white">
+                  optimized and automated solutions
+                </strong>{" "}
+                across all platforms.
+              </p>
+              <p className="text-sm text-slate-400 italic">
+                ...and many more technologies + skills in my toolkit
+              </p>
+            </div>
             <div className="flex flex-wrap justify-center gap-4 md:justify-start">
               <Button
-                className="relative cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-6 text-white transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20"
+                className="group relative cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-7 py-6 text-white transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20"
                 onClick={(e) => {
                   e.preventDefault();
                   document
@@ -85,7 +127,24 @@ export default function Hero() {
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                <span className="relative z-10">Get in Touch</span>
+                <span className="relative z-10 flex items-center gap-2 font-medium">
+                  Get in Touch
+                  <svg
+                    className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </span>
+                <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               </Button>
               <Button
                 variant="outline"
@@ -133,20 +192,28 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-md flex-1"
+            className="relative max-w-md flex-1"
           >
-            <div className="relative">
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-75 blur-lg"></div>
-              <div className="relative overflow-hidden rounded-full border-2 border-slate-800 bg-slate-900">
+            {/* Glow effects */}
+            <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-75 blur-lg"></div>
+            <div className="absolute -inset-1 animate-pulse rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-30 blur-xl"></div>
+
+            {/* Image container with overflow hidden to contain the zoom effect */}
+            <div className="group relative overflow-hidden rounded-full border-2 border-slate-800 bg-slate-900">
+              {/* The image itself with hover effect */}
+              <div className="transform transition-transform duration-300 ease-in-out group-hover:scale-110">
                 <Image
                   src="/profile.webp"
                   width={512}
                   height={512}
-                  alt="John Doe"
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  alt="Adrian Crîșmaruc"
+                  className="h-full w-full object-cover"
                   priority
                 />
               </div>
+
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/20"></div>
             </div>
           </motion.div>
         </div>
