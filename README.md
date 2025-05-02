@@ -18,6 +18,10 @@
 - [Nix Flakes](https://nixos.wiki/wiki/Flakes) - A new way to manage Nix
   packages and configurations
 - [Lint Staged](https://github.com/okonet/lint-staged) - A git hook manager
+- [Framer Motion](https://www.framer.com/docs/) - A production-ready motion
+  library for React
+- [Shadcn/ui](https://ui.shadcn.com/) - A set of components built using Radix UI
+  and Tailwind CSS
 
 ## Getting Started
 

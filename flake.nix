@@ -29,7 +29,7 @@
               git # version management
               nodePackages.typescript # typescript
               pnpm_10 # faster package management
-			  nodePackages.prettier # formatter
+              nodePackages.prettier # formatter
               # eslint
               eslint
               eslint_d
@@ -48,59 +48,32 @@
             ];
 
             shellHook = ''
-              		 # set root path
-              		 # ROOT=$(pwd)
+              # set root path
+              ROOT=$(pwd)
 
-              		 # setup dependencies for frontend
-              # 		 echo "Setup dependencies for frontend"
-              # 		 # npm install --silent
-              # 		 # echo "Nodejs updates: $(npm update --dry-run | rg --color=never 'in \d+')"
-              # 		 cd $ROOT
-              # 		 echo ""
-              #
-              # 		 # setup dependencies for backend lambda
-              # 		 echo "Setup dependencies for backend"
-              # 		 cd $ROOT/backend/lambda
-              # 		 cargo build --quiet --keep-going --profile dev &>/dev/null 2>&1 && echo "Cargo build local dev dependencies: OK" || echo "Cargo build local dev dependencies: FAIL"
-              # 		 cargo lambda build --quiet --keep-going --arm64 --profile dev &>/dev/null 2>&1 && echo "Cargo build ARM64 dev dependencies: OK" || echo "Cargo build ARM64 dev dependencies: FAIL"
-              # 		 echo "Cargo updates: $(cargo outdated --depth 1 --workspace --root .)"
-              # 		 cd $ROOT
-              # 		 echo ""
-              #
-              # 		 # run redis
-              # 		 cd $ROOT/deployment/dev/redis
-              # 		 docker compose up -d --quiet-pull &>/dev/null 2>&1
-              # 		 echo "Redis started."
-              # 		 cd $ROOT
-              # 		 sleep 2 # make sure redis is up
-              #
-              # # run stripe forward
-              # stripe listen --forward-to localhost:8080/webhook/stripe > /dev/null 2>&1 &
-              #
-              # 		 # run frontend (website) in dev mode
-              # 		 cd $ROOT/frontend
-              # 		 source ./scripts/set_dev_env.sh
-              # 		 poetry run ./scripts/run_dev.sh &>/dev/null 2>&1
-              # 		 echo "Frontend started in dev mode."
-              # 		 cd $ROOT
-              #
-              # 		 # run zsh in order to pause exec and set some aliases
-              # 		 ./scripts/zshi.sh "source scripts/aliases.zsh"
-              #
-              # 		 # cleanup everything after running exit (quitting zsh shell)
-              # 		 echo "Cleaning up..."
-              # 		 # stop redis
-              # 		 cd deployment/dev/redis
-              # 		 dokcer compose down &>/dev/null 2>&1
-              # 		 cd ../../..
-              # 		 echo "Redis shutdown."
-              # 		 # kill frontend
-              # 		 killall tailwindcss &>/dev/null 2>&1
-              # 		 killall flask &>/dev/null 2>&1
-              # killall esbuild &>/dev/null 2>&1
-              # 		 echo "Frontend shutdown."
-              # 		 echo "Exited"
-              # 		 exit
+              # setup dependencies for frontend
+              echo "Setup dependencies"
+              pnpm install --silent
+              echo "Nodejs updates: $(pnpm outdated)"
+              echo ""
+
+              # run in dev mode
+              pnpm dev &>/dev/null 2>&1 &
+              echo "Frontend started in dev mode."
+
+              # run zsh in order to pause exec
+              zsh
+
+              # cleanup everything after running exit (quitting zsh shell)
+              echo "Cleaning up..."
+              # kill server
+              killall tailwindcss &>/dev/null 2>&1
+              killall pnpm &>/dev/null 2>&1
+              killall node &>/dev/null 2>&1
+              killall next-server &>/dev/null 2>&1
+              echo "Server shutdown."
+              echo "Exited"
+              exit
             '';
           };
 

@@ -38,10 +38,12 @@
       }
     ],
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@app/*": ["./src/app/*"]
+      "@app/*": ["./src/app/*"],
+      "components": ["@components/components/*"],
+      "utils": ["@components/lib/utils/*"],
+      "ui": ["@components/components/ui/*"],
+      "lib": ["@components/lib/*"],
+      "hooks": ["@components/hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
