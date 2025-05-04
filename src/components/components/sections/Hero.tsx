@@ -7,6 +7,7 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandReddit,
+  IconSearch,
 } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 import { TypeAnimation } from "react-type-animation";
@@ -45,11 +46,32 @@ export default function Hero() {
               </span>
             </h1>
 
+            {/* Founder badge */}
+            <a
+              href="https://rekosearch.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-3 py-1 backdrop-blur-sm transition-all duration-300 hover:from-cyan-500/20 hover:to-blue-500/20"
+            >
+              <IconSearch
+                size={16}
+                className="mr-1 text-cyan-400 transition-transform duration-300 group-hover:scale-110"
+              />
+              <span className="text-sm font-semibold text-cyan-400 transition-all duration-300 group-hover:text-cyan-300">
+                Founder of RekoSearch - AI File Search Engine
+              </span>
+              <span className="ml-1 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                →
+              </span>
+            </a>
+
             {/* Animated text with TypeAnimation */}
-            <div className="mb-4 h-12 text-2xl font-semibold md:text-2xl lg:text-3xl">
+            <div className="mb-2.5 h-12 text-2xl font-semibold md:text-2xl lg:text-3xl">
               <TypeAnimation
                 sequence={[
                   "Full Stack Developer",
+                  1000,
+                  "Cloud-Native",
                   1000,
                   "AWS Certified",
                   1000,
@@ -105,7 +127,14 @@ export default function Hero() {
                   </span>
                   <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-gradient-to-r from-cyan-500/50 to-blue-500/50"></span>
                 </span>
-                and my experience using the best
+                , practical
+                <span className="relative mx-1">
+                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
+                    Home Lab SysAdmin
+                  </span>
+                  <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-gradient-to-r from-cyan-500/50 to-blue-500/50"></span>
+                </span>
+                experience and
                 <span className="relative mx-1">
                   <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
                     DevOps practices

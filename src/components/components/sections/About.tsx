@@ -116,10 +116,25 @@ export default function About() {
           </h2>
           <div className="mx-auto mb-6 h-1 w-20 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
           <p className="mx-auto max-w-3xl text-lg text-slate-400">
-            I'm a passionate developer with a keen eye for design and a love for
-            creating exceptional digital experiences. With a strong foundation
-            in modern web technologies, I strive to build applications that are
-            not only functional but also intuitive and enjoyable to use.
+            From a very young age, I got captivated by tech, first by tinkering
+            with <span className="font-bold">Linux</span> and then with
+            programming, leading to my <strong>self-taught</strong> journey.
+            Being <strong>self-taught</strong> has helped me become{" "}
+            <strong>highly adaptable</strong> and{" "}
+            <strong>quick to learn</strong> new technologies, enabling me to
+            develop{" "}
+            <span className="font-semibold italic">
+              clever and elegant solutions to complex problems
+            </span>
+            . I am <strong>constantly learning</strong>, improving and staying
+            current with the tech space to deliver{" "}
+            <span className="font-semibold italic">
+              high-quality end products on par with industry standards
+            </span>{" "}
+            by managing my time and{" "}
+            <span className="font-semibold italic">
+              focusing on what's important first.
+            </span>
           </p>
         </motion.div>
 
