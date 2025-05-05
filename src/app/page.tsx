@@ -19,7 +19,7 @@ export default function Home() {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 1.05]);
 
   return (
     <div
