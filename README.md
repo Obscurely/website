@@ -18,10 +18,18 @@
 - [Nix Flakes](https://nixos.wiki/wiki/Flakes) - A new way to manage Nix
   packages and configurations
 - [Lint Staged](https://github.com/okonet/lint-staged) - A git hook manager
+- [Commit Lint](https://commitlint.js.org/) - Lint commit messages
+- [Sort Package JSON](https://github.com/vercel/sort-package-json) - Sort
+  package JSON files
+- [Autoprefixer](https://autoprefixer.github.io/) - PostCSS plugin for adding
+  vendor prefixes to CSS rules using values from the Can I Use website
+- [CSS Nano](https://github.com/cssnano/cssnano) - A postcss plugin to minify
 - [Framer Motion](https://www.framer.com/docs/) - A production-ready motion
   library for React
 - [Shadcn/ui](https://ui.shadcn.com/) - A set of components built using Radix UI
   and Tailwind CSS
+- [Tabler Icons](https://tabler-icons.io/) - A set of over 5850 free
+  MIT-licensed high-quality SVG icons for you to use in your web projects
 
 ## Getting Started
 
