@@ -51,7 +51,7 @@ export default function Hero() {
               href="https://rekosearch.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-3 py-1 backdrop-blur-sm transition-all duration-300 hover:from-cyan-500/20 hover:to-blue-500/20"
+              className="group mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-3 py-1 backdrop-blur-sm transition-all duration-300 hover:from-cyan-500/20 hover:to-blue-500/20 hover:shadow-xs hover:shadow-cyan-500/20"
             >
               <IconSearch
                 size={16}
