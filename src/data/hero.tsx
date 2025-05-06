@@ -23,6 +23,9 @@ export const typeAnimation = [
   1000,
 ];
 
+/**
+ * Short concise description of my tech skills
+ */
 export default function Description() {
   return (
     <p className="mb-4 text-lg leading-relaxed text-slate-300 md:text-xl">

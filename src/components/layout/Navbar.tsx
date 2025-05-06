@@ -44,7 +44,7 @@ export default function Navbar() {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2"
           >
-            <span className="truncate bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-xl font-extrabold text-transparent sm:text-2xl md:text-3xl">
+            <span className="sm:text-1xl truncate bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-xl font-extrabold text-transparent md:text-2xl">
               Adrian's Portfolio
             </span>
           </motion.div>

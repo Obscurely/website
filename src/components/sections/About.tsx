@@ -5,13 +5,8 @@ import { motion, useInView } from "framer-motion";
 import { Badge } from "@ui/badge";
 import { Card, CardContent } from "@ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tabs";
-import {
-  IconCode,
-  IconPalette,
-  IconBulb,
-  IconRocket,
-} from "@tabler/icons-react";
 import { skills } from "@data/skills";
+import { AboutMe, MyJourney, services } from "@data/about";
 
 export default function About() {
   const ref = useRef(null);
@@ -30,33 +25,6 @@ export default function About() {
     }),
   };
 
-  const services = [
-    {
-      icon: <IconCode className="h-10 w-10 text-cyan-400" />,
-      title: "Web Development",
-      description:
-        "Building responsive and performant web applications with modern technologies and best practices.",
-    },
-    {
-      icon: <IconPalette className="h-10 w-10 text-cyan-400" />,
-      title: "UI/UX Design",
-      description:
-        "Creating intuitive and beautiful user interfaces with a focus on user experience and accessibility.",
-    },
-    {
-      icon: <IconBulb className="h-10 w-10 text-cyan-400" />,
-      title: "Consultation",
-      description:
-        "Providing expert advice on web technologies, architecture, and development strategies.",
-    },
-    {
-      icon: <IconRocket className="h-10 w-10 text-cyan-400" />,
-      title: "Performance Optimization",
-      description:
-        "Improving website speed and performance for better user experience and SEO rankings.",
-    },
-  ];
-
   return (
     <section
       id="about"
@@ -74,6 +42,7 @@ export default function About() {
         <div className="absolute right-1/4 bottom-1/3 h-64 w-64 rounded-full bg-blue-500 blur-[100px]"></div>
       </div>
 
+      {/* Main content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -85,32 +54,15 @@ export default function About() {
             About Me
           </h2>
           <div className="mx-auto mb-8 h-1 w-24 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+
+          {/* Paragraph about me focusing on my soft skills and approach to work. */}
           <div className="mx-auto max-w-3xl">
-            <p className="mx-auto max-w-3xl text-lg text-slate-400">
-              From a very young age, I got captivated by tech, first by
-              tinkering with <span className="font-bold">Linux</span> and then
-              with programming, leading to my <strong>self-taught</strong>{" "}
-              journey. Being <strong>self-taught</strong> has helped me become{" "}
-              <strong>highly adaptable</strong> and{" "}
-              <strong>quick to learn</strong> new technologies, enabling me to
-              develop{" "}
-              <span className="font-semibold italic">
-                clever and elegant solutions to complex problems
-              </span>
-              . I am <strong>constantly learning</strong>, improving and staying
-              current with the tech space to deliver{" "}
-              <span className="font-semibold italic">
-                high-quality end products on par with industry standards
-              </span>{" "}
-              by managing my time and{" "}
-              <span className="font-semibold italic">
-                focusing on what's important first.
-              </span>
-            </p>
+            <AboutMe />
           </div>
         </motion.div>
 
         <div className="mb-24 grid grid-cols-1 gap-12 md:grid-cols-2">
+          {/* Left side: My Journey */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
@@ -118,40 +70,17 @@ export default function About() {
             className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6 backdrop-blur-sm"
           >
             <h3 className="mb-6 text-2xl font-bold text-white">My Journey</h3>
-            <p className="leading-relaxed text-slate-300">
-              My journey in tech began in my{" "}
-              <strong>earliest years of childhood</strong>. Initially, I
-              experimented with different software, tried new things and was
-              genuinely <strong>curious</strong> to see the outcome of doing
-              something new while also{" "}
-              <span className="font-semibold italic">
-                breaking stuff in the process and learning from it
-              </span>
-              . By age 10, I had already been experimenting with
-              <span className="font-bold"> virtual machines, Linux</span>, and
-              more advanced tools, and two years later, I started{" "}
-              <strong>formally programming</strong> and setting up a home server
-              on an older laptop. I went from building small projects to now,{" "}
-              <strong>7 years later</strong>, having built{" "}
-              <span className="font-semibold italic">
-                RekoSearch - an almost 50k LoC SaaS app made with Rust, Python
-                and web technologies on AWS and Kubernetes
-              </span>{" "}
-              - and my <span className="font-bold">Home Lab</span> with{" "}
-              <strong>47+ user-accessible services</strong> securely exposed to
-              the internet.
-            </p>
+            <MyJourney />
           </motion.div>
 
+          {/* Right side: Skills */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.7, delay: 0.4 }}
             className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6 backdrop-blur-sm"
           >
-            <h3 className="mb-6 text-2xl font-bold text-white">
-              Skills & Expertise
-            </h3>
+            <h3 className="mb-6 text-2xl font-bold text-white">My Skills</h3>
             <Tabs defaultValue="frontend" className="w-full">
               <TabsList className="mb-6 grid grid-cols-4 rounded-lg bg-slate-800/50">
                 <TabsTrigger
@@ -197,6 +126,7 @@ export default function About() {
           </motion.div>
         </div>
 
+        {/* What I do Section */}
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
