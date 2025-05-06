@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { Badge } from "@ui/badge";
 import { Card, CardContent } from "@ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tabs";
-import { skills } from "@data/skills";
+import { skills } from "@data/skills/skills";
 import { AboutMe, MyJourney, services } from "@data/about";
 
 export default function About() {
@@ -113,10 +113,10 @@ export default function About() {
                   <div className="flex flex-wrap gap-2">
                     {skillList.map((skill) => (
                       <Badge
-                        key={skill}
+                        key={skill.name}
                         className="border border-slate-700/50 bg-slate-800/70 px-3 py-1.5 text-slate-200 transition-colors hover:bg-slate-700"
                       >
-                        {skill}
+                        {skill.name}
                       </Badge>
                     ))}
                   </div>
