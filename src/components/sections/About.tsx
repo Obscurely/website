@@ -9,6 +9,7 @@ import { AboutMe, MyJourney, services } from "@data/about";
 import {
   CategoryAccentColor,
   CategoryColorClass,
+  CategoryIcons,
   SkillCategory,
 } from "@data/skills/types";
 import {
@@ -168,14 +169,19 @@ export default function About() {
               >
                 <div className="hidden md:block">
                   {/* Horizontal layout for medium screens and up */}
-                  <TabsList className="mb-2 flex w-full overflow-hidden rounded-xl border border-slate-700/30 bg-slate-800/40 p-1 backdrop-blur-sm">
+                  <TabsList className="mb-2 flex w-full gap-1 overflow-hidden rounded-xl border border-slate-700/30 bg-slate-800/40 p-1 backdrop-blur-sm">
                     {tabCategories.map((category) => (
                       <TabsTrigger
                         key={category}
                         value={category}
-                        className="relative flex-1 cursor-pointer py-2.5 text-sm font-medium text-slate-300 transition-all duration-200 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500/20 data-[state=active]:to-blue-500/20 data-[state=active]:text-white"
+                        className="relative flex-1 cursor-pointer rounded-lg py-2.5 text-sm font-medium text-slate-300 transition-all duration-200 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500/20 data-[state=active]:to-blue-500/20 data-[state=active]:text-white"
                       >
-                        {category}
+                        <span className="flex items-center justify-center">
+                          <span className="mr-1.5">
+                            {CategoryIcons[category]}
+                          </span>
+                          {category}
+                        </span>
                         <div className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 data-[state=active]:w-1/2"></div>
                       </TabsTrigger>
                     ))}
@@ -215,7 +221,12 @@ export default function About() {
                                 }
                         }
                       >
-                        {category}
+                        <span className="flex items-center justify-center">
+                          <span className="mr-1">
+                            {CategoryIcons[category]}
+                          </span>
+                          {category}
+                        </span>
                         <div className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 data-[state=active]:w-1/2"></div>
                       </TabsTrigger>
                     ))}
