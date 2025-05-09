@@ -5,7 +5,13 @@ type ProjectKey =
   | "Falion"
   | "EStash"
   | "Rustsomware"
-  | "Portfolio";
+  | "Portfolio"
+  | "PbthalArchiveManager"
+  | "RustTemplate"
+  | "DiscordBot"
+  | "PyPassMan"
+  | "ArchObscurely"
+  | "NixObscurely";
 
 const projects: Record<ProjectKey, Project> = {
   RekoSearch: {
@@ -36,6 +42,42 @@ const projects: Record<ProjectKey, Project> = {
     link: "https://github.com/Obscurely/Portfolio",
     shortDescription:
       "The static Next.js tech website portfolio you are currently on",
+  },
+  PbthalArchiveManager: {
+    name: "Pbthal-Archive-Manager",
+    link: "https://github.com/Obscurely/Pbthal-Archive-Manager",
+    shortDescription:
+      "Easily download music from Pbthal's archive and get properly made albums",
+  },
+  RustTemplate: {
+    name: "RustTemplate",
+    link: "https://github.com/Obscurely/RustTemplate",
+    shortDescription:
+      "GitHub Template for cross-platform Rust projects with scripts to automatically customize it and CI & CD pipelines",
+  },
+  DiscordBot: {
+    name: "Discord-Bot",
+    link: "https://github.com/Obscurely/Discord-Bot",
+    shortDescription:
+      "A discord bot with basic admin commands and a music player",
+  },
+  PyPassMan: {
+    name: "PyPassMan",
+    link: "https://github.com/Obscurely/PyPassMan",
+    shortDescription:
+      "Cross-platform Password Manager with a QT frontend, simple and not so secure, but I learned a lot from building it",
+  },
+  ArchObscurely: {
+    name: "ArchObscurely",
+    link: "https://github.com/Obscurely/ArchObscurely",
+    shortDescription:
+      "Automated, fully customized and configured Arch Linux Install for my Machine",
+  },
+  NixObscurely: {
+    name: "NixObscurely",
+    link: "https://github.com/Obscurely/NixObscurely",
+    shortDescription:
+      "Automated, fully customized and configured NixOS Install for my Machine",
   },
 };
 
