@@ -18,6 +18,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@ui/tooltip";
+import { IconClick } from "@tabler/icons-react";
 
 // Get all categories except KeySkills for tabs
 const tabCategories = Object.values(SkillCategory).filter(
@@ -77,7 +78,10 @@ export default function About() {
           </div>
         </motion.div>
 
-        <div className="mb-24 grid grid-cols-1 gap-12 md:grid-cols-2">
+        <div
+          className="relative mb-24 grid grid-cols-1 gap-12 md:grid-cols-2"
+          style={{ zIndex: 30 }}
+        >
           {/* Left side: My Journey */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -96,7 +100,7 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.4 }}
             className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6 backdrop-blur-sm"
           >
-            <h3 className="mb-6 text-2xl font-bold text-white">My Skills</h3>
+            <h3 className="mb-2 text-2xl font-bold text-white">My Skills</h3>
 
             {/* Key Skills Section */}
             <SkillBadgeProvider>
@@ -111,31 +115,24 @@ export default function About() {
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <div className="flex items-center text-xs text-slate-400">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="12"
-                            height="12"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="mr-1"
-                          >
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="12" y1="16" x2="12" y2="12" />
-                            <line x1="12" y1="8" x2="12.01" y2="8" />
-                          </svg>
-                          Click for details
-                        </div>
+                        <span className="flex items-center text-sm text-slate-400">
+                          <IconClick size={12} className="mr-1 animate-pulse" />
+                          Tap for details
+                        </span>
                       </TooltipTrigger>
                       <TooltipContent
                         side="top"
-                        className="bg-slate-800 text-xs"
+                        align="center"
+                        className="max-w-[250px] rounded-lg border border-slate-700/30 bg-gradient-to-b from-slate-800/95 to-slate-900/95 px-4 py-3 text-sm shadow-lg backdrop-blur-md transition-all duration-200"
+                        sideOffset={2}
                       >
-                        <p>Click any skill to see proficiency and projects</p>
+                        <div className="mb-1 font-medium text-cyan-400">
+                          Skill Details
+                        </div>
+                        <div className="leading-relaxed text-slate-300">
+                          Click any skill to see description, proficiency and
+                          projects
+                        </div>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
@@ -157,13 +154,17 @@ export default function About() {
                 </div>
               </div>
 
+              <div className="mt-2 mb-2 text-xs text-slate-400 italic">
+                And more skills below...
+              </div>
+
               {/* Other Skills Categories */}
               <Tabs
                 defaultValue={tabCategories[0] || SkillCategory.Frontend}
                 className="w-full"
               >
                 <TabsList
-                  className={`mb-4 grid w-full rounded-lg bg-slate-800/30`}
+                  className={`mb-2 grid w-full rounded-lg bg-slate-800/30`}
                   style={{
                     gridTemplateColumns: `repeat(${tabCategories.length}, minmax(0, 1fr))`,
                   }}
@@ -204,9 +205,6 @@ export default function About() {
                         />
                       ))}
                     </div>
-                    <div className="mt-2 text-xs text-slate-400 italic">
-                      And more skills in this category...
-                    </div>
                   </TabsContent>
                 ))}
               </Tabs>
@@ -215,38 +213,40 @@ export default function About() {
         </div>
 
         {/* What I do Section */}
-        <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mb-10 text-center text-3xl font-bold text-white"
-        >
-          What I Do
-        </motion.h3>
+        <div className="relative" style={{ zIndex: 10 }}>
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="relative z-10 mb-10 text-center text-3xl font-bold text-white"
+          >
+            What I Do
+          </motion.h3>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.title}
-              custom={i}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              variants={cardVariants}
-              className="group"
-            >
-              <Card className="h-full overflow-hidden border-slate-700/50 bg-slate-800/30 backdrop-blur-sm transition-all duration-300 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">
-                <CardContent className="flex flex-col items-center p-6 text-center">
-                  <div className="mb-5 rounded-full bg-slate-900/80 p-4 transition-transform duration-300 group-hover:scale-110 group-hover:bg-slate-900">
-                    {service.icon}
-                  </div>
-                  <h4 className="mb-3 text-xl font-bold text-white">
-                    {service.title}
-                  </h4>
-                  <p className="text-slate-300">{service.description}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+          <div className="relative z-0 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {services.map((service, i) => (
+              <motion.div
+                key={service.title}
+                custom={i}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                variants={cardVariants}
+                className="group relative z-0"
+              >
+                <Card className="h-full overflow-hidden border-slate-700/50 bg-slate-800/30 backdrop-blur-sm transition-all duration-300 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">
+                  <CardContent className="flex flex-col items-center p-6 text-center">
+                    <div className="mb-5 rounded-full bg-slate-900/80 p-4 transition-transform duration-300 group-hover:scale-110 group-hover:bg-slate-900">
+                      {service.icon}
+                    </div>
+                    <h4 className="mb-3 text-xl font-bold text-white">
+                      {service.title}
+                    </h4>
+                    <p className="text-slate-300">{service.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

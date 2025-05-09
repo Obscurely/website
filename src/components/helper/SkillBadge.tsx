@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, createContext, useContext } from "react";
+import { useState, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Skill,
@@ -16,6 +16,16 @@ import {
 } from "@ui/tooltip";
 import React from "react";
 import { IconX, IconExternalLink } from "@tabler/icons-react";
+import {
+  useFloating,
+  autoUpdate,
+  offset,
+  shift,
+  useClick,
+  useDismiss,
+  useInteractions,
+  flip,
+} from "@floating-ui/react";
 
 // Context to track the currently expanded skill
 const SkillContext = createContext<{
@@ -51,38 +61,37 @@ export const SkillBadge = React.memo(function SkillBadge({
 }: SkillBadgeProps) {
   const { expandedSkillId, setExpandedSkillId } = useContext(SkillContext);
   const isExpanded = expandedSkillId === skill.id;
-  const skillRef = useRef<HTMLDivElement>(null);
 
-  // Handle click outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        skillRef.current &&
-        !skillRef.current.contains(event.target as Node) &&
-        isExpanded
-      ) {
-        setExpandedSkillId(null);
-      }
-    }
+  // Floating UI setup - using only shift middleware to prevent going off-screen
+  // while maintaining the original left-aligned position
+  const { x, y, strategy, refs, context } = useFloating({
+    open: isExpanded,
+    onOpenChange: (open) => {
+      setExpandedSkillId(open ? skill.id : null);
+    },
+    middleware: [
+      offset({ mainAxis: 8 }),
+      shift({ padding: 8 }),
+      flip({ padding: 16 }),
+    ],
+    placement: "bottom-start",
+    whileElementsMounted: autoUpdate,
+  });
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isExpanded, setExpandedSkillId]);
+  // Setup interactions
+  const click = useClick(context);
+  const dismiss = useDismiss(context);
 
-  const toggleExpand = () => {
-    if (isExpanded) {
-      setExpandedSkillId(null);
-    } else {
-      setExpandedSkillId(skill.id);
-    }
-  };
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    click,
+    dismiss,
+  ]);
 
   return (
-    <div className="relative" ref={skillRef}>
+    <div className="relative">
       <button
-        onClick={toggleExpand}
+        ref={refs.setReference}
+        {...getReferenceProps()}
         className={`flex cursor-pointer items-center rounded-full border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 ${
           isExpanded
             ? "bg-gradient-to-r from-slate-800/70 to-slate-700/70 shadow-sm"
@@ -95,12 +104,18 @@ export const SkillBadge = React.memo(function SkillBadge({
       <AnimatePresence>
         {isExpanded && (
           <motion.div
+            ref={refs.setFloating}
+            {...getFloatingProps()}
             initial={{ opacity: 0, y: 5, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 5, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute left-0 z-50 mt-2 w-lg max-w-[95vw] overflow-hidden rounded-xl border border-slate-700/60 bg-gradient-to-b from-slate-800/95 to-slate-900/95 p-4 text-slate-200 shadow-xl backdrop-blur-sm"
+            className="absolute z-[60] w-lg max-w-[95vw] overflow-hidden rounded-xl border border-slate-700/60 bg-gradient-to-b from-slate-800/95 to-slate-900/95 p-4 text-slate-200 shadow-xl backdrop-blur-sm"
             style={{
+              position: strategy,
+              top: y ?? 0,
+              left: x ?? 0,
+              zIndex: 9999,
               boxShadow:
                 "0 0 15px rgba(0, 0, 0, 0.2), 0 0 3px rgba(14, 165, 233, 0.15)",
             }}
@@ -155,6 +170,7 @@ export const SkillBadge = React.memo(function SkillBadge({
   );
 });
 
+// ProficiencyScale and ProjectItem components remain unchanged
 export function ProficiencyScale({
   proficiency,
 }: {
@@ -172,7 +188,7 @@ export function ProficiencyScale({
                 <div className="flex flex-col items-center">
                   {/* Badge */}
                   <div
-                    className={`relative z-10 cursor-pointer rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 hover:shadow-md ${
+                    className={`relative z-10 rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 hover:shadow-md ${
                       index !== currentIndex
                         ? "bg-slate-700 text-slate-400 hover:bg-slate-600 hover:text-slate-200"
                         : ""
@@ -181,9 +197,9 @@ export function ProficiencyScale({
                       ...(index === currentIndex
                         ? skillProficiencyColor[level]
                         : {}),
-                      transform: "translate(0, 0)", // Prevent movement on hover
-                      backfaceVisibility: "hidden", // Helps with some browsers
-                      willChange: "transform, box-shadow", // Optimize for animation
+                      transform: "translate(0, 0)",
+                      backfaceVisibility: "hidden",
+                      willChange: "transform, box-shadow",
                     }}
                   >
                     {level}
@@ -208,7 +224,7 @@ export function ProficiencyScale({
                 side="top"
                 align="center"
                 className="max-w-xs rounded-lg border border-slate-700/30 bg-gradient-to-b from-slate-800/95 to-slate-900/95 px-4 py-3 text-sm shadow-lg backdrop-blur-md transition-all duration-200"
-                sideOffset={6}
+                sideOffset={2}
               >
                 <div className="mb-1 font-medium text-cyan-400">{level}</div>
                 <div className="leading-relaxed text-slate-300">
@@ -235,10 +251,10 @@ export function ProjectItem({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 rounded-md border border-slate-700/50 bg-slate-800/70 px-2.5 py-1 text-sm font-medium text-cyan-400 transition-all duration-200 hover:border-cyan-500/30 hover:bg-slate-700/50 hover:text-cyan-300 hover:shadow-sm hover:shadow-cyan-500/10"
               style={{
-                transform: "translate(0, 0)", // Prevent movement on hover
-                backfaceVisibility: "hidden", // Helps with some browsers
+                transform: "translate(0, 0)",
+                backfaceVisibility: "hidden",
                 willChange:
-                  "transform, box-shadow, background-color, border-color", // Optimize for animation
+                  "transform, box-shadow, background-color, border-color",
               }}
             >
               {project.name}
@@ -250,7 +266,7 @@ export function ProjectItem({ project }: { project: Project }) {
           side="top"
           align="center"
           className="w-auto max-w-md rounded-lg border-0 bg-gradient-to-b from-slate-800/95 to-slate-900/95 px-4 py-3 text-sm shadow-xl ring-1 ring-slate-700/30 backdrop-blur-md"
-          sideOffset={6}
+          sideOffset={2}
         >
           <div className="mb-1.5 font-medium text-cyan-400">{project.name}</div>
           <div className="leading-relaxed text-slate-200">
