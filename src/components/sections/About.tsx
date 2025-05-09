@@ -11,7 +11,10 @@ import {
   CategoryColorClass,
   SkillCategory,
 } from "@data/skills/types";
-import { SkillBadge, SkillBadgeProvider } from "@components/helper/SkillBadge";
+import {
+  SkillBadge,
+  SkillBadgeProvider,
+} from "@components/helper/SkillBadge/SkillBadge";
 import {
   Tooltip,
   TooltipContent,
@@ -163,31 +166,25 @@ export default function About() {
                 defaultValue={tabCategories[0] || SkillCategory.Frontend}
                 className="w-full"
               >
-                <TabsList
-                  className={`mb-2 grid w-full rounded-lg bg-slate-800/30`}
-                  style={{
-                    gridTemplateColumns: `repeat(${tabCategories.length}, minmax(0, 1fr))`,
-                  }}
-                >
+                <TabsList className="mb-2 flex w-full overflow-hidden rounded-xl border border-slate-700/30 bg-slate-800/40 p-1 backdrop-blur-sm">
                   {tabCategories.map((category) => (
                     <TabsTrigger
                       key={category}
                       value={category}
-                      className="data-[state=active]:bg-slate-700/30"
-                      style={{
-                        color:
-                          CategoryAccentColor[
-                            category as keyof typeof CategoryAccentColor
-                          ],
-                      }}
+                      className="relative flex-1 cursor-pointer py-2.5 text-sm font-medium text-slate-300 transition-all duration-200 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500/20 data-[state=active]:to-blue-500/20 data-[state=active]:text-white"
                     >
                       {category}
+                      <div className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 data-[state=active]:w-1/2"></div>
                     </TabsTrigger>
                   ))}
                 </TabsList>
 
                 {tabCategories.map((category) => (
-                  <TabsContent key={category} value={category} className="mt-0">
+                  <TabsContent
+                    key={category}
+                    value={category}
+                    className="animate-in fade-in slide-in-from-bottom-2 mt-0 transition-all duration-300 ease-in-out"
+                  >
                     <div className="flex flex-wrap gap-1.5">
                       {skills[category].map((skill) => (
                         <SkillBadge

@@ -1,21 +1,8 @@
 import { useState, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Skill,
-  Project,
-  SkillProficiency,
-  SkillProficiencyDescription,
-  skillProficiencyLevels,
-  skillProficiencyColor,
-} from "@data/skills/types";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@ui/tooltip";
+import { Skill } from "@data/skills/types";
 import React from "react";
-import { IconX, IconExternalLink } from "@tabler/icons-react";
+import { IconX } from "@tabler/icons-react";
 import {
   useFloating,
   autoUpdate,
@@ -26,6 +13,8 @@ import {
   useInteractions,
   flip,
 } from "@floating-ui/react";
+import ProficiencyScale from "./ProficiencyScale";
+import ProjectItem from "./ProjectItem";
 
 // Context to track the currently expanded skill
 const SkillContext = createContext<{
@@ -62,8 +51,7 @@ export const SkillBadge = React.memo(function SkillBadge({
   const { expandedSkillId, setExpandedSkillId } = useContext(SkillContext);
   const isExpanded = expandedSkillId === skill.id;
 
-  // Floating UI setup - using only shift middleware to prevent going off-screen
-  // while maintaining the original left-aligned position
+  // Making the popup responsive
   const { x, y, strategy, refs, context } = useFloating({
     open: isExpanded,
     onOpenChange: (open) => {
@@ -169,111 +157,3 @@ export const SkillBadge = React.memo(function SkillBadge({
     </div>
   );
 });
-
-// ProficiencyScale and ProjectItem components remain unchanged
-export function ProficiencyScale({
-  proficiency,
-}: {
-  proficiency: SkillProficiency;
-}) {
-  const currentIndex = skillProficiencyLevels.indexOf(proficiency);
-
-  return (
-    <div className="flex flex-col">
-      <div className="relative flex items-center justify-between">
-        {skillProficiencyLevels.map((level, index) => (
-          <TooltipProvider key={level}>
-            <Tooltip delayDuration={150}>
-              <TooltipTrigger asChild>
-                <div className="flex flex-col items-center">
-                  {/* Badge */}
-                  <div
-                    className={`relative z-10 rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 hover:shadow-md ${
-                      index !== currentIndex
-                        ? "bg-slate-700 text-slate-400 hover:bg-slate-600 hover:text-slate-200"
-                        : ""
-                    }`}
-                    style={{
-                      ...(index === currentIndex
-                        ? skillProficiencyColor[level]
-                        : {}),
-                      transform: "translate(0, 0)",
-                      backfaceVisibility: "hidden",
-                      willChange: "transform, box-shadow",
-                    }}
-                  >
-                    {level}
-                  </div>
-
-                  {/* Connector line (except for the last item) */}
-                  {index < skillProficiencyLevels.length - 1 && (
-                    <div
-                      className="absolute h-0.5 bg-slate-700"
-                      style={{
-                        left: `${(index * 100) / (skillProficiencyLevels.length - 1)}%`,
-                        width: `${100 / (skillProficiencyLevels.length - 1)}%`,
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        zIndex: 0,
-                      }}
-                    />
-                  )}
-                </div>
-              </TooltipTrigger>
-              <TooltipContent
-                side="top"
-                align="center"
-                className="max-w-xs rounded-lg border border-slate-700/30 bg-gradient-to-b from-slate-800/95 to-slate-900/95 px-4 py-3 text-sm shadow-lg backdrop-blur-md transition-all duration-200"
-                sideOffset={2}
-              >
-                <div className="mb-1 font-medium text-cyan-400">{level}</div>
-                <div className="leading-relaxed text-slate-300">
-                  {SkillProficiencyDescription[level]}
-                </div>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export function ProjectItem({ project }: { project: Project }) {
-  return (
-    <TooltipProvider>
-      <Tooltip delayDuration={150}>
-        <TooltipTrigger asChild>
-          <li>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 rounded-md border border-slate-700/50 bg-slate-800/70 px-2.5 py-1 text-sm font-medium text-cyan-400 transition-all duration-200 hover:border-cyan-500/30 hover:bg-slate-700/50 hover:text-cyan-300 hover:shadow-sm hover:shadow-cyan-500/10"
-              style={{
-                transform: "translate(0, 0)",
-                backfaceVisibility: "hidden",
-                willChange:
-                  "transform, box-shadow, background-color, border-color",
-              }}
-            >
-              {project.name}
-              <IconExternalLink size={12} />
-            </a>
-          </li>
-        </TooltipTrigger>
-        <TooltipContent
-          side="top"
-          align="center"
-          className="w-auto max-w-md rounded-lg border-0 bg-gradient-to-b from-slate-800/95 to-slate-900/95 px-4 py-3 text-sm shadow-xl ring-1 ring-slate-700/30 backdrop-blur-md"
-          sideOffset={2}
-        >
-          <div className="mb-1.5 font-medium text-cyan-400">{project.name}</div>
-          <div className="leading-relaxed text-slate-200">
-            {project.shortDescription}
-          </div>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  );
-}
