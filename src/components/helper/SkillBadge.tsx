@@ -1,8 +1,13 @@
-"use client";
-
 import { useState, useEffect, useRef, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Skill, Project } from "@data/skills/types";
+import {
+  Skill,
+  Project,
+  SkillProficiency,
+  SkillProficiencyDescription,
+  skillProficiencyLevels,
+  skillProficiencyColor,
+} from "@data/skills/types";
 import {
   Tooltip,
   TooltipContent,
@@ -10,8 +15,9 @@ import {
   TooltipTrigger,
 } from "@ui/tooltip";
 import React from "react";
+import { IconX, IconExternalLink } from "@tabler/icons-react";
 
-// Create a context to track the currently expanded skill
+// Context to track the currently expanded skill
 const SkillContext = createContext<{
   expandedSkillId: string | null;
   setExpandedSkillId: (id: string | null) => void;
@@ -77,12 +83,11 @@ export const SkillBadge = React.memo(function SkillBadge({
     <div className="relative" ref={skillRef}>
       <button
         onClick={toggleExpand}
-        className={`flex cursor-pointer items-center rounded-full border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 hover:shadow-sm ${
+        className={`flex cursor-pointer items-center rounded-full border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 ${
           isExpanded
-            ? "ring-opacity-50 ring-1 ring-offset-1 ring-offset-slate-900"
-            : ""
+            ? "bg-gradient-to-r from-slate-800/70 to-slate-700/70 shadow-sm"
+            : "hover:bg-slate-700/50 hover:shadow-sm"
         } ${colorClass}`}
-        aria-expanded={isExpanded}
       >
         {skill.name}
       </button>
@@ -94,7 +99,11 @@ export const SkillBadge = React.memo(function SkillBadge({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 5, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute left-0 z-50 mt-3 w-lg max-w-[95vw] overflow-hidden rounded-xl border border-slate-700/60 bg-slate-800/95 p-4 text-slate-200 shadow-xl backdrop-blur-sm"
+            className="absolute left-0 z-50 mt-2 w-lg max-w-[95vw] overflow-hidden rounded-xl border border-slate-700/60 bg-gradient-to-b from-slate-800/95 to-slate-900/95 p-4 text-slate-200 shadow-xl backdrop-blur-sm"
+            style={{
+              boxShadow:
+                "0 0 15px rgba(0, 0, 0, 0.2), 0 0 3px rgba(14, 165, 233, 0.15)",
+            }}
           >
             <div className="space-y-4">
               <div>
@@ -107,9 +116,14 @@ export const SkillBadge = React.memo(function SkillBadge({
               </div>
 
               <div className="space-y-2">
-                <h5 className="text-xs font-medium tracking-wider text-slate-400 uppercase">
-                  Proficiency Level
-                </h5>
+                <div className="flex items-center justify-between">
+                  <h5 className="text-xs font-medium tracking-wider text-slate-400 uppercase">
+                    Proficiency Level
+                  </h5>
+                  <span className="mb-1 text-xs text-slate-500 italic">
+                    Hover elements for details
+                  </span>
+                </div>
                 <ProficiencyScale proficiency={skill.proficiency} />
               </div>
 
@@ -129,23 +143,10 @@ export const SkillBadge = React.memo(function SkillBadge({
 
             <button
               onClick={() => setExpandedSkillId(null)}
-              className="absolute top-2 right-2 rounded-full p-1.5 text-slate-400 transition-colors hover:bg-slate-700/50 hover:text-white"
+              className="absolute top-2 right-2 cursor-pointer rounded-full p-1.5 text-slate-400 transition-colors hover:bg-slate-700/50 hover:text-white"
               aria-label="Close details"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
+              <IconX size={16} />
             </button>
           </motion.div>
         )}
@@ -154,74 +155,78 @@ export const SkillBadge = React.memo(function SkillBadge({
   );
 });
 
-export function ProficiencyScale({ proficiency }: { proficiency: string }) {
-  const levels = ["Familiar", "Intermediate", "Proficient", "Expert"];
-  const currentIndex = levels.indexOf(proficiency);
+export function ProficiencyScale({
+  proficiency,
+}: {
+  proficiency: SkillProficiency;
+}) {
+  const currentIndex = skillProficiencyLevels.indexOf(proficiency);
 
   return (
-    <div className="flex flex-col space-y-2">
-      <div className="flex w-full items-center justify-between">
-        {levels.map((level, index) => (
-          <span
-            key={level}
-            className={`text-xs font-medium ${
-              index === currentIndex ? "text-cyan-400" : "text-slate-500"
-            }`}
-          >
-            {level}
-          </span>
+    <div className="flex flex-col">
+      <div className="relative flex items-center justify-between">
+        {skillProficiencyLevels.map((level, index) => (
+          <TooltipProvider key={level}>
+            <Tooltip delayDuration={150}>
+              <TooltipTrigger asChild>
+                <div className="flex flex-col items-center">
+                  {/* Badge */}
+                  <div
+                    className={`relative z-10 cursor-pointer rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 hover:shadow-md ${
+                      index !== currentIndex
+                        ? "bg-slate-700 text-slate-400 hover:bg-slate-600 hover:text-slate-200"
+                        : ""
+                    }`}
+                    style={{
+                      ...(index === currentIndex
+                        ? skillProficiencyColor[level]
+                        : {}),
+                      transform: "translate(0, 0)", // Prevent movement on hover
+                      backfaceVisibility: "hidden", // Helps with some browsers
+                      willChange: "transform, box-shadow", // Optimize for animation
+                    }}
+                  >
+                    {level}
+                  </div>
+
+                  {/* Connector line (except for the last item) */}
+                  {index < skillProficiencyLevels.length - 1 && (
+                    <div
+                      className="absolute h-0.5 bg-slate-700"
+                      style={{
+                        left: `${(index * 100) / (skillProficiencyLevels.length - 1)}%`,
+                        width: `${100 / (skillProficiencyLevels.length - 1)}%`,
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        zIndex: 0,
+                      }}
+                    />
+                  )}
+                </div>
+              </TooltipTrigger>
+              <TooltipContent
+                side="top"
+                align="center"
+                className="max-w-xs rounded-lg border border-slate-700/30 bg-gradient-to-b from-slate-800/95 to-slate-900/95 px-4 py-3 text-sm shadow-lg backdrop-blur-md transition-all duration-200"
+                sideOffset={6}
+              >
+                <div className="mb-1 font-medium text-cyan-400">{level}</div>
+                <div className="leading-relaxed text-slate-300">
+                  {SkillProficiencyDescription[level]}
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         ))}
-      </div>
-      <div className="relative h-1.5 w-full rounded-full bg-slate-700">
-        {levels.map((_, index) => (
-          <div
-            key={`marker-${index}`}
-            className={`absolute h-1.5 rounded-full ${
-              index <= currentIndex
-                ? "bg-gradient-to-r from-cyan-500 to-blue-500"
-                : "bg-slate-700"
-            }`}
-            style={{
-              left: `${(index / (levels.length - 1)) * 100}%`,
-              width: index === 0 ? `${100 / (levels.length - 1)}%` : "2px",
-              transform: index === 0 ? "none" : "translateX(-50%)",
-            }}
-          />
-        ))}
-        <div
-          className="absolute h-3 w-3 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/20"
-          style={{
-            left: `${(currentIndex / (levels.length - 1)) * 100}%`,
-            top: "-3px",
-            transform: "translateX(-50%)",
-          }}
-        />
       </div>
     </div>
-  );
-}
-
-export function ProficiencyBadge({ proficiency }: { proficiency: string }) {
-  const colors = {
-    Familiar: "bg-slate-700 text-slate-300",
-    Intermediate: "bg-blue-600 text-blue-100",
-    Proficient: "bg-cyan-600 text-cyan-100",
-    Expert: "bg-indigo-600 text-indigo-100",
-  };
-
-  const color = colors[proficiency as keyof typeof colors] || colors.Familiar;
-
-  return (
-    <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${color}`}>
-      {proficiency}
-    </span>
   );
 }
 
 export function ProjectItem({ project }: { project: Project }) {
   return (
     <TooltipProvider>
-      <Tooltip delayDuration={200}>
+      <Tooltip delayDuration={150}>
         <TooltipTrigger asChild>
           <li>
             <a
@@ -229,31 +234,28 @@ export function ProjectItem({ project }: { project: Project }) {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 rounded-md border border-slate-700/50 bg-slate-800/70 px-2.5 py-1 text-sm font-medium text-cyan-400 transition-all duration-200 hover:border-cyan-500/30 hover:bg-slate-700/50 hover:text-cyan-300 hover:shadow-sm hover:shadow-cyan-500/10"
+              style={{
+                transform: "translate(0, 0)", // Prevent movement on hover
+                backfaceVisibility: "hidden", // Helps with some browsers
+                willChange:
+                  "transform, box-shadow, background-color, border-color", // Optimize for animation
+              }}
             >
               {project.name}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
+              <IconExternalLink size={12} />
             </a>
           </li>
         </TooltipTrigger>
         <TooltipContent
           side="top"
-          className="max-w-xs rounded-md border border-slate-700/50 bg-slate-800/95 px-3 py-2 text-sm"
+          align="center"
+          className="w-auto max-w-md rounded-lg border-0 bg-gradient-to-b from-slate-800/95 to-slate-900/95 px-4 py-3 text-sm shadow-xl ring-1 ring-slate-700/30 backdrop-blur-md"
+          sideOffset={6}
         >
-          {project.shortDescription}
+          <div className="mb-1.5 font-medium text-cyan-400">{project.name}</div>
+          <div className="leading-relaxed text-slate-200">
+            {project.shortDescription}
+          </div>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

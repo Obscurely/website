@@ -36,6 +36,39 @@ export enum SkillProficiency {
   Proficient = "Proficient", // Comprehensive understanding
 }
 
+export const skillProficiencyLevels = [
+  SkillProficiency.Familiar,
+  SkillProficiency.Intermediate,
+  SkillProficiency.Skilled,
+  SkillProficiency.Proficient,
+];
+
+export enum SkillProficiencyDescription {
+  Familiar = "Solid foundational knowledge",
+  Intermediate = "Comfortable working knowledge",
+  Skilled = "Strong practical capability",
+  Proficient = "Comprehensive understanding",
+}
+
+export const skillProficiencyColor: Record<string, React.CSSProperties> = {
+  [SkillProficiency.Familiar]: {
+    backgroundColor: "#4c1d95", // violet-900
+    color: "#ddd6fe", // violet-200
+  },
+  [SkillProficiency.Intermediate]: {
+    backgroundColor: "#0c4a6e", // sky-900
+    color: "#bae6fd", // sky-100
+  },
+  [SkillProficiency.Skilled]: {
+    backgroundColor: "#0e7490", // cyan-700
+    color: "#cffafe", // cyan-50
+  },
+  [SkillProficiency.Proficient]: {
+    backgroundColor: "#1d4ed8", // blue-700
+    color: "#dbeafe", // blue-50
+  },
+};
+
 export interface Project {
   name: string;
   link: string;
