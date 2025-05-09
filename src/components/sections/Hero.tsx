@@ -81,7 +81,14 @@ export default function Hero() {
             {/* Description */}
             <div className="mb-8 max-w-xl">
               <Description />
-              <p className="text-sm text-slate-400 italic">
+              <p
+                className="cursor-pointer text-sm text-slate-400 italic transition-colors duration-300 hover:text-cyan-400"
+                onClick={() => {
+                  document
+                    .querySelector("#about")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 ...and many more technologies + skills in my toolkit
               </p>
             </div>

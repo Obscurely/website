@@ -15,7 +15,7 @@ export const typeAnimation = [
   1000,
   "Linux Power User",
   1000,
-  "Infrastructure Engineering",
+  "Infrastructure as Code",
   1000,
   "Home Lab Administrator",
   1000,

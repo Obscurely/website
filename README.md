@@ -12,7 +12,6 @@
 - [Pnpm](https://pnpm.io/) - Fast, disk space efficient package manager
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
 - [PostCSS](https://postcss.org/) - A tool for transforming CSS with JavaScript
-- [SCSS](https://sass-lang.com/) - Syntactically Awesome Style Sheets
 - [Styleint](https://stylelint.io/) - A mighty, modern linter that helps you
   avoid errors and enforce conventions in your styles
 - [Nix Flakes](https://nixos.wiki/wiki/Flakes) - A new way to manage Nix
