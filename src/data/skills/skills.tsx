@@ -11,6 +11,7 @@ import projects from "./projects";
 export const skills: Record<SkillCategory, Skill[]> = {
   [SkillCategory.KeySkills]: [
     {
+      id: "rust-key-skill",
       name: (
         <span className="flex items-center gap-2">
           <IconBrandRust /> Rust
@@ -36,6 +37,7 @@ export const skills: Record<SkillCategory, Skill[]> = {
   ],
   [SkillCategory.Languages]: [
     {
+      id: "rust-language",
       name: (
         <span className="flex items-center gap-2">
           <IconBrandRust /> Rust
@@ -61,6 +63,7 @@ export const skills: Record<SkillCategory, Skill[]> = {
   ],
   [SkillCategory.Frontend]: [
     {
+      id: "react-frontend",
       name: (
         <span className="flex items-center gap-2">
           <IconBrandReact /> React
@@ -91,6 +94,7 @@ export const skills: Record<SkillCategory, Skill[]> = {
   ],
   [SkillCategory.Backend]: [
     {
+      id: "api-backend",
       name: (
         <span className="flex items-center gap-2">
           <IconSitemap /> API
@@ -120,6 +124,7 @@ export const skills: Record<SkillCategory, Skill[]> = {
   ],
   [SkillCategory.DevOps]: [
     {
+      id: "aws-devops",
       name: (
         <span className="flex items-center gap-2">
           <IconBrandAws /> AWS
@@ -150,6 +155,7 @@ export const skills: Record<SkillCategory, Skill[]> = {
   ],
   [SkillCategory.Business]: [
     {
+      id: "saas-business",
       name: (
         <span className="flex items-center gap-2">
           <IconSettings2 /> SaaS Management

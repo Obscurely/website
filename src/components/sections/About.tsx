@@ -6,14 +6,23 @@ import { Card, CardContent } from "@ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tabs";
 import { skills } from "@data/skills/skills";
 import { AboutMe, MyJourney, services } from "@data/about";
-import { SkillCategory } from "@data/skills/types";
-import { SkillBadge } from "@components/helper/SkillBadge";
+import {
+  CategoryAccentColor,
+  CategoryColorClass,
+  SkillCategory,
+} from "@data/skills/types";
+import { SkillBadge, SkillBadgeProvider } from "@components/helper/SkillBadge";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@ui/tooltip";
+
+// Get all categories except KeySkills for tabs
+const tabCategories = Object.values(SkillCategory).filter(
+  (category) => category !== SkillCategory.KeySkills
+);
 
 export default function About() {
   const ref = useRef(null);
@@ -90,185 +99,118 @@ export default function About() {
             <h3 className="mb-6 text-2xl font-bold text-white">My Skills</h3>
 
             {/* Key Skills Section */}
-            <div className="mb-4">
-              <div className="mb-2 flex items-center justify-between">
-                <h4 className="text-lg font-semibold text-cyan-400/90">
-                  Key Skills
-                </h4>
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <div className="flex items-center text-xs text-slate-400">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="12"
-                          height="12"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="mr-1"
-                        >
-                          <circle cx="12" cy="12" r="10" />
-                          <line x1="12" y1="16" x2="12" y2="12" />
-                          <line x1="12" y1="8" x2="12.01" y2="8" />
-                        </svg>
-                        Click for details
-                      </div>
-                    </TooltipTrigger>
-                    <TooltipContent side="top" className="bg-slate-800 text-xs">
-                      <p>Click any skill to see proficiency and projects</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+            <SkillBadgeProvider>
+              <div className="mb-4">
+                <div className="mb-2 flex items-center justify-between">
+                  <h4
+                    className="text-lg font-semibold"
+                    style={{ color: CategoryAccentColor.KeySkills }}
+                  >
+                    {SkillCategory.KeySkills}
+                  </h4>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <div className="flex items-center text-xs text-slate-400">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="mr-1"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="16" x2="12" y2="12" />
+                            <line x1="12" y1="8" x2="12.01" y2="8" />
+                          </svg>
+                          Click for details
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent
+                        side="top"
+                        className="bg-slate-800 text-xs"
+                      >
+                        <p>Click any skill to see proficiency and projects</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  <SkillBadgeProvider>
+                    {skills[SkillCategory.KeySkills].map((skill) => (
+                      <SkillBadge
+                        key={
+                          typeof skill.name === "string"
+                            ? skill.name
+                            : "key-skill-" + Math.random()
+                        }
+                        skill={skill}
+                        colorClass={CategoryColorClass.KeySkills}
+                      />
+                    ))}
+                  </SkillBadgeProvider>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-1.5">
-                {skills[SkillCategory.KeySkills].map((skill) => (
-                  <SkillBadge
-                    key={
-                      typeof skill.name === "string"
-                        ? skill.name
-                        : "key-skill-" + Math.random()
-                    }
-                    skill={skill}
-                    colorClass="bg-slate-800/50 hover:bg-slate-700/50 border-cyan-500/10 hover:border-cyan-500/20"
-                  />
+
+              {/* Other Skills Categories */}
+              <Tabs
+                defaultValue={tabCategories[0] || SkillCategory.Frontend}
+                className="w-full"
+              >
+                <TabsList
+                  className={`mb-4 grid w-full rounded-lg bg-slate-800/30`}
+                  style={{
+                    gridTemplateColumns: `repeat(${tabCategories.length}, minmax(0, 1fr))`,
+                  }}
+                >
+                  {tabCategories.map((category) => (
+                    <TabsTrigger
+                      key={category}
+                      value={category}
+                      className="data-[state=active]:bg-slate-700/30"
+                      style={{
+                        color:
+                          CategoryAccentColor[
+                            category as keyof typeof CategoryAccentColor
+                          ],
+                      }}
+                    >
+                      {category}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+
+                {tabCategories.map((category) => (
+                  <TabsContent key={category} value={category} className="mt-0">
+                    <div className="flex flex-wrap gap-1.5">
+                      {skills[category].map((skill) => (
+                        <SkillBadge
+                          key={
+                            typeof skill.name === "string"
+                              ? skill.name
+                              : `${category}-${Math.random()}`
+                          }
+                          skill={skill}
+                          colorClass={
+                            CategoryColorClass[
+                              category as keyof typeof CategoryColorClass
+                            ]
+                          }
+                        />
+                      ))}
+                    </div>
+                    <div className="mt-2 text-xs text-slate-400 italic">
+                      And more skills in this category...
+                    </div>
+                  </TabsContent>
                 ))}
-              </div>
-            </div>
-
-            {/* Other Skills Categories */}
-            <Tabs defaultValue={SkillCategory.Frontend} className="w-full">
-              <TabsList className="mb-4 grid grid-cols-5 rounded-lg bg-slate-800/30">
-                <TabsTrigger
-                  value={SkillCategory.Frontend}
-                  className="data-[state=active]:bg-slate-700/30 data-[state=active]:text-cyan-400/90"
-                >
-                  Frontend
-                </TabsTrigger>
-                <TabsTrigger
-                  value={SkillCategory.Backend}
-                  className="data-[state=active]:bg-slate-700/30 data-[state=active]:text-indigo-400/90"
-                >
-                  Backend
-                </TabsTrigger>
-                <TabsTrigger
-                  value={SkillCategory.Languages}
-                  className="data-[state=active]:bg-slate-700/30 data-[state=active]:text-emerald-400/90"
-                >
-                  Languages
-                </TabsTrigger>
-                <TabsTrigger
-                  value={SkillCategory.DevOps}
-                  className="data-[state=active]:bg-slate-700/30 data-[state=active]:text-amber-400/90"
-                >
-                  DevOps
-                </TabsTrigger>
-                <TabsTrigger
-                  value={SkillCategory.Business}
-                  className="data-[state=active]:bg-slate-700/30 data-[state=active]:text-rose-400/90"
-                >
-                  Business
-                </TabsTrigger>
-              </TabsList>
-
-              <TabsContent value={SkillCategory.Frontend} className="mt-0">
-                <div className="flex flex-wrap gap-1.5">
-                  {skills[SkillCategory.Frontend].map((skill) => (
-                    <SkillBadge
-                      key={
-                        typeof skill.name === "string"
-                          ? skill.name
-                          : "frontend-" + Math.random()
-                      }
-                      skill={skill}
-                      colorClass="bg-slate-800/50 hover:bg-slate-700/50 border-cyan-500/10 hover:border-cyan-500/20"
-                    />
-                  ))}
-                </div>
-                <div className="mt-2 text-xs text-slate-400 italic">
-                  And more skills in this category...
-                </div>
-              </TabsContent>
-
-              <TabsContent value={SkillCategory.Backend} className="mt-0">
-                <div className="flex flex-wrap gap-1.5">
-                  {skills[SkillCategory.Backend].map((skill) => (
-                    <SkillBadge
-                      key={
-                        typeof skill.name === "string"
-                          ? skill.name
-                          : "backend-" + Math.random()
-                      }
-                      skill={skill}
-                      colorClass="bg-slate-800/50 hover:bg-slate-700/50 border-indigo-500/10 hover:border-indigo-500/20"
-                    />
-                  ))}
-                </div>
-                <div className="mt-2 text-xs text-slate-400 italic">
-                  And more skills in this category...
-                </div>
-              </TabsContent>
-
-              <TabsContent value={SkillCategory.Languages} className="mt-0">
-                <div className="flex flex-wrap gap-1.5">
-                  {skills[SkillCategory.Languages].map((skill) => (
-                    <SkillBadge
-                      key={
-                        typeof skill.name === "string"
-                          ? skill.name
-                          : "lang-" + Math.random()
-                      }
-                      skill={skill}
-                      colorClass="bg-slate-800/50 hover:bg-slate-700/50 border-emerald-500/10 hover:border-emerald-500/20"
-                    />
-                  ))}
-                </div>
-                <div className="mt-2 text-xs text-slate-400 italic">
-                  And more skills in this category...
-                </div>
-              </TabsContent>
-
-              <TabsContent value={SkillCategory.DevOps} className="mt-0">
-                <div className="flex flex-wrap gap-1.5">
-                  {skills[SkillCategory.DevOps].map((skill) => (
-                    <SkillBadge
-                      key={
-                        typeof skill.name === "string"
-                          ? skill.name
-                          : "devops-" + Math.random()
-                      }
-                      skill={skill}
-                      colorClass="bg-slate-800/50 hover:bg-slate-700/50 border-amber-500/10 hover:border-amber-500/20"
-                    />
-                  ))}
-                </div>
-                <div className="mt-2 text-xs text-slate-400 italic">
-                  And more skills in this category...
-                </div>
-              </TabsContent>
-
-              <TabsContent value={SkillCategory.Business} className="mt-0">
-                <div className="flex flex-wrap gap-1.5">
-                  {skills[SkillCategory.Business].map((skill) => (
-                    <SkillBadge
-                      key={
-                        typeof skill.name === "string"
-                          ? skill.name
-                          : "business-" + Math.random()
-                      }
-                      skill={skill}
-                      colorClass="bg-slate-800/50 hover:bg-slate-700/50 border-rose-500/10 hover:border-rose-500/20"
-                    />
-                  ))}
-                </div>
-                <div className="mt-2 text-xs text-slate-400 italic">
-                  And more skills in this category...
-                </div>
-              </TabsContent>
-            </Tabs>
+              </Tabs>
+            </SkillBadgeProvider>
           </motion.div>
         </div>
 
