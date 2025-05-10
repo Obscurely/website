@@ -11,7 +11,8 @@ type ProjectKey =
   | "DiscordBot"
   | "PyPassMan"
   | "ArchObscurely"
-  | "NixObscurely";
+  | "NixObscurely"
+  | "SharpPlayer";
 
 const projects: Record<ProjectKey, Project> = {
   RekoSearch: {
@@ -78,6 +79,11 @@ const projects: Record<ProjectKey, Project> = {
     link: "https://github.com/Obscurely/NixObscurely",
     shortDescription:
       "Automated, fully customized and configured NixOS Install for my Machine",
+  },
+  SharpPlayer: {
+    name: "Sharp-Player",
+    link: "https://github.com/Obscurely/Sharp-Player",
+    shortDescription: "Simple audio player made in C# ",
   },
 };
 

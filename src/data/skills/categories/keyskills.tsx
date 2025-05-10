@@ -6,7 +6,7 @@ const keySkills: Skill[] = [
   {
     id: "rust-key-skill",
     name: (
-      <span className="flex items-center gap-2">
+      <span className="flex h-6 items-center gap-2">
         <IconBrandRust /> Rust
       </span>
     ),

@@ -6,7 +6,7 @@ const businessSkills: Skill[] = [
   {
     id: "saas-business",
     name: (
-      <span className="flex items-center gap-2">
+      <span className="flex h-6 items-center gap-2">
         <IconSettings2 /> SaaS Management
       </span>
     ),

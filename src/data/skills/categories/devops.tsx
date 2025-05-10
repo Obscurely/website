@@ -6,7 +6,7 @@ const devopsSkills: Skill[] = [
   {
     id: "aws-devops",
     name: (
-      <span className="flex items-center gap-2">
+      <span className="flex h-6 items-center gap-2">
         <IconBrandAws /> AWS
       </span>
     ),

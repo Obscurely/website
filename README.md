@@ -29,6 +29,8 @@
   and Tailwind CSS
 - [Tabler Icons](https://tabler-icons.io/) - A set of over 5850 free
   MIT-licensed high-quality SVG icons for you to use in your web projects
+- [Simple Icons](https://simpleicons.org/) - A set of icons for popular brands
+  in SVG format
 
 ## Getting Started
 

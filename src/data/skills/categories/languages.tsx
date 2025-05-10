@@ -1,7 +1,7 @@
 import {
-  IconBrandJavascript,
   IconBrandPython,
   IconBrandRust,
+  IconBrandTypescript,
   IconHash,
 } from "@tabler/icons-react";
 import { Skill, SkillProficiency } from "../types";
@@ -11,7 +11,7 @@ const languagesSkills: Skill[] = [
   {
     id: "rust-language",
     name: (
-      <span className="flex items-center gap-2">
+      <span className="flex h-6 items-center gap-2">
         <IconBrandRust /> Rust
       </span>
     ),
@@ -34,7 +34,7 @@ const languagesSkills: Skill[] = [
   {
     id: "python-language",
     name: (
-      <span className="flex items-center gap-2">
+      <span className="flex h-6 items-center gap-2">
         <IconBrandPython /> Python
       </span>
     ),
@@ -57,8 +57,8 @@ const languagesSkills: Skill[] = [
   {
     id: "typescript-javascript-language",
     name: (
-      <span className="flex items-center gap-2">
-        <IconBrandJavascript /> TypeScript & JavaScript
+      <span className="flex h-6 items-center gap-2">
+        <IconBrandTypescript /> TypeScript & JavaScript
       </span>
     ),
     description: (
@@ -74,7 +74,7 @@ const languagesSkills: Skill[] = [
   {
     id: "shell-script-language",
     name: (
-      <span className="flex items-center gap-2">
+      <span className="flex h-6 items-center gap-2">
         <IconHash /> Shell Script
       </span>
     ),
