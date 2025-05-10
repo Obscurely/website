@@ -55,10 +55,10 @@ const languagesSkills: Skill[] = [
     ],
   },
   {
-    id: "typescript-javascript-language",
+    id: "typescript-language",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandTypescript /> TypeScript & JavaScript
+        <IconBrandTypescript /> TypeScript
       </span>
     ),
     description: (
