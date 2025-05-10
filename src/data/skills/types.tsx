@@ -31,8 +31,8 @@ export enum CategoryColorClass {
   Frontend = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-cyan-500/30 hover:border-cyan-500/50",
   Backend = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-indigo-500/30 hover:border-indigo-500/50",
   Languages = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-emerald-500/30 hover:border-emerald-500/50",
-  DevOps = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-amber-600/30 hover:border-amber-600/50",
-  Business = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-rose-600/30 hover:border-rose-600/50",
+  DevOps = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-teal-500/30 hover:border-teal-500/50",
+  Business = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-blue-400/30 hover:border-blue-400/50",
 }
 
 // Active tab color mapping
@@ -41,8 +41,8 @@ export enum CategoryAccentColor {
   Frontend = "#06b6d4", // cyan-500
   Backend = "#6366f1", // indigo-500
   Languages = "#10b981", // emerald-500
-  DevOps = "#d97706", // amber-600
-  Business = "#e11d48", // rose-600
+  DevOps = "#14b8a6", // teal-500
+  Business = "#60a5fa", // blue-400
 }
 
 export enum SkillProficiency {

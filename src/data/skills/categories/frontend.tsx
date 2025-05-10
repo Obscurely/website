@@ -11,6 +11,7 @@ import projects from "../projects";
 import { SiMui, SiShadcnui } from "@icons-pack/react-simple-icons";
 
 const frontendSkills: Skill[] = [
+  // React
   {
     id: "react-frontend",
     name: (
@@ -40,6 +41,8 @@ const frontendSkills: Skill[] = [
     proficiency: SkillProficiency.Skilled,
     notableProjects: [projects["RekoSearch"]],
   },
+
+  // Next.js
   {
     id: "nextjs-frontend",
     name: (
@@ -58,6 +61,8 @@ const frontendSkills: Skill[] = [
     proficiency: SkillProficiency.Skilled,
     notableProjects: [projects["Portfolio"]],
   },
+
+  // Material UI
   {
     id: "materialui-frontend",
     name: (
@@ -87,6 +92,8 @@ const frontendSkills: Skill[] = [
     proficiency: SkillProficiency.Skilled,
     notableProjects: [projects["RekoSearch"]],
   },
+
+  // Tailwind CSS
   {
     id: "tailwindcss-frontend",
     name: (
@@ -103,6 +110,8 @@ const frontendSkills: Skill[] = [
     proficiency: SkillProficiency.Skilled,
     notableProjects: [projects["Portfolio"]],
   },
+
+  // Shadcn/ui
   {
     id: "shadcn-ui-frontend",
     name: (
@@ -120,6 +129,8 @@ const frontendSkills: Skill[] = [
     proficiency: SkillProficiency.Skilled,
     notableProjects: [projects["Portfolio"]],
   },
+
+  // Framer Motion
   {
     id: "framer-motion-frontend",
     name: (
@@ -147,6 +158,8 @@ const frontendSkills: Skill[] = [
     proficiency: SkillProficiency.Intermediate,
     notableProjects: [projects["Portfolio"], projects["RekoSearch"]],
   },
+
+  // Native Interfaces
   {
     id: "native-interfaces-frontend",
     name: (
@@ -168,6 +181,8 @@ const frontendSkills: Skill[] = [
       projects["SharpPlayer"],
     ],
   },
+
+  // Web Performance
   {
     id: "web-performance-frontend",
     name: (

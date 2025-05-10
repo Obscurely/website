@@ -1,4 +1,4 @@
-import { IconSettings2 } from "@tabler/icons-react";
+import { IconSettings2, IconWorldSearch } from "@tabler/icons-react";
 import { Skill, SkillProficiency } from "../types";
 import projects from "../projects";
 
@@ -30,6 +30,25 @@ const businessSkills: Skill[] = [
     ),
     proficiency: SkillProficiency.Familiar,
     notableProjects: [projects["RekoSearch"]],
+  },
+  {
+    id: "seo-optimization-business",
+    name: (
+      <span className="flex h-6 items-center gap-2">
+        <IconWorldSearch /> SEO Optimization
+      </span>
+    ),
+    description: (
+      <p>
+        Implemented <strong>SEO best practices</strong>, including{" "}
+        <strong>semantic HTML structure</strong>,{" "}
+        <strong>structured data</strong>, <strong>meta tags</strong>, and
+        Next.js-specific techniques like <strong>SSG</strong> for optimal
+        indexing.
+      </p>
+    ),
+    proficiency: SkillProficiency.Intermediate,
+    notableProjects: [projects["RekoSearch"], projects["Portfolio"]],
   },
 ];
 

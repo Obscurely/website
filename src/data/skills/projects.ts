@@ -12,7 +12,9 @@ type ProjectKey =
   | "PyPassMan"
   | "ArchObscurely"
   | "NixObscurely"
-  | "SharpPlayer";
+  | "SharpPlayer"
+  | "DiscordNitroSniper"
+  | "neovim";
 
 const projects: Record<ProjectKey, Project> = {
   RekoSearch: {
@@ -84,6 +86,18 @@ const projects: Record<ProjectKey, Project> = {
     name: "Sharp-Player",
     link: "https://github.com/Obscurely/Sharp-Player",
     shortDescription: "Simple audio player made in C# ",
+  },
+  DiscordNitroSniper: {
+    name: "DiscordNitroSniper",
+    link: "https://github.com/Obscurely/DiscordNitroSniper",
+    shortDescription:
+      "Very fast Multi-Threaded, Cross-Platform Discord nitro code sniper written in C# (using proxies)",
+  },
+  neovim: {
+    name: "neovim",
+    link: "https://github.com/Obscurely/neovim",
+    shortDescription:
+      "My extensive neovim configuration, making it better than an IDE.",
   },
 };
 
