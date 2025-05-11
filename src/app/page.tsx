@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Hero from "@components/sections/Hero";
 import About from "@components/sections/About/About";
 import Projects from "@components/sections/Projects";
-import Experience from "@components/sections/Experience";
 import Blog from "@components/sections/Blog";
 import Contact from "@components/sections/Contact";
 import Navbar from "@components/layout/Navbar";
@@ -40,7 +39,6 @@ export default function Home() {
           <Hero />
           <About />
           <Projects />
-          <Experience />
           <Blog />
           <Contact />
         </div>

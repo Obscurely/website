@@ -185,7 +185,7 @@ const devopsSkills: Skill[] = [
     id: "linux-devops",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <SiLinux /> Linux
+        <SiLinux size={20} /> Linux
       </span>
     ),
     description: (
