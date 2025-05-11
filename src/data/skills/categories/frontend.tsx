@@ -39,7 +39,7 @@ const frontendSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [projects["RekoSearch"]],
+    notableProjects: [projects["RekoSearch"], projects["Portfolio"]],
   },
 
   // Next.js

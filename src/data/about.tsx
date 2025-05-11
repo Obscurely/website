@@ -1,8 +1,8 @@
 import {
   IconCode,
-  IconPalette,
-  IconBulb,
   IconRocket,
+  IconCloud,
+  IconSettings,
 } from "@tabler/icons-react";
 
 /**
@@ -11,27 +11,27 @@ import {
 export const services = [
   {
     icon: <IconCode className="h-10 w-10 text-cyan-400" />,
-    title: "Web Development",
+    title: "Full-Stack Development",
     description:
-      "Building responsive and performant web applications with modern technologies and best practices.",
+      "I build responsive, fast and secure end-to-end applications with modern, type-safe technologies like React, Next.js and Rust.",
   },
   {
-    icon: <IconPalette className="h-10 w-10 text-cyan-400" />,
-    title: "UI/UX Design",
+    icon: <IconCloud className="h-10 w-10 text-cyan-400" />,
+    title: "Cloud-Native Infrastructure",
     description:
-      "Creating intuitive and beautiful user interfaces with a focus on user experience and accessibility.",
+      "I design and deploy scalable applications on AWS and Kubernetes using microservices architectures and modern techniques.",
   },
   {
-    icon: <IconBulb className="h-10 w-10 text-cyan-400" />,
-    title: "Consultation",
+    icon: <IconSettings className="h-10 w-10 text-cyan-400" />,
+    title: "DevOps & Automation",
     description:
-      "Providing expert advice on web technologies, architecture, and development strategies.",
+      "I optimize workflows with CI/CD pipelines, Terraform, Docker and scripts for speed and efficiency, saving valuable time.",
   },
   {
     icon: <IconRocket className="h-10 w-10 text-cyan-400" />,
     title: "Performance Optimization",
     description:
-      "Improving website speed and performance for better user experience and SEO rankings.",
+      "I improve application speed through efficient concurrency techniques and optimizing web metrics while also enhancing security.",
   },
 ];
 

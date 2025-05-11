@@ -6,6 +6,7 @@ import AboutHeader from "./AboutHeader";
 import AboutJourney from "./AboutJourney";
 import SkillsSection from "./SkillsSection";
 import ServicesSection from "./ServicesSection";
+import CertificationsSection from "./CertificationsSection";
 
 export default function About() {
   const ref = useRef(null);
@@ -33,14 +34,20 @@ export default function About() {
         <AboutHeader isInView={isInView} />
 
         <div
-          className="relative mb-24 grid grid-cols-1 gap-12 md:grid-cols-2"
+          className="relative mb-10 grid grid-cols-1 gap-10 md:grid-cols-2"
           style={{ zIndex: 30 }}
         >
           <AboutJourney isInView={isInView} />
           <SkillsSection isInView={isInView} />
         </div>
 
-        <ServicesSection isInView={isInView} />
+        <div className="mb-20">
+          <CertificationsSection isInView={isInView} />
+        </div>
+
+        <div>
+          <ServicesSection isInView={isInView} />
+        </div>
       </div>
     </section>
   );

@@ -98,3 +98,12 @@ export interface Skill {
   proficiency: SkillProficiency;
   notableProjects?: Project[];
 }
+
+export interface Certification {
+  id: string;
+  name: string;
+  issuer: string;
+  icon: string; // Path to the certification icon
+  date: string;
+  url: string; // Link to verify certification
+}
