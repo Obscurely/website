@@ -15,7 +15,7 @@ export default function Footer() {
               className="mb-4 block text-2xl font-bold text-slate-100"
             >
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-3xl font-extrabold text-transparent">
-                Portfolio
+                Website
               </span>
             </Link>
             <p className="mb-6 text-slate-400">

@@ -1,5 +1,5 @@
 {
-  description = "Portfolio Devshell";
+  description = "Website Devshell";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

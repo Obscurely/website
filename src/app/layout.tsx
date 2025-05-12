@@ -37,9 +37,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "John Doe | Portfolio",
-  description: "Personal portfolio website showcasing my projects and skills",
-  authors: [{ name: "John Doe" }],
+  title: "Adrian Crîșmaruc",
+  description: "Personal portfolio website and Blog",
+  authors: [{ name: "Adrian Crîșmaruc" }],
 };
 
 export default function RootLayout({

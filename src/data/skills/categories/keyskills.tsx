@@ -35,7 +35,6 @@ const keySkills: Skill[] = [
       projects["RekoSearch"],
       projects["Falion"],
       projects["EStash"],
-      projects["Rustsomware"],
     ],
   },
 
@@ -80,7 +79,7 @@ const keySkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [projects["RekoSearch"], projects["Portfolio"]],
+    notableProjects: [projects["RekoSearch"], projects["website"]],
   },
 
   // React
@@ -111,7 +110,7 @@ const keySkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [projects["RekoSearch"], projects["Portfolio"]],
+    notableProjects: [projects["RekoSearch"], projects["website"]],
   },
 
   // Next.js
@@ -131,7 +130,7 @@ const keySkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [projects["Portfolio"]],
+    notableProjects: [projects["website"]],
   },
 
   // AWS
@@ -164,7 +163,7 @@ const keySkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [projects["RekoSearch"], projects["Portfolio"]],
+    notableProjects: [projects["RekoSearch"], projects["website"]],
   },
 
   // Kubernetes
@@ -277,7 +276,7 @@ const keySkills: Skill[] = [
       projects["RustTemplate"],
       projects["Falion"],
       projects["RekoSearch"],
-      projects["Portfolio"],
+      projects["website"],
     ],
   },
 

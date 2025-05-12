@@ -28,7 +28,6 @@ const languagesSkills: Skill[] = [
       projects["RekoSearch"],
       projects["Falion"],
       projects["EStash"],
-      projects["Rustsomware"],
     ],
   },
   {
@@ -69,7 +68,7 @@ const languagesSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [projects["RekoSearch"], projects["Portfolio"]],
+    notableProjects: [projects["RekoSearch"], projects["website"]],
   },
   {
     id: "shell-script-language",

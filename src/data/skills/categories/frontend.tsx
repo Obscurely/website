@@ -39,7 +39,7 @@ const frontendSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [projects["RekoSearch"], projects["Portfolio"]],
+    notableProjects: [projects["RekoSearch"], projects["website"]],
   },
 
   // Next.js
@@ -59,7 +59,7 @@ const frontendSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [projects["Portfolio"]],
+    notableProjects: [projects["website"]],
   },
 
   // Material UI
@@ -108,7 +108,7 @@ const frontendSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [projects["Portfolio"]],
+    notableProjects: [projects["website"]],
   },
 
   // Shadcn/ui
@@ -127,7 +127,7 @@ const frontendSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [projects["Portfolio"]],
+    notableProjects: [projects["website"]],
   },
 
   // Framer Motion
@@ -156,7 +156,7 @@ const frontendSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Intermediate,
-    notableProjects: [projects["Portfolio"], projects["RekoSearch"]],
+    notableProjects: [projects["website"], projects["RekoSearch"]],
   },
 
   // Native Interfaces
@@ -200,7 +200,7 @@ const frontendSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Intermediate,
-    notableProjects: [projects["RekoSearch"], projects["Portfolio"]],
+    notableProjects: [projects["RekoSearch"], projects["website"]],
   },
 ];
 

@@ -4,12 +4,12 @@ import {
   IconBrandOauth,
   IconCreditCardPay,
   IconDatabase,
-  IconDevices,
   IconShieldLock,
   IconSitemap,
 } from "@tabler/icons-react";
 import { Skill, SkillProficiency } from "../types";
 import projects from "../projects";
+import { SiFlask } from "@icons-pack/react-simple-icons";
 
 const backendSkills: Skill[] = [
   // API
@@ -39,6 +39,36 @@ const backendSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
+    notableProjects: [projects["RekoSearch"]],
+  },
+
+  // Flask
+  {
+    id: "flask-backend",
+    name: (
+      <span className="flex h-6 items-center gap-2">
+        <SiFlask /> Flask
+      </span>
+    ),
+    description: (
+      <p>
+        Used for building the <strong>OAuth 2.0 login handling</strong>,
+        including authentication with the backend API and{" "}
+        <strong>hosting the frontend</strong> for{" "}
+        <span className="font-semibold italic">
+          <a
+            href="https://rekosearch.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-400 not-italic transition-colors hover:text-cyan-300"
+          >
+            RekoSearch
+          </a>
+        </span>
+        , a production SaaS app.
+      </p>
+    ),
+    proficiency: SkillProficiency.Intermediate,
     notableProjects: [projects["RekoSearch"]],
   },
 
@@ -89,11 +119,7 @@ const backendSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [
-      projects["RekoSearch"],
-      projects["EStash"],
-      projects["Rustsomware"],
-    ],
+    notableProjects: [projects["RekoSearch"], projects["EStash"]],
   },
 
   // OAuth 2.0
@@ -174,11 +200,7 @@ const backendSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Proficient,
-    notableProjects: [
-      projects["Falion"],
-      projects["DiscordNitroSniper"],
-      projects["RekoSearch"],
-    ],
+    notableProjects: [projects["Falion"], projects["RekoSearch"]],
   },
 
   // Microservices
@@ -199,29 +221,6 @@ const backendSkills: Skill[] = [
     ),
     proficiency: SkillProficiency.Skilled,
     notableProjects: [projects["RekoSearch"]],
-  },
-
-  // Cross-Platform
-  {
-    id: "cross-platform-backend",
-    name: (
-      <span className="flex h-6 items-center gap-2">
-        <IconDevices /> Cross-Platform
-      </span>
-    ),
-    description: (
-      <p>
-        Built apps running on <strong>Linux</strong>, <strong>MacOS</strong> and{" "}
-        <strong>Windows</strong> simultaneously.
-      </p>
-    ),
-    proficiency: SkillProficiency.Skilled,
-    notableProjects: [
-      projects["Falion"],
-      projects["EStash"],
-      projects["PyPassMan"],
-      projects["DiscordNitroSniper"],
-    ],
   },
 ];
 

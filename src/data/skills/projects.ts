@@ -4,8 +4,7 @@ type ProjectKey =
   | "RekoSearch"
   | "Falion"
   | "EStash"
-  | "Rustsomware"
-  | "Portfolio"
+  | "website"
   | "PbthalArchiveManager"
   | "RustTemplate"
   | "DiscordBot"
@@ -13,7 +12,6 @@ type ProjectKey =
   | "ArchObscurely"
   | "NixObscurely"
   | "SharpPlayer"
-  | "DiscordNitroSniper"
   | "neovim";
 
 const projects: Record<ProjectKey, Project> = {
@@ -35,16 +33,11 @@ const projects: Record<ProjectKey, Project> = {
     shortDescription:
       "Encrypted digital vault with the capability to install stored files at specific stored paths",
   },
-  Rustsomware: {
-    name: "Rustsomware",
-    link: "https://github.com/Obscurely/Rustsomware",
-    shortDescription: "Ransomware type virus encrypting files with AES-128",
-  },
-  Portfolio: {
-    name: "Portfolio",
-    link: "https://github.com/Obscurely/Portfolio",
+  website: {
+    name: "website",
+    link: "https://github.com/Obscurely/website",
     shortDescription:
-      "The static Next.js tech website portfolio you are currently on",
+      "The static Next.js tech website portfolio and blog you are currently on",
   },
   PbthalArchiveManager: {
     name: "Pbthal-Archive-Manager",
@@ -86,12 +79,6 @@ const projects: Record<ProjectKey, Project> = {
     name: "Sharp-Player",
     link: "https://github.com/Obscurely/Sharp-Player",
     shortDescription: "Simple audio player made in C# ",
-  },
-  DiscordNitroSniper: {
-    name: "DiscordNitroSniper",
-    link: "https://github.com/Obscurely/DiscordNitroSniper",
-    shortDescription:
-      "Very fast Multi-Threaded, Cross-Platform Discord nitro code sniper written in C# (using proxies)",
   },
   neovim: {
     name: "neovim",

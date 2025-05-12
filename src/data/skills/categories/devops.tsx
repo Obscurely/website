@@ -41,7 +41,7 @@ const devopsSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
-    notableProjects: [projects["RekoSearch"], projects["Portfolio"]],
+    notableProjects: [projects["RekoSearch"], projects["website"]],
   },
   {
     id: "kubernetes-devops",
@@ -146,7 +146,7 @@ const devopsSkills: Skill[] = [
       projects["RustTemplate"],
       projects["Falion"],
       projects["RekoSearch"],
-      projects["Portfolio"],
+      projects["website"],
     ],
   },
   {

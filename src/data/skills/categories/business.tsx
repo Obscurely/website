@@ -48,7 +48,7 @@ const businessSkills: Skill[] = [
       </p>
     ),
     proficiency: SkillProficiency.Intermediate,
-    notableProjects: [projects["RekoSearch"], projects["Portfolio"]],
+    notableProjects: [projects["RekoSearch"], projects["website"]],
   },
 ];
 

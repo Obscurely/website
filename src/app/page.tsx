@@ -32,7 +32,7 @@ export default function Home() {
           className="pointer-events-none fixed inset-0 z-0 h-screen w-screen"
         >
           <div className="absolute inset-0 h-full w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-          <div className="absolute inset-0 h-full w-full bg-[url('/background.webp')] bg-cover bg-center bg-no-repeat opacity-10" />
+          <div className="absolute inset-0 h-full w-full bg-[url('/background.avif')] bg-cover bg-center bg-no-repeat opacity-10" />
         </motion.div>
 
         <div className="relative z-10">
