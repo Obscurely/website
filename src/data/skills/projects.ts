@@ -61,7 +61,7 @@ const projects: Record<ProjectKey, Project> = {
     name: "PyPassMan",
     link: "https://github.com/Obscurely/PyPassMan",
     shortDescription:
-      "Cross-platform Password Manager with a QT frontend, simple and not so secure, but I learned a lot from building it",
+      "Cross-platform Password Manager with a QT frontend, simple, but I learned a lot from building it",
   },
   ArchObscurely: {
     name: "ArchObscurely",

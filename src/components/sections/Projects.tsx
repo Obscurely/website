@@ -11,83 +11,23 @@ import {
   IconExternalLink,
 } from "@tabler/icons-react";
 import Image from "next/image";
-
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    description:
-      "A full-featured e-commerce platform with product management, cart functionality, and payment integration.",
-    image: "/project1.jpg",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    featured: true,
-  },
-  {
-    title: "Task Management App",
-    description:
-      "A collaborative task management application with real-time updates and team collaboration features.",
-    image: "/project2.jpg",
-    tags: ["React", "Firebase", "Framer Motion", "CSS"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    featured: true,
-  },
-  {
-    title: "Weather Dashboard",
-    description:
-      "A weather dashboard that displays current and forecasted weather data with interactive visualizations.",
-    image: "/project3.jpg",
-    tags: ["JavaScript", "Chart.js", "API Integration", "SCSS"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    featured: false,
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "A personal portfolio website showcasing projects and skills with a modern design and smooth animations.",
-    image: "/project4.jpg",
-    tags: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    featured: true,
-  },
-  {
-    title: "Recipe Finder App",
-    description:
-      "An application that allows users to search for recipes based on ingredients they have on hand.",
-    image: "/project5.jpg",
-    tags: ["React", "API Integration", "CSS", "JavaScript"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    featured: false,
-  },
-  {
-    title: "Fitness Tracker",
-    description:
-      "A fitness tracking application that helps users monitor their workouts and progress over time.",
-    image: "/project6.jpg",
-    tags: ["React Native", "TypeScript", "Firebase", "Chart.js"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    featured: false,
-  },
-];
-
-const categories = ["All", "Featured", "Web App", "Mobile", "UI/UX"];
+import { projects, categories, Project } from "@data/projects";
 
 export default function Projects() {
+  // Add "All" and "Featured" to the categories for filtering
+  const filterCategories = ["All", "Featured", ...categories];
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleProjects, setVisibleProjects] = useState(4);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const filteredProjects = projects.filter((project) => {
+  // Convert projects object to array for easier manipulation
+  const projectsArray = Object.values(projects);
+
+  const filteredProjects = projectsArray.filter((project: Project) => {
     if (activeCategory === "All") return true;
     if (activeCategory === "Featured") return project.featured;
-    // Add more filtering logic for other categories if needed
-    return true;
+    return project.category === activeCategory;
   });
 
   const projectVariants = {
@@ -123,7 +63,7 @@ export default function Projects() {
         </motion.div>
 
         <div className="mb-12 flex flex-wrap justify-center gap-3">
-          {categories.map((category) => (
+          {filterCategories.map((category) => (
             <Button
               key={category}
               variant={activeCategory === category ? "default" : "outline"}
@@ -142,20 +82,26 @@ export default function Projects() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.slice(0, visibleProjects).map((project, i) => (
             <motion.div
-              key={project.title}
+              key={project.name}
               custom={i}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               variants={projectVariants}
             >
               <Card className="flex h-full flex-col overflow-hidden border-slate-800 bg-slate-900 transition-all duration-300 hover:border-cyan-500/50">
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative flex h-48 items-center justify-center overflow-hidden bg-slate-900 p-4">
                   <Image
                     width={500}
                     height={300}
                     src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
+                    alt={project.name}
+                    className="h-auto max-h-full w-auto max-w-full object-contain transition-transform duration-500 hover:scale-110"
+                    style={{
+                      maxHeight: project.image.endsWith(".svg")
+                        ? "90%"
+                        : "100%",
+                      maxWidth: project.image.endsWith(".svg") ? "90%" : "100%",
+                    }}
                   />
                   {project.featured && (
                     <Badge className="absolute top-2 right-2 bg-cyan-500 text-white">
@@ -165,7 +111,7 @@ export default function Projects() {
                 </div>
                 <CardContent className="flex-grow p-6">
                   <h3 className="mb-2 text-xl font-bold text-slate-200">
-                    {project.title}
+                    {project.name}
                   </h3>
                   <p className="mb-4 text-slate-400">{project.description}</p>
                   <div className="mt-auto flex flex-wrap gap-2">
@@ -197,22 +143,24 @@ export default function Projects() {
                       <span>Code</span>
                     </a>
                   </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="p-0 text-cyan-400 hover:bg-slate-800 hover:text-cyan-300"
-                    asChild
-                  >
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1"
+                  {project.liveUrl && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="p-0 text-cyan-400 hover:bg-slate-800 hover:text-cyan-300"
+                      asChild
                     >
-                      <span>Live Demo</span>
-                      <IconExternalLink size={16} />
-                    </a>
-                  </Button>
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1"
+                      >
+                        <span>Live Demo</span>
+                        <IconExternalLink size={16} />
+                      </a>
+                    </Button>
+                  )}
                 </CardFooter>
               </Card>
             </motion.div>
