@@ -127,7 +127,7 @@ export const projects: Record<ProjectKey, Project> = {
       "A bot integrated with Discord's API, providing basic admin commands and a music player.",
     image: "/projects/github.svg",
     tags: ["Python", "API Integration", "Bot"],
-    githubUrl: "https://github.com/Obscurely/DiscordBot",
+    githubUrl: "https://github.com/Obscurely/Discord-Bot",
     featured: false,
   },
   RustySorter: {
@@ -142,11 +142,11 @@ export const projects: Record<ProjectKey, Project> = {
   },
   SharpPlayer: {
     category: "Native",
-    name: "SharpPlayer",
+    name: "Sharp-Player",
     description: " A simple audio player with a GUI made in C#!",
     image: "/projects/github.svg",
     tags: ["C#", "Audio Player", "GUI"],
-    githubUrl: "https://github.com/Obscurely/SharpPlayer",
+    githubUrl: "https://github.com/Obscurely/Sharp-Player",
     featured: false,
   },
   ArduinoAlarm: {
