@@ -4,16 +4,18 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Hero from "@components/sections/Hero";
 import About from "@components/sections/About/About";
-import Projects from "@components/sections/Projects";
+import Projects from "@components/sections/Projects/Projects";
 import Blog from "@components/sections/Blog";
 import Contact from "@components/sections/Contact";
 import Navbar from "@components/layout/Navbar";
 import Footer from "@components/layout/Footer";
 
 export default function Home() {
+  // Create a ref for the entire page
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Use the document as the scroll container instead of a specific element
   const { scrollYProgress } = useScroll({
-    target: containerRef,
     offset: ["start start", "end end"],
   });
 

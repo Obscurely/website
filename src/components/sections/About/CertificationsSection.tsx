@@ -71,6 +71,7 @@ const CertificationCard = memo(function CertificationCard({
           <Image
             src={certification.icon}
             alt={certification.name}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             fill
             className="object-contain p-1"
           />
