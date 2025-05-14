@@ -1,56 +1,75 @@
+"use client";
+
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
 import { Card, CardContent, CardFooter } from "@ui/card";
-import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
+import {
+  IconBrandGithub,
+  IconExternalLink,
+  IconStar,
+} from "@tabler/icons-react";
 import Image from "next/image";
 import { Project } from "@data/projects";
-import { projectVariants } from "./animations";
+
+// Simplified animation variants
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.3 },
+  },
+  hover: {
+    y: -5,
+    transition: { duration: 0.2 },
+  },
+};
 
 /**
  * @param project - The project object containing details about the project.
  * @returns A card component displaying project details.
  */
-export const ProjectCard = ({ project }: { project: Project }) => {
+export const ProjectCard = memo(({ project }: { project: Project }) => {
   return (
     <motion.div
-      variants={projectVariants}
-      layout
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      whileHover="hover"
+      layout="position"
       className="h-full"
-      whileHover={{ y: -5 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-800/80 bg-gradient-to-b from-slate-900 to-slate-950 shadow-lg shadow-slate-900/20 transition-all duration-300 hover:border-cyan-500/30">
+      <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-800/80 bg-gradient-to-b from-slate-900 to-slate-950 shadow-lg">
         <div className="relative flex h-52 items-center justify-center overflow-hidden bg-slate-900/50 p-4">
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
 
           <Image
             width={600}
             height={350}
             src={project.image}
             alt={project.name}
-            className="h-auto max-h-full w-auto max-w-full object-contain transition-all duration-500 group-hover:scale-105"
-            style={{
-              maxHeight: project.image.endsWith(".svg") ? "85%" : "100%",
-              maxWidth: project.image.endsWith(".svg") ? "85%" : "100%",
-            }}
+            className="h-auto max-h-full w-auto max-w-full object-contain transition-transform duration-200 will-change-transform group-hover:scale-[1.03]"
             loading="lazy"
             placeholder="blur"
             blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAEDQIHq4C7oQAAAABJRU5ErkJggg=="
           />
 
           {project.featured && (
-            <Badge className="absolute top-3 right-3 bg-gradient-to-r from-cyan-500 to-blue-500 px-3 py-1 text-xs font-medium text-white shadow-md">
-              Featured
+            <Badge className="absolute top-3 left-3 bg-gradient-to-r from-cyan-600 to-blue-600 px-3 py-1 text-xs font-medium text-white shadow-md">
+              <span className="flex h-5 items-center gap-1">
+                <IconStar className="mb-0.5" size={16} /> Featured
+              </span>
             </Badge>
           )}
         </div>
 
         <CardContent className="flex-grow p-6">
-          <h3 className="mb-3 text-xl font-bold text-slate-100 group-hover:text-cyan-50">
+          <h3 className="mb-3 text-xl font-bold text-slate-100 transition-colors duration-200 group-hover:text-cyan-50">
             {project.name}
           </h3>
-          <p className="mb-4 text-slate-400 group-hover:text-slate-300">
+          <p className="mb-4 text-slate-400 transition-colors duration-200 group-hover:text-slate-300">
             {project.description}
           </p>
           <div className="mt-auto flex flex-wrap gap-2">
@@ -58,7 +77,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               <Badge
                 key={tag}
                 variant="outline"
-                className="border-slate-700/70 bg-slate-800/30 text-slate-300 backdrop-blur-sm"
+                className="border-slate-700/70 bg-slate-800/30 text-slate-300"
               >
                 {tag}
               </Badge>
@@ -106,4 +125,4 @@ export const ProjectCard = ({ project }: { project: Project }) => {
       </Card>
     </motion.div>
   );
-};
+});

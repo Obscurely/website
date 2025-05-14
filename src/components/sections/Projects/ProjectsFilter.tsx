@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@ui/button";
 
@@ -10,35 +11,55 @@ interface ProjectsFilterProps {
   isInView: boolean;
 }
 
-export const ProjectsFilter = ({
-  filterCategories,
-  activeCategory,
-  handleCategoryChangeAction,
-  isInView,
-}: ProjectsFilterProps) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-      transition={{ delay: 0.2, duration: 0.4 }}
-      className="mb-12 flex flex-wrap justify-center gap-3"
-    >
-      <div className="flex flex-wrap justify-center gap-2 rounded-xl border border-slate-800/50 bg-slate-900/50 p-1.5 shadow-lg backdrop-blur-sm">
-        {filterCategories.map((category) => (
-          <Button
-            key={category}
-            variant={activeCategory === category ? "default" : "ghost"}
-            className={
-              activeCategory === category
-                ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md"
-                : "text-slate-400 hover:bg-slate-800/70 hover:text-white"
-            }
-            onClick={() => handleCategoryChangeAction(category)}
-          >
-            {category}
-          </Button>
-        ))}
-      </div>
-    </motion.div>
-  );
+const ANIMATION_VARIANTS = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0 },
 };
+
+const ANIMATION_TRANSITION = { delay: 0.2, duration: 0.4 };
+
+export const ProjectsFilter = memo(
+  ({
+    filterCategories,
+    activeCategory,
+    handleCategoryChangeAction,
+    isInView,
+  }: ProjectsFilterProps) => {
+    const getButtonStyles = (category: string) => {
+      const isActive = activeCategory === category;
+      return {
+        variant: isActive ? "default" : "ghost",
+        className: isActive
+          ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md"
+          : "text-slate-400 hover:bg-slate-800/70 hover:text-white",
+      };
+    };
+
+    return (
+      <motion.div
+        initial={ANIMATION_VARIANTS.hidden}
+        animate={
+          isInView ? ANIMATION_VARIANTS.visible : ANIMATION_VARIANTS.hidden
+        }
+        transition={ANIMATION_TRANSITION}
+        className="mb-12 flex flex-wrap justify-center gap-3"
+      >
+        <div className="flex flex-wrap justify-center gap-2 rounded-xl border border-slate-800/50 bg-slate-900/50 p-1.5 shadow-lg backdrop-blur-sm">
+          {filterCategories.map((category) => {
+            const buttonStyles = getButtonStyles(category);
+            return (
+              <Button
+                key={category}
+                variant={activeCategory === category ? "default" : "ghost"}
+                className={buttonStyles.className}
+                onClick={() => handleCategoryChangeAction(category)}
+              >
+                {category}
+              </Button>
+            );
+          })}
+        </div>
+      </motion.div>
+    );
+  }
+);

@@ -116,7 +116,7 @@ export const projects: Record<ProjectKey, Project> = {
     description:
       "A cross-platform Password Manager with a QT frontend, custom installer, simple, but I learned a lot from building it.",
     image: "/projects/github.svg",
-    tags: ["Python", "QT", "Cross-Platform", "Password Manager", "Encryption"],
+    tags: ["Python", "QT", "Cross-Platform", "Encryption"],
     githubUrl: "https://github.com/Obscurely/PyPassMan",
     featured: false,
   },

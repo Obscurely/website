@@ -1,5 +1,6 @@
 "use client";
 
+import { memo, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Project } from "@data/projects";
 import { ProjectCard } from "./ProjectCard";
@@ -11,27 +12,33 @@ interface ProjectsListProps {
   visibleProjectsList: Project[];
 }
 
-export const ProjectsList = ({
-  isInView,
-  activeCategory,
-  visibleProjectsList,
-}: ProjectsListProps) => {
-  return (
-    <AnimatePresence mode="wait">
-      {isInView && (
-        <motion.div
-          key={activeCategory}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          variants={projectsContainerVariants}
-          initial="hidden"
-          animate="visible"
-          exit={{ opacity: 0 }}
-        >
-          {visibleProjectsList.map((project) => (
-            <ProjectCard key={project.name} project={project} />
-          ))}
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
+export const ProjectsList = memo(
+  ({ isInView, activeCategory, visibleProjectsList }: ProjectsListProps) => {
+    // Memoize the project cards to prevent unnecessary re-renders
+    const projectCards = useMemo(
+      () =>
+        visibleProjectsList.map((project) => (
+          <ProjectCard key={project.name} project={project} />
+        )),
+      [visibleProjectsList]
+    );
+
+    return (
+      <AnimatePresence mode="wait">
+        {isInView && (
+          <motion.div
+            key={activeCategory}
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            variants={projectsContainerVariants}
+            initial="hidden"
+            animate="visible"
+            exit={{ opacity: 0 }}
+            layout
+          >
+            {projectCards}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    );
+  }
+);
