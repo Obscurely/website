@@ -80,7 +80,7 @@ export const ProjectCard = memo(
                 variant="secondary"
               >
                 <span className="flex h-5 items-center gap-1">
-                  <IconStar className="mb-0.5" size={16} /> Featured
+                  <IconStar className="mb-0.25" size={16} /> Featured
                 </span>
               </Badge>
             )}

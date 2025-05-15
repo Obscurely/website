@@ -1,4 +1,40 @@
+import {
+  IconApps,
+  IconDeviceDesktop,
+  IconStar,
+  IconTools,
+  IconWorld,
+} from "@tabler/icons-react";
+
 export const categories = ["Web", "Native", "Tool/Script"];
+export const categoriesDisplay: Record<string, React.ReactNode> = {
+  All: (
+    <span key="All" className="flex items-center gap-2">
+      <IconApps size={20} /> All
+    </span>
+  ),
+  Featured: (
+    <span key="Featured" className="flex items-center gap-2">
+      <IconStar size={20} /> Featured
+    </span>
+  ),
+  Web: (
+    <span key="Web" className="flex items-center gap-2">
+      <IconWorld size={20} /> Web
+    </span>
+  ),
+  Native: (
+    <span key="Native" className="flex items-center gap-2">
+      <IconDeviceDesktop size={20} /> Native
+    </span>
+  ),
+  "Tool/Script": (
+    <span key="Tool/Script" className="flex items-center gap-2">
+      <IconTools size={20} /> Tool/Script
+    </span>
+  ),
+};
+
 type Category = "Web" | "Native" | "Tool/Script";
 
 export interface Project {

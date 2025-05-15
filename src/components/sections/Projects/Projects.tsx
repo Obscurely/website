@@ -47,10 +47,43 @@ export default function Projects() {
   }, []);
 
   const handleLoadMore = useCallback(() => {
-    setVisibleProjects((prev) => prev + 3);
-  }, []);
+    // Store the current number of visible projects before increasing
+    const currentVisibleCount = visibleProjects;
 
-  // Memoize this check to avoid recalculation during renders
+    // Increase the number of visible projects
+    setVisibleProjects((prev) => prev + 3);
+
+    // Whether to scroll or not
+    const shouldScroll = currentVisibleCount > 0;
+
+    // Use setTimeout to ensure DOM has updated with new projects
+    if (shouldScroll) {
+      setTimeout(() => {
+        // navbar height + some extra to make it centerd and work on other screen sizes
+        const navbarHeight = 150;
+
+        // Last currently visible project to scroll to
+        const projectElements = document.querySelectorAll(
+          "#projects .grid > div"
+        );
+        if (projectElements && projectElements[currentVisibleCount - 1]) {
+          const lastCurrentProject = projectElements[currentVisibleCount - 1];
+          const rect = lastCurrentProject?.getBoundingClientRect();
+
+          // Scroll to position (accounting for navbar)
+          window.scrollTo({
+            top:
+              window.scrollY +
+              (rect !== undefined ? rect.bottom : 0) -
+              navbarHeight,
+            behavior: "smooth",
+          });
+        }
+      }, 100);
+    }
+  }, [visibleProjects]);
+
+  // Memoize check to avoid recalculation during renders
   const hasMoreProjects = useMemo(
     () => visibleProjects < filteredProjects.length,
     [visibleProjects, filteredProjects.length]
