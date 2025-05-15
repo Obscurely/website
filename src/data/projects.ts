@@ -4,6 +4,7 @@ type Category = "Web" | "Native" | "Tool/Script";
 export interface Project {
   category: Category;
   name: string;
+  index: number;
   description: string;
   image?: string;
   imageSize?: number;
@@ -32,6 +33,7 @@ export const projects: Record<ProjectKey, Project> = {
   RekoSearch: {
     category: "Web",
     name: "RekoSearch",
+    index: 0,
     description:
       "An AI-powered file search engine for images, videos, documents and audio that understands the content of your files, enabling semantic search across them. (~50k LoC)",
     image: "/projects/rekosearch.svg",
@@ -44,9 +46,11 @@ export const projects: Record<ProjectKey, Project> = {
   Falion: {
     category: "Native",
     name: "Falion",
+    index: 1,
     description:
       "A privacy-focused tool and library for interacting with programming resources (like Stackoverflow) fast, efficiently, and asynchronously/parallelly using the CLI or GUI.",
     image: "/projects/falion.avif",
+    imageSize: 100,
     tags: ["Rust", "Async", "Parallel", "Cross-Platform", "CI/CD", "Library"],
     githubUrl: "https://github.com/Obscurely/falion",
     featured: true,
@@ -54,6 +58,7 @@ export const projects: Record<ProjectKey, Project> = {
   website: {
     category: "Web",
     name: "Website",
+    index: 2,
     description:
       "My personal static tech website portfolio and blog, made with Next.js, React, Typescript, TailwindCSS and Shadcn/ui, deployed using CI/CD on AWS.",
     image: "/projects/nextjs.svg",
@@ -66,6 +71,7 @@ export const projects: Record<ProjectKey, Project> = {
   EStash: {
     category: "Native",
     name: "EStash",
+    index: 3,
     description:
       "A cross-platform, highly secure encrypted digital vault capable of setting a path and copying the contents to that file with the click of a button. ",
     image: "/projects/estash.avif",
@@ -77,6 +83,7 @@ export const projects: Record<ProjectKey, Project> = {
   RustTemplate: {
     category: "Tool/Script",
     name: "RustTemplate",
+    index: 4,
     description:
       "A fully set-up Github repository for cross-platform Rust projects. It includes scripts to customize the repository automatically, CI/CD pipelines to deploy on any platform in multiple formats and the best Rust practices.",
     tags: ["CI/CD", "GitHub Actions", "Template", "Rust", "Cross-Platform"],
@@ -86,6 +93,7 @@ export const projects: Record<ProjectKey, Project> = {
   NixObscurely: {
     category: "Tool/Script",
     name: "NixObscurely",
+    index: 5,
     description:
       "My fully customized and automated NixOS (advanced Linux distribution) home-manager + flakes system configuration. ",
     image: "/projects/nix.svg",
@@ -97,6 +105,7 @@ export const projects: Record<ProjectKey, Project> = {
   ArchObscurely: {
     category: "Tool/Script",
     name: "ArchObscurely",
+    index: 6,
     description:
       "Automated, fully customized Arch Linux install for my machine.",
     image: "/projects/archlinux.svg",
@@ -108,6 +117,7 @@ export const projects: Record<ProjectKey, Project> = {
   PbthalArchiveManager: {
     category: "Tool/Script",
     name: "Pbthal-Archive-Manager",
+    index: 7,
     description:
       "Download music from PBTHAL's archive faster and easier + get properly made albums using this collection of Python scripts with a functional CLI frontend",
     tags: ["Python", "CLI", "Scripts", "Automation"],
@@ -117,6 +127,7 @@ export const projects: Record<ProjectKey, Project> = {
   PyPassMan: {
     category: "Native",
     name: "PyPassMan",
+    index: 8,
     description:
       "A cross-platform Password Manager with a QT frontend, custom installer, simple, but I learned a lot from building it.",
     tags: ["Python", "QT", "Cross-Platform", "Encryption"],
@@ -126,6 +137,7 @@ export const projects: Record<ProjectKey, Project> = {
   DiscordBot: {
     category: "Tool/Script",
     name: "Discord-Bot",
+    index: 9,
     description:
       "A bot integrated with Discord's API, providing basic admin commands and a music player.",
     tags: ["Python", "API Integration", "Bot"],
@@ -135,6 +147,7 @@ export const projects: Record<ProjectKey, Project> = {
   RustySorter: {
     category: "Tool/Script",
     name: "RustySorter",
+    index: 10,
     description:
       "A fast, efficient, straightforward file sorter with recursive capabilities, made in Rust!",
     tags: ["Rust", "File Sorter", "CLI", "Automation"],
@@ -144,6 +157,7 @@ export const projects: Record<ProjectKey, Project> = {
   SharpPlayer: {
     category: "Native",
     name: "Sharp-Player",
+    index: 11,
     description: " A simple audio player with a GUI made in C#!",
     tags: ["C#", "Audio Player", "GUI"],
     githubUrl: "https://github.com/Obscurely/Sharp-Player",
@@ -152,6 +166,7 @@ export const projects: Record<ProjectKey, Project> = {
   ArduinoAlarm: {
     category: "Native",
     name: "ArduinoAlarm",
+    index: 12,
     description:
       "An alarm clock I built using an arduio uno, tiny rtc, speaker, ir sensor and an ir remote. ",
     tags: ["Arduino", "Alarm", "IR Remote", "Tiny RTC", "C++"],

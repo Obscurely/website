@@ -4,7 +4,6 @@ import { memo, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Project } from "@data/projects";
 import { ProjectCard } from "./ProjectCard";
-import { projectsContainerVariants } from "./animations";
 
 interface ProjectsListProps {
   isInView: boolean;
@@ -18,9 +17,14 @@ export const ProjectsList = memo(
     const projectCards = useMemo(
       () =>
         visibleProjectsList.map((project) => (
-          <ProjectCard key={project.name} project={project} />
+          <ProjectCard
+            key={project.name}
+            project={project}
+            index={project.index}
+            isInView={isInView}
+          />
         )),
-      [visibleProjectsList]
+      [visibleProjectsList, isInView]
     );
 
     return (
@@ -28,7 +32,6 @@ export const ProjectsList = memo(
         <motion.div
           key={activeCategory}
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          variants={projectsContainerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >

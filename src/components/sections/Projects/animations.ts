@@ -43,14 +43,26 @@ export const buttonVariants = {
 };
 
 export const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 },
-  },
+    transition: {
+      delay: 0.1 * i,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
   hover: {
-    y: -5,
-    transition: { duration: 0.2 },
+    y: -2,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
   },
+};
+
+export const headerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
 };

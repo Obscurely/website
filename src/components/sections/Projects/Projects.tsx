@@ -7,10 +7,11 @@ import { ProjectsFilter } from "./ProjectsFilter";
 import { ProjectsList } from "./ProjectsList";
 import { LoadMoreButton } from "./LoadMoreButton";
 import { projectsArray, filterCategories } from "./ProjectsData";
+import { Project } from "@data/projects";
 
 // Pre-compute featured projects outside the component
-const featuredProjects = projectsArray.filter((p) => p.featured);
-const nonFeaturedProjects = projectsArray.filter((p) => !p.featured);
+const featuredProjects: Project[] = projectsArray.filter((p) => p.featured);
+const nonFeaturedProjects: Project[] = projectsArray.filter((p) => !p.featured);
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");

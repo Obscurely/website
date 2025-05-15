@@ -20,18 +20,16 @@ export const LoadMoreButton = ({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    if (isInView) {
-      timeoutId = setTimeout(() => {
-        setVisible(true);
-      }, 500);
-    } else {
+    if (!isInView) {
       setVisible(false);
+      return;
     }
 
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId);
-    };
+    const timeoutId = setTimeout(() => {
+      setVisible(true);
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
   }, [isInView]);
 
   const isButtonDisabled = !visible || disabled;

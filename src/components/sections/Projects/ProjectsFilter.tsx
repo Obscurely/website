@@ -1,6 +1,6 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@ui/button";
 
@@ -22,18 +22,23 @@ export const ProjectsFilter = memo(
   ({
     filterCategories,
     activeCategory,
-    handleCategoryChangeAction,
+    handleCategoryChangeAction: onCategoryChange,
     isInView,
   }: ProjectsFilterProps) => {
-    const getButtonStyles = (category: string) => {
-      const isActive = activeCategory === category;
-      return {
-        variant: isActive ? "default" : "ghost",
-        className: isActive
-          ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md cursor-pointer"
-          : "text-slate-400 hover:bg-slate-800/70 hover:text-white cursor-pointer",
-      };
-    };
+    const getButtonStyles = useCallback(
+      (
+        category: string
+      ): { variant: "default" | "ghost"; className: string } => {
+        const isActive = activeCategory === category;
+        return {
+          variant: isActive ? "default" : "ghost",
+          className: isActive
+            ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md cursor-pointer"
+            : "text-slate-400 hover:bg-slate-800/70 hover:text-white cursor-pointer",
+        };
+      },
+      [activeCategory]
+    );
 
     return (
       <motion.div
@@ -50,9 +55,9 @@ export const ProjectsFilter = memo(
             return (
               <Button
                 key={category}
-                variant={activeCategory === category ? "default" : "ghost"}
+                variant={buttonStyles.variant}
                 className={buttonStyles.className}
-                onClick={() => handleCategoryChangeAction(category)}
+                onClick={() => onCategoryChange(category)}
               >
                 {category}
               </Button>
