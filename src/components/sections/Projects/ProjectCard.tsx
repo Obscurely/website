@@ -66,6 +66,7 @@ export const ProjectCard = memo(
         custom={index}
         whileHover="hover"
         className="group relative z-0 h-full"
+        layout
       >
         <Card className="h-full overflow-hidden border-slate-700/50 bg-slate-800/30 backdrop-blur-sm transition-all duration-300 ease-out hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">
           <div className="relative flex h-52 items-center justify-center overflow-hidden bg-slate-900/50 p-4">
@@ -142,6 +143,14 @@ export const ProjectCard = memo(
           </CardFooter>
         </Card>
       </motion.div>
+    );
+  },
+  // Prevent unnecessary re-renders
+  (prevProps, nextProps) => {
+    return (
+      prevProps.project.name === nextProps.project.name &&
+      prevProps.isInView === nextProps.isInView &&
+      prevProps.index === nextProps.index
     );
   }
 );

@@ -3,8 +3,18 @@ export const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.5,
+      staggerChildren: 0.03, // Reduced from 0.1
       when: "beforeChildren",
+      duration: 0.2, // Faster overall duration
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      staggerChildren: 0.02, // Reduced from 0.05
+      staggerDirection: -1,
+      when: "afterChildren",
+      duration: 0.15, // Faster exit
     },
   },
 };
@@ -48,8 +58,9 @@ export const cardVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 0.1 * i,
-      duration: 0.6,
+      // Cap the delay to prevent exponential slowdown
+      delay: Math.min(0.1 * (i % 3), 0.2),
+      duration: 0.4,
       ease: "easeOut",
     },
   }),
