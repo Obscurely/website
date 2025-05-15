@@ -1,7 +1,7 @@
 "use client";
 
-import { memo, useMemo } from "react";
-import { motion } from "framer-motion";
+import { memo, useCallback, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Project } from "@data/projects";
 import { ProjectCard } from "./ProjectCard";
 
@@ -13,18 +13,32 @@ interface ProjectsListProps {
 
 export const ProjectsList = memo(
   ({ isInView, activeCategory, visibleProjectsList }: ProjectsListProps) => {
-    // Memoize the project cards to prevent unnecessary re-renders
-    const projectCards = useMemo(
-      () =>
-        visibleProjectsList.map((project) => (
-          <ProjectCard
-            key={project.name}
-            project={project}
-            index={project.index}
-            isInView={isInView}
-          />
-        )),
-      [visibleProjectsList, isInView]
+    const prevCountRef = useRef(0);
+    const newItemsRef = useRef<HTMLDivElement>(null);
+
+    // Track when new projects are added
+    useEffect(() => {
+      if (
+        visibleProjectsList.length > prevCountRef.current &&
+        newItemsRef.current
+      ) {
+        // Only scroll to new items if they were added by clicking "Load More"
+        if (prevCountRef.current > 0) {
+          // Smooth scroll to the first new item
+          newItemsRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+      prevCountRef.current = visibleProjectsList.length;
+    }, [visibleProjectsList.length]);
+
+    // Determine which items are newly added
+    const isNewItem = useCallback(
+      (index: number) =>
+        index >= prevCountRef.current - 3 && index < visibleProjectsList.length,
+      [visibleProjectsList.length]
     );
 
     return (
@@ -35,7 +49,24 @@ export const ProjectsList = memo(
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {projectCards}
+          <AnimatePresence>
+            {visibleProjectsList.map((project, idx) => (
+              <div
+                key={project.name}
+                ref={
+                  isNewItem(idx) && idx === prevCountRef.current
+                    ? newItemsRef
+                    : null
+                }
+              >
+                <ProjectCard
+                  project={project}
+                  index={idx}
+                  isInView={isInView}
+                />
+              </div>
+            ))}
+          </AnimatePresence>
         </motion.div>
       </div>
     );

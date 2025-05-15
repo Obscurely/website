@@ -14,7 +14,7 @@ import Image from "next/image";
 import { Project } from "@data/projects";
 import { cardVariants } from "./animations";
 
-const ProjectImage = ({ project }: { project: Project }) => {
+const ProjectImage = memo(({ project }: { project: Project }) => {
   const imageSrc = project.image || "/projects/github.svg";
   const imageStyle = project.image
     ? {
@@ -39,9 +39,10 @@ const ProjectImage = ({ project }: { project: Project }) => {
       loading="lazy"
       placeholder="blur"
       blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAEDQIHq4C7oQAAAABJRU5ErkJggg=="
+      priority={false}
     />
   );
-};
+});
 
 /**
  * @param project - The project object containing details about the project.
