@@ -30,8 +30,8 @@ export const ProjectsFilter = memo(
       return {
         variant: isActive ? "default" : "ghost",
         className: isActive
-          ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md"
-          : "text-slate-400 hover:bg-slate-800/70 hover:text-white",
+          ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md cursor-pointer"
+          : "text-slate-400 hover:bg-slate-800/70 hover:text-white cursor-pointer",
       };
     };
 

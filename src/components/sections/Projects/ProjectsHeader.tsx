@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { containerVariants } from "./animations";
 
 interface ProjectsHeaderProps {
   isInView: boolean;
@@ -10,9 +9,9 @@ interface ProjectsHeaderProps {
 export const ProjectsHeader = ({ isInView }: ProjectsHeaderProps) => {
   return (
     <motion.div
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={containerVariants}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.7 }}
       className="mb-16 text-center"
     >
       <h2 className="mb-2 inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-3xl leading-relaxed font-bold text-transparent md:text-4xl lg:text-5xl">

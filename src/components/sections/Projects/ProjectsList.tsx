@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Project } from "@data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { projectsContainerVariants } from "./animations";
@@ -24,21 +24,17 @@ export const ProjectsList = memo(
     );
 
     return (
-      <AnimatePresence mode="wait">
-        {isInView && (
-          <motion.div
-            key={activeCategory}
-            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-            variants={projectsContainerVariants}
-            initial="hidden"
-            animate="visible"
-            exit={{ opacity: 0 }}
-            layout
-          >
-            {projectCards}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className="min-h-[400px]">
+        <motion.div
+          key={activeCategory}
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          variants={projectsContainerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {projectCards}
+        </motion.div>
+      </div>
     );
   }
 );
