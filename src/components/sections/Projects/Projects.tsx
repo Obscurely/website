@@ -93,8 +93,19 @@ export default function Projects() {
     <section id="projects" className="relative">
       <div
         ref={ref}
-        className="relative overflow-hidden bg-slate-950 pt-16 pb-20"
+        className="relative w-full overflow-hidden pt-16 pb-20"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(8, 15, 30, 0.92), rgba(10, 17, 35, 0.95), rgba(8, 15, 30, 0.92))",
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+        }}
       >
+        {/* Subtle background elements */}
+        <div className="absolute inset-0 -z-10 opacity-10">
+          <div className="absolute top-1/3 right-1/4 h-64 w-64 rounded-full bg-indigo-600 blur-[100px]"></div>
+          <div className="absolute bottom-1/4 left-1/4 h-64 w-64 rounded-full bg-purple-600 blur-[100px]"></div>
+        </div>
+
         <div className="relative container mx-auto px-4 sm:px-6">
           <ProjectsHeader isInView={isInView} />
 
