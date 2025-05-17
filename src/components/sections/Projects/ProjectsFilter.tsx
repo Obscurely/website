@@ -18,6 +18,14 @@ const ANIMATION_VARIANTS = {
 
 const ANIMATION_TRANSITION = { delay: 0.2, duration: 0.4 };
 
+/**
+ * ProjectsFilter component that displays a filter for project categories.
+ *
+ * @param filterCategories - An array of category names to filter projects.
+ * @param activeCategory - The currently selected category.
+ * @param handleCategoryChangeAction - Function to handle category change.
+ * @param isInView - A boolean indicating whether the component is in view or not.
+ */
 export const ProjectsFilter = memo(
   ({
     filterCategories,
@@ -62,3 +70,5 @@ export const ProjectsFilter = memo(
     );
   }
 );
+
+ProjectsFilter.displayName = "ProjectsFilter";

@@ -16,11 +16,11 @@ import React from "react";
  * @param proficiency - The proficiency level of the skill.
  * @returns A component that displays a proficiency linear scale with tooltips
  */
-export default function ProficiencyScale({
+export const ProficiencyScale = ({
   proficiency,
 }: {
   proficiency: SkillProficiency;
-}) {
+}) => {
   const currentIndex = skillProficiencyLevels.indexOf(proficiency);
 
   return (
@@ -82,4 +82,4 @@ export default function ProficiencyScale({
       </div>
     </div>
   );
-}
+};

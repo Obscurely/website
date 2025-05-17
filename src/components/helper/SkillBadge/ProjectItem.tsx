@@ -10,8 +10,10 @@ import { IconExternalLink } from "@tabler/icons-react";
 
 /**
  * Simple Box with the name of the project and the link as an anchor tag
+ *
+ * @param project - The project object containing details about the project.
  */
-export default function ProjectItem({ project }: { project: Project }) {
+export const ProjectItem = ({ project }: { project: Project }) => {
   return (
     <TooltipProvider>
       <Tooltip delayDuration={150}>
@@ -48,4 +50,4 @@ export default function ProjectItem({ project }: { project: Project }) {
       </Tooltip>
     </TooltipProvider>
   );
-}
+};

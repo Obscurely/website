@@ -8,7 +8,10 @@ import {
   TooltipTrigger,
 } from "@ui/tooltip";
 
-export default function SkillsTooltip() {
+/**
+ * SkillsTooltip component that provides a tooltip with information about the skills section.
+ */
+export const SkillsTooltip = () => {
   return (
     <TooltipProvider>
       <Tooltip>
@@ -32,4 +35,4 @@ export default function SkillsTooltip() {
       </Tooltip>
     </TooltipProvider>
   );
-}
+};

@@ -13,7 +13,12 @@ import { Project } from "@data/projects";
 const featuredProjects: Project[] = projectsArray.filter((p) => p.featured);
 const nonFeaturedProjects: Project[] = projectsArray.filter((p) => !p.featured);
 
-export default function Projects() {
+/**
+ * Projects component that displays a list of projects with filtering and load more functionality.
+ *
+ * @returns A section containing the projects list.
+ */
+export const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleProjects, setVisibleProjects] = useState(3);
   const ref = useRef(null);
@@ -152,4 +157,4 @@ export default function Projects() {
       </div>
     </section>
   );
-}
+};

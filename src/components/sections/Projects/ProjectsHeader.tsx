@@ -13,6 +13,11 @@ interface ProjectsHeaderProps {
   isInView: boolean;
 }
 
+/**
+ * ProjectsHeader component that displays the header for the "Projects" section.
+ *
+ * @param isInView - A boolean indicating whether the component is in view or not.
+ */
 export const ProjectsHeader = ({ isInView }: ProjectsHeaderProps) => {
   return (
     <motion.div

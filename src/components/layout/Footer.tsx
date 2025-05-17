@@ -2,7 +2,10 @@ import Link from "next/link";
 import { IconArrowUp } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 
-export default function Footer() {
+/**
+ * Footer component that displays links, social media icons, and contact information.
+ */
+export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -209,4 +212,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};

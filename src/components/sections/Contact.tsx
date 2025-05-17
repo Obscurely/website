@@ -14,7 +14,12 @@ import {
   IconLoader2,
 } from "@tabler/icons-react";
 
-export default function Contact() {
+/**
+ * Contact component that displays a contact form and contact information.
+ *
+ * @returns A section containing the contact form and contact details.
+ */
+export const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -303,4 +308,4 @@ export default function Contact() {
       </div>
     </section>
   );
-}
+};

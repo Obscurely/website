@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconMenu2, IconBrandX } from "@tabler/icons-react";
 import { Button } from "@ui/button";
-import ThemeToggle from "@components/ThemeToggle";
+import { ThemeToggle } from "@components/ThemeToggle";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -16,7 +16,10 @@ const navItems = [
   { name: "Contact", href: "#contact" },
 ];
 
-export default function Navbar() {
+/**
+ * Navbar component that displays the navigation bar at the top of the page.
+ */
+export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -140,4 +143,4 @@ export default function Navbar() {
       </AnimatePresence>
     </header>
   );
-}
+};

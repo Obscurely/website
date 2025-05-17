@@ -13,8 +13,8 @@ import {
   useInteractions,
   flip,
 } from "@floating-ui/react";
-import ProficiencyScale from "./ProficiencyScale";
-import ProjectItem from "./ProjectItem";
+import { ProficiencyScale } from "./ProficiencyScale";
+import { ProjectItem } from "./ProjectItem";
 
 // Context to track the currently expanded skill
 const SkillContext = createContext<{
@@ -25,11 +25,17 @@ const SkillContext = createContext<{
   setExpandedSkillId: () => {},
 });
 
-export function SkillBadgeProvider({
+/**
+ * SkillBadgeProvider component that provides the skill context to its children.
+ *
+ * @param children - The child components that will have access to the skill context.
+ * @returns A context provider that manages the expanded skill state.
+ */
+export const SkillBadgeProvider = ({
   children,
 }: {
   children: React.ReactNode;
-}) {
+}) => {
   const [expandedSkillId, setExpandedSkillId] = useState<string | null>(null);
 
   return (
@@ -37,7 +43,7 @@ export function SkillBadgeProvider({
       {children}
     </SkillContext.Provider>
   );
-}
+};
 
 interface SkillBadgeProps {
   skill: Skill;
@@ -157,3 +163,5 @@ export const SkillBadge = React.memo(function SkillBadge({
     </div>
   );
 });
+
+SkillBadge.displayName = "SkillBadge";

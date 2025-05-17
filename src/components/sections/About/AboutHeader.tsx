@@ -7,7 +7,12 @@ interface AboutHeaderProps {
   isInView: boolean;
 }
 
-export default function AboutHeader({ isInView }: AboutHeaderProps) {
+/**
+ * AboutHeader component that displays the header for the "About Me" section.
+ *
+ * @param isInView - A boolean indicating whether the component is in view or not.
+ */
+export const AboutHeader = ({ isInView }: AboutHeaderProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -25,4 +30,4 @@ export default function AboutHeader({ isInView }: AboutHeaderProps) {
       </div>
     </motion.div>
   );
-}
+};

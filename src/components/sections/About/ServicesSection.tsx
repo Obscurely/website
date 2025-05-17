@@ -8,7 +8,12 @@ interface ServicesSectionProps {
   isInView: boolean;
 }
 
-export default function ServicesSection({ isInView }: ServicesSectionProps) {
+/**
+ * ServicesSection component that displays a list of services.
+ *
+ * @param isInView - A boolean indicating whether the component is in view or not.
+ */
+export const ServicesSection = ({ isInView }: ServicesSectionProps) => {
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i: number) => ({
@@ -59,4 +64,4 @@ export default function ServicesSection({ isInView }: ServicesSectionProps) {
       </div>
     </div>
   );
-}
+};

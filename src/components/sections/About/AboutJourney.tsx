@@ -7,7 +7,12 @@ interface AboutJourneyProps {
   isInView: boolean;
 }
 
-export default function AboutJourney({ isInView }: AboutJourneyProps) {
+/**
+ * AboutJourney component that displays the journey of the user.
+ *
+ * @param isInView - A boolean indicating whether the component is in view or not.
+ */
+export const AboutJourney = ({ isInView }: AboutJourneyProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}
@@ -19,4 +24,4 @@ export default function AboutJourney({ isInView }: AboutJourneyProps) {
       <MyJourney />
     </motion.div>
   );
-}
+};

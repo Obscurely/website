@@ -9,9 +9,14 @@ interface CertificationsSectionProps {
   isInView: boolean;
 }
 
-export default function CertificationsSection({
+/**
+ * CertificationsSection component that displays a list of certifications.
+ *
+ * @param isInView - A boolean indicating whether the component is in view or not.
+ */
+export const CertificationsSection = ({
   isInView,
-}: CertificationsSectionProps) {
+}: CertificationsSectionProps) => {
   // Memoize animation props to prevent recalculation
   const animationProps = useMemo(
     () => ({
@@ -36,7 +41,7 @@ export default function CertificationsSection({
       </div>
     </motion.div>
   );
-}
+};
 
 const CertificationCard = memo(function CertificationCard({
   certification,
@@ -92,3 +97,5 @@ const CertificationCard = memo(function CertificationCard({
     </a>
   );
 });
+
+CertificationCard.displayName = "CertificationCard";

@@ -38,7 +38,7 @@ export const services = [
 /**
  * Paragraph about me focusing on my soft skills and approach to work.
  */
-export function AboutMe() {
+export const AboutMe = () => {
   return (
     <p className="mx-auto max-w-3xl text-lg leading-relaxed text-slate-400">
       From a very young age, I got captivated by tech, first by tinkering with{" "}
@@ -74,7 +74,7 @@ export function AboutMe() {
       .
     </p>
   );
-}
+};
 
 /**
  * Paragraph about my journey in tech.

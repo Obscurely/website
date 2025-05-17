@@ -12,6 +12,13 @@ interface ProjectsListProps {
   visibleProjectsList: Project[];
 }
 
+/**
+ * ProjectsList component that displays a list of projects with animation.
+ *
+ * @param isInView - A boolean indicating whether the component is in view or not.
+ * @param activeCategory - The currently selected category.
+ * @param visibleProjectsList - An array of projects to display.
+ */
 export const ProjectsList = memo(
   ({ isInView, activeCategory, visibleProjectsList }: ProjectsListProps) => {
     // Calculate local index for animation purposes
@@ -51,3 +58,5 @@ export const ProjectsList = memo(
     );
   }
 );
+
+ProjectsList.displayName = "ProjectsList";

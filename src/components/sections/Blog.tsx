@@ -41,7 +41,12 @@ const blogPosts = [
   },
 ];
 
-export default function Blog() {
+/**
+ * Blog component that displays a list of blog posts.
+ *
+ * @returns A section containing the latest blog articles.
+ */
+export const Blog = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -148,4 +153,4 @@ export default function Blog() {
       </div>
     </section>
   );
-}
+};

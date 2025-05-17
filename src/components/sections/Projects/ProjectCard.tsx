@@ -14,6 +14,12 @@ import Image from "next/image";
 import { Project } from "@data/projects";
 import { cardVariants } from "./animations";
 
+/**
+ * ProjectImage component that displays the project image.
+ *
+ * @param project - The project object containing details about the project.
+ * @returns An image element displaying the project image.
+ */
 const ProjectImage = memo(({ project }: { project: Project }) => {
   const imageSrc = project.image || "/projects/github.svg";
   const imageStyle = project.image
@@ -43,6 +49,8 @@ const ProjectImage = memo(({ project }: { project: Project }) => {
     />
   );
 });
+
+ProjectImage.displayName = "ProjectImage";
 
 /**
  * @param project - The project object containing details about the project.
@@ -167,3 +175,5 @@ export const ProjectCard = memo(
     );
   }
 );
+
+ProjectCard.displayName = "ProjectCard";

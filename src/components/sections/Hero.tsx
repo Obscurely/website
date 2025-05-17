@@ -13,9 +13,14 @@ import { Button } from "@ui/button";
 import { TypeAnimation } from "react-type-animation";
 import Image from "next/image";
 import { typeAnimation } from "@data/hero";
-import Description from "@data/hero";
+import { Description } from "@data/hero";
 
-export default function Hero() {
+/*
+ * Hero component that displays the hero section of the portfolio.
+ *
+ * @returns A section containing the hero content.
+ */
+export const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
@@ -226,4 +231,4 @@ export default function Hero() {
       </div>
     </section>
   );
-}
+};

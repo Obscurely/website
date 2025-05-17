@@ -12,6 +12,14 @@ interface LoadMoreButtonProps {
   isLoading?: boolean;
 }
 
+/**
+ * LoadMoreButton component that displays a button to load more projects.
+ *
+ * @param isInView - A boolean indicating whether the component is in view or not.
+ * @param handleLoadMoreAction - A function to handle the load more action.
+ * @param disabled - A boolean indicating whether the button should be disabled.
+ * @param isLoading - A boolean indicating whether the button is in loading state.
+ */
 export const LoadMoreButton = ({
   isInView,
   handleLoadMoreAction,

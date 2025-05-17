@@ -26,7 +26,7 @@ export const typeAnimation = [
 /**
  * Short concise description of my tech skills
  */
-export default function Description() {
+export const Description = () => {
   return (
     <p className="mb-4 text-lg leading-relaxed text-slate-300 md:text-xl">
       I am a <strong className="text-white">Full-Stack Developer</strong>{" "}
@@ -66,4 +66,4 @@ export default function Description() {
       across all platforms.
     </p>
   );
-}
+};

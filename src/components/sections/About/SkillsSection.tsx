@@ -14,7 +14,7 @@ import {
   SkillBadge,
   SkillBadgeProvider,
 } from "@components/helper/SkillBadge/SkillBadge";
-import SkillsTooltip from "./SkillsTooltip";
+import { SkillsTooltip } from "./SkillsTooltip";
 
 // Memoize static data
 const tabCategories = Object.values(SkillCategory).filter(
@@ -37,7 +37,7 @@ const CHARS_PER_BADGE_WIDTH = 8; // Approximate characters per badge width unit
 const BASE_PADDING = 4; // Base padding in pixels
 const MIN_HEIGHT = 60; // Minimum height in pixels
 
-// Utility function to calculate content height
+// Function to calculate the height of the content based on the number of skills
 const calculateContentHeight = (
   containerWidth: number,
   category: SkillCategory
@@ -78,7 +78,13 @@ interface SkillsSectionProps {
   isInView: boolean;
 }
 
-export default function SkillsSection({ isInView }: SkillsSectionProps) {
+/**
+ * SkillsSection component that displays a list of skills.
+ * It uses framer-motion for animation and memoization for performance.
+ *
+ * @param isInView - A boolean indicating whether the component is in view or not.
+ */
+export const SkillsSection = ({ isInView }: SkillsSectionProps) => {
   // Memoize animation props to prevent recalculation
   const animationProps = useMemo(
     () => ({
@@ -107,8 +113,14 @@ export default function SkillsSection({ isInView }: SkillsSectionProps) {
       </SkillBadgeProvider>
     </motion.div>
   );
-}
+};
 
+SkillsSection.displayName = "SkillsSection";
+
+/**
+ * KeySkillsSection component that displays key skills.
+ * It memoizes the key skills to prevent recalculation on every render.
+ */
 const KeySkillsSection = memo(function KeySkillsSection() {
   // Memoize key skills to prevent recalculation
   const keySkills = useMemo(() => skills[SkillCategory.KeySkills], []);
@@ -141,6 +153,12 @@ const KeySkillsSection = memo(function KeySkillsSection() {
   );
 });
 
+KeySkillsSection.displayName = "KeySkillsSection";
+
+/**
+ * SkillsTabs component that displays skill categories and their respective skills.
+ * It calculates the height of the tabs dynamically based on the content.
+ */
 const SkillsTabs = memo(function SkillsTabs() {
   const defaultValue = useMemo(
     () => tabCategories[0] || SkillCategory.Frontend,
@@ -200,7 +218,13 @@ const SkillsTabs = memo(function SkillsTabs() {
   );
 });
 
-// Extract category skills to a separate memoized component
+SkillsTabs.displayName = "SkillsTabs";
+
+/**
+ * CategorySkills component to display skills in a specific category
+ * @param category - The skill category to display
+ * @returns A list of skill badges for the specified category
+ */
 const CategorySkills = memo(function CategorySkills({
   category,
 }: {
@@ -229,6 +253,12 @@ const CategorySkills = memo(function CategorySkills({
   );
 });
 
+CategorySkills.displayName = "CategorySkills";
+
+/**
+ * Desktop tabs list component
+ * @returns A list of skill categories for desktop view
+ */
 const DesktopTabsList = memo(function DesktopTabsList() {
   return (
     <div className="hidden xl:block">
@@ -251,6 +281,12 @@ const DesktopTabsList = memo(function DesktopTabsList() {
   );
 });
 
+DesktopTabsList.displayName = "DesktopTabsList";
+
+/**
+ * Mobile tabs list component
+ * @returns A list of skill categories for mobile view
+ */
 const MobileTabsList = memo(function MobileTabsList() {
   const mobileTabsListStyle = useMemo(
     () => ({
@@ -287,3 +323,5 @@ const MobileTabsList = memo(function MobileTabsList() {
     </div>
   );
 });
+
+MobileTabsList.displayName = "MobileTabsList";

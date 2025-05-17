@@ -2,13 +2,16 @@
 
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-import AboutHeader from "./AboutHeader";
-import AboutJourney from "./AboutJourney";
-import SkillsSection from "./SkillsSection";
-import ServicesSection from "./ServicesSection";
-import CertificationsSection from "./CertificationsSection";
+import { AboutHeader } from "./AboutHeader";
+import { AboutJourney } from "./AboutJourney";
+import { SkillsSection } from "./SkillsSection";
+import { ServicesSection } from "./ServicesSection";
+import { CertificationsSection } from "./CertificationsSection";
 
-export default function About() {
+/**
+ * About component that serves as the main section for the "About" page.
+ */
+export const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
@@ -51,4 +54,4 @@ export default function About() {
       </div>
     </section>
   );
-}
+};

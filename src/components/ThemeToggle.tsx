@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { Button } from "@ui/button";
 import { IconMoon, IconSun } from "@tabler/icons-react";
 
-export default function ThemeToggle() {
+export const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -27,4 +27,4 @@ export default function ThemeToggle() {
       {theme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
     </Button>
   );
-}
+};
