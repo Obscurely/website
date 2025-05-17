@@ -41,7 +41,7 @@ export interface Project {
   category: Category;
   name: string;
   index: number;
-  description: string;
+  description: React.ReactNode;
   image?: string;
   imageSize?: number;
   tags: string[];
@@ -70,8 +70,14 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Web",
     name: "RekoSearch",
     index: 0,
-    description:
-      "An AI-powered file search engine for images, videos, documents and audio that understands the content of your files, enabling semantic search across them. (~50k LoC)",
+    description: (
+      <p>
+        An <strong>AI-powered</strong> file search engine for images, videos,
+        documents and audio that understands the content of your files, enabling{" "}
+        <strong>semantic search</strong> across them. (<strong>~50k LoC</strong>
+        ).
+      </p>
+    ),
     image: "/projects/rekosearch.svg",
     imageSize: 75,
     tags: ["AWS", "Kubernetes", "Rust", "Python", "React", "MUI", "Flask"],
@@ -83,8 +89,14 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Native",
     name: "Falion",
     index: 1,
-    description:
-      "A privacy-focused tool and library for interacting with programming resources (like Stackoverflow) fast, efficiently, and asynchronously/parallelly using the CLI or GUI.",
+    description: (
+      <p>
+        A privacy-focused <strong>tool and library</strong> for interacting with
+        programming resources (like Stackoverflow) fast, efficiently, and{" "}
+        <strong>asynchronously/parallelly</strong> using the{" "}
+        <strong>CLI or GUI</strong>.
+      </p>
+    ),
     image: "/projects/falion.avif",
     imageSize: 100,
     tags: ["Rust", "Async", "Parallel", "Cross-Platform", "CI/CD", "Library"],
@@ -95,8 +107,13 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Web",
     name: "Website",
     index: 2,
-    description:
-      "My personal static tech website portfolio and blog, made with Next.js, React, Typescript, TailwindCSS and Shadcn/ui, deployed using CI/CD on AWS.",
+    description: (
+      <p>
+        My personal <strong>static tech website</strong> portfolio and blog,
+        made with Next.js, React, Typescript, <strong>TailwindCSS</strong> and
+        Shadcn/ui, <strong>deployed using CI/CD on AWS</strong>.
+      </p>
+    ),
     image: "/projects/nextjs.svg",
     imageSize: 75,
     tags: ["Next.js", "React", "TailwindCSS", "Shadcn/ui", "AWS"],
@@ -108,8 +125,13 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Native",
     name: "EStash",
     index: 3,
-    description:
-      "A cross-platform, highly secure encrypted digital vault capable of setting a path and copying the contents to that file with the click of a button. ",
+    description: (
+      <p>
+        A <strong>cross-platform</strong>, highly secure{" "}
+        <strong>encrypted digital vault</strong> capable of setting a path and
+        copying the contents to that file with the click of a button.
+      </p>
+    ),
     image: "/projects/estash.avif",
     imageSize: 65,
     tags: ["Rust", "Encryption", "Secure", "Cross-Platform", "Jenkins"],
@@ -120,8 +142,15 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Tool/Script",
     name: "RustTemplate",
     index: 4,
-    description:
-      "A fully set-up Github repository for cross-platform Rust projects. It includes scripts to customize the repository automatically, CI/CD pipelines to deploy on any platform in multiple formats and the best Rust practices.",
+    description: (
+      <p>
+        A fully set-up Github repository for{" "}
+        <strong>cross-platform Rust projects</strong>. It includes scripts to
+        customize the repository automatically, <strong>CI/CD</strong> pipelines
+        to <strong>deploy on any platform in multiple formats</strong> and the
+        best Rust practices.
+      </p>
+    ),
     tags: ["CI/CD", "GitHub Actions", "Template", "Rust", "Cross-Platform"],
     githubUrl: "https://github.com/Obscurely/RustTemplate",
     featured: true,
@@ -130,8 +159,13 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Tool/Script",
     name: "NixObscurely",
     index: 5,
-    description:
-      "My fully customized and automated NixOS (advanced Linux distribution) home-manager + flakes system configuration. ",
+    description: (
+      <p>
+        My fully customized and <strong>automated</strong> NixOS (
+        <strong>advanced Linux distribution</strong>) home-manager + flakes
+        system configuration.{" "}
+      </p>
+    ),
     image: "/projects/nix.svg",
     imageSize: 80,
     tags: ["Automated", "NixOS", "Linux", "Home-manager", "Flakes"],
@@ -142,8 +176,12 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Tool/Script",
     name: "ArchObscurely",
     index: 6,
-    description:
-      "Automated, fully customized Arch Linux install for my machine.",
+    description: (
+      <p>
+        <strong>Automated</strong>, fully customized{" "}
+        <strong>Arch Linux install</strong> for my machine.
+      </p>
+    ),
     image: "/projects/archlinux.svg",
     imageSize: 70,
     tags: ["Automated", "Arch Linux", "Linux"],
@@ -154,8 +192,14 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Tool/Script",
     name: "Pbthal-Archive-Manager",
     index: 7,
-    description:
-      "Download music from PBTHAL's archive faster and easier + get properly made albums using this collection of Python scripts with a functional CLI frontend",
+    description: (
+      <p>
+        Download music from <strong>PBTHAL's</strong> archive{" "}
+        <strong>faster and easier</strong> + get properly made albums using this
+        collection of <strong>Python scripts</strong> with a functional CLI
+        frontend.
+      </p>
+    ),
     tags: ["Python", "CLI", "Scripts", "Automation"],
     githubUrl: "https://github.com/Obscurely/Pbthal-Archive-Manager",
     featured: false,
@@ -164,8 +208,13 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Native",
     name: "PyPassMan",
     index: 8,
-    description:
-      "A cross-platform Password Manager with a QT frontend, custom installer, simple, but I learned a lot from building it.",
+    description: (
+      <p>
+        A <strong>cross-platform</strong> Password Manager with a{" "}
+        <strong>QT frontend</strong>, <strong>custom installer</strong>, simple,
+        but I learned a lot from building it.
+      </p>
+    ),
     tags: ["Python", "QT", "Cross-Platform", "Encryption"],
     githubUrl: "https://github.com/Obscurely/PyPassMan",
     featured: false,
@@ -174,8 +223,12 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Tool/Script",
     name: "Discord-Bot",
     index: 9,
-    description:
-      "A bot integrated with Discord's API, providing basic admin commands and a music player.",
+    description: (
+      <p>
+        A <strong>bot integrated with Discord's API</strong>, providing basic
+        admin commands and a music player.
+      </p>
+    ),
     tags: ["Python", "API Integration", "Bot"],
     githubUrl: "https://github.com/Obscurely/Discord-Bot",
     featured: false,
@@ -184,8 +237,12 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Tool/Script",
     name: "RustySorter",
     index: 10,
-    description:
-      "A fast, efficient, straightforward file sorter with recursive capabilities, made in Rust!",
+    description: (
+      <p>
+        A fast, efficient, straightforward file sorter with{" "}
+        <strong>recursive capabilities</strong>, made in Rust!
+      </p>
+    ),
     tags: ["Rust", "File Sorter", "CLI", "Automation"],
     githubUrl: "https://github.com/Obscurely/RustySorter",
     featured: false,
@@ -194,7 +251,7 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Native",
     name: "Sharp-Player",
     index: 11,
-    description: " A simple audio player with a GUI made in C#!",
+    description: <p>A simple audio player with a GUI made in C#!</p>,
     tags: ["C#", "Audio Player", "GUI"],
     githubUrl: "https://github.com/Obscurely/Sharp-Player",
     featured: false,
@@ -203,8 +260,13 @@ export const projects: Record<ProjectKey, Project> = {
     category: "Native",
     name: "ArduinoAlarm",
     index: 12,
-    description:
-      "An alarm clock I built using an arduio uno, tiny rtc, speaker, ir sensor and an ir remote. ",
+    description: (
+      <p>
+        An alarm clock I built using an <strong>arduio uno</strong>,{" "}
+        <strong>tiny rtc</strong>, speaker, <strong>ir sensor</strong> and an ir
+        remote.
+      </p>
+    ),
     tags: ["Arduino", "Alarm", "IR Remote", "Tiny RTC", "C++"],
     githubUrl: "https://github.com/Obscurely/ArduinoAlarm",
     featured: false,

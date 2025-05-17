@@ -66,17 +66,11 @@ export const ProjectCard = memo(
         custom={index}
         whileHover="hover"
         className="group relative z-0 h-full"
-        // Remove the layout prop or set layoutId to ensure independent layout handling
-        // layout
       >
         <Card
-          className="relative h-full overflow-hidden transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-cyan-500/10"
+          className="relative flex h-full flex-col overflow-hidden border-slate-700/50 bg-transparent transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10"
           style={{
-            borderWidth: "1px",
-            borderStyle: "solid",
-            borderColor: "rgba(51, 65, 85, 0.5)",
             background: "transparent",
-            // Add transform-style to isolate the 3D effects
             transformStyle: "preserve-3d",
           }}
         >
@@ -87,19 +81,8 @@ export const ProjectCard = memo(
             <div className="h-[3.25rem] bg-slate-900/30"></div>
           </div>
 
-          {/* Add a pseudo-element for the hover border effect */}
-          <div
-            className="pointer-events-none absolute inset-0 z-10 rounded-lg opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
-            style={{
-              borderWidth: "1px",
-              borderStyle: "solid",
-              borderColor: "rgba(6, 182, 212, 0.5)",
-              borderRadius: "var(--radius-xl)", // Or whatever value your Card uses
-            }}
-          />
-
-          {/* Rest of your card content */}
-          <div className="relative z-[5]">
+          {/* Card content */}
+          <div className="relative z-[5] flex h-full flex-col">
             <div className="relative flex h-52 items-center justify-center overflow-hidden bg-slate-900/30 p-4">
               <ProjectImage project={project} />
 
@@ -115,11 +98,11 @@ export const ProjectCard = memo(
               )}
             </div>
 
-            <CardContent className="flex-grow p-6">
+            <CardContent className="flex min-h-[200px] flex-grow flex-col p-6">
               <h3 className="mb-3 text-xl font-bold text-white transition-colors duration-300 group-hover:text-cyan-400">
                 {project.name}
               </h3>
-              <p className="mb-4 text-slate-300">{project.description}</p>
+              <div className="mb-4 text-slate-300">{project.description}</div>
               <div className="mt-auto flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <Badge
@@ -133,7 +116,7 @@ export const ProjectCard = memo(
               </div>
             </CardContent>
 
-            <CardFooter className="flex justify-between border-t border-slate-800/50 bg-slate-900/30 p-5">
+            <CardFooter className="mt-auto flex justify-between border-t border-slate-800/50 bg-slate-900/30 p-5">
               <Button
                 variant="ghost"
                 size="sm"

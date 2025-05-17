@@ -9,7 +9,7 @@ import { LoadMoreButton } from "./LoadMoreButton";
 import { projectsArray, filterCategories } from "./ProjectsData";
 import { Project } from "@data/projects";
 
-// Pre-compute featured projects outside the component
+// Pre-compute featured projects
 const featuredProjects: Project[] = projectsArray.filter((p) => p.featured);
 const nonFeaturedProjects: Project[] = projectsArray.filter((p) => !p.featured);
 
@@ -42,8 +42,19 @@ export default function Projects() {
   }, [filteredProjects, visibleProjects]);
 
   const handleCategoryChange = useCallback((category: string) => {
+    // Update state
     setActiveCategory(category);
     setVisibleProjects(3);
+
+    // Only on when the projects don't start going on multiple lines
+    if (window.innerWidth >= 1025) {
+      requestAnimationFrame(() => {
+        const projectsSection = document.getElementById("projects");
+        if (projectsSection) {
+          projectsSection.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }
   }, []);
 
   const handleLoadMore = useCallback(() => {
@@ -53,33 +64,39 @@ export default function Projects() {
     // Increase the number of visible projects
     setVisibleProjects((prev) => prev + 3);
 
-    // Whether to scroll or not
-    const shouldScroll = currentVisibleCount > 0;
+    // Only scroll if we already have visible projects
+    if (currentVisibleCount > 0) {
+      // Use requestAnimationFrame to ensure DOM has updated
+      requestAnimationFrame(() => {
+        // Use a second requestAnimationFrame to ensure the browser has painted
+        requestAnimationFrame(() => {
+          // Get all project elements
+          const projectElements = document.querySelectorAll(
+            "#projects .grid > div"
+          );
 
-    // Use setTimeout to ensure DOM has updated with new projects
-    if (shouldScroll) {
-      setTimeout(() => {
-        // navbar height + some extra to make it centerd and work on other screen sizes
-        const navbarHeight = 150;
+          // Find the last currently visible project
+          if (projectElements && projectElements[currentVisibleCount - 1]) {
+            const lastCurrentProject = projectElements[currentVisibleCount - 1];
+            const rect = lastCurrentProject?.getBoundingClientRect();
 
-        // Last currently visible project to scroll to
-        const projectElements = document.querySelectorAll(
-          "#projects .grid > div"
-        );
-        if (projectElements && projectElements[currentVisibleCount - 1]) {
-          const lastCurrentProject = projectElements[currentVisibleCount - 1];
-          const rect = lastCurrentProject?.getBoundingClientRect();
+            // Calculate the navbar height dynamically
+            const navbar = document.querySelector("nav") || {
+              clientHeight: 80,
+            };
+            const navbarHeight = navbar.clientHeight + 70; // Add some padding
 
-          // Scroll to position (accounting for navbar)
-          window.scrollTo({
-            top:
-              window.scrollY +
-              (rect !== undefined ? rect.bottom : 0) -
-              navbarHeight,
-            behavior: "smooth",
-          });
-        }
-      }, 100);
+            // Scroll to position
+            window.scrollTo({
+              top:
+                window.scrollY +
+                (rect !== undefined ? rect.bottom : 0) -
+                navbarHeight,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
     }
   }, [visibleProjects]);
 
@@ -107,8 +124,10 @@ export default function Projects() {
         </div>
 
         <div className="relative container mx-auto px-4 sm:px-6">
+          {/* Header and description */}
           <ProjectsHeader isInView={isInView} />
 
+          {/* Filter tab bar categories */}
           <ProjectsFilter
             filterCategories={filterCategories}
             activeCategory={activeCategory}
@@ -116,12 +135,14 @@ export default function Projects() {
             isInView={isInView}
           />
 
+          {/* Projects list */}
           <ProjectsList
             isInView={isInView}
             activeCategory={activeCategory}
             visibleProjectsList={visibleProjectsList}
           />
 
+          {/* Load more button */}
           <LoadMoreButton
             isInView={isInView}
             handleLoadMoreAction={handleLoadMore}
