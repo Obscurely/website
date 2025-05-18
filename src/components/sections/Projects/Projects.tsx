@@ -50,16 +50,6 @@ export const Projects = () => {
     // Update state
     setActiveCategory(category);
     setVisibleProjects(3);
-
-    // Only on when the projects don't start going on multiple lines
-    if (window.innerWidth >= 1025) {
-      requestAnimationFrame(() => {
-        const projectsSection = document.getElementById("projects");
-        if (projectsSection) {
-          projectsSection.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    }
   }, []);
 
   const handleLoadMore = useCallback(() => {
