@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useMemo, useEffect, useState, useRef } from "react";
+import { memo, useMemo } from "react";
 import { motion } from "framer-motion";
 import { skills } from "@data/skills/skills";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tabs";
@@ -15,11 +15,7 @@ import {
   SkillBadgeProvider,
 } from "@components/helper/SkillBadge/SkillBadge";
 import { SkillsTooltip } from "./SkillsTooltip";
-
-// Memoize static data
-const tabCategories = Object.values(SkillCategory).filter(
-  (category) => category !== SkillCategory.KeySkills
-);
+import { useSkillsTabs, tabCategories } from "@hooks/useSkillsTabs";
 
 // Mobile tab styles
 const mobileTabStyles = [
@@ -29,50 +25,6 @@ const mobileTabStyles = [
   { gridColumn: "1 / span 3", gridRow: 2, marginTop: "-0.125rem" }, // 4th item
   { gridColumn: "4 / span 3", gridRow: 2, marginTop: "-0.125rem" }, // 5th item
 ];
-
-// Constants for height calculation
-const BADGE_HEIGHT = 28; // Height of a skill badge in pixels
-const BADGE_MARGIN = 6; // Margin between badges (gap-1.5 = 0.375rem = ~6px)
-const CHARS_PER_BADGE_WIDTH = 8; // Approximate characters per badge width unit
-const BASE_PADDING = 4; // Base padding in pixels
-const MIN_HEIGHT = 60; // Minimum height in pixels
-
-// Function to calculate the height of the content based on the number of skills
-const calculateContentHeight = (
-  containerWidth: number,
-  category: SkillCategory
-) => {
-  const categorySkills = skills[category];
-  if (!categorySkills || categorySkills.length === 0) return MIN_HEIGHT;
-
-  // Calculate average characters per skill
-  const totalChars = categorySkills.reduce(
-    (sum, skill) =>
-      sum +
-      (typeof skill.name === "string"
-        ? skill.name.length
-        : String(skill.id).length || 5),
-    0
-  );
-  const avgCharsPerSkill = totalChars / categorySkills.length;
-
-  // Estimate badge width based on character count
-  const avgBadgeWidth = Math.max(avgCharsPerSkill * CHARS_PER_BADGE_WIDTH, 80);
-
-  // Estimate badges per row based on container width
-  const badgesPerRow = Math.floor(
-    (containerWidth - BASE_PADDING) / (avgBadgeWidth + BADGE_MARGIN)
-  );
-
-  // Calculate rows needed
-  const rows = Math.ceil(categorySkills.length / Math.max(badgesPerRow, 1));
-
-  // Calculate height
-  return Math.max(
-    rows * (BADGE_HEIGHT + BADGE_MARGIN) - BADGE_MARGIN + BASE_PADDING,
-    MIN_HEIGHT
-  );
-};
 
 interface SkillsSectionProps {
   isInView: boolean;
@@ -160,36 +112,7 @@ KeySkillsSection.displayName = "KeySkillsSection";
  * It calculates the height of the tabs dynamically based on the content.
  */
 const SkillsTabs = memo(function SkillsTabs() {
-  const defaultValue = useMemo(
-    () => tabCategories[0] || SkillCategory.Frontend,
-    []
-  );
-
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [contentHeight, setContentHeight] = useState<number>(MIN_HEIGHT);
-
-  useEffect(() => {
-    const calculateHeight = () => {
-      if (!containerRef.current) return;
-
-      const containerWidth = containerRef.current.clientWidth;
-
-      // Calculate height for each category and find the maximum
-      const heights = tabCategories.map((category) =>
-        calculateContentHeight(containerWidth, category)
-      );
-
-      setContentHeight(Math.max(...heights));
-    };
-
-    // Calculate on mount and window resize
-    calculateHeight();
-    window.addEventListener("resize", calculateHeight);
-
-    return () => {
-      window.removeEventListener("resize", calculateHeight);
-    };
-  }, []);
+  const { containerRef, defaultValue, contentHeight } = useSkillsTabs();
 
   return (
     <div ref={containerRef}>

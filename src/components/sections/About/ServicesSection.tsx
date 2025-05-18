@@ -4,6 +4,19 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@ui/card";
 import { services } from "@data/about";
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.1 * i,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
+};
+
 interface ServicesSectionProps {
   isInView: boolean;
 }
@@ -14,19 +27,6 @@ interface ServicesSectionProps {
  * @param isInView - A boolean indicating whether the component is in view or not.
  */
 export const ServicesSection = ({ isInView }: ServicesSectionProps) => {
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.1 * i,
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    }),
-  };
-
   return (
     <div className="relative" style={{ zIndex: 10 }}>
       <motion.h3
