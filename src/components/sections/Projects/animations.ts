@@ -3,18 +3,18 @@ export const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.03, // Reduced from 0.1
+      staggerChildren: 0.03,
       when: "beforeChildren",
-      duration: 0.2, // Faster overall duration
+      duration: 0.2,
     },
   },
   exit: {
     opacity: 0,
     transition: {
-      staggerChildren: 0.02, // Reduced from 0.05
+      staggerChildren: 0.02,
       staggerDirection: -1,
       when: "afterChildren",
-      duration: 0.15, // Faster exit
+      duration: 0.15,
     },
   },
 };
@@ -76,4 +76,42 @@ export const cardVariants = {
 export const headerVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
+};
+
+export const carouselVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+      when: "beforeChildren",
+      duration: 0.1,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+
+export const navigationButtonVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.1,
+    },
+  },
+  hover: {
+    scale: 1.05,
+    transition: {
+      duration: 0.2,
+    },
+  },
+  tap: {
+    scale: 0.95,
+  },
 };

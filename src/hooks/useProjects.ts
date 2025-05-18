@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo, useCallback } from "react";
+import { useState, useRef, useMemo, useCallback, useEffect } from "react";
 import { useInView } from "framer-motion";
 import { Project } from "@data/projects";
 import { projects, categories } from "@data/projects";
@@ -17,13 +17,37 @@ const nonFeaturedProjects: Project[] = projectsArray.filter((p) => !p.featured);
 
 export const useProjects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [visibleProjects, setVisibleProjects] = useState(3);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [projectsPerPage, setProjectsPerPage] = useState(3); // Default to 3, will be updated based on screen size
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
     amount: 0.1,
     margin: "0px 0px -200px 0px",
   });
+
+  // Update projects per page based on screen size
+  useEffect(() => {
+    const updateProjectsPerPage = () => {
+      if (window.innerWidth <= 639) {
+        setProjectsPerPage(1); // Mobile: 1 project per page
+      } else if (window.innerWidth <= 1023) {
+        setProjectsPerPage(2); // Tablet: 2 projects per page
+      } else {
+        setProjectsPerPage(3); // Desktop: 3 projects per page
+      }
+    };
+
+    // Set initial value
+    updateProjectsPerPage();
+
+    // Update on resize
+    window.addEventListener("resize", updateProjectsPerPage);
+
+    return () => {
+      window.removeEventListener("resize", updateProjectsPerPage);
+    };
+  }, []);
 
   // filtering
   const filteredProjects = useMemo(() => {
@@ -38,74 +62,47 @@ export const useProjects = () => {
     );
   }, [activeCategory]);
 
-  // Only compute visible projects when needed
-  const visibleProjectsList = useMemo(() => {
-    return filteredProjects.slice(0, visibleProjects);
-  }, [filteredProjects, visibleProjects]);
+  // Calculate total pages
+  const totalPages = useMemo(
+    () => Math.ceil(filteredProjects.length / projectsPerPage),
+    [filteredProjects.length, projectsPerPage]
+  );
+
+  // Reset to first page when category changes or projects per page changes
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [activeCategory, projectsPerPage]);
+
+  // Get current page projects
+  const currentProjects = useMemo(() => {
+    const startIndex = currentPage * projectsPerPage;
+    return filteredProjects.slice(startIndex, startIndex + projectsPerPage);
+  }, [filteredProjects, currentPage, projectsPerPage]);
 
   const handleCategoryChange = useCallback((category: string) => {
-    // Update state
     setActiveCategory(category);
-    setVisibleProjects(3);
+    setCurrentPage(0);
   }, []);
 
-  const handleLoadMore = useCallback(() => {
-    // Store the current number of visible projects before increasing
-    const currentVisibleCount = visibleProjects;
+  const goToNextPage = useCallback(() => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  }, [totalPages]);
 
-    // Increase the number of visible projects
-    setVisibleProjects((prev) => prev + 3);
-
-    // Only scroll if we already have visible projects
-    if (currentVisibleCount > 0) {
-      // Use requestAnimationFrame to ensure DOM has updated
-      requestAnimationFrame(() => {
-        // Use a second requestAnimationFrame to ensure the browser has painted
-        requestAnimationFrame(() => {
-          // Get all project elements
-          const projectElements = document.querySelectorAll(
-            "#projects .grid > div"
-          );
-
-          // Find the last currently visible project
-          if (projectElements && projectElements[currentVisibleCount - 1]) {
-            const lastCurrentProject = projectElements[currentVisibleCount - 1];
-            const rect = lastCurrentProject?.getBoundingClientRect();
-
-            // Calculate the navbar height dynamically
-            const navbar = document.querySelector("nav") || {
-              clientHeight: 80,
-            };
-            const navbarHeight = navbar.clientHeight + 70; // Add some padding
-
-            // Scroll to position
-            window.scrollTo({
-              top:
-                window.scrollY +
-                (rect !== undefined ? rect.bottom : 0) -
-                navbarHeight,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-    }
-  }, [visibleProjects]);
-
-  // Memoize check to avoid recalculation during renders
-  const hasMoreProjects = useMemo(
-    () => visibleProjects < filteredProjects.length,
-    [visibleProjects, filteredProjects.length]
-  );
+  const goToPrevPage = useCallback(() => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  }, [totalPages]);
 
   return {
     ref,
     isInView,
     activeCategory,
     handleCategoryChange,
-    handleLoadMore,
-    visibleProjectsList,
-    hasMoreProjects,
+    currentProjects,
+    currentPage,
+    totalPages,
+    goToNextPage,
+    goToPrevPage,
     filterCategories,
+    projectsPerPage,
   };
 };

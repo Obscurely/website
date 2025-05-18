@@ -1,56 +1,48 @@
 "use client";
 
-import { memo, useCallback } from "react";
+import { memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Project } from "@data/projects";
 import { ProjectCard } from "./ProjectCard";
-import { containerVariants } from "./animations";
+import { carouselVariants, cardVariants } from "./animations";
 
 interface ProjectsListProps {
   isInView: boolean;
   activeCategory: string;
-  visibleProjectsList: Project[];
+  currentProjects: Project[];
+  currentPage: number;
 }
 
-/**
- * ProjectsList component that displays a list of projects with animation.
- *
- * @param isInView - A boolean indicating whether the component is in view or not.
- * @param activeCategory - The currently selected category.
- * @param visibleProjectsList - An array of projects to display.
- */
 export const ProjectsList = memo(
-  ({ isInView, activeCategory, visibleProjectsList }: ProjectsListProps) => {
-    // Calculate local index for animation purposes
-    const getLocalIndex = useCallback((globalIndex: number): number => {
-      // This ensures each row starts with indices 0, 1, 2 for proper staggering
-      return globalIndex % 3;
-    }, []);
-
+  ({
+    isInView,
+    activeCategory,
+    currentProjects,
+    currentPage,
+  }: ProjectsListProps) => {
     return (
-      <div className="min-h-[400px]">
+      <div className="min-h-[550px]">
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeCategory}
+            key={`${activeCategory}-${currentPage}`}
             className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-            variants={containerVariants}
+            variants={carouselVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             exit="exit"
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 30,
-            }}
           >
-            {visibleProjectsList.map((project, idx) => (
-              <div key={project.name}>
+            {currentProjects.map((project, idx) => (
+              <motion.div
+                key={project.name}
+                variants={cardVariants}
+                custom={idx}
+              >
                 <ProjectCard
                   project={project}
-                  index={getLocalIndex(idx)}
+                  index={idx}
                   isInView={isInView}
                 />
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </AnimatePresence>

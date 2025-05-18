@@ -3,13 +3,13 @@
 import { ProjectsHeader } from "./ProjectsHeader";
 import { ProjectsFilter } from "./ProjectsFilter";
 import { ProjectsList } from "./ProjectsList";
-import { LoadMoreButton } from "./LoadMoreButton";
+import { ProjectsNavigation } from "./ProjectsNavigation";
 import { useProjects } from "@hooks/useProjects";
 
 /**
- * Projects component that displays a list of projects with filtering and load more functionality.
+ * Projects component that displays a list of projects with filtering and pagination.
  *
- * @returns A section containing the projects list.
+ * @returns A section containing the projects list with navigation controls.
  */
 export const Projects = () => {
   const {
@@ -17,9 +17,11 @@ export const Projects = () => {
     isInView,
     activeCategory,
     handleCategoryChange,
-    handleLoadMore,
-    visibleProjectsList,
-    hasMoreProjects,
+    currentProjects,
+    currentPage,
+    totalPages,
+    goToNextPage,
+    goToPrevPage,
     filterCategories,
   } = useProjects();
 
@@ -52,18 +54,21 @@ export const Projects = () => {
             isInView={isInView}
           />
 
-          {/* Projects list */}
+          {/* Projects list - fixed height carousel */}
           <ProjectsList
             isInView={isInView}
             activeCategory={activeCategory}
-            visibleProjectsList={visibleProjectsList}
+            currentProjects={currentProjects}
+            currentPage={currentPage}
           />
 
-          {/* Load more button */}
-          <LoadMoreButton
+          {/* Navigation controls */}
+          <ProjectsNavigation
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPrevPage={goToPrevPage}
+            onNextPage={goToNextPage}
             isInView={isInView}
-            handleLoadMoreAction={handleLoadMore}
-            disabled={!hasMoreProjects}
           />
         </div>
       </div>
