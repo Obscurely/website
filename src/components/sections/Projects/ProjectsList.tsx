@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Project } from "@data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { carouselVariants, cardVariants } from "./animations";
+import { useMaxCardHeight } from "@hooks/useMaxCardHeight";
 
 interface ProjectsListProps {
   isInView: boolean;
@@ -20,6 +21,8 @@ export const ProjectsList = memo(
     currentProjects,
     currentPage,
   }: ProjectsListProps) => {
+    const { maxHeight, registerCard } = useMaxCardHeight();
+
     return (
       <div className="min-h-[550px]">
         <AnimatePresence mode="wait">
@@ -41,6 +44,8 @@ export const ProjectsList = memo(
                   project={project}
                   index={idx}
                   isInView={isInView}
+                  registerCard={registerCard}
+                  maxHeight={maxHeight}
                 />
               </motion.div>
             ))}

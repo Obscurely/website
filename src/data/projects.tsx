@@ -144,11 +144,10 @@ export const projects: Record<ProjectKey, Project> = {
     index: 4,
     description: (
       <p>
-        A fully set-up Github repository for{" "}
-        <strong>cross-platform Rust projects</strong>. It includes scripts to
-        customize the repository automatically, <strong>CI/CD</strong> pipelines
-        to <strong>deploy on any platform in multiple formats</strong> and the
-        best Rust practices.
+        A complete template for <strong>cross-platform Rust projects</strong>.
+        It includes scripts to customize the repository automatically and{" "}
+        <strong>CI/CD</strong> pipelines to{" "}
+        <strong>deploy on any platform in multiple formats</strong>.
       </p>
     ),
     tags: ["CI/CD", "GitHub Actions", "Template", "Rust", "Cross-Platform"],

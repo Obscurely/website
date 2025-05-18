@@ -61,10 +61,14 @@ export const ProjectCard = memo(
     project,
     index = 0,
     isInView = false,
+    registerCard = () => {},
+    maxHeight = 0,
   }: {
     project: Project;
     index?: number;
     isInView?: boolean;
+    registerCard?: (index: number, element: HTMLElement | null) => void;
+    maxHeight?: number;
   }) => {
     return (
       <motion.div
@@ -74,12 +78,14 @@ export const ProjectCard = memo(
         custom={index}
         whileHover="hover"
         className="group relative z-0 h-full"
+        ref={(el) => registerCard(index, el)}
       >
         <Card
           className="relative flex h-full flex-col overflow-hidden border-slate-700/50 bg-transparent transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10"
           style={{
             background: "transparent",
             transformStyle: "preserve-3d",
+            height: maxHeight > 0 ? `${maxHeight}px` : undefined,
           }}
         >
           {/* Background layers for different sections */}
