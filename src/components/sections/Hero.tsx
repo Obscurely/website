@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import {
   IconArrowDown,
+  IconArrowRight,
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandReddit,
@@ -111,20 +112,7 @@ export const Hero = () => {
               >
                 <span className="relative z-10 flex items-center gap-2 font-medium">
                   Get in Touch
-                  <svg
-                    className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
+                  <IconArrowRight className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
                 <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               </Button>
@@ -159,13 +147,13 @@ export const Hero = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -5, scale: 1.1 }}
+                  whileHover={{ y: -2, scale: 1.05 }}
                   className="group flex h-12 w-12 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 backdrop-blur-sm transition-all duration-50 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white"
                 >
                   <social.icon
                     size={22}
                     strokeWidth={2.5}
-                    className="transition-transform duration-50 group-hover:scale-110"
+                    className="transition-transform duration-50 group-hover:scale-105"
                   />
                 </motion.a>
               ))}
