@@ -30,10 +30,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-  ],
+  themeColor: "#000000",
 };
 
 export const metadata: Metadata = {
@@ -48,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${inter.className} flex min-h-screen flex-col font-sans antialiased`}
       >
@@ -56,6 +53,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
           enableSystem={true}
+          forcedTheme="dark"
           disableTransitionOnChange
         >
           <div className="flex flex-1 flex-col">{children}</div>

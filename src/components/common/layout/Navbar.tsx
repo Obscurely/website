@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconMenu2, IconBrandX } from "@tabler/icons-react";
 import { Button } from "@ui/button";
-import { ThemeToggle } from "@common/theme/ThemeToggle";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -77,7 +76,6 @@ export const Navbar = () => {
               </Link>
             </motion.div>
           ))}
-          <ThemeToggle />
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -91,7 +89,6 @@ export const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <div className="flex items-center md:hidden">
-          <ThemeToggle />
           <Button
             variant="ghost"
             size="icon"
