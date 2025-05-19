@@ -40,8 +40,11 @@
     "paths": {
       "@app/*": ["./src/app/*"],
       "@components/*": ["./src/components/*"],
+      "@portfolio/*": ["./src/components/portfolio/*"],
+      "@blog/*": ["./src/components/blog/*"],
+      "@common/*": ["./src/components/common/*"],
       "@utils/*": ["./src/utils/*"],
-      "@ui/*": ["./src/components/ui/*"],
+      "@ui/*": ["./src/components/common/ui/*"],
       "@lib/*": ["./src/lib/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@data/*": ["./src/data/*"]

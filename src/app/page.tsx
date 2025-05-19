@@ -2,13 +2,13 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Hero } from "@components/sections/Hero";
-import { About } from "@components/sections/About/About";
-import { Projects } from "@components/sections/Projects/Projects";
-import { Blog } from "@components/sections/Blog";
-import { Contact } from "@components/sections/Contact";
-import { Navbar } from "@components/layout/Navbar";
-import { Footer } from "@components/layout/Footer";
+import { Hero } from "@portfolio/sections/Hero";
+import { About } from "@portfolio/sections/About/About";
+import { Projects } from "@portfolio/sections/Projects/Projects";
+import { Blog } from "@portfolio/sections/Blog";
+import { Contact } from "@portfolio/sections/Contact";
+import { Navbar } from "@common/layout/Navbar";
+import { Footer } from "@common/layout/Footer";
 
 export default function Home() {
   // Create a ref for the entire page

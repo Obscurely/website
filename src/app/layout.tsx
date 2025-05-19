@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@components/ThemeProvider";
+import { ThemeProvider } from "@common/theme/ThemeProvider";
 import { Inter } from "next/font/google";
 
 // Primary font
