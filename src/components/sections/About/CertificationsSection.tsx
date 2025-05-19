@@ -30,7 +30,7 @@ export const CertificationsSection = ({
   return (
     <motion.div
       {...animationProps}
-      className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6 backdrop-blur-sm"
+      className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6"
     >
       <h3 className="mb-6 text-2xl font-bold text-white">My Certifications</h3>
 
