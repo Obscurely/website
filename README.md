@@ -29,6 +29,24 @@
   and Tailwind CSS
 - [Tabler Icons](https://tabler-icons.io/) - A set of over 5850 free
   MIT-licensed high-quality SVG icons for you to use in your web projects
+- [rehype-autolink-headings](https://github.com/rehypejs/rehype-autolink-headings) -
+  a plugin to add links to headings in HTML
+- [rehype-slug](https://github.com/rehypejs/rehype-slug) - a plugin to add `id`
+  attributes to headings
+- [rehype-pretty-code](https://github.com/rehype-pretty/rehype-pretty-code) -
+  Beautiful code blocks for Markdown or MDX.
+- [remark-gft](https://github.com/remarkjs/remark-gfm) - remark plugin to
+  support GFM (autolink literals, footnotes, strikethrough, tables, tasklists)
+- [shiki](https://github.com/shikijs/shiki) - A beautiful syntax highlighter
+  based on TextMate grammar, accurate and powerful.
+- [gray-matter](https://github.com/jonschlinkert/gray-matter) - A simple library
+  for parsing front matter from strings, files, and buffers.
+- [reading-time](https://github.com/ngryman/readingtime) - A simple library for
+  calculating the reading time of a string.
+- [giscus](https://giscus.app/)- A comment system powered by GitHub Discussions
+- [fuse.js](https://fusejs.io/) - A lightweight fuzzy-search library, with zero
+  dependencies.
+- [date-fns](https://date-fns.org/) - A modern JavaScript date utility library.
 - [Simple Icons](https://simpleicons.org/) - A set of icons for popular brands
   in SVG format
 
