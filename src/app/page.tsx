@@ -7,7 +7,7 @@ import { About } from "@portfolio/sections/About/About";
 import { Projects } from "@portfolio/sections/Projects/Projects";
 import { Blog } from "@portfolio/sections/Blog";
 import { Contact } from "@portfolio/sections/Contact";
-import { Navbar } from "@common/layout/Navbar";
+import { Navbar } from "@portfolio/layout/Navbar";
 import { Footer } from "@common/layout/Footer";
 
 export default function Home() {

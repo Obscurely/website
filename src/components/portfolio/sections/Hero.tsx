@@ -2,19 +2,13 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import {
-  IconArrowDown,
-  IconArrowRight,
-  IconBrandGithub,
-  IconBrandLinkedin,
-  IconBrandReddit,
-  IconSearch,
-} from "@tabler/icons-react";
+import { IconArrowDown, IconArrowRight, IconSearch } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 import { TypeAnimation } from "react-type-animation";
 import Image from "next/image";
 import { typeAnimation } from "@data/portfolio/hero";
 import { Description } from "@data/portfolio/hero";
+import { socials } from "@data/common/socials";
 
 /*
  * Hero component that displays the hero section of the portfolio.
@@ -131,31 +125,16 @@ export const Hero = () => {
             </div>
 
             <div className="mt-8 flex justify-center gap-5 md:justify-start">
-              {[
-                { icon: IconBrandGithub, href: "https://github.com/Obscurely" },
-                {
-                  icon: IconBrandLinkedin,
-                  href: "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0/",
-                },
-                {
-                  icon: IconBrandReddit,
-                  href: "https://www.reddit.com/user/CrismarucAdrian/",
-                },
-              ].map((social, index) => (
-                <motion.a
+              {socials.map((social, index) => (
+                <a
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -2, scale: 1.05 }}
-                  className="group flex h-12 w-12 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 backdrop-blur-sm transition-all duration-50 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white"
+                  className="group flex h-12 w-12 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white"
                 >
-                  <social.icon
-                    size={22}
-                    strokeWidth={2.5}
-                    className="transition-transform duration-50 group-hover:scale-105"
-                  />
-                </motion.a>
+                  <social.icon size={22} strokeWidth={2.5} />
+                </a>
               ))}
             </div>
           </motion.div>

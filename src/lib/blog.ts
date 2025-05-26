@@ -18,9 +18,11 @@ export interface PostFrontmatter {
   date: string;
   description: string;
   tags: string[];
+  categories: string[];
   image?: string;
   author?: string;
   draft?: boolean;
+  featured?: boolean;
 }
 
 export interface Post {

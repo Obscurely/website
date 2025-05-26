@@ -8,13 +8,21 @@ interface BlogSearchProps {
   searchQuery: string;
   setSearchQueryAction: React.Dispatch<React.SetStateAction<string>>;
   isInView: boolean;
+  onSearch?: () => void;
 }
 
 export function BlogSearch({
   searchQuery,
   setSearchQueryAction: setSearchQuery,
   isInView,
+  onSearch,
 }: BlogSearchProps) {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && onSearch) {
+      onSearch();
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -32,6 +40,7 @@ export function BlogSearch({
           placeholder="Search posts..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
           className="w-full rounded-lg border-slate-700/50 bg-slate-800/30 pl-10 text-slate-200 placeholder:text-slate-500 focus:border-cyan-500/50 focus:ring-cyan-500/20"
         />
       </div>

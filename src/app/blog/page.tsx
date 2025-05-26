@@ -1,6 +1,8 @@
-import { BlogPage } from "@blog/BlogPage";
+import { BlogPage } from "@components/blog/BlogPage";
+import { Navbar } from "@components/blog/layout/Navbar";
 import { getAllPosts } from "@lib/blog";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 const DESCRIPTION: string =
   "Practical tutorials, in-depth guides and insights on software development, Linux, servers and more.";
@@ -39,5 +41,16 @@ export const metadata: Metadata = {
 export default async function Blog() {
   const posts = await getAllPosts();
 
-  return <BlogPage initialPosts={posts} />;
+  return (
+    <div className="relative min-h-screen overflow-x-hidden bg-slate-900 text-slate-200">
+      <Navbar />
+      <main className="relative">
+        <div className="relative z-10">
+          <Suspense>
+            <BlogPage initialPosts={posts} />
+          </Suspense>
+        </div>
+      </main>
+    </div>
+  );
 }
