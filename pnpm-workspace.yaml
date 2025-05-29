@@ -1,5 +1,5 @@
 onlyBuiltDependencies:
   - '@parcel/watcher'
-
-ignoredBuiltDependencies:
+  - unrs-resolver
   - '@tailwindcss/oxide'
+  - sharp

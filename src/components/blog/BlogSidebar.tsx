@@ -21,7 +21,7 @@ export function BlogSidebar() {
       className="flex h-full flex-col overflow-y-auto pb-8"
     >
       {/* Profile Section */}
-      <div className="mt-6 mb-8">
+      <div className="mb-8">
         <motion.div
           className="relative mb-6 flex justify-center"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -123,14 +123,6 @@ export function BlogSidebar() {
           </Link>
         </Button>
       </div>
-
-      {/* Decorative element */}
-      <motion.div
-        className="my-4 h-px w-full bg-gradient-to-r from-transparent via-slate-700 to-transparent opacity-60"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 0.8 }}
-      />
     </motion.div>
   );
 }

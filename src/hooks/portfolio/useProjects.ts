@@ -23,7 +23,6 @@ export const useProjects = () => {
   const isInView = useInView(ref, {
     once: true,
     amount: 0.1,
-    margin: "0px 0px -200px 0px",
   });
 
   // Update projects per page based on screen size
