@@ -6,8 +6,10 @@ import { useSearchPosts } from "@hooks/blog/useSearchPosts";
 import { BlogSidebar } from "./BlogSidebar";
 import { BlogContent } from "./BlogContent";
 import { BlogFilterSidebar } from "./BlogFilterSidebar";
-import { Dialog } from "@headlessui/react";
-import { useInView } from "framer-motion";
+import { Dialog, DialogPanel } from "@headlessui/react";
+import { motion, useInView } from "framer-motion";
+import { useFilter } from "@hooks/blog/useFilter";
+import { BlogSearchMobile } from "./BlogSearchMobile";
 
 interface BlogPageProps {
   initialPosts: Post[];
@@ -26,21 +28,32 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
     allYears,
   } = useSearchPosts(initialPosts);
 
+  const {
+    selectedYear,
+    setSelectedYear,
+    isFeatured,
+    setIsFeatured,
+    applyFilters,
+    clearFilters,
+  } = useFilter({
+    searchQuery,
+    setSearchQuery,
+    selectedTag,
+    setSelectedTag,
+  });
+
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  // Tailwind
-  const SIDEBAR_W = "w-72";
-  const GAP_X = "8";
-
   return (
-    <div className="min-h-screen bg-slate-900 pt-20">
+    <div className="relative min-h-screen bg-slate-900 pt-16">
+      {/* Mobile filter drawer */}
       <Dialog
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         className="lg:hidden"
       >
         <div className="fixed inset-0 z-40 bg-black/50" aria-hidden="true" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-80 max-w-full overflow-y-auto bg-slate-800 px-6 py-8 shadow-xl">
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-80 max-w-full overflow-y-auto bg-slate-800 px-6 py-8 shadow-xl">
           <BlogFilterSidebar
             searchQuery={searchQuery}
             setSearchQueryAction={setSearchQuery}
@@ -48,51 +61,86 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
             selectedTag={selectedTag}
             setSelectedTagAction={setSelectedTag}
             years={allYears}
+            selectedYear={selectedYear}
+            setSelectedYearAction={setSelectedYear}
+            isFeatured={isFeatured}
+            setIsFeaturedAction={setIsFeatured}
+            applyFiltersAction={applyFilters}
+            clearFiltersAction={clearFilters}
+            setDrawerOpenAction={setDrawerOpen}
           />
-        </Dialog.Panel>
+        </DialogPanel>
       </Dialog>
 
-      <main className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-4 lg:pt-4 lg:pr-[calc(288px+3.5rem)] lg:pl-[calc(288px+3.5rem)] xl:px-8 xl:pr-[calc(288px+6rem)] xl:pl-[calc(288px+6rem)] 2xl:px-16 2xl:pr-[calc(288px+11rem)] 2xl:pl-[calc(288px+11rem)]">
-        <div ref={headerRef}>
-          <BlogContent posts={initialPosts} isInView={isInView} />
-        </div>
-
-        {/* MOBILE: search field + filter button */}
-        <div className="mt-10 flex items-center justify-between gap-4 lg:hidden">
-          <input
-            type="search"
-            placeholder="Search…"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1 rounded-md bg-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:ring focus:ring-indigo-500/50 focus:outline-none"
+      {/* Main container */}
+      <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
+        {/* Mobile search and filter controls */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <BlogSearchMobile
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            applyFilters={applyFilters}
+            setDrawerOpen={setDrawerOpen}
+            handleClear={clearFilters}
           />
-          <button
-            onClick={() => setDrawerOpen(true)}
-            className="shrink-0 rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus:ring focus:ring-indigo-500/50 focus:outline-none"
+        </motion.div>
+
+        {/* Desktop layout with grid */}
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-14 lg:gap-10">
+          {/* Left sidebar - hidden on mobile */}
+          <motion.aside
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="hidden lg:col-span-3 lg:block xl:col-span-3"
           >
-            Filters
-          </button>
+            <div className="sticky top-24">
+              <BlogSidebar />
+            </div>
+          </motion.aside>
+
+          {/* Main content */}
+          <motion.main
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="lg:col-span-8 xl:col-span-8"
+            ref={headerRef}
+          >
+            <BlogContent posts={initialPosts} isInView={isInView} />
+          </motion.main>
+
+          {/* Right sidebar - hidden on mobile */}
+          <motion.aside
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="hidden lg:col-span-3 lg:block xl:col-span-3"
+          >
+            <div className="sticky top-24">
+              <BlogFilterSidebar
+                searchQuery={searchQuery}
+                setSearchQueryAction={setSearchQuery}
+                tags={allTags}
+                selectedTag={selectedTag}
+                setSelectedTagAction={setSelectedTag}
+                years={allYears}
+                selectedYear={selectedYear}
+                setSelectedYearAction={setSelectedYear}
+                isFeatured={isFeatured}
+                setIsFeaturedAction={setIsFeatured}
+                applyFiltersAction={applyFilters}
+                clearFiltersAction={clearFilters}
+                setDrawerOpenAction={setDrawerOpen}
+              />
+            </div>
+          </motion.aside>
         </div>
-      </main>
-
-      <aside
-        className={`fixed top-24 left-8 hidden lg:block xl:left-18 2xl:left-35 ${SIDEBAR_W} h-[calc(100vh-6rem)] overflow-y-auto px-${GAP_X}`}
-      >
-        <BlogSidebar />
-      </aside>
-
-      <aside
-        className={`fixed top-24 right-8 hidden lg:block xl:right-18 2xl:right-35 ${SIDEBAR_W} h-[calc(100vh-6rem)] overflow-y-auto px-${GAP_X}`}
-      >
-        <BlogFilterSidebar
-          searchQuery={searchQuery}
-          setSearchQueryAction={setSearchQuery}
-          tags={allTags}
-          selectedTag={selectedTag}
-          setSelectedTagAction={setSelectedTag}
-          years={allYears}
-        />
-      </aside>
+      </div>
     </div>
   );
 }

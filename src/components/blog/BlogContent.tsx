@@ -62,7 +62,7 @@ export function BlogContent({ posts, isInView }: BlogContentProps) {
           />
         ))
       ) : (
-        <div className="mt-12 rounded-lg border border-slate-700/50 bg-slate-800/20 p-8 text-center">
+        <div className="rounded-lg border border-slate-700/50 bg-slate-800/20 p-8 text-center">
           <h3 className="mb-2 text-xl font-medium text-white">
             No posts found
           </h3>

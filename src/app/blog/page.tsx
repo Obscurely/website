@@ -1,5 +1,6 @@
 import { BlogPage } from "@components/blog/BlogPage";
 import { Navbar } from "@components/blog/layout/Navbar";
+import { Footer } from "@components/common/layout/Footer";
 import { getAllPosts } from "@lib/blog";
 import { Metadata } from "next";
 import { Suspense } from "react";
@@ -51,6 +52,7 @@ export default async function Blog() {
           </Suspense>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
