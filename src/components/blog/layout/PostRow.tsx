@@ -8,13 +8,13 @@ import { Post } from "@lib/blog";
 import { Badge } from "@ui/badge";
 import { IconCalendar, IconClock } from "@tabler/icons-react";
 
-interface BlogPostRowProps {
+interface PostRowProps {
   post: Post;
   index: number;
   isInView: boolean;
 }
 
-export function BlogPostRow({ post, index, isInView }: BlogPostRowProps) {
+export function PostRow({ post, index, isInView }: PostRowProps) {
   const formattedDate = format(new Date(post.frontmatter.date), "MMMM d, yyyy");
 
   return (

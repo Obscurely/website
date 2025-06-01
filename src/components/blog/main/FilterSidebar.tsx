@@ -10,9 +10,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@ui/accordion";
-import { BlogSearch } from "./BlogSearch";
+import { Search } from "./Search";
 
-interface BlogFilterSidebarProps {
+interface FilterSidebarProps {
   searchQuery: string;
   setSearchQueryAction: React.Dispatch<React.SetStateAction<string>>;
   tags: string[];
@@ -28,7 +28,7 @@ interface BlogFilterSidebarProps {
   setDrawerOpenAction: (open: boolean) => void; // Optional for mobile drawer
 }
 
-export function BlogFilterSidebar({
+export function FilterSidebar({
   searchQuery,
   setSearchQueryAction: setSearchQuery,
   tags,
@@ -42,7 +42,7 @@ export function BlogFilterSidebar({
   applyFiltersAction: applyFilters,
   clearFiltersAction: clearFilters,
   setDrawerOpenAction: setDrawerOpen, // Optional for mobile drawer
-}: BlogFilterSidebarProps) {
+}: FilterSidebarProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -52,7 +52,7 @@ export function BlogFilterSidebar({
     >
       {/* Search */}
       <div className="mb-3">
-        <BlogSearch
+        <Search
           searchQuery={searchQuery}
           setSearchQueryAction={setSearchQuery}
           isInView

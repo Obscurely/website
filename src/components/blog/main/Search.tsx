@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { IconSearch, IconX } from "@tabler/icons-react";
 import { Input } from "@ui/input";
 
-interface BlogSearchProps {
+interface SearchProps {
   searchQuery: string;
   setSearchQueryAction: React.Dispatch<React.SetStateAction<string>>;
   isInView: boolean;
@@ -12,13 +12,13 @@ interface BlogSearchProps {
   setDrawerOpen?: (open: boolean) => void; // Optional for mobile drawer
 }
 
-export function BlogSearch({
+export function Search({
   searchQuery,
   setSearchQueryAction: setSearchQuery,
   isInView,
   onSearch,
   setDrawerOpen, // Optional for mobile drawer
-}: BlogSearchProps) {
+}: SearchProps) {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && onSearch) {
       onSearch();

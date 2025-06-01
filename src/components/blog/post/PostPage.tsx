@@ -15,13 +15,13 @@ import {
   IconShare,
 } from "@tabler/icons-react";
 import { TableOfContents } from "./TableOfContents";
-import { BlogComments } from "./BlogComments";
+import { Comments } from "./Comments";
 
-interface BlogPostPageProps {
+interface PostPageProps {
   post: MDXPost;
 }
 
-export function BlogPostPage({ post }: BlogPostPageProps) {
+export function PostPage({ post }: PostPageProps) {
   const [isInView, setIsInView] = useState(false);
   const formattedDate = format(new Date(post.frontmatter.date), "MMMM d, yyyy");
   const toc = getTableOfContents(post.content);
@@ -124,7 +124,7 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
             {/* Comments */}
             <div className="mt-16">
               <h2 className="mb-6 text-2xl font-bold text-white">Comments</h2>
-              <BlogComments />
+              <Comments />
             </div>
           </motion.div>
 

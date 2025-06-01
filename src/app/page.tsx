@@ -3,8 +3,8 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Hero } from "@portfolio/sections/Hero";
-import { About } from "@portfolio/sections/About/About";
-import { Projects } from "@portfolio/sections/Projects/Projects";
+import { About } from "@portfolio/sections/about/About";
+import { Projects } from "@portfolio/sections/projects/Projects";
 import { Blog } from "@portfolio/sections/Blog";
 import { Contact } from "@portfolio/sections/Contact";
 import { Navbar } from "@portfolio/layout/Navbar";

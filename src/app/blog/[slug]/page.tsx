@@ -1,4 +1,4 @@
-import { BlogPostPage } from "@blog/BlogPostPage";
+import { PostPage } from "@blog/post/PostPage";
 import { getPostBySlug, getAllPosts } from "@lib/blog";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
@@ -65,5 +65,5 @@ export default async function Post({ params }: BlogPostParams) {
     notFound();
   }
 
-  return <BlogPostPage post={post} />;
+  return <PostPage post={post} />;
 }

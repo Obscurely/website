@@ -2,7 +2,7 @@ import { Button } from "@components/common/ui/button";
 import { Input } from "@components/common/ui/input";
 import { IconSearch, IconX, IconFilter } from "@tabler/icons-react";
 
-interface BlogSearchMobileProps {
+interface SearchMobileProps {
   searchQuery: string;
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   applyFilters: (overrideSearchQuery?: string) => void;
@@ -10,13 +10,13 @@ interface BlogSearchMobileProps {
   setDrawerOpen: (open: boolean) => void;
 }
 
-export const BlogSearchMobile = ({
+export const SearchMobile = ({
   searchQuery,
   setSearchQuery,
   applyFilters,
   handleClear,
   setDrawerOpen,
-}: BlogSearchMobileProps) => {
+}: SearchMobileProps) => {
   return (
     <div className="mb-8 flex items-center justify-between gap-4 lg:hidden">
       <div className="group relative flex-1">

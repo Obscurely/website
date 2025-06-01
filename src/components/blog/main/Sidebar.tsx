@@ -8,7 +8,7 @@ import { IconBookmark, IconTags } from "@tabler/icons-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { socials } from "@data/common/socials";
 
-export function BlogSidebar() {
+export function Sidebar() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const isFeatured = searchParams.get("featured") === "true";

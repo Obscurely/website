@@ -3,15 +3,15 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Post } from "@lib/blog";
-import { BlogPostRow } from "./layout/BlogPostRow";
+import { PostRow } from "../layout/PostRow";
 import { searchPosts } from "@utils/blog/search";
 
-interface BlogContentProps {
+interface PostsProps {
   posts: Post[];
   isInView: boolean;
 }
 
-export function BlogContent({ posts, isInView }: BlogContentProps) {
+export function Posts({ posts, isInView }: PostsProps) {
   const [filteredPosts, setFilteredPosts] = useState<Post[]>(posts);
   const searchParams = useSearchParams();
 
@@ -51,10 +51,10 @@ export function BlogContent({ posts, isInView }: BlogContentProps) {
   }, [posts, searchParams]);
 
   return (
-    <div className="space-y-6 pb-12">
+    <div className="space-y-6 pb-10">
       {filteredPosts.length > 0 ? (
         filteredPosts.map((post, index) => (
-          <BlogPostRow
+          <PostRow
             key={post.slug}
             post={post}
             index={index}

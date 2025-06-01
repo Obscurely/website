@@ -9,7 +9,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
-import { Callout, CodeBlock } from "../components/blog/mdx";
+import { Callout, CodeBlock } from "@blog/mdx";
 
 const POSTS_PATH = path.join(process.cwd(), "content/posts");
 

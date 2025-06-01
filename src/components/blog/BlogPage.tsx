@@ -3,13 +3,13 @@
 import { useRef, useState } from "react";
 import { Post } from "@lib/blog";
 import { useSearchPosts } from "@hooks/blog/useSearchPosts";
-import { BlogSidebar } from "./BlogSidebar";
-import { BlogContent } from "./BlogContent";
-import { BlogFilterSidebar } from "./BlogFilterSidebar";
+import { Sidebar } from "./main/Sidebar";
+import { Posts } from "./main/Posts";
+import { FilterSidebar } from "./main/FilterSidebar";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { motion, useInView } from "framer-motion";
 import { useFilter } from "@hooks/blog/useFilter";
-import { BlogSearchMobile } from "./BlogSearchMobile";
+import { SearchMobile } from "./main/SearchMobile";
 
 interface BlogPageProps {
   initialPosts: Post[];
@@ -54,7 +54,7 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
       >
         <div className="fixed inset-0 z-40 bg-black/50" aria-hidden="true" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-80 max-w-full overflow-y-auto bg-slate-800 px-6 py-8 shadow-xl">
-          <BlogFilterSidebar
+          <FilterSidebar
             searchQuery={searchQuery}
             setSearchQueryAction={setSearchQuery}
             tags={allTags}
@@ -80,7 +80,7 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <BlogSearchMobile
+          <SearchMobile
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             applyFilters={applyFilters}
@@ -99,7 +99,7 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
             className="hidden lg:col-span-3 lg:block xl:col-span-3"
           >
             <div className="sticky top-24">
-              <BlogSidebar />
+              <Sidebar />
             </div>
           </motion.aside>
 
@@ -111,7 +111,7 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
             className="lg:col-span-8 xl:col-span-8"
             ref={headerRef}
           >
-            <BlogContent posts={initialPosts} isInView={isInView} />
+            <Posts posts={initialPosts} isInView={isInView} />
           </motion.main>
 
           {/* Right sidebar - hidden on mobile */}
@@ -122,7 +122,7 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
             className="hidden lg:col-span-3 lg:block xl:col-span-3"
           >
             <div className="sticky top-24">
-              <BlogFilterSidebar
+              <FilterSidebar
                 searchQuery={searchQuery}
                 setSearchQueryAction={setSearchQuery}
                 tags={allTags}
