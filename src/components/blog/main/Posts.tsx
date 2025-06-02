@@ -6,6 +6,7 @@ import { Post } from "@lib/blog";
 import { PostRow } from "../layout/PostRow";
 import { searchPosts } from "@utils/blog/search";
 import { motion, AnimatePresence } from "framer-motion";
+import { IconFileText } from "@tabler/icons-react";
 
 interface PostsProps {
   posts: Post[];
@@ -87,14 +88,27 @@ export function Posts({ posts, isInView }: PostsProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="rounded-lg border border-slate-700/50 bg-slate-800/20 p-8 text-center"
+            className="group"
           >
-            <h3 className="mb-2 text-xl font-medium text-white">
-              No posts found
-            </h3>
-            <p className="text-slate-400">
-              Try adjusting your filters or search query.
-            </p>
+            <div className="relative overflow-hidden rounded-xl border border-slate-700/30 bg-gradient-to-br from-slate-800/40 to-slate-900/40 transition-all duration-500 hover:border-slate-600/40 hover:shadow-xl hover:shadow-slate-500/5">
+              <div className="flex h-40 flex-col items-center justify-center p-4 sm:h-48 sm:p-6 md:h-auto md:min-h-[200px]">
+                <div className="space-y-3 text-center sm:space-y-4">
+                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-slate-700/30 sm:mb-4 sm:h-16 sm:w-16">
+                    <IconFileText
+                      size={24}
+                      className="text-slate-400 sm:size-8"
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-white sm:text-xl">
+                    No posts found
+                  </h3>
+                  <p className="text-sm leading-relaxed text-slate-300 sm:text-base">
+                    Try adjusting your filters or search query to find what
+                    you're looking for.
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
