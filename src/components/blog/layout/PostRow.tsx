@@ -19,9 +19,14 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
 
   return (
     <motion.div
+      layout
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.5, delay: 0.1 * Math.min(index, 5) }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1 * Math.min(index, 5),
+        layout: { duration: 0.3 },
+      }}
     >
       <Link href={`/blog/${post.slug}`}>
         <div className="group overflow-hidden rounded-lg border border-slate-700/50 bg-slate-800/20 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">

@@ -55,7 +55,6 @@ export function FilterSidebar({
         <Search
           searchQuery={searchQuery}
           setSearchQueryAction={setSearchQuery}
-          isInView
           onSearch={applyFilters}
           setDrawerOpen={setDrawerOpen} // Pass setDrawerOpen for mobile
         />

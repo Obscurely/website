@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Post } from "@lib/blog";
 import { PostRow } from "../layout/PostRow";
 import { searchPosts } from "@utils/blog/search";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface PostsProps {
   posts: Post[];
@@ -51,26 +52,52 @@ export function Posts({ posts, isInView }: PostsProps) {
   }, [posts, searchParams]);
 
   return (
-    <div className="space-y-6 pb-10">
-      {filteredPosts.length > 0 ? (
-        filteredPosts.map((post, index) => (
-          <PostRow
-            key={post.slug}
-            post={post}
-            index={index}
-            isInView={isInView}
-          />
-        ))
-      ) : (
-        <div className="rounded-lg border border-slate-700/50 bg-slate-800/20 p-8 text-center">
-          <h3 className="mb-2 text-xl font-medium text-white">
-            No posts found
-          </h3>
-          <p className="text-slate-400">
-            Try adjusting your filters or search query.
-          </p>
-        </div>
-      )}
-    </div>
+    <motion.div className="space-y-6 pb-10" layout>
+      <AnimatePresence mode="wait">
+        {filteredPosts.length > 0 ? (
+          <motion.div
+            key="posts-list"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-6"
+          >
+            {filteredPosts.map((post, index) => (
+              <motion.div
+                key={post.slug}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.05,
+                  layout: { duration: 0.3 },
+                }}
+              >
+                <PostRow post={post} index={index} isInView={isInView} />
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            key="no-posts"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="rounded-lg border border-slate-700/50 bg-slate-800/20 p-8 text-center"
+          >
+            <h3 className="mb-2 text-xl font-medium text-white">
+              No posts found
+            </h3>
+            <p className="text-slate-400">
+              Try adjusting your filters or search query.
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }

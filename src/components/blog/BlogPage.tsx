@@ -53,7 +53,10 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
         className="lg:hidden"
       >
         <div className="fixed inset-0 z-40 bg-black/50" aria-hidden="true" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-80 max-w-full overflow-y-auto bg-slate-800 px-6 py-8 shadow-xl">
+        <DialogPanel
+          transition
+          className="fixed inset-y-0 right-0 z-50 w-80 max-w-full overflow-y-auto bg-slate-800 px-6 py-8 shadow-xl transition duration-300 ease-in-out data-[closed]:translate-x-full"
+        >
           <FilterSidebar
             searchQuery={searchQuery}
             setSearchQueryAction={setSearchQuery}
@@ -118,7 +121,7 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
           <motion.aside
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="hidden lg:col-span-3 lg:block xl:col-span-3"
           >
             <div className="sticky top-24">
