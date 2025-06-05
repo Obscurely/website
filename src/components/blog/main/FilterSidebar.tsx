@@ -11,6 +11,7 @@ import {
   AccordionTrigger,
 } from "@ui/accordion";
 import { Search } from "./Search";
+import { Checkbox } from "@ui/checkbox";
 
 interface FilterSidebarProps {
   searchQuery: string;
@@ -48,7 +49,7 @@ export function FilterSidebar({
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex h-full flex-col pb-8"
+      className="flex h-full flex-col"
     >
       {/* Search */}
       <div className="mb-3">
@@ -61,7 +62,7 @@ export function FilterSidebar({
       </div>
 
       {/* filters container */}
-      <div className="flex-1 overflow-x-hidden overflow-y-auto">
+      <div className="flex-1 overflow-y-auto px-1 py-1">
         {/* Filters Accordion */}
         <div>
           <Accordion
@@ -77,16 +78,16 @@ export function FilterSidebar({
                   Tags
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="overflow-hidden">
+              <AccordionContent className="overflow-visible">
                 <div className="flex flex-wrap gap-2 pt-2">
                   {tags.map((tag) => (
                     <Badge
                       key={tag}
                       variant="outline"
-                      className={`cursor-pointer border-slate-700/50 px-3 py-1 text-sm transition-all hover:border-cyan-500/50 ${
+                      className={`cursor-pointer border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 hover:bg-slate-700/50 hover:shadow-sm ${
                         selectedTag === tag
-                          ? "border-cyan-500/50 bg-slate-800/70 text-cyan-400"
-                          : "bg-slate-800/30 text-slate-300"
+                          ? "border-cyan-500/50 bg-gradient-to-r from-slate-800/70 to-slate-700/70 text-white shadow-sm"
+                          : "border-slate-700/50 bg-slate-800/30 text-slate-300 hover:border-cyan-500/50"
                       }`}
                       onClick={() =>
                         setSelectedTag(tag === selectedTag ? null : tag)
@@ -107,16 +108,16 @@ export function FilterSidebar({
                   Years
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="overflow-hidden">
+              <AccordionContent className="overflow-visible">
                 <div className="flex flex-wrap gap-2 pt-2">
                   {years.map((year) => (
                     <Badge
                       key={year}
                       variant="outline"
-                      className={`cursor-pointer border-slate-700/50 px-3 py-1 text-sm transition-all hover:border-cyan-500/50 ${
+                      className={`cursor-pointer border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 hover:bg-slate-700/50 hover:shadow-sm ${
                         selectedYear === year
-                          ? "border-cyan-500/50 bg-slate-800/70 text-cyan-400"
-                          : "bg-slate-800/30 text-slate-300"
+                          ? "border-cyan-500/50 bg-gradient-to-r from-slate-800/70 to-slate-700/70 text-white shadow-sm"
+                          : "border-slate-700/50 bg-slate-800/30 text-slate-300 hover:border-cyan-500/50"
                       }`}
                       onClick={() =>
                         setSelectedYear(year === selectedYear ? null : year)
@@ -130,17 +131,16 @@ export function FilterSidebar({
             </AccordionItem>
 
             {/* Featured Filter */}
-            <div className="mt-4 flex items-center">
-              <input
-                type="checkbox"
+            <div className="mt-4 flex items-center space-x-2 px-0 pt-0 pb-1">
+              <Checkbox
                 id="featured"
                 checked={isFeatured}
-                onChange={() => setIsFeatured(!isFeatured)}
-                className="h-4 w-4 cursor-pointer rounded border-slate-700 bg-slate-800 text-cyan-500 focus:ring-cyan-500/20"
+                onCheckedChange={(checked) => setIsFeatured(!!checked)}
+                className="border-slate-700 data-[state=checked]:border-cyan-500 data-[state=checked]:bg-cyan-500"
               />
               <label
                 htmlFor="featured"
-                className="ml-2 cursor-pointer text-slate-300 select-none"
+                className="text-md cursor-pointer leading-none font-medium text-slate-300 select-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 Featured posts only
               </label>

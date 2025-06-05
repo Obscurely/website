@@ -52,7 +52,6 @@ export const Description = () => {
         <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
           Home Lab SysAdmin
         </span>
-        <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-gradient-to-r from-cyan-500/50 to-blue-500/50"></span>
       </span>
       experience and
       <span className="relative mx-1">

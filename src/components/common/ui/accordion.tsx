@@ -51,8 +51,46 @@ function AccordionContent({
   children,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Content>) {
+  const contentRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const element = contentRef.current;
+    if (!element) return;
+
+    // Check initial state and set overflow accordingly
+    const checkInitialState = () => {
+      if (element.getAttribute("data-state") === "open") {
+        element.style.overflow = "visible";
+      }
+    };
+
+    // Check immediately and after a short delay for initial render
+    checkInitialState();
+    const timeoutId = setTimeout(checkInitialState, 100);
+
+    const handleAnimationStart = () => {
+      element.style.overflow = "hidden";
+    };
+
+    const handleAnimationEnd = () => {
+      if (element.getAttribute("data-state") === "open") {
+        element.style.overflow = "visible";
+      }
+    };
+
+    element.addEventListener("animationstart", handleAnimationStart);
+    element.addEventListener("animationend", handleAnimationEnd);
+
+    return () => {
+      clearTimeout(timeoutId);
+      element.removeEventListener("animationstart", handleAnimationStart);
+      element.removeEventListener("animationend", handleAnimationEnd);
+    };
+  }, []);
+
   return (
     <AccordionPrimitive.Content
+      ref={contentRef}
       data-slot="accordion-content"
       className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
       {...props}

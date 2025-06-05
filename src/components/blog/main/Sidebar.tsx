@@ -18,7 +18,7 @@ export function Sidebar() {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex h-full flex-col overflow-y-auto pb-8"
+      className="flex h-full flex-col overflow-y-auto"
     >
       {/* Profile Section */}
       <div className="mb-8">

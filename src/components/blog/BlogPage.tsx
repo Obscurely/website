@@ -76,7 +76,7 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
       </Dialog>
 
       {/* Main container */}
-      <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 py-10">
         {/* Mobile search and filter controls */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -34,7 +34,7 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
           <div className="flex flex-col md:flex-row">
             {/* Image Section */}
             {post.frontmatter.image && (
-              <div className="relative flex h-48 w-full items-center justify-center overflow-hidden md:h-auto md:w-1/3">
+              <div className="relative flex h-48 w-full items-center justify-center overflow-hidden md:h-auto md:w-1/3 md:pl-4 xl:pl-0">
                 <Image
                   src={post.frontmatter.image}
                   alt={post.frontmatter.title}
@@ -54,7 +54,7 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
             )}
 
             {/* Content Section */}
-            <div className="flex flex-1 flex-col justify-between p-6">
+            <div className="flex flex-1 flex-col justify-between p-6 md:pl-4 xl:pl-0">
               {/* Header */}
               <div className="space-y-4">
                 <div className="flex items-start justify-between gap-4">

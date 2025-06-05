@@ -6,7 +6,6 @@ import { Input } from "@ui/input";
 interface SearchProps {
   searchQuery: string;
   setSearchQueryAction: React.Dispatch<React.SetStateAction<string>>;
-  isInView: boolean;
   onSearch?: (overrideSearchQuery?: string) => void;
   setDrawerOpen?: (open: boolean) => void; // Optional for mobile drawer
 }
