@@ -1,5 +1,6 @@
 import { BlogPage } from "@components/blog/BlogPage";
 import { Navbar } from "@components/blog/layout/Navbar";
+import { BlogLoadingFallback } from "@components/blog/main/LoadingFallback";
 import { Footer } from "@components/common/layout/Footer";
 import { getAllPosts } from "@lib/blog";
 import { Metadata } from "next";
@@ -47,7 +48,7 @@ export default async function Blog() {
       <Navbar />
       <main className="relative">
         <div className="relative z-10">
-          <Suspense>
+          <Suspense fallback={<BlogLoadingFallback />}>
             <BlogPage initialPosts={posts} />
           </Suspense>
         </div>

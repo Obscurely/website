@@ -50,7 +50,7 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
                     objectFit: "contain",
                   }}
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  priority={index < 3}
+                  priority={true}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
