@@ -12,6 +12,9 @@ interface TableOfContentsProps {
   toc: TocItem[];
 }
 
+/**
+ * TableOfContents component displays a list of links to the headings in a blog post.
+ */
 export function TableOfContents({ toc }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
 

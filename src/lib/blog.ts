@@ -36,6 +36,9 @@ export interface MDXPost extends Post {
   mdxContent: React.ReactElement;
 }
 
+/**
+ * Get all the blog posts parsed
+ */
 export async function getAllPosts(): Promise<Post[]> {
   // Get all years (directories)
   const yearDirs = fs
@@ -83,6 +86,9 @@ export async function getAllPosts(): Promise<Post[]> {
   );
 }
 
+/**
+ * Get a specific post content
+ */
 export async function getPostBySlug(slug: string): Promise<MDXPost | null> {
   // Find the post in all year directories
   const yearDirs = fs

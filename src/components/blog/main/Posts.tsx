@@ -13,6 +13,9 @@ interface PostsProps {
   isInView: boolean;
 }
 
+/**
+ * Posts component displays a list of blog posts, filtering them based on URL search parameters.
+ */
 export function Posts({ posts, isInView }: PostsProps) {
   const [filteredPosts, setFilteredPosts] = useState<Post[]>(posts);
   const searchParams = useSearchParams();

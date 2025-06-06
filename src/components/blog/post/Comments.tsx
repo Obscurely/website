@@ -2,6 +2,9 @@
 
 import Giscus from "@giscus/react";
 
+/**
+ * Comments component integrates Giscus for blog post comments.
+ */
 export function Comments() {
   return (
     <div className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6">

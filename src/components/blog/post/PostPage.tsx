@@ -21,6 +21,9 @@ interface PostPageProps {
   post: MDXPost;
 }
 
+/**
+ * PostPage component displays a single blog post with its content, metadata, and comments.
+ */
 export function PostPage({ post }: PostPageProps) {
   const [isInView, setIsInView] = useState(false);
   const formattedDate = format(new Date(post.frontmatter.date), "MMMM d, yyyy");

@@ -4,6 +4,9 @@ import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Post } from "@lib/blog";
 
+/**
+ * Custom hook to manage search of blog posts.
+ */
 export function useSearchPosts(posts: Post[]) {
   const searchParams = useSearchParams();
 

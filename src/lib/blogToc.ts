@@ -1,3 +1,6 @@
+/**
+ * Generate the table of contents for a blog post.
+ */
 export function getTableOfContents(content: string) {
   const headingLines = content
     .split("\n")

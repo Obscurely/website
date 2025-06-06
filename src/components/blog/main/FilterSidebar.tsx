@@ -29,6 +29,9 @@ interface FilterSidebarProps {
   setDrawerOpenAction: (open: boolean) => void; // Optional for mobile drawer
 }
 
+/**
+ * FilterSidebar component provides a sidebar for filtering blog posts by search query, tags, years, and featured status.
+ */
 export function FilterSidebar({
   searchQuery,
   setSearchQueryAction: setSearchQuery,

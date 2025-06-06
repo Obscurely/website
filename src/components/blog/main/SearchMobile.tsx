@@ -10,6 +10,9 @@ interface SearchMobileProps {
   setDrawerOpen: (open: boolean) => void;
 }
 
+/**
+ * SearchMobile component provides a search input and filter button for mobile view.
+ */
 export const SearchMobile = ({
   searchQuery,
   setSearchQuery,

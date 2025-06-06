@@ -10,6 +10,9 @@ interface SearchProps {
   setDrawerOpen?: (open: boolean) => void; // Optional for mobile drawer
 }
 
+/**
+ * Search component provides a search input for filtering blog posts.
+ */
 export function Search({
   searchQuery,
   setSearchQueryAction: setSearchQuery,

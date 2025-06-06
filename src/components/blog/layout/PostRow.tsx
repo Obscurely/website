@@ -14,6 +14,9 @@ interface PostRowProps {
   isInView: boolean;
 }
 
+/**
+ * PostRow component displays a single blog post in a row format.
+ */
 export function PostRow({ post, index, isInView }: PostRowProps) {
   const formattedDate = format(new Date(post.frontmatter.date), "MMMM d, yyyy");
 

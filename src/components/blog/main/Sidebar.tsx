@@ -8,6 +8,9 @@ import { IconBookmark, IconTags } from "@tabler/icons-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { socials } from "@data/common/socials";
 
+/**
+ * Sidebar component that displays the blog sidebar with profile, navigation, and social links.
+ */
 export function Sidebar() {
   const pathname = usePathname();
   const searchParams = useSearchParams();

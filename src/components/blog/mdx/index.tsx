@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { IconCopy, IconCheck } from "@tabler/icons-react";
 
+/**
+ * CodeBlock component that displays code snippets with a copy button.
+ */
 export function CodeBlock({
   children,
   className,
@@ -37,6 +40,9 @@ export function CodeBlock({
   );
 }
 
+/**
+ * Callout component for displaying important messages or warnings.
+ */
 export function Callout({
   children,
   type = "info",

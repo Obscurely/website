@@ -8,6 +8,15 @@ interface FilterHook {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
+/**
+ * Custom hook to manage filtering of blog posts based on tags, years, search queries, and featured status.
+ *
+ * @param selectedTag - The currently selected tag for filtering blog posts.
+ * @param setSelectedTag - Function to update the selected tag.
+ * @param searchQuery - The current search query for filtering blog posts.
+ * @param setSearchQuery - Function to update the search query.
+ * @returns
+ */
 export const useFilter = ({
   selectedTag,
   setSelectedTag,

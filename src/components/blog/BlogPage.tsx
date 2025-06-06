@@ -15,6 +15,9 @@ interface BlogPageProps {
   initialPosts: Post[];
 }
 
+/**
+ * BlogPage component serves as the main layout for the blog section,
+ */
 export function BlogPage({ initialPosts }: BlogPageProps) {
   const headerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(headerRef, { once: true, amount: 0.1 });
