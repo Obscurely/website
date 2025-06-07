@@ -39,7 +39,8 @@ export const useFilter = ({
     if (tagParam) setSelectedTag(tagParam);
     if (yearParam) setSelectedYear(yearParam);
     if (searchParam) setSearchQuery(searchParam);
-    if (featuredParam === "true") setIsFeatured(true);
+
+    setIsFeatured(featuredParam === "true");
   }, [searchParams, setSearchQuery, setSelectedTag]);
 
   // Apply filters
