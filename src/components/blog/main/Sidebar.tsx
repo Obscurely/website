@@ -4,7 +4,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@ui/button";
-import { IconBookmark, IconTags } from "@tabler/icons-react";
+import {
+  IconBookmark,
+  IconCode,
+  IconTags,
+  IconCoffee,
+} from "@tabler/icons-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { socials } from "@data/common/socials";
 
@@ -16,12 +21,17 @@ export function Sidebar() {
   const searchParams = useSearchParams();
   const isFeatured = searchParams.get("featured") === "true";
 
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex h-full flex-col overflow-y-auto"
+      className="flex h-full flex-col"
     >
       {/* Profile Section */}
       <div className="mb-8">
@@ -45,9 +55,10 @@ export function Sidebar() {
         <h3 className="mb-2 text-center text-xl font-medium text-white">
           Adrian Crîșmaruc
         </h3>
-        <p className="mb-1 text-center text-sm text-slate-300">
-          Full-Stack Developer
-        </p>
+        <div className="mb-1 flex items-center justify-center gap-2 text-sm text-slate-300">
+          <IconCode size={16} className="text-cyan-400" />
+          <span>Full-Stack Developer</span>
+        </div>
         <p className="mb-2 text-center text-sm text-slate-400">
           Founder of{" "}
           <a
@@ -98,33 +109,53 @@ export function Sidebar() {
       </div>
 
       {/* Navigation Buttons */}
-      <div className="mb-8 space-y-2">
+      <motion.div variants={itemVariants} className="mb-6 space-y-2">
         <Button
           variant="ghost"
-          className={`w-full justify-start rounded-lg font-medium transition-all duration-300 hover:bg-slate-800/60 hover:text-cyan-400 ${
+          className={`group w-full justify-start rounded-xl border border-transparent font-medium transition-all duration-300 hover:border-slate-700/50 hover:bg-slate-800/60 hover:text-cyan-400 hover:shadow-lg ${
             pathname === "/blog" && !isFeatured
-              ? "bg-slate-800/80 text-cyan-400"
+              ? "border-cyan-500/30 bg-gradient-to-r from-slate-800/80 to-slate-700/60 text-cyan-400"
               : "text-slate-300"
           }`}
           asChild
         >
           <Link href="/blog">
-            <IconBookmark className="mr-3 h-5 w-5" />
+            <IconBookmark className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
             All Posts
           </Link>
         </Button>
         <Button
           variant="ghost"
-          className={`w-full justify-start rounded-lg font-medium transition-all duration-300 hover:bg-slate-800/60 hover:text-cyan-400 ${
-            isFeatured ? "bg-slate-800/80 text-cyan-400" : "text-slate-300"
+          className={`group w-full justify-start rounded-xl border border-transparent font-medium transition-all duration-300 hover:border-slate-700/50 hover:bg-slate-800/60 hover:text-cyan-400 hover:shadow-lg ${
+            isFeatured
+              ? "border-cyan-500/30 bg-gradient-to-r from-slate-800/80 to-slate-700/60 text-cyan-400"
+              : "text-slate-300"
           }`}
           asChild
         >
           <Link href="/blog?featured=true">
-            <IconTags className="mr-3 h-5 w-5" />
+            <IconTags className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
             Featured
           </Link>
         </Button>
+      </motion.div>
+
+      {/* Buy Me a Coffee Button */}
+      <div className="mt-auto">
+        <a
+          href="https://ko-fi.com/Obscurely"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group w-full"
+        >
+          <Button
+            variant="ghost"
+            className="group mb-1 w-full cursor-pointer justify-center rounded-xl border border-slate-500/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 font-medium text-slate-300 transition-all duration-300 hover:border-cyan-400/50 hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-cyan-500/20 hover:text-cyan-300 hover:shadow-lg"
+          >
+            <IconCoffee className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
+            Buy Me a Coffee
+          </Button>
+        </a>
       </div>
     </motion.div>
   );
