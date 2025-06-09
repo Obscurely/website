@@ -63,7 +63,7 @@ export const Hero = () => {
                 Founder of RekoSearch - AI File Search Engine
               </span>
               <span className="ml-1 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-                →
+                <IconArrowRight size={16} className="text-cyan-400" />
               </span>
             </a>
 
