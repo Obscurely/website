@@ -33,7 +33,7 @@ export const Hero = () => {
             className="flex-1 text-center md:text-left"
           >
             {/* Animated gradient text with pulse effect for the welcome text */}
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-4 py-2 backdrop-blur-sm">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/10 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-4 py-2 backdrop-blur-sm">
               <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400"></span>
               <h2 className="text-xl font-medium text-cyan-400 md:text-2xl">
                 Hello, I'm
@@ -53,7 +53,7 @@ export const Hero = () => {
               href="https://rekosearch.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-3 py-1 backdrop-blur-sm transition-all duration-300 hover:from-cyan-500/20 hover:to-blue-500/20 hover:shadow-xs hover:shadow-cyan-500/20"
+              className="group mb-4 inline-flex items-center rounded-full border border-cyan-500/10 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-3 py-1 backdrop-blur-sm transition-all duration-300 hover:from-cyan-500/20 hover:to-blue-500/20 hover:shadow-xs hover:shadow-cyan-500/20"
             >
               <IconSearch
                 size={16}
@@ -112,7 +112,7 @@ export const Hero = () => {
               </Button>
               <Button
                 variant="outline"
-                className="cursor-pointer rounded-lg border-slate-700 px-6 py-6 text-slate-300 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
+                className="cursor-pointer rounded-lg border-cyan-500/20 px-6 py-6 text-slate-300 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
                 onClick={(e) => {
                   e.preventDefault();
                   document
@@ -131,7 +131,7 @@ export const Hero = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex h-12 w-12 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white"
+                  className="group flex h-12 w-12 items-center justify-center rounded-full border border-cyan-500/10 bg-slate-800/80 text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white"
                 >
                   <social.icon size={22} strokeWidth={2.5} />
                 </a>
@@ -151,7 +151,7 @@ export const Hero = () => {
             <div className="absolute -inset-1 animate-pulse rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-30 blur-xl"></div>
 
             {/* Image container with overflow hidden to contain the zoom effect */}
-            <div className="group relative overflow-hidden rounded-full border-2 border-slate-800 bg-slate-900">
+            <div className="group relative overflow-hidden rounded-full border-2 border-cyan-500/20 bg-slate-900">
               {/* The image itself with hover effect */}
               <div className="transform transition-transform duration-300 ease-in-out group-hover:scale-110">
                 <Image
@@ -184,7 +184,7 @@ export const Hero = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="cursor-pointer rounded-full border border-slate-700 text-slate-400"
+              className="cursor-pointer rounded-full border border-cyan-500/20 text-slate-400"
               onClick={() => {
                 document
                   .querySelector("#about")

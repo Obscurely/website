@@ -41,7 +41,7 @@ export function Sidebar() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="relative overflow-hidden rounded-full border-2 border-slate-700 shadow-lg shadow-cyan-500/10 transition-all duration-600 hover:border-cyan-500/70">
+          <div className="relative overflow-hidden rounded-full border-2 border-cyan-500/20 shadow-lg shadow-cyan-500/10 transition-all duration-600 hover:border-cyan-500/70">
             <Image
               src="/profile.webp"
               alt="Adrian Crîșmaruc"
@@ -79,7 +79,7 @@ export function Sidebar() {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white"
+              className="group flex h-10 w-10 items-center justify-center rounded-full border border-cyan-500/10 bg-slate-800/80 text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white"
             >
               <social.icon size={20} strokeWidth={2.5} />
             </a>
