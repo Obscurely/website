@@ -25,6 +25,55 @@ export const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Staggered animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const terminalVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const sidebarVariants = {
+    hidden: { opacity: 0, x: 30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        delay: 0.3,
+      },
+    },
+  };
+
   return (
     <section
       id="home"
@@ -33,17 +82,23 @@ export const Hero = () => {
     >
       <div className="z-10 container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
           className="max-w-8xl mx-auto"
         >
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch lg:gap-8">
             {/* Left Column - Terminal Window */}
-            <div className="flex lg:col-span-2">
+            <motion.div
+              variants={terminalVariants}
+              className="flex backdrop-blur-xs lg:col-span-2"
+            >
               <div className="relative flex w-full flex-col overflow-hidden rounded-2xl border border-slate-600/30 bg-slate-900/30 shadow-2xl shadow-black/20">
                 {/* Terminal Header */}
-                <div className="flex flex-shrink-0 items-center justify-between border-b border-slate-600/30 bg-slate-800/40 px-6 py-2">
+                <motion.div
+                  variants={itemVariants}
+                  className="flex flex-shrink-0 items-center justify-between border-b border-slate-600/30 bg-slate-800/40 px-6 py-2"
+                >
                   <div className="flex items-center gap-4">
                     <div className="flex gap-2">
                       <div className="h-3 w-3 rounded-full bg-red-400/70"></div>
@@ -64,88 +119,82 @@ export const Hero = () => {
                       minute: "2-digit",
                     })}
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Terminal Content */}
                 <div className="flex flex-1 flex-col justify-between p-6">
-                  <div>
-                    {/* Terminal Commands */}
+                  <motion.div variants={containerVariants}>
+                    {/* whoami Command */}
                     <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{
-                        duration: 0.8,
-                        ease: "easeOut",
-                      }}
+                      variants={itemVariants}
+                      className="mb-6 font-mono text-base"
                     >
-                      {/* whoami Command */}
-                      <div className="mb-6 font-mono text-base">
-                        <span className="text-cyan-400">❯</span>
-                        <span className="ml-3 text-slate-300">whoami</span>
-                      </div>
-                      {/* Name Output */}
-                      <div className="mb-9">
-                        <h1 className="mb-4 text-3xl font-bold tracking-tight text-slate-300 md:text-5xl lg:text-4xl">
-                          <span className="relative">
-                            Adrian Crîșmaruc
-                            <div className="mt-2 h-1 w-24 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
-                          </span>
-                        </h1>
+                      <span className="text-cyan-400">❯</span>
+                      <span className="ml-3 text-slate-300">whoami</span>
+                    </motion.div>
 
-                        {/* Founder badge */}
-                        <a
-                          href="https://rekosearch.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group mb-4 inline-flex items-center rounded-full border border-cyan-500/10 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-3 py-1 backdrop-blur-sm transition-all duration-300 hover:from-cyan-500/20 hover:to-blue-500/20 hover:shadow-xs hover:shadow-cyan-500/20"
+                    {/* Name Output */}
+                    <motion.div variants={itemVariants} className="mb-9">
+                      <h1 className="mb-4 text-3xl font-bold tracking-tight text-slate-300 md:text-5xl lg:text-4xl">
+                        <span className="relative">
+                          Adrian Crîșmaruc
+                          <div className="mt-2 h-1 w-24 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+                        </span>
+                      </h1>
+
+                      {/* Founder badge */}
+                      <a
+                        href="https://rekosearch.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group mb-4 inline-flex items-center rounded-full border border-cyan-500/10 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-3 py-1 transition-all duration-300 hover:from-cyan-500/20 hover:to-blue-500/20 hover:shadow-xs hover:shadow-cyan-500/20"
+                      >
+                        <IconSearch
+                          size={16}
+                          className="mr-1 text-cyan-400 transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <span className="text-sm font-semibold text-cyan-400 transition-all duration-300 group-hover:text-cyan-300">
+                          Founder of RekoSearch - AI File Search Engine
+                        </span>
+                        <span className="ml-1 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                          <IconArrowRight size={16} className="text-cyan-400" />
+                        </span>
+                      </a>
+
+                      {/* Animated Role */}
+                      <div className="mb-6 text-xl font-semibold md:text-2xl lg:text-3xl">
+                        <TypeAnimation
+                          sequence={typeAnimation}
+                          wrapper="span"
+                          speed={50}
+                          repeat={Infinity}
+                          className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent"
+                        />
+                      </div>
+
+                      {/* Description */}
+                      <div className="max-w-xl text-slate-200">
+                        <div className="mb-3">
+                          <Description />
+                        </div>
+                        <p
+                          className="cursor-pointer text-sm text-slate-400 italic transition-colors duration-300 hover:text-cyan-400"
+                          onClick={() => {
+                            document
+                              .querySelector("#about")
+                              ?.scrollIntoView({ behavior: "smooth" });
+                          }}
                         >
-                          <IconSearch
-                            size={16}
-                            className="mr-1 text-cyan-400 transition-transform duration-300 group-hover:scale-110"
-                          />
-                          <span className="text-sm font-semibold text-cyan-400 transition-all duration-300 group-hover:text-cyan-300">
-                            Founder of RekoSearch - AI File Search Engine
-                          </span>
-                          <span className="ml-1 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-                            <IconArrowRight
-                              size={16}
-                              className="text-cyan-400"
-                            />
-                          </span>
-                        </a>
-
-                        {/* Animated Role */}
-                        <div className="mb-6 text-xl font-semibold md:text-2xl lg:text-3xl">
-                          <TypeAnimation
-                            sequence={typeAnimation}
-                            wrapper="span"
-                            speed={50}
-                            repeat={Infinity}
-                            className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent"
-                          />
-                        </div>
-
-                        {/* Description */}
-                        <div className="max-w-xl text-slate-200">
-                          <div className="mb-3">
-                            <Description />
-                          </div>
-                          <p
-                            className="cursor-pointer text-sm text-slate-400 italic transition-colors duration-300 hover:text-cyan-400"
-                            onClick={() => {
-                              document
-                                .querySelector("#about")
-                                ?.scrollIntoView({ behavior: "smooth" });
-                            }}
-                          >
-                            ...and many more technologies + skills in my toolkit
-                          </p>
-                        </div>
+                          ...and many more technologies + skills in my toolkit
+                        </p>
                       </div>
-                      {/* Action Buttons */}
-                      <div className="mb-6 flex flex-wrap justify-center gap-3 sm:justify-start">
+                    </motion.div>
+
+                    {/* Action Buttons */}
+                    <motion.div variants={itemVariants} className="mb-6">
+                      <div className="grid grid-cols-1 gap-3 sm:max-w-[480px] sm:grid-cols-3">
                         <Button
-                          className="group relative h-11 cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2.5 text-white transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20"
+                          className="group relative h-10 w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20"
                           onClick={(e) => {
                             e.preventDefault();
                             document
@@ -153,15 +202,15 @@ export const Hero = () => {
                               ?.scrollIntoView({ behavior: "smooth" });
                           }}
                         >
-                          <span className="relative z-10 flex items-center gap-2 font-medium">
+                          <span className="relative z-10 flex items-center justify-center gap-2 text-sm font-medium">
                             Get in Touch
-                            <IconArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                            <IconArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                           </span>
                           <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
                         </Button>
                         <Button
                           variant="outline"
-                          className="h-11 cursor-pointer rounded-lg border-cyan-500/20 px-5 py-2.5 text-slate-300 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
+                          className="h-10 w-full cursor-pointer rounded-lg border-cyan-500/20 px-4 py-3 text-slate-300 transition-all duration-300 will-change-transform hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
                           onClick={(e) => {
                             e.preventDefault();
                             document
@@ -169,54 +218,59 @@ export const Hero = () => {
                               ?.scrollIntoView({ behavior: "smooth" });
                           }}
                         >
-                          <span className="flex items-center gap-2">
+                          <span className="flex items-center justify-center gap-2 text-sm">
                             View Projects
                             <IconCode className="h-4 w-4" />
                           </span>
                         </Button>
                         <Button
                           variant="outline"
-                          className="h-11 cursor-pointer rounded-lg border-cyan-500/20 px-5 py-2.5 text-slate-300 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
+                          className="h-10 w-full cursor-pointer rounded-lg border-cyan-500/20 px-4 py-3 text-slate-300 transition-all duration-300 will-change-transform hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
                           onClick={(e) => {
                             e.preventDefault();
                             window.open("/resume.pdf", "_blank");
                           }}
                         >
-                          <span className="flex items-center gap-2">
+                          <span className="flex items-center justify-center gap-2 text-sm">
                             View Resume
                             <IconUser className="h-4 w-4" />
                           </span>
                         </Button>
-                      </div>{" "}
-                      {/* Social Links */}
-                      <div className="flex justify-center gap-4 sm:justify-start">
-                        {socials.map((social, index) => (
-                          <a
-                            key={index}
-                            href={social.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group flex h-10 w-10 items-center justify-center rounded-full border border-cyan-500/10 bg-slate-800/80 text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white"
-                          >
-                            <social.icon size={20} strokeWidth={2.5} />
-                          </a>
-                        ))}
                       </div>
                     </motion.div>
-                  </div>
+
+                    {/* Social Links */}
+                    <motion.div
+                      variants={itemVariants}
+                      className="flex justify-center gap-4 sm:justify-start"
+                    >
+                      {socials.map((social, index) => (
+                        <a
+                          key={index}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 shadow-[inset_0_0_0_1px_rgb(6_182_212_/_0.1)] transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
+                        >
+                          <social.icon size={20} strokeWidth={2.5} />
+                        </a>
+                      ))}
+                    </motion.div>
+                  </motion.div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Column - Profile & Status Widgets */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="flex flex-col justify-between space-y-6"
+              variants={sidebarVariants}
+              className="flex flex-col justify-between space-y-6 backdrop-blur-sm"
             >
               {/* Profile Widget */}
-              <div className="rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10">
+              <motion.div
+                variants={itemVariants}
+                className="rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10"
+              >
                 <div className="mb-4 flex items-center gap-2 font-mono text-sm text-slate-400">
                   <IconUser size={16} />
                   <span>profile.sys</span>
@@ -241,10 +295,13 @@ export const Hero = () => {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/20"></div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              {/* Status Widget - Aligned to bottom */}
-              <div className="rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10">
+              {/* Status Widget */}
+              <motion.div
+                variants={itemVariants}
+                className="rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10"
+              >
                 <div className="mb-4 font-mono text-base font-medium text-slate-300">
                   System Status
                 </div>
@@ -289,7 +346,7 @@ export const Hero = () => {
                     <span className="text-cyan-400">~24h</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </motion.div>
@@ -298,7 +355,7 @@ export const Hero = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
           className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 transform sm:block"
         >
           <motion.div
