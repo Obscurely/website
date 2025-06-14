@@ -1,4 +1,5 @@
 export const typeAnimation = [
+  200,
   "Full Stack Developer",
   1000,
   "Cloud-Native",

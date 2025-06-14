@@ -31,8 +31,8 @@ export const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0,
+        delayChildren: 0,
       },
     },
   };
@@ -62,14 +62,13 @@ export const Hero = () => {
   };
 
   const sidebarVariants = {
-    hidden: { opacity: 0, x: 30 },
+    hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
-      x: 0,
+      scale: 1,
       transition: {
         duration: 0.8,
         ease: "easeOut",
-        delay: 0.3,
       },
     },
   };
@@ -91,9 +90,9 @@ export const Hero = () => {
             {/* Left Column - Terminal Window */}
             <motion.div
               variants={terminalVariants}
-              className="flex backdrop-blur-xs lg:col-span-2"
+              className="flex backdrop-blur-xs will-change-transform lg:col-span-2"
             >
-              <div className="relative flex w-full flex-col overflow-hidden rounded-2xl border border-slate-600/30 bg-slate-900/30 shadow-2xl shadow-black/20">
+              <div className="relative flex w-full transform-gpu flex-col overflow-hidden rounded-2xl border border-slate-600/30 bg-slate-900/30 shadow-2xl shadow-black/20">
                 {/* Terminal Header */}
                 <motion.div
                   variants={itemVariants}
@@ -138,7 +137,12 @@ export const Hero = () => {
                       <h1 className="mb-4 text-3xl font-bold tracking-tight text-slate-300 md:text-5xl lg:text-4xl">
                         <span className="relative">
                           Adrian Crîșmaruc
-                          <div className="mt-2 h-1 w-24 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+                          <motion.div
+                            className="mt-2 h-1 w-24 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"
+                            initial={{ width: 0 }}
+                            animate={{ width: "6rem" }} // 6rem = 96 px
+                            transition={{ delay: 0.5, duration: 0.6 }}
+                          />
                         </span>
                       </h1>
 
@@ -162,13 +166,18 @@ export const Hero = () => {
                       </a>
 
                       {/* Animated Role */}
-                      <div className="mb-6 text-xl font-semibold md:text-2xl lg:text-3xl">
+                      <div className="mb-6 text-2xl font-semibold md:text-2xl lg:text-3xl">
                         <TypeAnimation
                           sequence={typeAnimation}
                           wrapper="span"
                           speed={50}
                           repeat={Infinity}
-                          className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent"
+                          className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent will-change-contents"
+                          style={{
+                            display: "inline-block",
+                            minHeight: "1em",
+                            whiteSpace: "nowrap",
+                          }}
                         />
                       </div>
 
@@ -264,14 +273,11 @@ export const Hero = () => {
             {/* Right Column - Profile & Status Widgets */}
             <motion.div
               variants={sidebarVariants}
-              className="flex flex-col justify-between space-y-6 backdrop-blur-sm"
+              className="flex flex-col justify-between space-y-6 backdrop-blur-sm will-change-transform"
             >
               {/* Profile Widget */}
-              <motion.div
-                variants={itemVariants}
-                className="rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10"
-              >
-                <div className="mb-4 flex items-center gap-2 font-mono text-sm text-slate-400">
+              <div className="rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10">
+                <div className="mb-3.25 flex items-center gap-2 font-mono text-sm text-slate-400">
                   <IconUser size={16} />
                   <span>profile.sys</span>
                 </div>
@@ -282,26 +288,21 @@ export const Hero = () => {
                   <div className="absolute -inset-1 animate-pulse rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-30 blur-md"></div>
 
                   <div className="group relative mx-auto h-full w-full overflow-hidden rounded-full border-2 border-cyan-500/20 bg-slate-900">
-                    <div className="transform transition-transform duration-300 ease-in-out group-hover:scale-110">
-                      <Image
-                        src="/profile.webp"
-                        width={200}
-                        height={200}
-                        alt="Adrian Crîșmaruc"
-                        className="h-full w-full object-cover"
-                        priority
-                      />
-                    </div>
+                    <Image
+                      src="/profile.webp"
+                      width={200}
+                      height={200}
+                      alt="Adrian Crîșmaruc"
+                      className="h-full w-full transform object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
+                      priority
+                    />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/20"></div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Status Widget */}
-              <motion.div
-                variants={itemVariants}
-                className="rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10"
-              >
+              <div className="rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10">
                 <div className="mb-4 font-mono text-base font-medium text-slate-300">
                   System Status
                 </div>
@@ -346,7 +347,7 @@ export const Hero = () => {
                     <span className="text-cyan-400">~24h</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </motion.div>
