@@ -155,7 +155,7 @@ export const Hero = () => {
                       >
                         <IconSearch
                           size={16}
-                          className="mr-1 text-cyan-400 transition-transform duration-300 group-hover:scale-110"
+                          className="mr-2 text-cyan-400 transition-transform duration-300 group-hover:scale-110"
                         />
                         <span className="text-sm font-semibold text-cyan-400 transition-all duration-300 group-hover:text-cyan-300">
                           Founder of RekoSearch - AI File Search Engine
@@ -273,36 +273,38 @@ export const Hero = () => {
             {/* Right Column - Profile & Status Widgets */}
             <motion.div
               variants={sidebarVariants}
-              className="flex flex-col justify-between space-y-6 backdrop-blur-sm will-change-transform"
+              className="flex flex-col justify-between space-y-8 backdrop-blur-sm will-change-transform md:flex-row md:space-y-0 md:space-x-6 lg:flex-col lg:space-y-8 lg:space-x-0"
             >
               {/* Profile Widget */}
-              <div className="rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10">
+              <div className="flex flex-1 flex-col rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10 md:w-1/2 lg:w-full">
                 <div className="mb-3.25 flex items-center gap-2 font-mono text-sm text-slate-400">
                   <IconUser size={16} />
                   <span>profile.sys</span>
                 </div>
 
                 {/* Profile Image */}
-                <div className="xs:h-30 xs:w-30 relative mx-auto h-50 w-50 sm:h-50 sm:w-50 md:h-60 md:w-60 lg:h-60 lg:w-60 xl:h-80 xl:w-80 2xl:h-98 2xl:w-98">
-                  <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-75 blur-sm"></div>
-                  <div className="absolute -inset-1 animate-pulse rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-30 blur-md"></div>
+                <div className="flex flex-1 items-center justify-center">
+                  <div className="xs:h-30 xs:w-30 relative h-50 w-50 sm:h-50 sm:w-50 md:h-40 md:w-40 lg:h-60 lg:w-60 xl:h-80 xl:w-80 2xl:h-98 2xl:w-98">
+                    <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-75 blur-sm"></div>
+                    <div className="absolute -inset-1 animate-pulse rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-30 blur-md"></div>
 
-                  <div className="group relative mx-auto h-full w-full overflow-hidden rounded-full border-2 border-cyan-500/20 bg-slate-900">
-                    <Image
-                      src="/profile.webp"
-                      width={200}
-                      height={200}
-                      alt="Adrian Crîșmaruc"
-                      className="h-full w-full transform object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/20"></div>
+                    <div className="group relative mx-auto h-full w-full overflow-hidden rounded-full border-2 border-cyan-500/20 bg-slate-900">
+                      <Image
+                        src="/profile.webp"
+                        width={200}
+                        height={200}
+                        alt="Adrian Crîșmaruc"
+                        className="h-full w-full transform object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
+                        priority
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/20"></div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Status Widget */}
-              <div className="rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10">
+              <div className="flex-1 rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10 md:w-1/2 lg:w-full">
                 <div className="mb-4 font-mono text-base font-medium text-slate-300">
                   System Status
                 </div>
