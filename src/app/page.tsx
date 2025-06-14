@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Hero } from "@portfolio/sections/Hero";
+import { Hero } from "@portfolio/sections/hero/Hero";
 import { About } from "@portfolio/sections/about/About";
 import { Projects } from "@portfolio/sections/projects/Projects";
 import { Blog } from "@portfolio/sections/Blog";
