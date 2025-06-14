@@ -94,7 +94,7 @@ export function Sidebar() {
             Blog
           </h1>
         </Link>
-        <div className="mt-2 h-1 w-20 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 shadow-sm shadow-cyan-500/30"></div>
+        <div className="mt-2 h-1 w-20 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
 
         {/* Description text */}
         <motion.p

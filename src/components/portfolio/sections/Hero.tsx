@@ -90,7 +90,7 @@ export const Hero = () => {
             {/* Left Column - Terminal Window */}
             <motion.div
               variants={terminalVariants}
-              className="flex backdrop-blur-xs will-change-transform lg:col-span-2"
+              className="flex rounded-2xl backdrop-blur-xs will-change-transform lg:col-span-2"
             >
               <div className="relative flex w-full transform-gpu flex-col overflow-hidden rounded-2xl border border-slate-600/30 bg-slate-900/30 shadow-2xl shadow-black/20">
                 {/* Terminal Header */}
@@ -273,7 +273,7 @@ export const Hero = () => {
             {/* Right Column - Profile & Status Widgets */}
             <motion.div
               variants={sidebarVariants}
-              className="flex flex-col justify-between space-y-8 backdrop-blur-sm will-change-transform md:flex-row md:space-y-0 md:space-x-6 lg:flex-col lg:space-y-8 lg:space-x-0"
+              className="flex flex-col justify-between space-y-8 rounded-2xl backdrop-blur-sm will-change-transform md:flex-row md:space-y-0 md:space-x-6 lg:flex-col lg:space-y-8 lg:space-x-0"
             >
               {/* Profile Widget */}
               <div className="flex flex-1 flex-col rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10 md:w-1/2 lg:w-full">
