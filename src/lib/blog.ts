@@ -9,7 +9,16 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
-import { Callout, CodeBlock } from "@blog/mdx";
+import {
+  Callout,
+  CodeBlock,
+  FeatureGrid,
+  FeatureCard,
+  StepGuide,
+  Step,
+  QuickLinks,
+  Separator,
+} from "@blog/mdx";
 
 const POSTS_PATH = path.join(process.cwd(), "content/posts");
 
@@ -140,6 +149,12 @@ export async function getPostBySlug(slug: string): Promise<MDXPost | null> {
         components: {
           Callout,
           pre: CodeBlock,
+          FeatureGrid,
+          FeatureCard,
+          StepGuide,
+          Step,
+          QuickLinks,
+          Separator,
         },
       });
 

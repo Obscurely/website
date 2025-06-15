@@ -33,9 +33,22 @@ export function PostPage({ post }: PostPageProps) {
     setIsInView(true);
   }, []);
 
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      // TODO: Replace with a toast notification
+      alert("Link copied to clipboard!");
+    } catch (err) {
+      console.error("Failed to copy link:", err);
+    }
+  };
+
   return (
-    <section className="relative overflow-hidden py-20 pt-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-20 pt-24">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 opacity-50"></div>
+
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -44,14 +57,17 @@ export function PostPage({ post }: PostPageProps) {
         >
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1 text-slate-400 transition-colors hover:text-cyan-400"
+            className="group inline-flex items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-200 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400"
           >
-            <IconArrowLeft size={16} />
+            <IconArrowLeft
+              size={16}
+              className="transition-transform group-hover:-translate-x-1"
+            />
             <span>Back to all posts</span>
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-4">
           {/* Main content */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -59,68 +75,90 @@ export function PostPage({ post }: PostPageProps) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:col-span-3"
           >
-            <article className="prose prose-invert prose-slate prose-headings:font-bold prose-headings:text-white prose-p:text-slate-300 prose-a:text-cyan-400 prose-a:no-underline prose-a:transition-colors prose-a:duration-200 hover:prose-a:text-cyan-300 prose-blockquote:border-cyan-500 prose-blockquote:bg-slate-800/50 prose-blockquote:p-4 prose-blockquote:not-italic prose-code:text-cyan-400 prose-pre:bg-slate-900 prose-pre:shadow-md prose-img:rounded-lg prose-img:shadow-lg max-w-none">
+            <article className="prose prose-invert prose-slate prose-lg prose-headings:font-bold prose-headings:text-white prose-headings:tracking-tight prose-p:text-slate-300 prose-p:leading-relaxed prose-a:text-cyan-400 prose-a:no-underline prose-a:transition-colors prose-a:duration-200 hover:prose-a:text-cyan-300 prose-blockquote:border-l-4 prose-blockquote:border-cyan-500 prose-blockquote:bg-slate-800/50 prose-blockquote:p-6 prose-blockquote:not-italic prose-blockquote:shadow-lg prose-code:rounded prose-code:bg-slate-800/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-cyan-400 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-slate-900 prose-pre:shadow-xl prose-img:rounded-xl prose-img:shadow-2xl prose-hr:border-slate-700 max-w-none">
               {/* Header */}
-              <header className="not-prose mb-8">
-                <div className="mb-4 flex flex-wrap gap-2">
+              <header className="not-prose mb-12">
+                <div className="mb-6 flex flex-wrap gap-2">
                   {post.frontmatter.tags.map((tag) => (
                     <Badge
                       key={tag}
                       variant="outline"
-                      className="border-slate-700/70 bg-slate-800/30 text-slate-300"
+                      className="border-slate-600/50 bg-slate-800/40 px-3 py-1 text-slate-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-400"
                     >
                       {tag}
                     </Badge>
                   ))}
                 </div>
 
-                <h1 className="mb-4 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+                <h1 className="mb-6 bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-4xl leading-tight font-bold text-transparent md:text-5xl lg:text-6xl">
                   {post.frontmatter.title}
                 </h1>
 
-                <div className="mb-6 flex flex-wrap items-center gap-4 text-sm text-slate-400">
-                  <div className="flex items-center gap-1">
-                    <IconCalendar size={16} />
-                    <span>{formattedDate}</span>
+                <p className="mb-8 text-xl leading-relaxed text-slate-400">
+                  {post.frontmatter.description}
+                </p>
+
+                <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+                  <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400">
+                    <div className="flex items-center gap-2">
+                      <IconCalendar size={18} className="text-cyan-400" />
+                      <span>{formattedDate}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <IconClock size={18} className="text-cyan-400" />
+                      <span>{post.readingTime}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <IconClock size={16} />
-                    <span>{post.readingTime}</span>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={handleShare}
+                      className="flex items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-200 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400"
+                    >
+                      <IconShare size={18} />
+                      <span className="hidden sm:inline">Share</span>
+                    </button>
                   </div>
-                  <button
-                    className="ml-auto flex items-center gap-1 rounded-md border border-slate-700/50 bg-slate-800/30 px-3 py-1 text-slate-300 transition-all hover:border-cyan-500/50 hover:text-cyan-400"
-                    onClick={() => {
-                      navigator.clipboard.writeText(window.location.href);
-                      alert("Link copied to clipboard!");
-                    }}
-                  >
-                    <IconShare size={16} />
-                    <span>Share</span>
-                  </button>
                 </div>
 
                 {post.frontmatter.image && (
-                  <div className="relative mb-8 h-64 w-full overflow-hidden rounded-xl sm:h-80 md:h-96">
-                    <Image
-                      src={post.frontmatter.image}
-                      alt={post.frontmatter.title}
-                      fill
-                      className="object-cover"
-                      priority
-                    />
+                  <div className="relative mb-12 overflow-hidden rounded-2xl shadow-2xl">
+                    <div className="aspect-video w-full">
+                      <Image
+                        src={post.frontmatter.image}
+                        alt={post.frontmatter.title}
+                        fill
+                        className="object-cover transition-transform duration-700 hover:scale-105"
+                        priority
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
                   </div>
                 )}
               </header>
 
               {/* MDX Content */}
-              <div className="mdx-content">{post.mdxContent}</div>
+              <div className="mdx-content space-y-8">{post.mdxContent}</div>
             </article>
 
             {/* Comments */}
-            <div className="mt-16">
-              <h2 className="mb-6 text-2xl font-bold text-white">Comments</h2>
-              <Comments />
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="mt-20"
+            >
+              <div className="mb-8 rounded-2xl border border-slate-700/30 bg-slate-800/20 p-8">
+                <h2 className="mb-6 text-3xl font-bold text-white">
+                  Join the Discussion
+                </h2>
+                <p className="mb-6 text-slate-400">
+                  Share your thoughts or provide feedback to help make these
+                  posts better!
+                </p>
+                <Comments />
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Sidebar */}
@@ -130,23 +168,27 @@ export function PostPage({ post }: PostPageProps) {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="hidden lg:block"
           >
-            <div className="sticky top-32">
+            <div className="sticky top-32 space-y-8">
               <TableOfContents toc={toc} />
 
-              <div className="mt-8 rounded-xl border border-slate-700/30 bg-slate-800/20 p-6">
+              <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 p-6 backdrop-blur-sm">
                 <h3 className="mb-4 text-lg font-semibold text-white">
                   About the Author
                 </h3>
-                <div className="flex items-center gap-4">
-                  <Image
-                    src="/profile.webp"
-                    alt="Adrian Crîșmaruc"
-                    width={60}
-                    height={60}
-                    className="rounded-full"
-                  />
+                <div className="flex items-start gap-4">
+                  <div className="relative">
+                    <Image
+                      src="/profile.webp"
+                      alt="Adrian Crîșmaruc"
+                      width={60}
+                      height={60}
+                      className="rounded-full ring-2 ring-cyan-500/20"
+                    />
+                  </div>
                   <div>
-                    <h4 className="font-medium text-white">Adrian Crîșmaruc</h4>
+                    <h4 className="font-semibold text-white">
+                      Adrian Crîșmaruc
+                    </h4>
                     <p className="text-sm text-slate-400">
                       Full-Stack Developer
                     </p>
