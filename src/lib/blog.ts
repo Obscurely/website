@@ -19,6 +19,7 @@ import {
   QuickLinks,
   Separator,
 } from "@blog/mdx";
+import { MDXHeadings } from "@blog/mdx/headings";
 
 const POSTS_PATH = path.join(process.cwd(), "content/posts");
 
@@ -147,6 +148,7 @@ export async function getPostBySlug(slug: string): Promise<MDXPost | null> {
           },
         },
         components: {
+          ...MDXHeadings,
           Callout,
           pre: CodeBlock,
           FeatureGrid,

@@ -11,6 +11,7 @@ import {
   IconBulb,
   IconExternalLink,
 } from "@tabler/icons-react";
+import { MDXHeadings } from "./headings";
 
 /**
  * CodeBlock component that displays code snippets with a copy button.
@@ -244,6 +245,7 @@ export function Separator() {
 }
 
 export const mdxComponents = {
+  ...MDXHeadings,
   pre: CodeBlock,
   Callout,
   FeatureGrid,
