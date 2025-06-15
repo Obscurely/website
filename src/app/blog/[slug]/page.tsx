@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { Navbar } from "@components/blog/layout/Navbar";
 import { Footer } from "@components/common/layout/Footer";
+import { Toaster } from "sonner";
 
 interface BlogPostParams {
   params: {
@@ -76,6 +77,17 @@ export default async function Post({ params }: BlogPostParams) {
         </div>
       </main>
       <Footer />
+      <Toaster
+        position="bottom-right"
+        theme="dark"
+        toastOptions={{
+          style: {
+            background: "#1e293b",
+            border: "1px solid #475569",
+            color: "#f1f5f9",
+          },
+        }}
+      />
     </div>
   );
 }

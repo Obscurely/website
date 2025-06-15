@@ -12,6 +12,7 @@ import {
   IconExternalLink,
 } from "@tabler/icons-react";
 import { MDXHeadings } from "./headings";
+import { Card, CardContent } from "@ui/card";
 
 /**
  * CodeBlock component that displays code snippets with a copy button.
@@ -25,8 +26,10 @@ export function CodeBlock({
 }) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    const code = children?.toString() || "";
+  const handleCopy = (event: React.MouseEvent) => {
+    const preElement = event.currentTarget
+      .previousElementSibling as HTMLPreElement;
+    const code = preElement?.textContent || "";
     navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -35,13 +38,13 @@ export function CodeBlock({
   return (
     <div className="group relative my-6">
       <pre
-        className={`${className} rounded-xl border border-slate-700/30 bg-slate-900/50 p-4 text-sm leading-relaxed shadow-lg backdrop-blur-sm`}
+        className={`${className} overflow-x-auto rounded-xl border border-slate-700/30 bg-slate-900/50 p-4 text-sm leading-relaxed break-words whitespace-pre-wrap shadow-lg backdrop-blur-sm`}
       >
         {children}
       </pre>
       <button
         onClick={handleCopy}
-        className="absolute top-3 right-3 rounded-lg bg-slate-800/80 p-2 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-slate-700/80"
+        className="absolute top-3 right-3 cursor-pointer rounded-lg bg-slate-800/80 p-2 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-slate-700/80"
         aria-label="Copy code"
       >
         {copied ? (
@@ -144,14 +147,20 @@ export function FeatureCard({
   icon?: string;
 }) {
   return (
-    <div className="group rounded-xl border border-slate-700/30 bg-slate-800/20 p-6 transition-all duration-300 hover:border-cyan-500/30 hover:bg-slate-800/40">
-      {icon && <div className="mb-4 text-2xl">{icon}</div>}
-      <h3 className="mb-2 text-lg font-semibold text-white group-hover:text-cyan-300">
-        {title}
-      </h3>
-      <p className="text-sm text-slate-400 group-hover:text-slate-300">
-        {description}
-      </p>
+    <div className="group relative">
+      <Card className="h-full overflow-hidden border-slate-700/50 bg-slate-800/30 transition-all duration-300 ease-out hover:translate-y-[-2px] hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">
+        <CardContent className="flex flex-col items-center px-3 text-center">
+          {icon && (
+            <div className="mb-2 rounded-full bg-slate-900/80 p-4 group-hover:bg-slate-900/80">
+              <div className="text-2xl">{icon}</div>
+            </div>
+          )}
+          <h3 className="mb-2 text-lg font-semibold text-white transition-colors duration-300 group-hover:text-cyan-400">
+            {title}
+          </h3>
+          <p className="text-sm text-slate-300">{description}</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

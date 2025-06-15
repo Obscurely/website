@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Card, CardContent } from "@ui/card";
 import { services } from "@data/portfolio/about";
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
@@ -50,7 +50,7 @@ export const ServicesSection = ({ isInView }: ServicesSectionProps) => {
           >
             <Card className="h-full overflow-hidden border-slate-700/50 bg-slate-800/30 transition-all duration-300 ease-out hover:translate-y-[-2px] hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">
               <CardContent className="flex flex-col items-center p-6 text-center">
-                <div className="mb-5 rounded-full bg-slate-900/80 p-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-slate-900/80">
+                <div className="mb-5 rounded-full bg-slate-900/80 p-4 group-hover:bg-slate-900/80">
                   {service.icon}
                 </div>
                 <h4 className="mb-3 text-xl font-bold text-white transition-colors duration-300 group-hover:text-cyan-400">

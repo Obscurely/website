@@ -16,6 +16,8 @@ import {
 } from "@tabler/icons-react";
 import { TableOfContents } from "./TableOfContents";
 import { Comments } from "./Comments";
+import { Button } from "@ui/button";
+import { toast } from "sonner";
 
 interface PostPageProps {
   post: MDXPost;
@@ -36,36 +38,32 @@ export function PostPage({ post }: PostPageProps) {
   const handleShare = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
-      // TODO: Replace with a toast notification
-      alert("Link copied to clipboard!");
+      toast.success("Link copied to clipboard!");
     } catch (err) {
       console.error("Failed to copy link:", err);
+      toast.error("Failed to copy link. Please try again.");
     }
   };
 
   return (
-    <section className="relative overflow-hidden py-20 pt-24">
+    <section className="relative overflow-hidden py-20 pt-26">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 opacity-50"></div>
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <Link
-            href="/blog"
-            className="group inline-flex items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-200 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400"
-          >
-            <IconArrowLeft
-              size={16}
-              className="transition-transform group-hover:-translate-x-1"
-            />
-            <span>Back to all posts</span>
+        <div className="mb-8">
+          <Link href="/blog" className="inline-block">
+            <Button
+              variant="link"
+              className="group inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg border-cyan-500/20 px-4 py-3 text-slate-300 transition-all duration-300 will-change-transform hover:border-cyan-500/50 hover:text-white"
+            >
+              <span className="flex items-center justify-center gap-2 text-sm">
+                <IconArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
+                Back to all posts
+              </span>
+            </Button>
           </Link>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-4">
           {/* Main content */}
@@ -90,7 +88,7 @@ export function PostPage({ post }: PostPageProps) {
                   ))}
                 </div>
 
-                <h1 className="mb-6 bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-4xl leading-tight font-bold text-transparent md:text-5xl lg:text-6xl">
+                <h1 className="mb-6 bg-gradient-to-r bg-clip-text text-3xl leading-tight font-bold text-white md:text-4xl lg:text-5xl">
                   {post.frontmatter.title}
                 </h1>
 
@@ -111,28 +109,28 @@ export function PostPage({ post }: PostPageProps) {
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <button
+                    <Button
                       onClick={handleShare}
-                      className="flex items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-200 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400"
+                      className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:scale-105 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400"
                     >
                       <IconShare size={18} />
                       <span className="hidden sm:inline">Share</span>
-                    </button>
+                    </Button>
                   </div>
                 </div>
 
                 {post.frontmatter.image && (
-                  <div className="relative mb-12 overflow-hidden rounded-2xl shadow-2xl">
-                    <div className="aspect-video w-full">
+                  <div className="relative mb-12 flex justify-center">
+                    <div className="overflow-visible rounded-2xl">
                       <Image
                         src={post.frontmatter.image}
                         alt={post.frontmatter.title}
-                        fill
-                        className="object-cover transition-transform duration-700 hover:scale-105"
+                        width={400}
+                        height={300}
+                        className="h-auto w-full max-w-xs transition-transform duration-300 hover:scale-105 sm:max-w-sm md:max-w-md"
                         priority
                       />
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
                   </div>
                 )}
               </header>
