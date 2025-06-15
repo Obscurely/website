@@ -34,15 +34,7 @@ export function PostPage({ post }: PostPageProps) {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden py-20 pt-32">
-      {/* Background elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 h-full w-full bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900" />
-        <div className="absolute inset-0 h-full w-full bg-[url('/background.avif')] bg-cover bg-center bg-no-repeat opacity-10" />
-        <div className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-purple-500 opacity-10 blur-[100px]"></div>
-        <div className="absolute right-1/4 bottom-1/3 h-64 w-64 rounded-full bg-cyan-500 opacity-10 blur-[100px]"></div>
-      </div>
-
+    <section className="relative overflow-hidden py-20 pt-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

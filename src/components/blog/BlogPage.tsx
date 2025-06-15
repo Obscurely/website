@@ -48,7 +48,7 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-slate-900 pt-16">
+    <div className="relative pt-16">
       {/* Mobile filter drawer */}
       <Dialog
         open={drawerOpen}

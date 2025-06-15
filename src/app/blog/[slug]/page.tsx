@@ -2,6 +2,8 @@ import { PostPage } from "@blog/post/PostPage";
 import { getPostBySlug, getAllPosts } from "@lib/blog";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import { Navbar } from "@components/blog/layout/Navbar";
+import { Footer } from "@components/common/layout/Footer";
 
 interface BlogPostParams {
   params: {
@@ -65,5 +67,15 @@ export default async function Post({ params }: BlogPostParams) {
     notFound();
   }
 
-  return <PostPage post={post} />;
+  return (
+    <div className="relative min-h-screen overflow-x-hidden bg-slate-900 text-slate-200">
+      <Navbar />
+      <main className="relative">
+        <div className="relative z-10">
+          <PostPage post={post} />
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
 }
