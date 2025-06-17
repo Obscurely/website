@@ -33,7 +33,7 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
       className="group"
     >
       <Link href={`/blog/${post.slug}`} className="block">
-        <article className="relative overflow-hidden rounded-xl border border-slate-700/30 bg-gradient-to-br from-slate-800/40 to-slate-900/40 transition-all duration-500 hover:border-cyan-500/40 hover:shadow-2xl hover:shadow-cyan-500/10">
+        <article className="relative overflow-hidden rounded-xl border border-slate-700/30 bg-gradient-to-br from-slate-800/40 to-slate-900/40 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-md hover:shadow-cyan-500/10">
           <div className="flex flex-col md:flex-row">
             {/* Image Section */}
             {post.frontmatter.image && (
@@ -43,7 +43,6 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
                   alt={post.frontmatter.title}
                   width={0}
                   height={0}
-                  className="transition-transform duration-300 group-hover:scale-105"
                   style={{
                     width: "auto",
                     height: "auto",
@@ -52,7 +51,7 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   priority={true}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
             )}
 

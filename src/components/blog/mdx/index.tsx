@@ -148,7 +148,7 @@ export function FeatureCard({
 }) {
   return (
     <div className="group relative">
-      <Card className="h-full overflow-hidden border-slate-700/50 bg-slate-800/30 transition-all duration-300 ease-out hover:translate-y-[-2px] hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">
+      <Card className="h-full overflow-hidden border-slate-700/50 bg-slate-800/30 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-md hover:shadow-cyan-500/10">
         <CardContent className="flex flex-col items-center px-3 text-center">
           {icon && (
             <div className="mb-2 rounded-full bg-slate-900/80 p-4 group-hover:bg-slate-900/80">
@@ -218,7 +218,7 @@ export function QuickLinks({
           <a
             key={index}
             href={link.href}
-            className="block rounded-lg border border-slate-700/50 bg-slate-900/30 p-4 transition-all duration-200 hover:border-cyan-500/50 hover:bg-slate-900/50"
+            className="block rounded-lg border border-slate-700/50 bg-slate-900/30 p-4 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-900/50 hover:shadow-md hover:shadow-cyan-500/10"
             target="_blank"
             rel="noopener noreferrer"
           >

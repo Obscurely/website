@@ -111,7 +111,7 @@ export function PostPage({ post }: PostPageProps) {
                   <div className="flex items-center gap-2">
                     <Button
                       onClick={handleShare}
-                      className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:scale-105 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400"
+                      className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400 hover:shadow-md"
                     >
                       <IconShare size={18} />
                       <span className="hidden sm:inline">Share</span>
@@ -127,7 +127,7 @@ export function PostPage({ post }: PostPageProps) {
                         alt={post.frontmatter.title}
                         width={400}
                         height={300}
-                        className="h-auto w-full max-w-xs transition-transform duration-300 hover:scale-105 sm:max-w-sm md:max-w-md"
+                        className="h-auto w-full max-w-xs sm:max-w-sm md:max-w-md"
                         priority
                       />
                     </div>

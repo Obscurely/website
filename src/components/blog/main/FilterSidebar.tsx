@@ -139,7 +139,7 @@ export function FilterSidebar({
                 id="featured"
                 checked={isFeatured}
                 onCheckedChange={(checked) => setIsFeatured(!!checked)}
-                className="border-slate-700 data-[state=checked]:border-cyan-500 data-[state=checked]:bg-cyan-500"
+                className="border-slate-700 group-hover:translate-0 group-hover:scale-100 hover:translate-0 hover:scale-100 hover:shadow-md data-[state=checked]:border-cyan-500 data-[state=checked]:bg-cyan-500 data-[state=checked]:group-hover:translate-0 data-[state=checked]:group-hover:scale-100 data-[state=checked]:hover:translate-0 data-[state=checked]:hover:scale-100 data-[state=checked]:hover:shadow-md"
               />
               <label
                 htmlFor="featured"
@@ -159,13 +159,13 @@ export function FilterSidebar({
             applyFilters();
             setDrawerOpen?.(false); // Close drawer if it exists
           }}
-          className="group relative flex-1 cursor-pointer rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 text-white transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20"
+          className="group relative flex-1 cursor-pointer rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 text-white transition-all duration-300 group-hover:translate-0 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:shadow-md hover:shadow-cyan-500/20"
         >
           <span className="relative z-10 flex items-center justify-center gap-2 font-medium">
-            <IconFilter className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
+            <IconFilter className="h-4 w-4" />
             Apply
           </span>
-          <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+          <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0"></span>
         </Button>
         <Button
           variant="outline"
@@ -173,7 +173,7 @@ export function FilterSidebar({
             clearFilters();
             setDrawerOpen?.(false); // Close drawer if it exists
           }}
-          className="flex-1 cursor-pointer rounded-lg border-slate-700 px-6 py-3 text-slate-300 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
+          className="group-hover-translate-0 flex-1 cursor-pointer rounded-lg border-slate-700 px-6 py-3 text-slate-300 transition-all duration-300 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-md hover:shadow-cyan-500/10"
         >
           Clear All
         </Button>

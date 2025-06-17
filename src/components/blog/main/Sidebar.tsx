@@ -79,7 +79,7 @@ export function Sidebar() {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 shadow-[inset_0_0_0_1px_rgb(6_182_212_/_0.1)] transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
+              className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 shadow-[inset_0_0_0_1px_rgb(6_182_212_/_0.1)] hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
             >
               <social.icon size={20} strokeWidth={2.5} />
             </a>
@@ -120,7 +120,7 @@ export function Sidebar() {
           asChild
         >
           <Link href="/blog">
-            <IconBookmark className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
+            <IconBookmark className="mr-3 h-5 w-5" />
             All Posts
           </Link>
         </Button>
@@ -134,7 +134,7 @@ export function Sidebar() {
           asChild
         >
           <Link href="/blog?featured=true">
-            <IconTags className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
+            <IconTags className="mr-3 h-5 w-5" />
             Featured
           </Link>
         </Button>
@@ -152,7 +152,7 @@ export function Sidebar() {
             variant="ghost"
             className="group mb-1 w-full cursor-pointer justify-center rounded-xl border border-slate-500/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 font-medium text-slate-300 transition-all duration-300 hover:border-cyan-400/50 hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-cyan-500/20 hover:text-cyan-300 hover:shadow-lg"
           >
-            <IconCoffee className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
+            <IconCoffee className="mr-2 h-5 w-5" />
             Buy Me a Coffee
           </Button>
         </a>
