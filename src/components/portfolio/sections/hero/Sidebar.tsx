@@ -60,7 +60,7 @@ export const Sidebar = ({ currentTime }: SidebarProps) => {
 
           <div className="flex justify-between">
             <span className="text-slate-400">Timezone:</span>
-            <span className="text-slate-200">UTC+2 (Iași, Romania)</span>
+            <span className="text-slate-200">UTC+3 (Iași, Romania)</span>
           </div>
 
           <div className="flex justify-between">
@@ -77,7 +77,7 @@ export const Sidebar = ({ currentTime }: SidebarProps) => {
 
           <div className="flex justify-between">
             <span className="text-slate-400">Available for Work:</span>
-            <span className="text-slate-200">08:00 – 22:00 (UTC+2)</span>
+            <span className="text-slate-200">08:00 – 23:00 (UTC+3)</span>
           </div>
 
           <div className="flex justify-between">
