@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
 import Image from "next/image";
@@ -19,36 +19,42 @@ import { TableOfContents } from "./TableOfContents";
 import { Comments } from "./Comments";
 import { Button } from "@ui/button";
 import { toast } from "sonner";
+import { useSidebarPositioning } from "@hooks/blog/useSidebarPositioning";
+import { useBackToTop } from "@hooks/blog/useBackToTop";
 
 interface PostPageProps {
   post: MDXPost;
 }
+
+const SIDEBAR_CLASSES = {
+  base: "space-y-8",
+  initial: "sticky top-32",
+  fixed: "fixed top-30 z-40",
+  bottom: "absolute bottom-5",
+} as const;
 
 /**
  * PostPage component displays a single blog post with its content, metadata, and comments.
  */
 export function PostPage({ post }: PostPageProps) {
   const [isInView, setIsInView] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  const { sidebarState, sidebarWidth, sidebarRef, footerRef } =
+    useSidebarPositioning();
+  const { showBackToTop, scrollToTop } = useBackToTop();
 
-  const formattedDate = format(new Date(post.frontmatter.date), "MMMM d, yyyy");
-  const toc = getTableOfContents(post.content);
+  // Memoized calculations
+  const formattedDate = useMemo(
+    () => format(new Date(post.frontmatter.date), "MMMM d, yyyy"),
+    [post.frontmatter.date]
+  );
+
+  const toc = useMemo(() => getTableOfContents(post.content), [post.content]);
 
   useEffect(() => {
     setIsInView(true);
   }, []);
 
-  // handle back up scrolling
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowBackToTop(window.scrollY > 400);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleShare = async () => {
+  const handleShare = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
       toast.success("Link copied to clipboard!");
@@ -56,14 +62,25 @@ export function PostPage({ post }: PostPageProps) {
       console.error("Failed to copy link:", err);
       toast.error("Failed to copy link. Please try again.");
     }
-  };
+  }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  // Memoized sidebar styling functions
+  const getSidebarClasses = useCallback(() => {
+    return `${SIDEBAR_CLASSES.base} ${SIDEBAR_CLASSES[sidebarState]}`;
+  }, [sidebarState]);
+
+  const getSidebarStyles = useMemo(() => {
+    if (sidebarState === "fixed" && sidebarWidth > 0) {
+      return { width: `${sidebarWidth}px` };
+    }
+    return {};
+  }, [sidebarState, sidebarWidth]);
+
+  const getSidebarMaxHeight = useMemo(() => {
+    return sidebarState === "fixed"
+      ? "calc(100vh - 8rem)"
+      : "calc(100vh - 10rem)";
+  }, [sidebarState]);
 
   return (
     <section className="relative overflow-hidden py-20 pt-26">
@@ -184,12 +201,19 @@ export function PostPage({ post }: PostPageProps) {
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="hidden lg:block"
+            className="relative hidden lg:block"
           >
-            <div className="sticky top-32 space-y-8">
+            <div
+              ref={sidebarRef}
+              className={`${getSidebarClasses()} overflow-y-auto pb-4`}
+              style={{
+                ...getSidebarStyles,
+                maxHeight: getSidebarMaxHeight,
+              }}
+            >
               <TableOfContents toc={toc} />
 
-              <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 p-6 backdrop-blur-sm">
+              <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 p-6">
                 <h3 className="mb-4 text-lg font-semibold text-white">
                   About the Author
                 </h3>
@@ -220,6 +244,7 @@ export function PostPage({ post }: PostPageProps) {
           </motion.div>
         </div>
       </div>
+
       {/* Back to Top Button */}
       <motion.button
         onClick={scrollToTop}
@@ -234,6 +259,9 @@ export function PostPage({ post }: PostPageProps) {
       >
         <IconArrowUp size={20} className="sm:h-6 sm:w-6" />
       </motion.button>
+
+      {/* Hidden footer ref for positioning calculations */}
+      <div ref={footerRef} className="absolute bottom-0 h-0 w-full" />
     </section>
   );
 }
