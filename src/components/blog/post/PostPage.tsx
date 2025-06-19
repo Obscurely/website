@@ -13,6 +13,7 @@ import {
   IconClock,
   IconArrowLeft,
   IconShare,
+  IconArrowUp,
 } from "@tabler/icons-react";
 import { TableOfContents } from "./TableOfContents";
 import { Comments } from "./Comments";
@@ -28,11 +29,23 @@ interface PostPageProps {
  */
 export function PostPage({ post }: PostPageProps) {
   const [isInView, setIsInView] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
   const formattedDate = format(new Date(post.frontmatter.date), "MMMM d, yyyy");
   const toc = getTableOfContents(post.content);
 
   useEffect(() => {
     setIsInView(true);
+  }, []);
+
+  // handle back up scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleShare = async () => {
@@ -43,6 +56,13 @@ export function PostPage({ post }: PostPageProps) {
       console.error("Failed to copy link:", err);
       toast.error("Failed to copy link. Please try again.");
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -200,6 +220,20 @@ export function PostPage({ post }: PostPageProps) {
           </motion.div>
         </div>
       </div>
+      {/* Back to Top Button */}
+      <motion.button
+        onClick={scrollToTop}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{
+          opacity: showBackToTop ? 1 : 0,
+          scale: showBackToTop ? 1 : 0,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="fixed right-6 bottom-6 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-slate-700/50 bg-slate-800/80 text-slate-300 shadow-lg transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-800/90 hover:text-cyan-400 hover:shadow-xl focus:ring-2 focus:ring-cyan-500/50 focus:outline-none sm:h-14 sm:w-14"
+        aria-label="Back to top"
+      >
+        <IconArrowUp size={20} className="sm:h-6 sm:w-6" />
+      </motion.button>
     </section>
   );
 }
