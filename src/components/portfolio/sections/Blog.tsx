@@ -15,12 +15,7 @@ export const Blog = () => {
     <section
       id="blog"
       ref={ref}
-      className="relative overflow-hidden py-20"
-      style={{
-        background:
-          "linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95))",
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-      }}
+      className="relative z-0 overflow-hidden bg-slate-900/80 py-20"
     >
       {/* Subtle background elements */}
       <div className="absolute inset-0 -z-10 opacity-10">

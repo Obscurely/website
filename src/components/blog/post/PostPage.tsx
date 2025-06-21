@@ -83,10 +83,7 @@ export function PostPage({ post }: PostPageProps) {
   }, [sidebarState]);
 
   return (
-    <section className="relative overflow-hidden py-20 pt-26">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 opacity-50"></div>
-
+    <section className="relative overflow-hidden bg-slate-900/80 py-20 pt-26">
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <Link href="/blog" className="inline-block">

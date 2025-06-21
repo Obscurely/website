@@ -44,7 +44,7 @@ export default async function Blog() {
   const posts = await getAllPosts();
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-slate-900 text-slate-200">
+    <div className="relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-200">
       <Navbar />
       <main className="relative">
         <div className="relative z-10">

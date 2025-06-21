@@ -29,12 +29,7 @@ export const Projects = () => {
     <section id="projects" className="relative">
       <div
         ref={ref}
-        className="relative w-full overflow-hidden pt-16 pb-20"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(8, 15, 30, 0.92), rgba(10, 17, 35, 0.95), rgba(8, 15, 30, 0.92))",
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-        }}
+        className="relative z-0 w-full overflow-hidden bg-slate-900/40 pt-16 pb-20"
       >
         {/* Subtle background elements */}
         <div className="absolute inset-0 -z-10 opacity-10">
