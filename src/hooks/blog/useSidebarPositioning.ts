@@ -10,43 +10,62 @@ export function useSidebarPositioning() {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
 
-  // Footer position calculation
   const getFooterPosition = useCallback((): number => {
-    const footer = document.querySelector("footer") || footerRef.current;
+    // Try multiple selectors to find the footer
+    const footerSelectors = ["footer", "[data-footer]", ".footer", "#footer"];
+
+    let footer: Element | null = null;
+
+    for (const selector of footerSelectors) {
+      footer = document.querySelector(selector);
+      if (footer) break;
+    }
+
+    // Fallback to footerRef if no footer found
+    if (!footer && footerRef.current) {
+      footer = footerRef.current;
+    }
+
     if (!footer) return Infinity;
 
     const rect = footer.getBoundingClientRect();
     return rect.top + window.scrollY;
   }, []);
 
-  // Calculate sidebar state based on scroll position
   const calculateSidebarState = useCallback(
     (
       scrollY: number,
-      windowHeight: number,
+      _windowHeight: number,
       sidebarHeight: number,
       footerTop: number
     ): SidebarState => {
+      // Stay in initial state until we scroll past the activation threshold
       if (scrollY <= SCROLL_CONFIG.SIDEBAR_ACTIVATION_THRESHOLD) {
         return "initial";
       }
 
-      const sidebarBottom =
-        scrollY +
-        windowHeight * SCROLL_CONFIG.FOOTER_OFFSET_RATIO +
-        sidebarHeight;
+      // Calculate where the bottom of the fixed sidebar would be
+      const sidebarTopWhenFixed = 120; // top-30 = 7.5rem = 120px
+      const sidebarBottomWhenFixed =
+        scrollY + sidebarTopWhenFixed + sidebarHeight;
 
-      return sidebarBottom > footerTop ? "bottom" : "fixed";
+      // Add some padding before the footer
+      const footerPadding = window.innerWidth >= 1024 ? 80 : 40; // lg:80px, smaller:40px
+      const footerWithPadding = footerTop - footerPadding;
+
+      // If sidebar would overlap with footer, switch to bottom positioning
+      return sidebarBottomWhenFixed > footerWithPadding ? "bottom" : "fixed";
     },
     []
   );
 
-  // Throttled scroll handler
   const handleScroll = useCallback(() => {
     const throttledHandler = throttle(() => {
+      if (!sidebarRef.current) return;
+
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
-      const sidebarHeight = sidebarRef.current?.offsetHeight || 0;
+      const sidebarHeight = sidebarRef.current.offsetHeight;
       const footerTop = getFooterPosition();
 
       const newState = calculateSidebarState(
@@ -55,7 +74,11 @@ export function useSidebarPositioning() {
         sidebarHeight,
         footerTop
       );
-      setSidebarState(newState);
+
+      // Only update state if it actually changed
+      setSidebarState((prevState) =>
+        prevState !== newState ? newState : prevState
+      );
     }, SCROLL_CONFIG.THROTTLE_DELAY);
 
     return throttledHandler();
@@ -66,17 +89,19 @@ export function useSidebarPositioning() {
     const sidebar = sidebarRef.current;
     if (!sidebar) return;
 
-    const resizeObserver = new ResizeObserver((entries) => {
-      const entry = entries[0];
-      if (entry) {
-        setSidebarWidth(entry.contentRect.width);
-      }
+    const updateWidth = () => {
+      const rect = sidebar.getBoundingClientRect();
+      setSidebarWidth(rect.width);
+    };
+
+    const resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(updateWidth);
     });
 
     resizeObserver.observe(sidebar);
 
     // Initial measurement
-    setSidebarWidth(sidebar.offsetWidth);
+    updateWidth();
 
     return () => {
       resizeObserver.disconnect();
@@ -88,8 +113,18 @@ export function useSidebarPositioning() {
     // Initial call to set correct state
     handleScroll();
 
+    // Handle both scroll and resize events
+    const handleResize = throttle(() => {
+      handleScroll();
+    }, 100);
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, [handleScroll]);
 
   return {

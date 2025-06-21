@@ -130,7 +130,7 @@ export async function getPostBySlug(slug: string): Promise<MDXPost | null> {
               [
                 rehypePrettyCode,
                 {
-                  theme: "github-dark",
+                  theme: "github-dark-high-contrast",
                   keepBackground: true,
                 },
               ],

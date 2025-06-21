@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,17 +27,56 @@ interface PostPageProps {
 }
 
 const SIDEBAR_CLASSES = {
-  base: "space-y-8",
-  initial: "sticky top-32",
-  fixed: "fixed top-30 z-40",
-  bottom: "absolute bottom-5",
+  base: "space-y-8 overflow-y-auto pb-4",
 } as const;
+
+// variants for sidebar states
+const sidebarVariants: Variants = {
+  initial: {
+    position: "sticky" as const,
+    top: "8rem",
+    zIndex: 0,
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: [0.25, 0.46, 0.45, 0.94], // Custom easing
+      opacity: { duration: 0.2 },
+    },
+  },
+  fixed: {
+    position: "fixed" as const,
+    top: "7.5rem",
+    zIndex: 40,
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: [0.25, 0.46, 0.45, 0.94],
+      opacity: { duration: 0.2 },
+    },
+  },
+  bottom: {
+    position: "fixed" as const,
+    top: "7.5rem",
+    zIndex: 40,
+    opacity: 0,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: [0.25, 0.46, 0.45, 0.94],
+      opacity: { duration: 0.4 },
+      y: { duration: 0.3 },
+    },
+  },
+};
 
 /**
  * PostPage component displays a single blog post with its content, metadata, and comments.
  */
 export function PostPage({ post }: PostPageProps) {
   const [isInView, setIsInView] = useState(false);
+  const [initialWidth, setInitialWidth] = useState<number | null>(null);
   const { sidebarState, sidebarWidth, sidebarRef, footerRef } =
     useSidebarPositioning();
   const { showBackToTop, scrollToTop } = useBackToTop();
@@ -54,6 +93,13 @@ export function PostPage({ post }: PostPageProps) {
     setIsInView(true);
   }, []);
 
+  // Capture initial width to prevent flickering
+  useEffect(() => {
+    if (sidebarWidth > 0 && initialWidth === null) {
+      setInitialWidth(sidebarWidth);
+    }
+  }, [sidebarWidth, initialWidth]);
+
   const handleShare = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
@@ -64,23 +110,20 @@ export function PostPage({ post }: PostPageProps) {
     }
   }, []);
 
-  // Memoized sidebar styling functions
-  const getSidebarClasses = useCallback(() => {
-    return `${SIDEBAR_CLASSES.base} ${SIDEBAR_CLASSES[sidebarState]}`;
-  }, [sidebarState]);
-
+  // Memoized sidebar styling with consistent width
   const getSidebarStyles = useMemo(() => {
-    if (sidebarState === "fixed" && sidebarWidth > 0) {
-      return { width: `${sidebarWidth}px` };
-    }
-    return {};
-  }, [sidebarState, sidebarWidth]);
+    const effectiveWidth = initialWidth || sidebarWidth;
 
-  const getSidebarMaxHeight = useMemo(() => {
-    return sidebarState === "fixed"
-      ? "calc(100vh - 8rem)"
-      : "calc(100vh - 10rem)";
-  }, [sidebarState]);
+    const baseStyles = {
+      maxHeight:
+        sidebarState === "fixed" ? "calc(100vh - 8rem)" : "calc(100vh - 10rem)",
+      // Always maintain consistent width to prevent flickering
+      width: effectiveWidth > 0 ? `${effectiveWidth}px` : "auto",
+      minWidth: effectiveWidth > 0 ? `${effectiveWidth}px` : "auto",
+    };
+
+    return baseStyles;
+  }, [sidebarState, sidebarWidth, initialWidth]);
 
   return (
     <section className="relative overflow-hidden bg-slate-900/80 py-20 pt-26">
@@ -200,13 +243,14 @@ export function PostPage({ post }: PostPageProps) {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="relative hidden lg:block"
           >
-            <div
+            <motion.div
               ref={sidebarRef}
-              className={`${getSidebarClasses()} overflow-y-auto pb-4`}
-              style={{
-                ...getSidebarStyles,
-                maxHeight: getSidebarMaxHeight,
-              }}
+              className={SIDEBAR_CLASSES.base}
+              variants={sidebarVariants}
+              animate={sidebarState}
+              style={getSidebarStyles}
+              layout="position" // Prevents layout shifts during transitions
+              layoutRoot
             >
               <TableOfContents toc={toc} />
 
@@ -237,7 +281,7 @@ export function PostPage({ post }: PostPageProps) {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -37,8 +37,6 @@
   Beautiful code blocks for Markdown or MDX.
 - [remark-gft](https://github.com/remarkjs/remark-gfm) - remark plugin to
   support GFM (autolink literals, footnotes, strikethrough, tables, tasklists)
-- [shiki](https://github.com/shikijs/shiki) - A beautiful syntax highlighter
-  based on TextMate grammar, accurate and powerful.
 - [gray-matter](https://github.com/jonschlinkert/gray-matter) - A simple library
   for parsing front matter from strings, files, and buffers.
 - [reading-time](https://github.com/ngryman/readingtime) - A simple library for
