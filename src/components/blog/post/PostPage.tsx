@@ -90,7 +90,6 @@ const sidebarVariants: Variants = {
  * PostPage component displays a single blog post with its content, metadata, and comments.
  */
 export function PostPage({ post }: PostPageProps) {
-  const [isInView, setIsInView] = useState(false);
   const [initialWidth, setInitialWidth] = useState<number | null>(null);
   const [shareState, setShareState] = useState<"idle" | "copied" | "error">(
     "idle"
@@ -107,10 +106,6 @@ export function PostPage({ post }: PostPageProps) {
   );
 
   const toc = useMemo(() => getTableOfContents(post.content), [post.content]);
-
-  useEffect(() => {
-    setIsInView(true);
-  }, []);
 
   // Check for mobile viewport
   useEffect(() => {
@@ -189,7 +184,13 @@ export function PostPage({ post }: PostPageProps) {
   return (
     <section className="relative overflow-hidden bg-slate-900/80 py-20 pt-26">
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
+        {/* Back to blog button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-8"
+        >
           <Link href="/blog" className="inline-block">
             <Button
               variant="link"
@@ -201,14 +202,14 @@ export function PostPage({ post }: PostPageProps) {
               </span>
             </Button>
           </Link>
-        </div>
+        </motion.div>
 
         <div className="flex flex-col gap-8 lg:grid lg:grid-cols-4 lg:gap-12">
           {/* Article Header - shows first on mobile, part of main content on desktop */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="order-1 lg:hidden"
           >
             <header className="not-prose mb-8">
@@ -299,8 +300,8 @@ export function PostPage({ post }: PostPageProps) {
           {/* Sidebar - shows after image on mobile, right side on desktop */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="order-2 lg:order-2 lg:col-span-1"
           >
             <motion.div
@@ -324,7 +325,7 @@ export function PostPage({ post }: PostPageProps) {
                 <h3 className="mb-4 text-lg font-semibold text-white">
                   About the Author
                 </h3>
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <div className="relative">
                     <Image
                       src="/profile.webp"
@@ -338,10 +339,10 @@ export function PostPage({ post }: PostPageProps) {
                     <h4 className="mb-1 font-semibold text-white">
                       Adrian Crîșmaruc
                     </h4>
-                    <div className="mb-0 flex items-center gap-1 text-sm text-slate-300">
+                    <div className="mb-0.5 flex items-center gap-1 text-sm text-slate-300">
                       <span>Full-Stack Developer</span>
                     </div>
-                    <p className="mb-0 text-center text-sm text-slate-400">
+                    <p className="mb-0 text-sm text-slate-400">
                       Founder of{" "}
                       <a
                         href="https://rekosearch.com"
@@ -364,9 +365,9 @@ export function PostPage({ post }: PostPageProps) {
 
           {/* Main content */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="order-3 lg:order-1 lg:col-span-3"
           >
             <article className="prose prose-invert prose-slate prose-lg prose-headings:font-bold prose-headings:text-white prose-headings:tracking-tight prose-p:text-slate-300 prose-p:leading-relaxed prose-a:text-cyan-400 prose-a:no-underline prose-a:transition-colors prose-a:duration-200 hover:prose-a:text-cyan-300 prose-blockquote:border-l-4 prose-blockquote:border-cyan-500 prose-blockquote:bg-slate-800/50 prose-blockquote:p-6 prose-blockquote:not-italic prose-blockquote:shadow-lg prose-code:rounded prose-code:bg-slate-800/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-cyan-400 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-slate-900 prose-pre:shadow-xl prose-img:rounded-xl prose-img:shadow-2xl prose-hr:border-slate-700 max-w-none">
@@ -457,7 +458,7 @@ export function PostPage({ post }: PostPageProps) {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-20 min-h-[430px]"
             >
               {/* Wrapper - hidden on mobile, visible on larger screens */}
