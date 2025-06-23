@@ -26,13 +26,37 @@ export function CodeBlock({
 }) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = (event: React.MouseEvent) => {
-    const preElement = event.currentTarget
-      .previousElementSibling as HTMLPreElement;
+  const handleCopy = async (event: React.MouseEvent) => {
+    const button = event.currentTarget as HTMLButtonElement;
+    const container = button.parentElement;
+    const preElement = container?.querySelector("pre") as HTMLPreElement;
     const code = preElement?.textContent || "";
-    navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+
+    try {
+      // Try modern clipboard API first
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(code);
+      } else {
+        // Fallback for older browsers or non-secure contexts
+        const textArea = document.createElement("textarea");
+        textArea.value = code;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        // Execute copy command
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
   };
 
   return (
@@ -44,7 +68,7 @@ export function CodeBlock({
       </pre>
       <button
         onClick={handleCopy}
-        className="absolute top-3 right-3 cursor-pointer rounded-lg bg-slate-800/80 p-2 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-slate-700/80"
+        className="absolute top-3 right-3 cursor-pointer rounded-lg bg-slate-800/80 p-2 opacity-50 transition-all duration-200 group-hover:opacity-100 hover:bg-slate-700/80"
         aria-label="Copy code"
       >
         {copied ? (
