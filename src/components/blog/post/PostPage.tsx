@@ -15,6 +15,7 @@ import {
   IconShare,
   IconArrowUp,
   IconCoffee,
+  IconCheck,
 } from "@tabler/icons-react";
 import { TableOfContents } from "./TableOfContents";
 import { Comments } from "./Comments";
@@ -91,6 +92,9 @@ const sidebarVariants: Variants = {
 export function PostPage({ post }: PostPageProps) {
   const [isInView, setIsInView] = useState(false);
   const [initialWidth, setInitialWidth] = useState<number | null>(null);
+  const [shareState, setShareState] = useState<"idle" | "copied" | "error">(
+    "idle"
+  );
   const [isMobile, setIsMobile] = useState(false);
   const { sidebarState, sidebarWidth, sidebarRef, footerRef } =
     useSidebarPositioning();
@@ -127,12 +131,36 @@ export function PostPage({ post }: PostPageProps) {
   }, [sidebarWidth, initialWidth]);
 
   const handleShare = useCallback(async () => {
+    const url = window.location.href;
+
     try {
-      await navigator.clipboard.writeText(window.location.href);
+      // Try modern clipboard API first
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        // Fallback for older browsers or non-secure contexts
+        const textArea = document.createElement("textarea");
+        textArea.value = url;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        // Execute copy command
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+
+      setShareState("copied");
       toast.success("Link copied to clipboard!");
+      setTimeout(() => setShareState("idle"), 2000);
     } catch (err) {
       console.error("Failed to copy link:", err);
+      setShareState("error");
       toast.error("Failed to copy link. Please try again.");
+      setTimeout(() => setShareState("idle"), 2000);
     }
   }, []);
 
@@ -239,8 +267,14 @@ export function PostPage({ post }: PostPageProps) {
                     onClick={handleShare}
                     className="z-50 flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400 hover:shadow-md"
                   >
-                    <IconShare size={18} />
-                    <span className="hidden sm:inline">Share</span>
+                    {shareState === "copied" ? (
+                      <IconCheck size={18} className="text-green-400" />
+                    ) : (
+                      <IconShare size={18} />
+                    )}
+                    <span className="hidden sm:inline">
+                      {shareState === "copied" ? "Copied!" : "Share"}
+                    </span>
                   </Button>
                 </div>
               </div>
