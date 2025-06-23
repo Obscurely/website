@@ -1,0 +1,129 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Badge } from "@ui/badge";
+import {
+  IconCalendar,
+  IconClock,
+  IconShare,
+  IconCoffee,
+  IconCheck,
+} from "@tabler/icons-react";
+import { Button } from "@ui/button";
+
+interface HeaderProps {
+  post: {
+    frontmatter: {
+      title: string;
+      description: string;
+      tags: string[];
+      featured?: boolean;
+      image?: string;
+    };
+    readingTime: string;
+  };
+  formattedDate: string;
+  shareState: "idle" | "copied" | "error";
+  handleShareAction: () => void;
+}
+
+export const Header = ({
+  post,
+  formattedDate,
+  shareState,
+  handleShareAction: handleShare,
+}: HeaderProps) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.1 }}
+      className="order-1 lg:hidden"
+    >
+      <header className="not-prose mb-8">
+        <div className="mb-6 flex flex-wrap gap-2">
+          {post.frontmatter.featured && (
+            <Badge
+              variant="outline"
+              className="border-cyan-400/60 bg-cyan-500/20 text-xs font-medium text-cyan-300 hover:bg-cyan-500/30"
+            >
+              Featured
+            </Badge>
+          )}
+          {post.frontmatter.tags.map((tag) => (
+            <Badge
+              key={tag}
+              variant="outline"
+              className="border-slate-600/50 bg-slate-800/40 px-3 py-1 text-slate-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-400"
+            >
+              {tag}
+            </Badge>
+          ))}
+        </div>
+
+        <h1 className="mb-6 bg-gradient-to-r bg-clip-text text-3xl leading-tight font-bold text-white md:text-4xl lg:text-5xl">
+          {post.frontmatter.title}
+        </h1>
+
+        <p className="mb-8 text-xl leading-relaxed text-slate-400">
+          {post.frontmatter.description}
+        </p>
+
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400">
+            <div className="flex items-center gap-2">
+              <IconCalendar size={18} className="text-cyan-400" />
+              <span>{formattedDate}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <IconClock size={18} className="text-cyan-400" />
+              <span>{post.readingTime}</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <a
+              href="https://ko-fi.com/Obscurely"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="z-50 flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400 hover:shadow-md">
+                <IconCoffee size={18} />
+                <span className="hidden sm:inline">Coffee</span>
+              </Button>
+            </a>
+            <Button
+              onClick={handleShare}
+              className="z-50 flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400 hover:shadow-md"
+            >
+              {shareState === "copied" ? (
+                <IconCheck size={18} className="text-green-400" />
+              ) : (
+                <IconShare size={18} />
+              )}
+              <span className="hidden sm:inline">
+                {shareState === "copied" ? "Copied!" : "Share"}
+              </span>
+            </Button>
+          </div>
+        </div>
+
+        {post.frontmatter.image && (
+          <div className="relative mb-8 flex justify-center">
+            <div className="overflow-visible rounded-2xl">
+              <Image
+                src={post.frontmatter.image}
+                alt={post.frontmatter.title}
+                width={400}
+                height={300}
+                className="h-auto w-full max-w-xs sm:max-w-sm md:max-w-md"
+                priority
+              />
+            </div>
+          </div>
+        )}
+      </header>
+    </motion.div>
+  );
+};
