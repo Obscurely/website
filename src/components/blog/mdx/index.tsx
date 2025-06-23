@@ -38,7 +38,7 @@ export function CodeBlock({
   return (
     <div className="group relative my-6">
       <pre
-        className={`${className} overflow-x-auto rounded-xl border border-slate-700/30 bg-slate-900/50 p-4 text-sm leading-relaxed break-words whitespace-pre-wrap shadow-lg backdrop-blur-sm`}
+        className={`${className} overflow-x-auto rounded-xl border border-slate-700/30 bg-slate-950/15 p-4 text-sm leading-relaxed break-words whitespace-pre-wrap shadow-lg`}
       >
         {children}
       </pre>
@@ -105,9 +105,7 @@ export function Callout({
   const { icon: Icon, styles, iconColor, titleColor } = config[type];
 
   return (
-    <div
-      className={`my-8 rounded-xl border p-6 shadow-lg backdrop-blur-sm ${styles}`}
-    >
+    <div className={`my-8 rounded-xl border p-6 shadow-lg ${styles}`}>
       <div className="flex items-start gap-3">
         <Icon size={20} className={`mt-0.5 flex-shrink-0 ${iconColor}`} />
         <div className="flex-1">

@@ -96,7 +96,7 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
                   {post.frontmatter.featured && (
                     <Badge
                       variant="outline"
-                      className="border-cyan-400/60 bg-cyan-500/20 text-xs font-medium text-cyan-300"
+                      className="border-cyan-400/60 bg-cyan-500/20 text-xs font-medium text-cyan-300 hover:bg-cyan-500/30"
                     >
                       Featured
                     </Badge>

@@ -14,6 +14,7 @@ import {
   IconArrowLeft,
   IconShare,
   IconArrowUp,
+  IconCoffee,
 } from "@tabler/icons-react";
 import { TableOfContents } from "./TableOfContents";
 import { Comments } from "./Comments";
@@ -27,7 +28,7 @@ interface PostPageProps {
 }
 
 const SIDEBAR_CLASSES = {
-  base: "space-y-8 overflow-y-auto pb-4",
+  base: "space-y-8 overflow-y-auto pb-4 transform-gpu",
 } as const;
 
 // variants for sidebar states
@@ -65,7 +66,7 @@ const sidebarVariants: Variants = {
     transition: {
       duration: 0.4,
       ease: [0.25, 0.46, 0.45, 0.94],
-      opacity: { duration: 0.4 },
+      opacity: { duration: 0.3 },
       y: { duration: 0.3 },
     },
   },
@@ -132,7 +133,7 @@ export function PostPage({ post }: PostPageProps) {
           <Link href="/blog" className="inline-block">
             <Button
               variant="link"
-              className="group inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg border-cyan-500/20 px-4 py-3 text-slate-300 transition-all duration-300 will-change-transform hover:border-cyan-500/50 hover:text-white"
+              className="group inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg border-cyan-500/20 px-4 py-3 text-slate-300 transition-all duration-300 hover:border-cyan-500/50 hover:text-white"
             >
               <span className="flex items-center justify-center gap-2 text-sm">
                 <IconArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
@@ -154,6 +155,14 @@ export function PostPage({ post }: PostPageProps) {
               {/* Header */}
               <header className="not-prose mb-12">
                 <div className="mb-6 flex flex-wrap gap-2">
+                  {post.frontmatter.featured && (
+                    <Badge
+                      variant="outline"
+                      className="border-cyan-400/60 bg-cyan-500/20 text-xs font-medium text-cyan-300 hover:bg-cyan-500/30"
+                    >
+                      Featured
+                    </Badge>
+                  )}
                   {post.frontmatter.tags.map((tag) => (
                     <Badge
                       key={tag}
@@ -186,9 +195,19 @@ export function PostPage({ post }: PostPageProps) {
                   </div>
 
                   <div className="flex items-center gap-2">
+                    <a
+                      href="https://ko-fi.com/Obscurely"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="z-50 flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400 hover:shadow-md">
+                        <IconCoffee size={18} />
+                        <span className="hidden sm:inline">Coffee</span>
+                      </Button>
+                    </a>
                     <Button
                       onClick={handleShare}
-                      className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400 hover:shadow-md"
+                      className="z-50 flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400 hover:shadow-md"
                     >
                       <IconShare size={18} />
                       <span className="hidden sm:inline">Share</span>
@@ -221,9 +240,10 @@ export function PostPage({ post }: PostPageProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="mt-20"
+              className="mt-20 min-h-[430px]"
             >
-              <div className="mb-8 rounded-2xl border border-slate-700/30 bg-slate-800/20 p-8">
+              {/* Wrapper - hidden on mobile, visible on larger screens */}
+              <div className="mb-8 hidden rounded-2xl border border-slate-700/30 bg-slate-800/20 p-8 sm:block">
                 <h2 className="mb-6 text-3xl font-bold text-white">
                   Join the Discussion
                 </h2>
@@ -231,6 +251,14 @@ export function PostPage({ post }: PostPageProps) {
                   Share your thoughts or provide feedback to help make these
                   posts better!
                 </p>
+                <Comments />
+              </div>
+
+              {/* Direct comments for mobile - visible only on small screens */}
+              <div className="block min-h-[500px] sm:hidden">
+                <h2 className="mb-6 text-3xl font-bold text-white">
+                  Join the Discussion
+                </h2>
                 <Comments />
               </div>
             </motion.div>
@@ -248,8 +276,14 @@ export function PostPage({ post }: PostPageProps) {
               className={SIDEBAR_CLASSES.base}
               variants={sidebarVariants}
               animate={sidebarState}
-              style={getSidebarStyles}
-              layout="position" // Prevents layout shifts during transitions
+              style={{
+                ...getSidebarStyles,
+                transform: "translateZ(0)", // Force hardware acceleration
+                backfaceVisibility: "hidden", // Prevent flickering
+                WebkitFontSmoothing: "antialiased", // Improve text rendering
+                MozOsxFontSmoothing: "grayscale", // Improve text rendering on macOS
+              }}
+              layout="position"
               layoutRoot
             >
               <TableOfContents toc={toc} />
@@ -269,14 +303,22 @@ export function PostPage({ post }: PostPageProps) {
                     />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-white">
+                    <h4 className="mb-1 font-semibold text-white">
                       Adrian Crîșmaruc
                     </h4>
-                    <p className="text-sm text-slate-400">
-                      Full-Stack Developer
-                    </p>
-                    <p className="text-sm text-slate-400">
-                      Founder of RekoSearch
+                    <div className="mb-0 flex items-center gap-1 text-sm text-slate-300">
+                      <span>Full-Stack Developer</span>
+                    </div>
+                    <p className="mb-0 text-center text-sm text-slate-400">
+                      Founder of{" "}
+                      <a
+                        href="https://rekosearch.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-cyan-400 not-italic transition-colors hover:text-cyan-300"
+                      >
+                        RekoSearch
+                      </a>
                     </p>
                   </div>
                 </div>

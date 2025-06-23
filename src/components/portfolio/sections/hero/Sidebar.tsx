@@ -31,8 +31,8 @@ export const Sidebar = ({ currentTime }: SidebarProps) => {
             <div className="group relative mx-auto h-full w-full overflow-hidden rounded-full border-2 border-cyan-500/20 bg-slate-900">
               <Image
                 src="/profile.webp"
-                width={200}
-                height={200}
+                width={512}
+                height={512}
                 alt="Adrian Crîșmaruc"
                 className="h-full w-full transform object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
                 priority

@@ -81,7 +81,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
             <li key={item.slug} className={`${item.level === 3 ? "ml-4" : ""}`}>
               <a
                 href={`#${item.slug}`}
-                className={`block transition-all duration-300 ease-out will-change-transform ${
+                className={`block transition-all duration-300 ease-out ${
                   activeId === item.slug
                     ? "translate-x-1 font-medium text-cyan-400"
                     : "translate-x-0 text-slate-400 hover:text-slate-200"
