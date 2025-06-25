@@ -1,24 +1,35 @@
 ---
 title: "Getting Started with Next.js and TypeScript"
 date: "2025-01-15"
-description: "Master the art of building modern web applications with Next.js and TypeScript. From setup to deployment, discover the tools and techniques that will elevate your development workflow."
+description:
+  "Master the art of building modern web applications with Next.js and
+  TypeScript. From setup to deployment, discover the tools and techniques that
+  will elevate your development workflow."
 tags: ["Next.js", "TypeScript", "React", "Web Development", "Full-Stack"]
 image: "/blog/nextjs.svg"
 draft: false
 featured: true
 ---
 
+{/*<!-- markdownlint-disable MD033 -->*/}
+{/*<!-- markdownlint-disable MD013 -->*/}
+{/*<!-- markdownlint-disable MD046 -->*/}
+
 <Callout type="tip" title="DISCLAIMER">
-THIS POST IS AN AI GENERATED EXAMPLE.
+  THIS POST IS AN AI GENERATED EXAMPLE.
 </Callout>
 
 <Callout type="tip" title="What You'll Learn">
-By the end of this comprehensive guide, you'll have a solid understanding of Next.js and TypeScript integration, best practices for modern web development, and hands-on experience building scalable applications.
+  By the end of this comprehensive guide, you'll have a solid understanding of
+  Next.js and TypeScript integration, best practices for modern web development,
+  and hands-on experience building scalable applications.
 </Callout>
 
 ## Why Next.js + TypeScript is a Game Changer
 
-The combination of Next.js and TypeScript has revolutionized how we build web applications. This powerful duo offers the perfect balance of developer experience, performance, and maintainability that modern applications demand.
+The combination of Next.js and TypeScript has revolutionized how we build web
+applications. This powerful duo offers the perfect balance of developer
+experience, performance, and maintainability that modern applications demand.
 
 <FeatureGrid>
   <FeatureCard
@@ -57,7 +68,8 @@ The combination of Next.js and TypeScript has revolutionized how we build web ap
 
 ## Getting Started: Your First Next.js + TypeScript Project
 
-Let's dive into creating your first project with this powerful combination. We'll walk through each step to ensure you have a solid foundation.
+Let's dive into creating your first project with this powerful combination.
+We'll walk through each step to ensure you have a solid foundation.
 
 <StepGuide>
   <Step number={1} title="Create Your Project">
@@ -73,6 +85,7 @@ Let's dive into creating your first project with this powerful combination. We'l
     - [Tailwind](https://tailwindcss.com) CSS for styling
     - ESLint for code quality
     - App Router (Next.js 13+ feature)
+
   </Step>
 
   <Step number={2} title="Explore the Project Structure">
@@ -94,6 +107,7 @@ Let's dive into creating your first project with this powerful combination. We'l
     ```
 
     Each file serves a specific purpose in your application architecture.
+
   </Step>
 
   <Step number={3} title="Start the Development Server">
@@ -104,16 +118,20 @@ Let's dive into creating your first project with this powerful combination. We'l
     ```
 
     Your application will be available at `http://localhost:3000` with hot reloading enabled.
+
   </Step>
 </StepGuide>
 
 <Callout type="success" title="Pro Tip">
-Use `npm run dev -- --turbo` to enable Turbopack for even faster development builds. This experimental bundler can significantly speed up your development workflow.
+  Use `npm run dev -- --turbo` to enable Turbopack for even faster development
+  builds. This experimental bundler can significantly speed up your development
+  workflow.
 </Callout>
 
 ## Building Your First Component
 
-Let's create a reusable, type-safe component that showcases TypeScript's power in React development.
+Let's create a reusable, type-safe component that showcases TypeScript's power
+in React development.
 
 ### Creating a Modern Button Component
 
@@ -213,7 +231,7 @@ export default function HomePage() {
             Next.js
           </span>
         </h1>
-        
+
         <p className="mb-8 text-lg text-slate-600">
           Build amazing applications with the power of Next.js and TypeScript
         </p>
@@ -236,12 +254,15 @@ export default function HomePage() {
 ```
 
 <Callout type="info" title="Advanced Pattern">
-This button component uses `class-variance-authority` for type-safe variant management and `forwardRef` for proper ref handling. These patterns are essential for building robust component libraries.
+  This button component uses `class-variance-authority` for type-safe variant
+  management and `forwardRef` for proper ref handling. These patterns are
+  essential for building robust component libraries.
 </Callout>
 
 ## Advanced TypeScript Patterns for React
 
-As you become more comfortable with TypeScript, you can leverage advanced patterns to build more sophisticated applications.
+As you become more comfortable with TypeScript, you can leverage advanced
+patterns to build more sophisticated applications.
 
 ### Generic Components
 
@@ -317,7 +338,7 @@ const users: User[] = [
 
 ```typescript
 // src/hooks/useLocalStorage.ts
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 type SetValue<T> = T | ((val: T) => T);
 
@@ -329,7 +350,7 @@ export function useLocalStorage<T>(
     if (typeof window === "undefined") {
       return initialValue;
     }
-    
+
     try {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : initialValue;
@@ -341,9 +362,10 @@ export function useLocalStorage<T>(
 
   const setValue = (value: SetValue<T>) => {
     try {
-      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      const valueToStore =
+        value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
-      
+
       if (typeof window !== "undefined") {
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
@@ -356,18 +378,20 @@ export function useLocalStorage<T>(
 }
 
 // Usage
-const [theme, setTheme] = useLocalStorage<'light' | 'dark'>('theme', 'light');
+const [theme, setTheme] = useLocalStorage<"light" | "dark">("theme", "light");
 ```
 
 <Separator />
 
 ## Next.js App Router Deep Dive
 
-The App Router introduces powerful new concepts that change how we think about routing and data fetching in Next.js applications.
+The App Router introduces powerful new concepts that change how we think about
+routing and data fetching in Next.js applications.
 
 ### Server Components vs Client Components
 
-Understanding when to use Server Components versus Client Components is crucial for optimal performance:
+Understanding when to use Server Components versus Client Components is crucial
+for optimal performance:
 
 ```typescript
 // app/posts/page.tsx (Server Component)
@@ -420,7 +444,9 @@ export function PostCard({ post }: PostCardProps) {
 ```
 
 <Callout type="warning" title="Important">
-Server Components run on the server and can't use browser APIs or event handlers. Client Components run in the browser and can use hooks and interactivity. Choose the right component type for your use case.
+  Server Components run on the server and can't use browser APIs or event
+  handlers. Client Components run in the browser and can use hooks and
+  interactivity. Choose the right component type for your use case.
 </Callout>
 
 ## Essential Resources and Next Steps
@@ -430,40 +456,49 @@ Server Components run on the server and can't use browser APIs or event handlers
     {
       title: "Next.js Documentation",
       href: "https://nextjs.org/docs",
-      description: "Official documentation with comprehensive guides and API reference"
+      description:
+        "Official documentation with comprehensive guides and API reference",
     },
     {
       title: "TypeScript Handbook",
       href: "https://www.typescriptlang.org/docs/",
-      description: "Complete guide to TypeScript features and best practices"
+      description: "Complete guide to TypeScript features and best practices",
     },
     {
       title: "React TypeScript Cheatsheet",
       href: "https://react-typescript-cheatsheet.netlify.app/",
-      description: "Community-driven cheatsheet for React with TypeScript"
+      description: "Community-driven cheatsheet for React with TypeScript",
     },
     {
       title: "Tailwind CSS",
       href: "https://tailwindcss.com/docs",
-      description: "Utility-first CSS framework for rapid UI development"
-    }
+      description: "Utility-first CSS framework for rapid UI development",
+    },
   ]}
 />
 
 ## What's Next?
 
-Now that you have a solid foundation with Next.js and TypeScript, here are some advanced topics to explore:
+Now that you have a solid foundation with Next.js and TypeScript, here are some
+advanced topics to explore:
 
-- **State Management**: Learn about Zustand, Redux Toolkit, or Jotai for complex state management
-- **Database Integration**: Connect to databases using Prisma, Drizzle, or other ORMs
+- **State Management**: Learn about Zustand, Redux Toolkit, or Jotai for complex
+  state management
+- **Database Integration**: Connect to databases using Prisma, Drizzle, or other
+  ORMs
 - **Authentication**: Implement secure authentication with NextAuth.js or Auth0
-- **Testing**: Write comprehensive tests with Jest, React Testing Library, and Playwright
-- **Deployment**: Deploy to Vercel, Netlify, or other platforms with CI/CD pipelines
+- **Testing**: Write comprehensive tests with Jest, React Testing Library, and
+  Playwright
+- **Deployment**: Deploy to Vercel, Netlify, or other platforms with CI/CD
+  pipelines
 
 <Callout type="success" title="Keep Building">
-The best way to master Next.js and TypeScript is through hands-on practice. Start building projects, experiment with different patterns, and don't be afraid to make mistakes – they're part of the learning process!
+  The best way to master Next.js and TypeScript is through hands-on practice.
+  Start building projects, experiment with different patterns, and don't be
+  afraid to make mistakes – they're part of the learning process!
 </Callout>
 
 ---
 
-*Ready to take your Next.js and TypeScript skills to the next level? Follow along for more in-depth tutorials and advanced techniques in upcoming posts.*
+*Ready to take your Next.js and TypeScript skills to the next level? Follow
+along for more in-depth tutorials and advanced techniques in upcoming posts.*
