@@ -27,6 +27,16 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   authors: [{ name: "Adrian Crîșmaruc" }],
   keywords: KEYWORDS,
+  alternates: {
+    types: {
+      "application/rss+xml": [
+        {
+          url: "/rss.xml",
+          title: "Adrian Crîșmaruc - Blog RSS Feed",
+        },
+      ],
+    },
+  },
   openGraph: {
     title: "Blog | Adrian Crîșmaruc",
     description: DESCRIPTION,

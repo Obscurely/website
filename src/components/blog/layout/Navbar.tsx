@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { IconMenu2, IconBrandX } from "@tabler/icons-react";
+import { IconMenu2, IconBrandX, IconRss } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 
 const navItems = [
@@ -70,6 +70,22 @@ export const Navbar = () => {
             </motion.div>
           ))}
           <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <a
+              href="/rss.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex items-center gap-1 text-sm text-slate-300 transition-colors hover:text-white lg:text-base"
+            >
+              <IconRss size={16} className="" />
+              RSS
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-cyan-400 transition-all group-hover:w-full" />
+            </a>
+          </motion.div>
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
@@ -117,6 +133,15 @@ export const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
+              <a
+                href="/rss.xml"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 py-2 text-slate-300 transition-colors hover:text-white"
+              >
+                <IconRss size={16} />
+                RSS Feed
+              </a>
               <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-600 hover:to-blue-600">
                 Resume
               </Button>

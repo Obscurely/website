@@ -37,6 +37,16 @@ export const metadata: Metadata = {
   title: "Adrian Crîșmaruc",
   description: "Personal portfolio website and Blog",
   authors: [{ name: "Adrian Crîșmaruc" }],
+  alternates: {
+    types: {
+      "application/rss+xml": [
+        {
+          url: "/rss.xml",
+          title: "Adrian Crîșmaruc - Blog RSS Feed",
+        },
+      ],
+    },
+  },
 };
 
 export default function RootLayout({
