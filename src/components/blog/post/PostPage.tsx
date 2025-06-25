@@ -44,7 +44,7 @@ export function PostPage({ post }: PostPageProps) {
   );
 
   return (
-    <section className="relative overflow-hidden bg-slate-900/80 py-20 pt-26">
+    <section className="relative overflow-hidden py-20 pt-26">
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back to blog button */}
         <motion.div
