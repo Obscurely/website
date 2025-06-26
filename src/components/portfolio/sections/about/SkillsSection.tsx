@@ -122,7 +122,8 @@ const SkillsTabs = memo(function SkillsTabs() {
 
         <div
           style={{
-            height: contentHeight,
+            height: contentHeight || "65px",
+            minHeight: "65px",
             transition: "height 0.3s ease-in-out",
           }}
         >
