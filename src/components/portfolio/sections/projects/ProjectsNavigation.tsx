@@ -27,7 +27,7 @@ export const ProjectsNavigation = memo(
 
     return (
       <motion.div
-        className="mt-8 flex items-center justify-center gap-4"
+        className="mt-12 flex items-center justify-center gap-4"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={navigationButtonVariants}
