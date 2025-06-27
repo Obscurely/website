@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Hero } from "@portfolio/sections/hero/Hero";
 import { About } from "@portfolio/sections/about/About";
 import { Projects } from "@portfolio/sections/projects/Projects";
-import { Blog } from "@portfolio/sections/Blog";
+import { Blog } from "@portfolio/sections/blog/Blog";
 import { Contact } from "@portfolio/sections/Contact";
 import { Navbar } from "@portfolio/layout/Navbar";
 import { Footer } from "@common/layout/Footer";
