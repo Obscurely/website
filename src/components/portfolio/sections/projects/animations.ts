@@ -1,3 +1,5 @@
+import { Variants } from "framer-motion";
+
 export const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -52,7 +54,7 @@ export const buttonVariants = {
   },
 };
 
-export const cardVariants = {
+export const cardVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
