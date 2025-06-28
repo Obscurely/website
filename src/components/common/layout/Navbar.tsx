@@ -18,7 +18,6 @@ const navItemsBlog = [
   { name: "Home", href: "/blog" },
   { name: "Portfolio", href: "/" },
   { name: "About", href: "/#about" },
-  { name: "Projects", href: "/#projects" },
   { name: "Contact", href: "/#contact" },
   { name: "RSS", href: "/blog/rss.xml" },
 ];
@@ -119,7 +118,7 @@ export const Navbar = ({ isBlog }: NavbarProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 * i, ease: "easeOut" }}
             >
-              {item.name !== "RSS" ? (
+              {item.name !== "RSS" && isBlog !== true ? (
                 <button
                   onClick={() => handleNavClickDesktop(item.href)}
                   className={`group relative cursor-pointer px-0 text-base font-medium transition-all duration-300 lg:px-1 ${
@@ -133,16 +132,30 @@ export const Navbar = ({ isBlog }: NavbarProps) => {
                   {/* Bottom border */}
                   <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 group-hover:left-0 group-hover:w-full" />
                 </button>
+              ) : item.name !== "RSS" && isBlog === true ? (
+                <a
+                  href={item.href}
+                  key={item.name}
+                  rel="noopener noreferrer"
+                  className="group relative flex items-center px-0 text-base font-medium text-slate-300 transition-all duration-300 hover:text-white lg:px-1"
+                >
+                  <span className="relative z-10">{item.name}</span>
+
+                  {/* Bottom border */}
+                  <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 group-hover:left-0 group-hover:w-full" />
+                </a>
               ) : (
                 <a
                   href="/rss.xml"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex items-center gap-1 text-sm font-medium text-slate-300 transition-colors hover:text-white lg:text-base"
+                  className="group relative flex items-center gap-1 px-0 text-base font-medium text-slate-300 transition-all duration-300 hover:text-white lg:px-1"
                 >
                   <IconRss size={16} className="" />
-                  RSS
-                  <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-cyan-400 transition-all group-hover:w-full" />
+                  <span className="relative z-10">RSS</span>
+
+                  {/* Bottom border */}
+                  <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 group-hover:left-0 group-hover:w-full" />
                 </a>
               )}
             </motion.div>
@@ -213,16 +226,37 @@ export const Navbar = ({ isBlog }: NavbarProps) => {
                       ease: "easeOut",
                     }}
                   >
-                    <button
-                      onClick={() => handleNavClickMobile(item.href)}
-                      className={`w-full cursor-pointer rounded-lg px-4 py-3 text-left text-base font-medium transition-colors duration-200 ${
-                        activeSection === item.href.substring(1)
-                          ? "text-cyan-400"
-                          : "text-slate-300 hover:text-white"
-                      }`}
-                    >
-                      {item.name}
-                    </button>
+                    {item.name !== "RSS" && isBlog !== true ? (
+                      <button
+                        onClick={() => handleNavClickMobile(item.href)}
+                        className={`w-full cursor-pointer rounded-lg px-4 py-3 text-left text-base font-medium transition-colors duration-200 ${
+                          activeSection === item.href.substring(1)
+                            ? "text-cyan-400"
+                            : "text-slate-300 hover:text-white"
+                        }`}
+                      >
+                        {item.name}
+                      </button>
+                    ) : item.name !== "RSS" && isBlog === true ? (
+                      <a
+                        href={item.href}
+                        className="block w-full cursor-pointer rounded-lg px-4 py-3 text-left text-base font-medium text-slate-300 transition-colors duration-200 hover:text-white"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <a
+                        href="/rss.xml"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex w-full cursor-pointer items-center gap-2 rounded-lg px-4 py-3 text-left text-base font-medium text-slate-300 transition-colors duration-200 hover:text-white"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <IconRss size={16} />
+                        RSS
+                      </a>
+                    )}
                   </motion.div>
                 ))}
 
