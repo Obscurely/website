@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@ui/button";
+import { IconArrowLeft, IconHome } from "@tabler/icons-react";
 
 export default function NotFound() {
   return (
@@ -24,17 +25,24 @@ export default function NotFound() {
 
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
           <Link href="/blog" passHref>
-            <Button className="relative cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 text-white shadow-lg transition-all duration-300 hover:from-cyan-600 hover:to-blue-600 hover:shadow-cyan-500/20">
-              Back to Blog
+            <Button className="group relative h-10 w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20">
+              <span className="relative z-10 flex items-center justify-center gap-2 text-sm font-medium">
+                <IconArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
+                Back to Blog
+              </span>
+              <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
             </Button>
           </Link>
 
           <Link href="/" passHref>
             <Button
               variant="outline"
-              className="cursor-pointer rounded-lg border border-slate-600 bg-transparent px-6 py-3 text-slate-200 transition-all duration-300 hover:bg-slate-700/50 hover:text-white"
+              className="h-10 w-full cursor-pointer rounded-lg border-cyan-500/20 px-4 py-3 text-slate-300 transition-all duration-300 will-change-transform hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
             >
-              Go Home
+              <span className="flex items-center justify-center gap-2 text-sm">
+                <IconHome className="h-4 w-4" />
+                Go Home
+              </span>
             </Button>
           </Link>
         </div>
