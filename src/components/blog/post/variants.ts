@@ -29,7 +29,7 @@ export const sidebarVariants: Variants = {
   bottom: {
     position: "fixed" as const,
     top: "7.5rem",
-    zIndex: 40,
+    zIndex: -50,
     opacity: 0,
     y: 0,
     transition: {

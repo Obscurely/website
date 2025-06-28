@@ -2,115 +2,28 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  IconArrowUp,
-  IconMail,
-  IconMapPin,
-  IconDownload,
-  IconRss,
-  IconForms,
-} from "@tabler/icons-react";
+import { IconArrowUp } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 import { socials } from "@data/common/socials";
-
-interface FooterLink {
-  name: string;
-  href: string;
-  external?: boolean;
-}
-
-interface FooterSection {
-  title: string;
-  links: FooterLink[];
-}
+import { useFooter } from "@hooks/common/useFooter";
+import { NavLink } from "./NavLink";
+import { contactInfo } from "@data/common/footer";
 
 interface FooterProps {
   isBlog?: boolean;
+  isMain?: boolean;
 }
 
-const getFooterSections = (isBlog: boolean): FooterSection[] => [
-  {
-    title: "Navigation",
-    links: [
-      { name: "Home", href: isBlog ? "/" : "#home" },
-      { name: "About", href: isBlog ? "/#about" : "#about" },
-      { name: "Projects", href: isBlog ? "/#projects" : "#projects" },
-      { name: "Blog", href: isBlog ? "/blog" : "#blog", external: isBlog },
-      { name: "Contact", href: isBlog ? "/#contact" : "#contact" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { name: "Resume", href: "/resume.pdf", external: true },
-      { name: "RSS Feed", href: "/rss.xml", external: true },
-      { name: "Portfolio", href: isBlog ? "/#home" : "#home" },
-      { name: "Tech Stack", href: isBlog ? "/#about" : "#about" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { name: "Privacy Policy", href: "/privacy", external: true },
-      { name: "Terms of Service", href: "/terms", external: true },
-      { name: "Cookie Policy", href: "/cookies", external: true },
-      { name: "Sitemap", href: "/sitemap.xml", external: true },
-    ],
-  },
-];
-
-const contactInfo = [
-  {
-    icon: IconMail,
-    label: "Email",
-    value: "contact@​adriancrismaruc.com",
-    href: "mailto:contact@adriancrismaruc.com",
-  },
-  {
-    icon: IconForms,
-    label: "Contact Form",
-    value: "Contact Me",
-    href: "/#contact",
-  },
-  {
-    icon: IconMapPin,
-    label: "Location",
-    value: "Iași, Romania",
-    href: null,
-  },
-];
-
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
-
-const handleNavClick = (href: string, isBlog: boolean) => {
-  if (href.startsWith("#")) {
-    // On home page, scroll to section
-    if (!isBlog) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      // On blog page, navigate to home page with hash
-      window.location.href = `/${href}`;
-    }
-  } else if (href.startsWith("/#")) {
-    // Always navigate to home page with hash for cross-page navigation
-    window.location.href = href;
-  }
-};
-
 /**
- * Modern, feature-complete Footer component with improved design and functionality.
+ * Footer
  */
-export const Footer = ({ isBlog = false }: FooterProps) => {
+export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
   const currentYear = new Date().getFullYear();
-  const footerSections = getFooterSections(isBlog);
+  const { useAnchorLinks, handleNavClick, scrollToTop, footerSections } =
+    useFooter(isBlog, isMain);
 
   return (
-    <footer className="relative border-t border-slate-900 bg-[#080e22]">
+    <footer className="relative z-10 border-t border-slate-900 bg-[#080e22]">
       <div className="relative container mx-auto px-4 py-16">
         {/* Main footer content */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-14 lg:gap-8">
@@ -122,7 +35,7 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              {isBlog ? (
+              {isBlog || useAnchorLinks ? (
                 <Link
                   href="/"
                   className="group mb-6 block text-2xl font-bold text-slate-100"
@@ -133,7 +46,7 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
                 </Link>
               ) : (
                 <button
-                  onClick={() => handleNavClick("#home", isBlog)}
+                  onClick={() => handleNavClick("#home")}
                   className="group mb-6 block cursor-pointer text-2xl font-bold text-slate-100 transition-all duration-300"
                 >
                   <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-2xl font-extrabold text-transparent">
@@ -184,42 +97,12 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
                   <ul className="space-y-3">
                     {section.links.map((link, linkIndex) => (
                       <li key={linkIndex}>
-                        {link.external ? (
-                          <a
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group flex cursor-pointer items-center gap-2 text-slate-400 transition-all duration-300 hover:text-cyan-400"
-                          >
-                            <span className="text-sm">{link.name}</span>
-                            {link.name === "Resume" && (
-                              <IconDownload className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
-                            )}
-                            {link.name === "RSS Feed" && (
-                              <IconRss className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
-                            )}
-                          </a>
-                        ) : isBlog &&
-                          (link.href.startsWith("#") ||
-                            link.href.startsWith("/#")) ? (
-                          <a
-                            href={
-                              link.href.startsWith("#")
-                                ? `/${link.href}`
-                                : link.href
-                            }
-                            className="cursor-pointer text-sm text-slate-400 transition-all duration-300 hover:text-cyan-400"
-                          >
-                            {link.name}
-                          </a>
-                        ) : (
-                          <button
-                            onClick={() => handleNavClick(link.href, isBlog)}
-                            className="cursor-pointer text-sm text-slate-400 transition-all duration-300 hover:text-cyan-400"
-                          >
-                            {link.name}
-                          </button>
-                        )}
+                        {NavLink({
+                          link,
+                          isBlog,
+                          useAnchorLinks,
+                          handleNavClick,
+                        })}
                       </li>
                     ))}
                   </ul>

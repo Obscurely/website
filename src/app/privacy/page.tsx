@@ -1,5 +1,5 @@
 import { PolicyPage } from "@components/policies/PolicyPage";
-import { Footer } from "@components/common/layout/Footer";
+import { Footer } from "@components/common/layout/Footer/Footer";
 import { Navbar } from "@common/layout/Navbar/Navbar";
 import { getPolicyBySlug } from "@lib/policies";
 import { notFound } from "next/navigation";

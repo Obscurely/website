@@ -1,6 +1,6 @@
 import { BlogPage } from "@components/blog/BlogPage";
 import { BlogLoadingFallback } from "@components/blog/main/LoadingFallback";
-import { Footer } from "@components/common/layout/Footer";
+import { Footer } from "@components/common/layout/Footer/Footer";
 import { Navbar } from "@common/layout/Navbar/Navbar";
 import { getAllPosts } from "@lib/blog";
 import { Metadata } from "next";

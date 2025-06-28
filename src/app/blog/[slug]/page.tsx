@@ -2,7 +2,7 @@ import { PostPage } from "@blog/post/PostPage";
 import { getPostBySlug, getAllPosts } from "@lib/blog";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { Footer } from "@components/common/layout/Footer";
+import { Footer } from "@components/common/layout/Footer/Footer";
 import { Toaster } from "sonner";
 import { Navbar } from "@common/layout/Navbar/Navbar";
 

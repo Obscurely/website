@@ -8,7 +8,7 @@ import { Projects } from "@portfolio/sections/projects/Projects";
 import { Blog } from "@portfolio/sections/blog/Blog";
 import { Contact } from "@portfolio/sections/Contact";
 import { Navbar } from "@common/layout/Navbar/Navbar";
-import { Footer } from "@common/layout/Footer";
+import { Footer } from "@common/layout/Footer/Footer";
 
 export default function Home() {
   // Create a ref for the entire page
@@ -45,7 +45,7 @@ export default function Home() {
           <Contact />
         </div>
       </main>
-      <Footer />
+      <Footer isMain={true} />
     </div>
   );
 }
