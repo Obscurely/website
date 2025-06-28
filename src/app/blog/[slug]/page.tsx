@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { Footer } from "@components/common/layout/Footer";
 import { Toaster } from "sonner";
-import { Navbar } from "@common/layout/Navbar";
+import { Navbar } from "@common/layout/Navbar/Navbar";
 
 interface BlogPostParams {
   params: {
