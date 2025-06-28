@@ -168,6 +168,7 @@ export const Navbar = ({ isBlog }: NavbarProps) => {
               duration: 0.3,
               ease: "easeOut",
             }}
+            className="ml-0 lg:ml-1"
           >
             <Button
               className="group relative w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20"
