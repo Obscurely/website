@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import {
   IconArrowUp,
   IconMail,
-  IconPhone,
   IconMapPin,
   IconDownload,
   IconRss,
+  IconForms,
 } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 import { socials } from "@data/common/socials";
@@ -44,7 +44,7 @@ const getFooterSections = (isBlog: boolean): FooterSection[] => [
     links: [
       { name: "Resume", href: "/resume.pdf", external: true },
       { name: "RSS Feed", href: "/rss.xml", external: true },
-      { name: "Portfolio", href: isBlog ? "/#projects" : "#projects" },
+      { name: "Portfolio", href: isBlog ? "/#home" : "#home" },
       { name: "Tech Stack", href: isBlog ? "/#about" : "#about" },
     ],
   },
@@ -63,19 +63,19 @@ const contactInfo = [
   {
     icon: IconMail,
     label: "Email",
-    value: "adrian@crismaruc.dev",
-    href: "mailto:adrian@crismaruc.dev",
+    value: "contact@​adriancrismaruc.com",
+    href: "mailto:contact@adriancrismaruc.com",
   },
   {
-    icon: IconPhone,
-    label: "Phone",
-    value: "+40 123 456 789",
-    href: "tel:+40123456789",
+    icon: IconForms,
+    label: "Contact Form",
+    value: "Contact Me",
+    href: "/#contact",
   },
   {
     icon: IconMapPin,
     label: "Location",
-    value: "Bucharest, Romania",
+    value: "Iași, Romania",
     href: null,
   },
 ];
@@ -110,15 +110,12 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
   const footerSections = getFooterSections(isBlog);
 
   return (
-    <footer className="relative border-t border-slate-800/50 bg-gradient-to-b from-slate-900/80 to-slate-950/90 backdrop-blur-sm">
-      {/* Decorative gradient overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-transparent to-blue-500/5" />
-
+    <footer className="relative border-t border-slate-900 bg-[#080e22]">
       <div className="relative container mx-auto px-4 py-16">
         {/* Main footer content */}
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-14 lg:gap-8">
           {/* Brand section */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-5">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -137,59 +134,34 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
               ) : (
                 <button
                   onClick={() => handleNavClick("#home", isBlog)}
-                  className="group mb-6 block cursor-pointer text-2xl font-bold text-slate-100"
+                  className="group mb-6 block cursor-pointer text-2xl font-bold text-slate-100 transition-all duration-300"
                 >
-                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-2xl font-extrabold text-transparent transition-all duration-300 group-hover:from-cyan-300 group-hover:to-blue-400">
+                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-2xl font-extrabold text-transparent">
                     Adrian Crîșmaruc
                   </span>
                 </button>
               )}
 
               <p className="mb-8 max-w-md leading-relaxed text-slate-400">
-                Full-Stack Developer passionate about creating innovative
-                solutions and building exceptional digital experiences with
-                modern technologies.
+                Full-Stack Developer specializing in Rust, Python, React,
+                TypeScript, Next.js, Flask and cloud-native technologies.
               </p>
 
               {/* Social links */}
               <div className="mb-8 flex gap-4">
                 {socials.map((social, index) => (
-                  <motion.a
+                  <a
                     key={index}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative rounded-lg bg-slate-800/50 p-2 text-slate-400 transition-all duration-300 hover:scale-110 hover:bg-slate-700/50 hover:text-cyan-400"
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="group"
                   >
-                    <social.icon className="h-5 w-5" />
-                    <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  </motion.a>
+                    <div className="-mt-0.5 flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/50 text-cyan-500 transition-colors duration-300 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none">
+                      <social.icon size={20} strokeWidth={2.5} />
+                    </div>
+                  </a>
                 ))}
-              </div>
-
-              {/* Newsletter signup */}
-              <div className="rounded-lg border border-slate-700/50 bg-slate-800/30 p-4">
-                <h4 className="mb-2 text-sm font-semibold text-slate-200">
-                  Stay Updated
-                </h4>
-                <p className="mb-3 text-xs text-slate-400">
-                  Get notified about new projects and blog posts.
-                </p>
-                <div className="flex gap-2">
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="flex-1 rounded-md border border-slate-600 bg-slate-700/50 px-3 py-2 text-sm text-slate-200 placeholder-slate-400 focus:border-transparent focus:ring-2 focus:ring-cyan-500/50 focus:outline-none"
-                  />
-                  <Button
-                    size="sm"
-                    className="bg-gradient-to-r from-cyan-500 to-blue-500 px-4 text-white hover:from-cyan-600 hover:to-blue-600"
-                  >
-                    Subscribe
-                  </Button>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -217,7 +189,7 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group flex items-center gap-2 text-slate-400 transition-all duration-300 hover:translate-x-1 hover:text-cyan-400"
+                            className="group flex cursor-pointer items-center gap-2 text-slate-400 transition-all duration-300 hover:text-cyan-400"
                           >
                             <span className="text-sm">{link.name}</span>
                             {link.name === "Resume" && (
@@ -236,14 +208,14 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
                                 ? `/${link.href}`
                                 : link.href
                             }
-                            className="text-sm text-slate-400 transition-all duration-300 hover:translate-x-1 hover:text-cyan-400"
+                            className="cursor-pointer text-sm text-slate-400 transition-all duration-300 hover:text-cyan-400"
                           >
                             {link.name}
                           </a>
                         ) : (
                           <button
                             onClick={() => handleNavClick(link.href, isBlog)}
-                            className="text-sm text-slate-400 transition-all duration-300 hover:translate-x-1 hover:text-cyan-400"
+                            className="cursor-pointer text-sm text-slate-400 transition-all duration-300 hover:text-cyan-400"
                           >
                             {link.name}
                           </button>
@@ -257,7 +229,7 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
           </div>
 
           {/* Contact section */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -271,7 +243,7 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
               <ul className="space-y-4">
                 {contactInfo.map((contact, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="rounded-lg bg-slate-800/50 p-2 text-cyan-400">
+                    <div className="rounded-full bg-slate-800/50 p-2 text-cyan-400">
                       <contact.icon className="h-4 w-4" />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -281,7 +253,7 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
                       {contact.href ? (
                         <a
                           href={contact.href}
-                          className="text-sm break-all text-slate-400 transition-colors duration-300 hover:text-cyan-400"
+                          className="text-sm break-words text-slate-400 transition-colors duration-300 hover:text-cyan-400"
                         >
                           {contact.value}
                         </a>
@@ -310,8 +282,34 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
             <p className="text-center text-sm text-slate-400 md:text-left">
               © {currentYear} Adrian Crîșmaruc. All rights reserved.
             </p>
-            <p className="mt-1 text-center text-xs text-slate-500 md:text-left">
-              Built with Next.js, TypeScript, and Tailwind CSS
+            <p className="mt-1.5 text-center text-xs text-slate-500 md:text-left">
+              Built with{" "}
+              <a
+                href="https://nextjs.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="not-italic transition-colors hover:text-cyan-400"
+              >
+                Next.js
+              </a>
+              ,{" "}
+              <a
+                href="https://www.typescriptlang.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="not-italic transition-colors hover:text-cyan-400"
+              >
+                TypeScript
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://tailwindcss.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="not-italic transition-colors hover:text-cyan-400"
+              >
+                Tailwind CSS
+              </a>
             </p>
           </div>
 
@@ -323,7 +321,7 @@ export const Footer = ({ isBlog = false }: FooterProps) => {
               variant="ghost"
               size="icon"
               onClick={scrollToTop}
-              className="group relative rounded-full border border-slate-700/50 bg-slate-800/30 text-slate-400 transition-all duration-300 hover:scale-110 hover:border-cyan-500/50 hover:bg-slate-700/50 hover:text-cyan-400"
+              className="group relative cursor-pointer rounded-full border border-slate-700/50 bg-slate-800/30 text-slate-400 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-700/50 hover:text-cyan-400"
             >
               <IconArrowUp
                 size={18}
