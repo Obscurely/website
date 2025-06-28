@@ -63,7 +63,7 @@ export default async function Blog() {
           </Suspense>
         </div>
       </main>
-      <Footer />
+      <Footer isBlog={true} />
     </div>
   );
 }

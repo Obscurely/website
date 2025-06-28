@@ -1,3 +1,10 @@
+---
+title: Privacy Policy
+lastUpdated: 2025-06-28
+description:
+  Privacy policy and data handling practices for Adrian Crîșmaruc's website.
+---
+
 # PRIVACY POLICY
 
 **Last updated:** 2025-06-28

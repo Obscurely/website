@@ -18,8 +18,8 @@ import {
   Step,
   QuickLinks,
   Separator,
-} from "@blog/mdx";
-import { MDXHeadings } from "@blog/mdx/headings";
+} from "@common/mdx";
+import { MDXHeadings } from "@common/mdx/headings";
 
 const POSTS_PATH = path.join(process.cwd(), "content/posts");
 

@@ -76,7 +76,7 @@ export default async function Post({ params }: BlogPostParams) {
           <PostPage post={post} />
         </div>
       </main>
-      <Footer />
+      <Footer isBlog={true} />
       <Toaster
         position="bottom-right"
         theme="dark"

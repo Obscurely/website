@@ -1,3 +1,11 @@
+---
+title: Terms of Service
+lastUpdated: 2025-06-28
+description:
+  Legal terms for using my personal website, including intellectual-property
+  rights, user responsibilities, and dispute resolution.
+---
+
 # Terms of Use
 
 **Last updated:** 2025-06-28
