@@ -3,32 +3,90 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { IconMenu2, IconBrandX } from "@tabler/icons-react";
+import { IconMenu2, IconDownload, IconX, IconRss } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 
-const navItems = [
+const navItemsPortfolio = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
   { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
 ];
 
+const navItemsBlog = [
+  { name: "Home", href: "/blog" },
+  { name: "Portfolio", href: "/" },
+  { name: "About", href: "/#about" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Contact", href: "/#contact" },
+  { name: "RSS", href: "/blog/rss.xml" },
+];
+
+const HEADER_HEIGHT = 50;
+
+interface NavbarProps {
+  isBlog?: boolean;
+}
 /**
  * Navbar component that displays the navigation bar at the top of the page.
  */
-export const Navbar = () => {
+export const Navbar = ({ isBlog }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  const navItems = isBlog ? navItemsBlog : navItemsPortfolio;
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 20);
+
+      // Update active section based on scroll position
+      const sections = navItems.map((item) => item.href.substring(1));
+      const currentSection = sections.find((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [navItems]);
+
+  const handleNavClickDesktop = (href: string) => {
+    setMobileMenuOpen(false);
+    const element = document.querySelector(href);
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleNavClickMobile = (href: string) => {
+    setMobileMenuOpen(false);
+
+    // Add a small delay to ensure mobile menu closes first
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        // Calculate offset for fixed header
+        const elementPosition =
+          element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - HEADER_HEIGHT;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }, 100);
+  };
 
   return (
     <header
@@ -57,32 +115,59 @@ export const Navbar = () => {
           {navItems.map((item, i) => (
             <motion.div
               key={item.name}
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 * i }}
+              transition={{ duration: 0.6, delay: 0.1 * i, ease: "easeOut" }}
             >
-              <Link
-                href={item.href}
-                className="group relative text-sm text-slate-300 transition-colors hover:text-white lg:text-base"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .querySelector(item.href)
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-cyan-400 transition-all group-hover:w-full" />
-              </Link>
+              {item.name !== "RSS" ? (
+                <button
+                  onClick={() => handleNavClickDesktop(item.href)}
+                  className={`group relative cursor-pointer px-0 text-base font-medium transition-all duration-300 lg:px-1 ${
+                    activeSection === item.href.substring(1)
+                      ? "text-cyan-400"
+                      : "text-slate-300 hover:text-white"
+                  }`}
+                >
+                  <span className="relative z-10">{item.name}</span>
+
+                  {/* Bottom border */}
+                  <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 group-hover:left-0 group-hover:w-full" />
+                </button>
+              ) : (
+                <a
+                  href="/rss.xml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex items-center gap-1 text-sm font-medium text-slate-300 transition-colors hover:text-white lg:text-base"
+                >
+                  <IconRss size={16} className="" />
+                  RSS
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-cyan-400 transition-all group-hover:w-full" />
+                </a>
+              )}
             </motion.div>
           ))}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
+            transition={{
+              delay: navItems.length * 0.1 + 0.1,
+              duration: 0.3,
+              ease: "easeOut",
+            }}
           >
-            <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 text-sm text-white hover:from-cyan-600 hover:to-blue-600">
-              Resume
+            <Button
+              className="group relative w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20"
+              onClick={(e) => {
+                e.preventDefault();
+                window.open("/resume.pdf", "_blank");
+              }}
+            >
+              <span className="relative z-10 flex items-center justify-center gap-2 text-sm font-medium">
+                <IconDownload className="h-4 w-4 transition-transform duration-300" />
+                Resume
+              </span>
+              <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
             </Button>
           </motion.div>
         </nav>
@@ -93,13 +178,14 @@ export const Navbar = () => {
             variant="ghost"
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="ml-2 text-slate-200"
+            className="ml-2 cursor-pointer text-slate-200 backdrop-blur-none hover:bg-transparent hover:backdrop-blur-none"
           >
-            {mobileMenuOpen ? (
-              <IconBrandX size={24} />
-            ) : (
-              <IconMenu2 size={24} />
-            )}
+            <motion.div
+              animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              {mobileMenuOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
+            </motion.div>
           </Button>
         </div>
       </div>
@@ -111,29 +197,60 @@ export const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="border-t border-slate-800 bg-slate-900 md:hidden"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden border-t border-slate-700/50 bg-slate-900/95 md:hidden"
           >
-            <div className="container mx-auto flex flex-col space-y-4 px-4 py-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="py-2 text-slate-300 transition-colors hover:text-white"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document
-                      .querySelector(item.href)
-                      ?.scrollIntoView({ behavior: "smooth" });
-                    setMobileMenuOpen(false);
+            <div className="container mx-auto px-4 py-6">
+              <div className="flex flex-col space-y-1">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      delay: index * 0.1,
+                      duration: 0.3,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <button
+                      onClick={() => handleNavClickMobile(item.href)}
+                      className={`w-full cursor-pointer rounded-lg px-4 py-3 text-left text-base font-medium transition-colors duration-200 ${
+                        activeSection === item.href.substring(1)
+                          ? "text-cyan-400"
+                          : "text-slate-300 hover:text-white"
+                      }`}
+                    >
+                      {item.name}
+                    </button>
+                  </motion.div>
+                ))}
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: navItems.length * 0.1 + 0.1,
+                    duration: 0.3,
+                    ease: "easeOut",
                   }}
+                  className="pt-4"
                 >
-                  {item.name}
-                </Link>
-              ))}
-              <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-600 hover:to-blue-600">
-                Resume
-              </Button>
+                  <Button
+                    className="group relative w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.open("/resume.pdf", "_blank");
+                    }}
+                  >
+                    <span className="relative z-10 flex items-center justify-center gap-2 text-sm font-medium backface-hidden">
+                      <IconDownload className="h-4 w-4 transition-transform duration-300" />
+                      Resume
+                    </span>
+                    <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+                  </Button>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         )}

@@ -1,7 +1,7 @@
 import { BlogPage } from "@components/blog/BlogPage";
-import { Navbar } from "@components/blog/layout/Navbar";
 import { BlogLoadingFallback } from "@components/blog/main/LoadingFallback";
 import { Footer } from "@components/common/layout/Footer";
+import { Navbar } from "@components/portfolio/layout/Navbar";
 import { getAllPosts } from "@lib/blog";
 import { Metadata } from "next";
 import { Suspense } from "react";
@@ -55,7 +55,7 @@ export default async function Blog() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[#0c1327] text-slate-200">
-      <Navbar />
+      <Navbar isBlog={true} />
       <main className="relative">
         <div className="relative z-10">
           <Suspense fallback={<BlogLoadingFallback />}>

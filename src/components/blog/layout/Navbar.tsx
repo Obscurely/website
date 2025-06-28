@@ -81,7 +81,9 @@ export const Navbar = () => {
               className="group relative flex items-center gap-1 text-sm text-slate-300 transition-colors hover:text-white lg:text-base"
             >
               <IconRss size={16} className="" />
-              RSS
+              <span className="text-sm text-slate-300 transition-colors hover:text-white lg:text-base">
+                RSS Feed
+              </span>
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-cyan-400 transition-all group-hover:w-full" />
             </a>
           </motion.div>
