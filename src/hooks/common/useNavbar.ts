@@ -1,12 +1,12 @@
 import { throttle } from "@lib/utils";
-import { navItemsBlog, navItemsPortfolio } from "@data/portfolio/navbar";
+import { navItemsBlog, navItemsPortfolio } from "@data/common/navbar";
 import { useState, useEffect, useCallback, useMemo } from "react";
 
 const HEADER_HEIGHT = 50;
 const SCROLL_THRESHOLD = 20;
 const SECTION_OFFSET = 100;
 
-export const useNavbar = (isBlog: boolean) => {
+export const useNavbar = (isBlog: boolean, isMain: boolean) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -16,10 +16,17 @@ export const useNavbar = (isBlog: boolean) => {
     [isBlog]
   );
 
+  // Determine navigation behavior based on isBlog and isMain
+  const useAnchorLinks = useMemo(() => {
+    if (isBlog) return true; // isBlog overrides isMain
+    return !isMain; // if not blog, use anchor links when isMain is false
+  }, [isBlog, isMain]);
+
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
 
-    if (!isBlog) {
+    // Only track sections when isMain is true
+    if (isMain) {
       const sections = navItems
         .map((item) => item.href.substring(1))
         .filter((section) => section.startsWith("#") === false);
@@ -37,7 +44,7 @@ export const useNavbar = (isBlog: boolean) => {
         setActiveSection(currentSection);
       }
     }
-  }, [navItems, isBlog]);
+  }, [navItems, isMain]);
 
   const throttledHandleScroll = useMemo(
     () => throttle(handleScroll, 16), // ~60fps
@@ -90,6 +97,7 @@ export const useNavbar = (isBlog: boolean) => {
     mobileMenuOpen,
     activeSection,
     navItems,
+    useAnchorLinks,
     handleScroll,
     handleNavClick,
     handleMobileNavClick,

@@ -6,6 +6,7 @@ interface MobileNavItemProps {
   item: { name: string; href: string };
   isBlog: boolean;
   activeSection: string;
+  useAnchorLinks: boolean;
   onNavClickAction: (href: string) => void;
   onMenuCloseAction: () => void;
 }
@@ -14,11 +15,17 @@ export const MobileNavItem = ({
   item,
   isBlog,
   activeSection,
+  useAnchorLinks,
   onNavClickAction: onNavClick,
   onMenuCloseAction: onMenuClose,
 }: MobileNavItemProps) => {
   const isRSS = item.name === "RSS";
-  const isActive = activeSection === item.href.substring(1);
+  const isActive = useAnchorLinks
+    ? false
+    : activeSection === item.href.substring(1);
+
+  // Add "/" prefix when isMain=false and isBlog=false
+  const href = !isBlog && useAnchorLinks ? `/${item.href}` : item.href;
 
   const commonClasses =
     "w-full cursor-pointer rounded-lg px-4 py-3 text-left text-base font-medium transition-colors duration-200";
@@ -41,10 +48,11 @@ export const MobileNavItem = ({
     );
   }
 
-  if (isBlog) {
+  // Use anchor links when isBlog=true OR when useAnchorLinks=true (isMain=false)
+  if (isBlog || useAnchorLinks) {
     return (
       <a
-        href={item.href}
+        href={href}
         className={`${commonClasses} ${activeClasses} block`}
         onClick={onMenuClose}
       >
@@ -53,6 +61,7 @@ export const MobileNavItem = ({
     );
   }
 
+  // Use buttons with smooth scrolling when isMain=true and isBlog=false
   return (
     <button
       onClick={() => onNavClick(item.href)}

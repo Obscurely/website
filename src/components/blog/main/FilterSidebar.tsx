@@ -165,7 +165,7 @@ export function FilterSidebar({
             <IconFilter className="h-4 w-4" />
             Apply
           </span>
-          <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0"></span>
+          <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </Button>
         <Button
           variant="outline"

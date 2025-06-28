@@ -6,6 +6,7 @@ interface DesktopNavItemProps {
   item: { name: string; href: string };
   isBlog: boolean;
   activeSection: string;
+  useAnchorLinks: boolean;
   onNavClickAction: (href: string) => void;
 }
 
@@ -13,10 +14,16 @@ export const DesktopNavItem = ({
   item,
   isBlog,
   activeSection,
+  useAnchorLinks,
   onNavClickAction: onNavClick,
 }: DesktopNavItemProps) => {
   const isRSS = item.name === "RSS";
-  const isActive = activeSection === item.href.substring(1);
+  const isActive = useAnchorLinks
+    ? false
+    : activeSection === item.href.substring(1);
+
+  // Add "/" prefix when isMain=false and isBlog=false
+  const href = !isBlog && useAnchorLinks ? `/${item.href}` : item.href;
 
   const commonClasses =
     "group relative px-0 text-base font-medium transition-all duration-300 lg:px-1";
@@ -39,10 +46,11 @@ export const DesktopNavItem = ({
     );
   }
 
-  if (isBlog) {
+  // Use anchor links when isBlog=true OR when useAnchorLinks=true (isMain=false)
+  if (isBlog || useAnchorLinks) {
     return (
       <a
-        href={item.href}
+        href={href}
         className={`${commonClasses} ${activeClasses} flex items-center`}
       >
         <span className="relative z-10">{item.name}</span>
@@ -51,6 +59,7 @@ export const DesktopNavItem = ({
     );
   }
 
+  // Use buttons with smooth scrolling when isMain=true and isBlog=false
   return (
     <button
       onClick={() => onNavClick(item.href)}

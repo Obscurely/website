@@ -27,7 +27,7 @@ export default function Home() {
       ref={containerRef}
       className="relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-200"
     >
-      <Navbar />
+      <Navbar isMain={true} />
       <main className="relative">
         <motion.div
           style={{ opacity, scale }}

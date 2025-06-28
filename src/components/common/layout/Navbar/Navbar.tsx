@@ -6,24 +6,26 @@ import { IconMenu2, IconDownload, IconX } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 import { DesktopNavItem } from "./DesktopNavItem";
 import { MobileNavItem } from "./MobileNavItem";
-import { useNavbar } from "@hooks/portfolio/useNavbar";
+import { useNavbar } from "@hooks/common/useNavbar";
 
 interface NavbarProps {
   isBlog?: boolean;
+  isMain?: boolean;
 }
 
-export const Navbar = ({ isBlog = false }: NavbarProps) => {
+export const Navbar = ({ isBlog = false, isMain = false }: NavbarProps) => {
   const {
     isScrolled,
     mobileMenuOpen,
     activeSection,
     navItems,
+    useAnchorLinks,
     handleNavClick,
     handleMobileNavClick,
     toggleMobileMenu,
     closeMobileMenu,
     handleResumeClick,
-  } = useNavbar(isBlog);
+  } = useNavbar(isBlog, isMain);
 
   return (
     <header
@@ -60,6 +62,7 @@ export const Navbar = ({ isBlog = false }: NavbarProps) => {
                 item={item}
                 isBlog={isBlog}
                 activeSection={activeSection}
+                useAnchorLinks={useAnchorLinks}
                 onNavClickAction={handleNavClick}
               />
             </motion.div>
@@ -76,7 +79,7 @@ export const Navbar = ({ isBlog = false }: NavbarProps) => {
             className="ml-0 lg:ml-1"
           >
             <Button
-              className="group relative w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20"
+              className="group relative w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 group-hover:translate-0 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:shadow-md hover:shadow-cyan-500/20"
               onClick={handleResumeClick}
             >
               <span className="relative z-10 flex items-center justify-center gap-2 text-sm font-medium">
@@ -133,6 +136,7 @@ export const Navbar = ({ isBlog = false }: NavbarProps) => {
                       item={item}
                       isBlog={isBlog}
                       activeSection={activeSection}
+                      useAnchorLinks={useAnchorLinks}
                       onNavClickAction={handleMobileNavClick}
                       onMenuCloseAction={closeMobileMenu}
                     />
@@ -150,7 +154,7 @@ export const Navbar = ({ isBlog = false }: NavbarProps) => {
                   className="pt-4"
                 >
                   <Button
-                    className="group relative w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20"
+                    className="group relative w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 group-hover:translate-0 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:shadow-md hover:shadow-cyan-500/20"
                     onClick={handleResumeClick}
                   >
                     <span className="relative z-10 flex items-center justify-center gap-2 text-sm font-medium">
