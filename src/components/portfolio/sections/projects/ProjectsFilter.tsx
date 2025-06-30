@@ -42,7 +42,7 @@ export const ProjectsFilter = memo(
         transition={ANIMATION_TRANSITION}
         className="mb-12 flex flex-wrap justify-center gap-3"
       >
-        <div className="flex flex-wrap justify-center gap-2 rounded-xl border border-slate-700/30 bg-slate-800/40 p-1.5 shadow-lg backdrop-blur-sm">
+        <div className="flex flex-wrap justify-center gap-2 rounded-xl border border-slate-700/30 bg-slate-800/45 p-1.5 shadow-lg">
           {filterCategories.map((category) => (
             <button
               key={category}

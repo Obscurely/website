@@ -18,7 +18,7 @@ const buttonVariants = cva(
         secondary:
           "bg-slate-800 text-slate-200 shadow-sm hover:bg-slate-700 hover:shadow-md hover:shadow-slate-900/20 hover:translate-y-[-1px] active:translate-y-[0px]",
         ghost:
-          "bg-transparent hover:bg-slate-800/70 hover:text-cyan-400 backdrop-blur-[2px] hover:backdrop-blur-sm transition-all",
+          "bg-transparent hover:bg-slate-800/70 hover:text-cyan-400 transition-all",
         link: "text-cyan-400 underline-offset-4 hover:underline hover:text-cyan-300 p-0 h-auto",
       },
       size: {

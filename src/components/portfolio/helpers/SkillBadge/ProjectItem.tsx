@@ -39,7 +39,7 @@ export const ProjectItem = ({ project }: { project: Project }) => {
         <TooltipContent
           side="top"
           align="center"
-          className="w-auto max-w-md rounded-lg border-0 bg-gradient-to-b from-slate-800/95 to-slate-900/95 px-4 py-3 text-sm shadow-xl ring-1 ring-slate-700/30 backdrop-blur-md"
+          className="w-auto max-w-md rounded-lg border-0 bg-gradient-to-b from-[#1e2a3e] to-[#0f182c] px-4 py-3 text-sm shadow-xl ring-1 ring-slate-700/30"
           sideOffset={2}
         >
           <div className="mb-1.5 font-medium text-cyan-400">{project.name}</div>

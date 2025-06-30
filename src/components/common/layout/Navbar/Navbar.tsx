@@ -97,7 +97,7 @@ export const Navbar = ({ isBlog = false, isMain = false }: NavbarProps) => {
             variant="ghost"
             size="icon"
             onClick={toggleMobileMenu}
-            className="ml-2 cursor-pointer text-slate-200 backdrop-blur-none hover:bg-transparent hover:backdrop-blur-none"
+            className="ml-2 cursor-pointer text-slate-200 hover:bg-transparent"
           >
             <motion.div
               animate={{ rotate: mobileMenuOpen ? 90 : 0 }}

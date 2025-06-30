@@ -24,7 +24,7 @@ export const SkillsTooltip = () => {
         <TooltipContent
           side="top"
           align="center"
-          className="max-w-[250px] rounded-lg border border-slate-700/30 bg-gradient-to-b from-slate-800/95 to-slate-900/95 px-4 py-3 text-sm shadow-lg backdrop-blur-md transition-all duration-200"
+          className="max-w-[250px] rounded-lg border border-slate-700/30 bg-gradient-to-b from-[#1e2a3e] to-[#0f182c] px-4 py-3 text-sm shadow-lg transition-all duration-200"
           sideOffset={2}
         >
           <div className="mb-1 font-medium text-cyan-400">Skill Details</div>

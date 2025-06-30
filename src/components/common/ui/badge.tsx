@@ -23,7 +23,7 @@ const badgeVariants = cva(
         outline:
           "border border-slate-700 bg-transparent text-slate-300 shadow-sm hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-md hover:shadow-cyan-500/10 [a&]:hover:translate-y-[-1px] [button&]:hover:translate-y-[-1px]",
         ghost:
-          "bg-slate-800/30 text-slate-300 backdrop-blur-sm hover:bg-slate-800/60 hover:text-cyan-400 border border-slate-700/30 hover:border-slate-600/50",
+          "bg-slate-800/30 text-slate-300 hover:bg-slate-800/60 hover:text-cyan-400 border border-slate-700/30 hover:border-slate-600/50",
       },
     },
     defaultVariants: {

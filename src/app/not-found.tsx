@@ -5,7 +5,7 @@ import { IconHome } from "@tabler/icons-react";
 export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#0c1327] px-6 text-center">
-      <div className="relative mx-auto max-w-2xl rounded-2xl border border-slate-700/30 bg-slate-800/50 p-8 shadow-xl backdrop-blur-sm">
+      <div className="relative mx-auto max-w-2xl rounded-2xl border border-slate-700/30 bg-slate-800/50 p-8 shadow-xl">
         <div className="absolute -top-20 left-1/2 -translate-x-1/2">
           <div className="relative flex h-40 w-40 items-center justify-center rounded-full bg-slate-800/80 shadow-lg">
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-6xl font-bold text-transparent">

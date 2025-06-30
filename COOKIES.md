@@ -1,9 +1,7 @@
 ---
 title: Cookie Policy
 lastUpdated: 2025-06-28
-description:
-  A simple cookie policy for a personal website that does not use tracking
-  cookies, focusing on privacy and essential functions.
+description: The privacy-first approach to cookies and analytics on my website.
 ---
 
 # Cookie Policy

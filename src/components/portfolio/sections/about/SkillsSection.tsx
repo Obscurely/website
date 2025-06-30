@@ -50,7 +50,7 @@ export const SkillsSection = ({ isInView }: SkillsSectionProps) => {
   return (
     <motion.div
       {...animationProps}
-      className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6 backdrop-blur-sm"
+      className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6"
     >
       <h3 className="mb-2 text-2xl font-bold text-white">My Skills</h3>
 
@@ -186,7 +186,7 @@ CategorySkills.displayName = "CategorySkills";
 const DesktopTabsList = memo(function DesktopTabsList() {
   return (
     <div className="hidden xl:block">
-      <TabsList className="mb-2 flex w-full gap-1 overflow-hidden rounded-xl border border-slate-700/30 bg-slate-800/40 p-1 backdrop-blur-sm">
+      <TabsList className="mb-2 flex w-full gap-1 overflow-hidden rounded-xl border border-slate-700/30 bg-slate-800/50 p-1">
         {tabCategories.map((category) => (
           <TabsTrigger
             key={category}
@@ -226,7 +226,7 @@ const MobileTabsList = memo(function MobileTabsList() {
   return (
     <div className="xl:hidden">
       <TabsList
-        className="mb-2 flex w-full rounded-xl border border-slate-700/30 bg-slate-800/40 p-1 backdrop-blur-sm transition-all duration-200"
+        className="mb-2 flex w-full rounded-xl border border-slate-700/30 bg-slate-800/50 p-1 transition-all duration-200"
         style={mobileTabsListStyle}
       >
         {tabCategories.map((category, idx) => (

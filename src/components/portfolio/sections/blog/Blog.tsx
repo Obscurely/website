@@ -58,8 +58,8 @@ export const Blog = () => {
     >
       {/* Subtle background elements */}
       <div className="absolute inset-0 -z-10 opacity-10">
-        <div className="absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-purple-500 blur-[100px]"></div>
-        <div className="absolute bottom-1/3 left-1/4 h-64 w-64 rounded-full bg-cyan-500 blur-[100px]"></div>
+        <div className="absolute right-1/4 bottom-1/4 h-64 w-64 rounded-full bg-purple-500 blur-[100px]"></div>
+        <div className="absolute top-1/3 left-1/4 h-64 w-64 rounded-full bg-cyan-500 blur-[100px]"></div>
       </div>
 
       {/* Main content */}
