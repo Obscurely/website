@@ -9,6 +9,7 @@ import { Blog } from "@portfolio/sections/blog/Blog";
 import { Contact } from "@portfolio/sections/Contact";
 import { Navbar } from "@common/layout/Navbar/Navbar";
 import { Footer } from "@common/layout/Footer/Footer";
+import { Toaster } from "sonner";
 
 export default function Home() {
   // Create a ref for the entire page
@@ -46,6 +47,17 @@ export default function Home() {
         </div>
       </main>
       <Footer isMain={true} />
+      <Toaster
+        position="bottom-right"
+        theme="dark"
+        toastOptions={{
+          style: {
+            background: "#1e293b",
+            border: "1px solid #475569",
+            color: "#f1f5f9",
+          },
+        }}
+      />
     </div>
   );
 }

@@ -32,7 +32,7 @@ export const About = () => {
         <AboutHeader isInView={isInView} />
 
         <div
-          className="relative mb-10 grid grid-cols-1 gap-10 md:grid-cols-2"
+          className="relative mb-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10"
           style={{ zIndex: 30 }}
         >
           <AboutJourney isInView={isInView} />
