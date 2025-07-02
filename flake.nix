@@ -75,6 +75,9 @@
               echo "Exited"
               exit
             '';
+
+            TO_EMAIL = "contact@adriancrismaruc.com";
+            FROM_EMAIL = "contact@adriancrismaruc.com";
           };
 
           # HACK: these don't actually have any effect (I don't think so at least), but they are here so you know what you need to do in your config

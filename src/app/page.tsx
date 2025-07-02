@@ -6,7 +6,7 @@ import { Hero } from "@portfolio/sections/hero/Hero";
 import { About } from "@portfolio/sections/about/About";
 import { Projects } from "@portfolio/sections/projects/Projects";
 import { Blog } from "@portfolio/sections/blog/Blog";
-import { Contact } from "@portfolio/sections/Contact";
+import { Contact } from "@portfolio/sections/contact/Contact";
 import { Navbar } from "@common/layout/Navbar/Navbar";
 import { Footer } from "@common/layout/Footer/Footer";
 import { Toaster } from "sonner";
