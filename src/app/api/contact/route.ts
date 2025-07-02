@@ -147,9 +147,9 @@ function validateInput(data: unknown): { isValid: boolean; errors: string[] } {
   if (
     formData["message"] &&
     typeof formData["message"] === "string" &&
-    formData["message"].length > 2000
+    formData["message"].length > 5000
   ) {
-    errors.push("Message must be less than 2000 characters");
+    errors.push("Message must be less than 5000 characters");
   }
 
   return { isValid: errors.length === 0, errors };

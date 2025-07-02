@@ -133,9 +133,9 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                     label="Message"
                     value={formData.message}
                     error={errors.message}
-                    placeholder="What would you like to discuss? (max 2000 characters)"
+                    placeholder="What would you like to discuss? (max 5000 characters)"
                     required
-                    maxLength={2000}
+                    maxLength={5000}
                     onChange={(value) => handleInputChange("message", value)}
                     onBlur={() => handleBlur("message")}
                   />
