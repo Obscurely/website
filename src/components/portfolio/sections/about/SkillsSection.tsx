@@ -50,7 +50,7 @@ export const SkillsSection = ({ isInView }: SkillsSectionProps) => {
   return (
     <motion.div
       {...animationProps}
-      className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6"
+      className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6 backdrop-blur-[0px]"
     >
       <h3 className="mb-2 text-2xl font-bold text-white">My Skills</h3>
 
