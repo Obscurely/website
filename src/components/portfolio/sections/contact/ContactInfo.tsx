@@ -1,10 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { memo, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@ui/card";
 import { socials } from "@data/common/socials";
-import { itemVariants } from "./animations";
+import {
+  containerAnimation,
+  itemVariants,
+  socialSectionAnimation,
+} from "./animations";
 import { contactInfo } from "@data/portfolio/contact";
 
 interface ContactInfoProps {
@@ -14,12 +18,28 @@ interface ContactInfoProps {
 /**
  * ContactInfo component displays contact information and social links.
  */
-export const ContactInfo = ({ isInView }: ContactInfoProps) => {
+export const ContactInfo = memo<ContactInfoProps>(({ isInView }) => {
+  // Memoize animation states to prevent object recreation
+  const containerAnimateState = useMemo(
+    () => (isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }),
+    [isInView]
+  );
+
+  const socialAnimateState = useMemo(
+    () => (isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }),
+    [isInView]
+  );
+
+  const itemAnimateState = useMemo(
+    () => (isInView ? "visible" : "hidden"),
+    [isInView]
+  );
+
   return (
     <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-      transition={{ duration: 0.7, delay: 0.2 }}
+      initial={containerAnimation.initial}
+      animate={containerAnimateState}
+      transition={containerAnimation.transition}
       className="flex-1 lg:max-w-md"
     >
       <div className="h-full rounded-xl border border-slate-700/30 bg-slate-800/20 p-6">
@@ -30,10 +50,10 @@ export const ContactInfo = ({ isInView }: ContactInfoProps) => {
         <div className="mb-6 space-y-6">
           {contactInfo.map((info, index) => (
             <motion.div
-              key={index}
+              key={`contact-${info.title}-${index}`}
               variants={itemVariants}
               initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
+              animate={itemAnimateState}
               transition={{ delay: 0.3 + index * 0.1 }}
               className="group relative"
             >
@@ -70,21 +90,20 @@ export const ContactInfo = ({ isInView }: ContactInfoProps) => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          initial={socialSectionAnimation.initial}
+          animate={socialAnimateState}
+          transition={socialSectionAnimation.transition}
         >
           <h4 className="mb-4 text-xl font-semibold text-white">
             Connect With Me
           </h4>
-          {/* Social Links */}
           <motion.div
             variants={itemVariants}
             className="flex justify-center gap-4 sm:justify-start"
           >
             {socials.map((social, index) => (
               <a
-                key={index}
+                key={`social-${social.href}-${index}`}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -98,4 +117,6 @@ export const ContactInfo = ({ isInView }: ContactInfoProps) => {
       </div>
     </motion.div>
   );
-};
+});
+
+ContactInfo.displayName = "ContactInfo";

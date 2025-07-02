@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { headerVariants } from "./animations";
 
 interface HeaderProps {
   isInView: boolean;
@@ -12,8 +13,9 @@ interface HeaderProps {
 export const Header = ({ isInView }: HeaderProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={headerVariants}
       transition={{ duration: 0.7 }}
       className="mb-20 text-center"
     >

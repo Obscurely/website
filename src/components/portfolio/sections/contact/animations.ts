@@ -12,3 +12,18 @@ export const itemVariants: Variants = {
     },
   },
 };
+
+export const headerVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+export const containerAnimation = {
+  initial: { opacity: 0, x: -50 },
+  transition: { duration: 0.7, delay: 0.2 },
+};
+
+export const socialSectionAnimation = {
+  initial: { opacity: 0, y: 20 },
+  transition: { duration: 0.7, delay: 0.5 },
+};

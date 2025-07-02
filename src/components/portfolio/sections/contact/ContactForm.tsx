@@ -3,15 +3,10 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@ui/button";
-import { Input } from "@ui/input";
-import { Textarea } from "@ui/textarea";
-import {
-  IconSend,
-  IconLoader2,
-  IconCheck,
-  IconAlertCircle,
-} from "@tabler/icons-react";
+import { IconSend, IconLoader2, IconCheck } from "@tabler/icons-react";
 import { useContact } from "@hooks/portfolio/useContact";
+import { FormField } from "./FormField";
+import { FormTextarea } from "./FormTextarea";
 
 interface ContactFormProps {
   isInView: boolean;
@@ -93,137 +88,57 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                 <div className="flex flex-1 flex-col space-y-6">
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     {/* Name field */}
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-semibold text-slate-300"
-                      >
-                        Name *
-                        {errors.name && (
-                          <span className="relative ml-2 inline-flex items-center gap-1 text-red-400">
-                            <IconAlertCircle className="absolute left-0 h-4 w-4" />
-                            <span className="ml-5">{errors.name}</span>
-                          </span>
-                        )}
-                      </label>
-                      <Input
-                        id="name"
-                        value={formData.name}
-                        onChange={(e) =>
-                          handleInputChange("name", e.target.value)
-                        }
-                        onBlur={() => handleBlur("name")}
-                        placeholder="John Doe"
-                        required
-                        maxLength={100}
-                        aria-invalid={!!errors.name}
-                        className={`h-11 rounded-lg border-1 text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-500/70 focus:bg-slate-900/70 focus:shadow-lg focus:!ring-2 focus:!ring-cyan-500/30 focus:!outline-none dark:bg-slate-800/32 ${
-                          errors.name
-                            ? "border-red-500 focus:border-red-400"
-                            : "border-slate-700/50 focus:border-cyan-500"
-                        }`}
-                      />
-                    </div>
+                    <FormField
+                      id="name"
+                      label="Name"
+                      value={formData.name}
+                      error={errors.name}
+                      placeholder="John Doe"
+                      required
+                      maxLength={100}
+                      onChange={(value) => handleInputChange("name", value)}
+                      onBlur={() => handleBlur("name")}
+                    />
 
                     {/* Email field */}
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-semibold text-slate-300"
-                      >
-                        Email Address *
-                        {errors.email && (
-                          <span className="relative ml-2 inline-flex items-center gap-1 text-red-400">
-                            <IconAlertCircle className="absolute left-0 h-4 w-4" />
-                            <span className="ml-5">{errors.email}</span>
-                          </span>
-                        )}
-                      </label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          handleInputChange("email", e.target.value)
-                        }
-                        onBlur={() => handleBlur("email")}
-                        placeholder="john@example.com"
-                        required
-                        aria-invalid={!!errors.email}
-                        className={`h-11 rounded-lg border-1 text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-500/70 focus:bg-slate-900/70 focus:shadow-lg focus:!ring-2 focus:!ring-cyan-500/30 focus:!outline-none dark:bg-slate-800/32 ${
-                          errors.email
-                            ? "border-red-500 focus:border-red-400"
-                            : "border-slate-700/50 focus:border-cyan-500"
-                        }`}
-                      />
-                    </div>
+                    <FormField
+                      id="email"
+                      label="Email Address"
+                      type="email"
+                      value={formData.email}
+                      error={errors.email}
+                      placeholder="john@example.com"
+                      required
+                      onChange={(value) => handleInputChange("email", value)}
+                      onBlur={() => handleBlur("email")}
+                    />
                   </div>
 
                   {/* Subject field */}
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="subject"
-                      className="block text-sm font-semibold text-slate-300"
-                    >
-                      Subject *
-                      {errors.subject && (
-                        <span className="relative ml-2 inline-flex items-center gap-1 text-red-400">
-                          <IconAlertCircle className="absolute left-0 h-4 w-4" />
-                          <span className="ml-5">{errors.subject}</span>
-                        </span>
-                      )}
-                    </label>
-                    <Input
-                      id="subject"
-                      value={formData.subject}
-                      onChange={(e) =>
-                        handleInputChange("subject", e.target.value)
-                      }
-                      onBlur={() => handleBlur("subject")}
-                      placeholder="What can I help you with?"
-                      required
-                      maxLength={200}
-                      aria-invalid={!!errors.subject}
-                      className={`h-11 rounded-lg border-1 text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-500/70 focus:bg-slate-900/70 focus:shadow-lg focus:!ring-2 focus:!ring-cyan-500/30 focus:!outline-none dark:bg-slate-800/32 ${
-                        errors.subject
-                          ? "border-red-500 focus:border-red-400"
-                          : "border-slate-700/50 focus:border-cyan-500"
-                      }`}
-                    />
-                  </div>
+                  <FormField
+                    id="subject"
+                    label="Subject"
+                    value={formData.subject}
+                    error={errors.subject}
+                    placeholder="What can I help you with?"
+                    required
+                    maxLength={200}
+                    onChange={(value) => handleInputChange("subject", value)}
+                    onBlur={() => handleBlur("subject")}
+                  />
 
                   {/* Message field */}
-                  <div className="scrollbar flex flex-1 flex-col space-y-2">
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-semibold text-slate-300"
-                    >
-                      Message *
-                      {errors.message && (
-                        <span className="relative ml-2 inline-flex items-center gap-1 text-red-400">
-                          <IconAlertCircle className="absolute left-0 h-4 w-4" />
-                          <span className="ml-5">{errors.message}</span>
-                        </span>
-                      )}
-                    </label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) =>
-                        handleInputChange("message", e.target.value)
-                      }
-                      onBlur={() => handleBlur("message")}
-                      placeholder="What would you like to discuss? (max 2000 characters)"
-                      required
-                      maxLength={2000}
-                      aria-invalid={!!errors.message}
-                      className={`scrollbar-thin scrollbar-track-slate-900/0 scrollbar-thumb-slate-600 k max-h-[10px] min-h-[100px] flex-1 resize-none overflow-y-auto rounded-lg border-1 wrap-anywhere text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-500/70 focus:bg-slate-900/70 focus:shadow-lg focus:!ring-2 focus:!ring-cyan-500/30 focus:!outline-none lg:max-h-[199.5px] xl:max-h-[112px] dark:bg-slate-800/32 ${
-                        errors.message
-                          ? "border-red-500 focus:border-red-400"
-                          : "border-slate-700/50 focus:border-cyan-500"
-                      }`}
-                    />
-                  </div>
+                  <FormTextarea
+                    id="message"
+                    label="Message"
+                    value={formData.message}
+                    error={errors.message}
+                    placeholder="What would you like to discuss? (max 2000 characters)"
+                    required
+                    maxLength={2000}
+                    onChange={(value) => handleInputChange("message", value)}
+                    onBlur={() => handleBlur("message")}
+                  />
                 </div>
 
                 {/* Button */}
