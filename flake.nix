@@ -21,7 +21,7 @@
               # Project Tools
               zsh # the shell
               ripgrep # just for the sake of highlighting
-              tailwindcss
+              tailwindcss_4
               nodejs
               docker # for running contanairing
               docker-compose # for running the containers

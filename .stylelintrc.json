@@ -14,7 +14,8 @@
           "tailwind",
           "apply",
           "layer",
-          "custom-variant"
+          "custom-variant",
+          "plugin"
         ]
       }
     ]

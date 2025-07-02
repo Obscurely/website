@@ -193,7 +193,7 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                   </div>
 
                   {/* Message field */}
-                  <div className="flex flex-1 flex-col space-y-2">
+                  <div className="scrollbar flex flex-1 flex-col space-y-2">
                     <label
                       htmlFor="message"
                       className="block text-sm font-semibold text-slate-300"
@@ -217,7 +217,7 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                       required
                       maxLength={2000}
                       aria-invalid={!!errors.message}
-                      className={`min-h-[100px] flex-1 resize-none rounded-lg border-1 text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-500/70 focus:bg-slate-900/70 focus:shadow-lg focus:!ring-2 focus:!ring-cyan-500/30 focus:!outline-none dark:bg-slate-800/32 ${
+                      className={`scrollbar-thin scrollbar-track-slate-900/0 scrollbar-thumb-slate-600 k max-h-[10px] min-h-[100px] flex-1 resize-none overflow-y-auto rounded-lg border-1 wrap-anywhere text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-500/70 focus:bg-slate-900/70 focus:shadow-lg focus:!ring-2 focus:!ring-cyan-500/30 focus:!outline-none lg:max-h-[199.5px] xl:max-h-[112px] dark:bg-slate-800/32 ${
                         errors.message
                           ? "border-red-500 focus:border-red-400"
                           : "border-slate-700/50 focus:border-cyan-500"
