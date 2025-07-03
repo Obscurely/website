@@ -30,7 +30,7 @@ export const CertificationsSection = ({
   return (
     <motion.div
       {...animationProps}
-      className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6"
+      className="border-slate-730 rounded-xl border bg-slate-800/20 p-6"
     >
       <h3 className="mb-6 text-2xl font-bold text-white">My Certifications</h3>
 
@@ -69,7 +69,7 @@ const CertificationCard = memo(function CertificationCard({
       href={certification.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex transform-gpu flex-col rounded-lg border border-slate-700/30 bg-slate-800/40 p-4 transition-all duration-300 ease-out hover:translate-y-[-2px] hover:border-cyan-500/30 hover:bg-slate-800/40 hover:shadow-lg hover:shadow-cyan-500/5"
+      className="group border-slate-730 hover:border-cyan-590 flex transform-gpu flex-col rounded-lg border bg-slate-800/40 p-4 transition-all duration-300 ease-out hover:translate-y-[-2px] hover:bg-slate-800/40 hover:shadow-lg hover:shadow-cyan-500/5"
     >
       <div className="flex items-center">
         <div className="relative h-16 w-16 overflow-hidden">

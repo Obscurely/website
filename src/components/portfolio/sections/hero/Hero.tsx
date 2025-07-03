@@ -53,7 +53,7 @@ export const Hero = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="cursor-pointer rounded-full border border-cyan-500/20 text-slate-400 backdrop-blur-[2px]"
+              className="border-slate-630 cursor-pointer rounded-full border text-slate-400 backdrop-blur-[2px]"
               onClick={() => {
                 document
                   .querySelector("#about")

@@ -36,9 +36,9 @@ export const Terminal = ({ currentTime }: TerminalProps) => {
         >
           <div className="flex items-center gap-4">
             <div className="flex gap-2">
-              <div className="h-3 w-3 rounded-full bg-red-400/70"></div>
-              <div className="h-3 w-3 rounded-full bg-yellow-400/70"></div>
-              <div className="h-3 w-3 rounded-full bg-green-400/70"></div>
+              <div className="bg-red-470 h-3 w-3 rounded-full"></div>
+              <div className="bg-yellow-470 h-3 w-3 rounded-full"></div>
+              <div className="bg-green-470 h-3 w-3 rounded-full"></div>
             </div>
             <div className="flex items-center gap-2">
               <IconCode size={16} className="text-slate-400" />
@@ -87,7 +87,7 @@ export const Terminal = ({ currentTime }: TerminalProps) => {
                 href="https://rekosearch.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group mb-4 inline-flex items-center rounded-full border border-cyan-500/10 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-3 py-1 transition-all duration-300 hover:from-cyan-500/20 hover:to-blue-500/20 hover:shadow-xs hover:shadow-cyan-500/20"
+                className="group border-cyan-510 from-cyan-530 to-blue-520 hover:from-cyan-550 hover:to-blue-550 hover:shadow-cyan-520 mb-4 inline-flex items-center rounded-full border bg-gradient-to-r px-3 py-1 transition-all duration-300 hover:shadow-xs"
               >
                 <IconSearch
                   size={16}
@@ -155,7 +155,7 @@ export const Terminal = ({ currentTime }: TerminalProps) => {
                 </Button>
                 <Button
                   variant="outline"
-                  className="h-10 w-full cursor-pointer rounded-lg border-cyan-500/20 px-4 py-3 text-slate-300 transition-all duration-300 will-change-transform hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
+                  className="border-cyan-560 hover:border-cyan-590 h-10 w-full cursor-pointer rounded-lg px-4 py-3 text-slate-300 transition-all duration-300 will-change-transform hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
                   onClick={(e) => {
                     e.preventDefault();
                     document
@@ -170,7 +170,7 @@ export const Terminal = ({ currentTime }: TerminalProps) => {
                 </Button>
                 <Button
                   variant="outline"
-                  className="h-10 w-full cursor-pointer rounded-lg border-cyan-500/20 px-4 py-3 text-slate-300 transition-all duration-300 will-change-transform hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
+                  className="border-cyan-560 hover:border-cyan-590 h-10 w-full cursor-pointer rounded-lg px-4 py-3 text-slate-300 transition-all duration-300 will-change-transform hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
                   onClick={(e) => {
                     e.preventDefault();
                     window.open("/resume.pdf", "_blank");
@@ -195,7 +195,7 @@ export const Terminal = ({ currentTime }: TerminalProps) => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 shadow-[inset_0_0_0_1px_rgb(6_182_212_/_0.1)] transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
+                  className="group bg-slate-880 flex h-10 w-10 items-center justify-center rounded-full text-slate-400 shadow-[inset_0_0_0_1px_rgb(6_182_212_/_0.1)] transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
                 >
                   <social.icon size={20} strokeWidth={2.5} />
                 </a>

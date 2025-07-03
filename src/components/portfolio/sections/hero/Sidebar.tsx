@@ -16,7 +16,7 @@ export const Sidebar = ({ currentTime }: SidebarProps) => {
       className="flex flex-col justify-between space-y-8 rounded-2xl backdrop-blur-sm will-change-transform md:flex-row md:space-y-0 md:space-x-6 lg:flex-col lg:space-y-8 lg:space-x-0"
     >
       {/* Profile Widget */}
-      <div className="flex flex-1 flex-col rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10 md:w-1/2 lg:w-full">
+      <div className="flex flex-1 flex-col rounded-2xl border border-slate-600/30 bg-slate-900/30 p-6 shadow-xl shadow-black/10 md:w-1/2 lg:w-full">
         <div className="mb-3.25 flex items-center gap-2 font-mono text-sm text-slate-400">
           <IconUser size={16} />
           <span>profile.sys</span>
@@ -44,7 +44,7 @@ export const Sidebar = ({ currentTime }: SidebarProps) => {
       </div>
 
       {/* Status Widget */}
-      <div className="flex-1 rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10 md:w-1/2 lg:w-full">
+      <div className="flex-1 rounded-2xl border border-slate-600/30 bg-slate-900/30 p-6 shadow-xl shadow-black/10 md:w-1/2 lg:w-full">
         <div className="mb-4 font-mono text-base font-medium text-slate-300">
           System Status
         </div>

@@ -88,8 +88,8 @@ export const SkillBadge = React.memo(function SkillBadge({
         {...getReferenceProps()}
         className={`flex cursor-pointer items-center rounded-full border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 ${
           isExpanded
-            ? "bg-gradient-to-r from-slate-800/70 to-slate-700/70 shadow-sm"
-            : "hover:bg-slate-700/50 hover:shadow-sm"
+            ? "from-slate-870 to-slate-770 bg-gradient-to-r shadow-sm"
+            : "hover:bg-slate-750 hover:shadow-sm"
         } ${colorClass}`}
       >
         {skill.name}
@@ -104,7 +104,7 @@ export const SkillBadge = React.memo(function SkillBadge({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 5, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute z-[60] w-lg max-w-[95vw] overflow-hidden rounded-xl border border-slate-700/60 bg-gradient-to-b from-slate-800/98 to-slate-900/99 p-4 text-slate-200 shadow-xl"
+            className="border-slate-760 absolute z-[60] w-lg max-w-[95vw] overflow-hidden rounded-xl border bg-gradient-to-b from-slate-800 to-slate-900 p-4 text-slate-200 shadow-xl"
             style={{
               position: strategy,
               top: y ?? 0,
@@ -152,7 +152,7 @@ export const SkillBadge = React.memo(function SkillBadge({
 
             <button
               onClick={() => setExpandedSkillId(null)}
-              className="absolute top-2 right-2 cursor-pointer rounded-full p-1.5 text-slate-400 transition-colors hover:bg-slate-700/50 hover:text-white"
+              className="hover:bg-slate-750 absolute top-2 right-2 cursor-pointer rounded-full p-1.5 text-slate-400 transition-colors hover:text-white"
               aria-label="Close details"
             >
               <IconX size={16} />

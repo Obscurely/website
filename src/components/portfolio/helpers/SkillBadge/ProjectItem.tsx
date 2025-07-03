@@ -23,7 +23,7 @@ export const ProjectItem = ({ project }: { project: Project }) => {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 rounded-md border border-slate-700/50 bg-slate-800/70 px-2.5 py-1 text-sm font-medium text-cyan-400 transition-all duration-200 hover:border-cyan-500/30 hover:bg-slate-700/50 hover:text-cyan-300 hover:shadow-sm hover:shadow-cyan-500/10"
+              className="border-slate-750 bg-slate-880 hover:border-cyan-590 hover:bg-slate-750 inline-flex items-center gap-1 rounded-md border px-2.5 py-1 text-sm font-medium text-cyan-400 transition-all duration-200 hover:text-cyan-300 hover:shadow-sm hover:shadow-cyan-500/10"
               style={{
                 transform: "translate(0, 0)",
                 backfaceVisibility: "hidden",
@@ -39,7 +39,7 @@ export const ProjectItem = ({ project }: { project: Project }) => {
         <TooltipContent
           side="top"
           align="center"
-          className="w-auto max-w-md rounded-lg border-0 bg-gradient-to-b from-[#1e2a3e] to-[#0f182c] px-4 py-3 text-sm shadow-xl ring-1 ring-slate-700/30"
+          className="ring-slate-630 w-auto max-w-md rounded-lg border-0 bg-gradient-to-b from-[#1e2a3e] to-[#0f182c] px-4 py-3 text-sm shadow-xl ring-1"
           sideOffset={2}
         >
           <div className="mb-1.5 font-medium text-cyan-400">{project.name}</div>

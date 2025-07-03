@@ -48,9 +48,9 @@ export const ServicesSection = ({ isInView }: ServicesSectionProps) => {
             variants={cardVariants}
             className="group relative z-0"
           >
-            <Card className="h-full transform-gpu overflow-hidden border-slate-700/50 bg-slate-800/30 transition-all duration-300 ease-out hover:translate-y-[-2px] hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">
+            <Card className="border-slate-730 bg-slate-830 hover:border-cyan-590 h-full transform-gpu overflow-hidden transition-all duration-300 ease-out hover:translate-y-[-2px] hover:shadow-lg hover:shadow-cyan-500/10">
               <CardContent className="flex flex-col items-center p-6 text-center">
-                <div className="mb-5 rounded-full bg-slate-900/80 p-4 group-hover:bg-slate-900/80">
+                <div className="bg-slate-980 group-hover:bg-slate-980 mb-5 rounded-full p-4">
                   {service.icon}
                 </div>
                 <h4 className="mb-3 text-xl font-bold text-white transition-colors duration-300 group-hover:text-cyan-400">

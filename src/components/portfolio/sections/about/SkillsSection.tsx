@@ -50,7 +50,7 @@ export const SkillsSection = ({ isInView }: SkillsSectionProps) => {
   return (
     <motion.div
       {...animationProps}
-      className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6 backdrop-blur-[0px]"
+      className="border-slate-730 rounded-xl border bg-slate-800/20 p-6 backdrop-blur-[0px]"
     >
       <h3 className="mb-2 text-2xl font-bold text-white">My Skills</h3>
 
@@ -186,12 +186,12 @@ CategorySkills.displayName = "CategorySkills";
 const DesktopTabsList = memo(function DesktopTabsList() {
   return (
     <div className="hidden xl:block">
-      <TabsList className="mb-2 flex w-full gap-1 overflow-hidden rounded-xl border border-slate-700/30 bg-slate-800/50 p-1">
+      <TabsList className="border-slate-740 bg-slate-850 mb-2 flex w-full gap-1 overflow-hidden rounded-xl border p-1">
         {tabCategories.map((category) => (
           <TabsTrigger
             key={category}
             value={category}
-            className="relative flex-1 cursor-pointer rounded-lg py-2.5 text-sm font-medium text-slate-300 transition-all duration-200 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500/20 data-[state=active]:to-blue-500/20 data-[state=active]:text-white"
+            className="data-[state=active]:from-cyan-535 data-[state=active]:to-blue-530 relative flex-1 cursor-pointer rounded-lg py-2.5 text-sm font-medium text-slate-300 transition-all duration-200 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:text-white"
           >
             <span className="flex items-center justify-center">
               <span className="mr-1.5">{CategoryIcons[category]}</span>
@@ -226,14 +226,14 @@ const MobileTabsList = memo(function MobileTabsList() {
   return (
     <div className="xl:hidden">
       <TabsList
-        className="mb-2 flex w-full rounded-xl border border-slate-700/30 bg-slate-800/50 p-1 transition-all duration-200"
+        className="border-slate-740 bg-slate-850 mb-2 flex w-full rounded-xl border p-1 transition-all duration-200"
         style={mobileTabsListStyle}
       >
         {tabCategories.map((category, idx) => (
           <TabsTrigger
             key={category}
             value={category}
-            className="relative flex cursor-pointer items-center justify-center px-1 py-1.5 text-xs font-medium text-slate-300 transition-all duration-200 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500/20 data-[state=active]:to-blue-500/20 data-[state=active]:text-white"
+            className="data-[state=active]:from-cyan-535 data-[state=active]:to-blue-530 relative flex cursor-pointer items-center justify-center px-1 py-1.5 text-xs font-medium text-slate-300 transition-all duration-200 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:text-white"
             style={mobileTabStyles[Math.min(idx, mobileTabStyles.length - 1)]}
           >
             <span className="flex items-center justify-center">
