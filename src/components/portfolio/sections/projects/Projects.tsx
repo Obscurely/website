@@ -29,7 +29,7 @@ export const Projects = () => {
     <section id="projects" className="relative">
       <div
         ref={ref}
-        className="relative z-0 w-full overflow-hidden bg-slate-900/40 pt-16 pb-20"
+        className="bg-main-bg-dark relative z-0 w-full overflow-hidden pt-16 pb-20"
       >
         {/* Subtle background elements */}
         <div className="absolute inset-0 -z-10 opacity-10">

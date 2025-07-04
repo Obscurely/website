@@ -81,7 +81,7 @@ export const ProjectCard = memo(
         ref={(el) => registerCard(index, el)}
       >
         <Card
-          className="relative flex h-full flex-col overflow-hidden border-slate-700/50 bg-transparent transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10"
+          className="border-slate-740 hover:border-cyan-590 relative flex h-full flex-col overflow-hidden bg-transparent transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-cyan-500/10"
           style={{
             background: "transparent",
             transformStyle: "preserve-3d",
@@ -122,7 +122,7 @@ export const ProjectCard = memo(
                   <Badge
                     key={tag}
                     variant="outline"
-                    className="border-slate-700/70 bg-slate-800/30 text-slate-300"
+                    className="border-slate-770 bg-slate-840 text-slate-300"
                   >
                     {tag}
                   </Badge>
@@ -130,11 +130,11 @@ export const ProjectCard = memo(
               </div>
             </CardContent>
 
-            <CardFooter className="mt-auto flex justify-between border-t border-slate-800/50 bg-slate-900/30 p-5">
+            <CardFooter className="border-slate-850 mt-auto flex justify-between border-t bg-slate-900/30 p-5">
               <Button
                 variant="ghost"
                 size="sm"
-                className="rounded-lg text-cyan-400 hover:bg-slate-800/80 hover:text-cyan-300"
+                className="hover:bg-slate-880 rounded-lg text-cyan-400 hover:text-cyan-300"
                 asChild
               >
                 <a
@@ -152,7 +152,7 @@ export const ProjectCard = memo(
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="rounded-lg text-cyan-400 hover:bg-slate-800/80 hover:text-cyan-300"
+                  className="hover:bg-slate-880 rounded-lg text-cyan-400 hover:text-cyan-300"
                   asChild
                 >
                   <a
