@@ -54,7 +54,7 @@ function Checkbox({
         )}
       >
         <IconCheck
-          className="size-3 stroke-[3] drop-shadow-sm"
+          className="size-3 stroke-[3]"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
