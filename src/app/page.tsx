@@ -34,7 +34,7 @@ export default function Home() {
           style={{ opacity, scale }}
           className="pointer-events-none fixed inset-0 z-0 h-screen w-screen"
         >
-          <div className="absolute inset-0 h-full w-full bg-slate-800/75" />
+          <div className="bg-slate-850 absolute inset-0 h-full w-full" />
           <div className="absolute inset-0 h-full w-full bg-[url('/background.avif')] bg-cover bg-center bg-no-repeat opacity-10" />
         </motion.div>
 
