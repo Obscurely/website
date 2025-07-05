@@ -36,7 +36,6 @@ export const Description = () => {
         <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
           Rust, Python, React, TypeScript, Next.js, Flask
         </span>
-        <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-gradient-to-r from-cyan-500/50 to-blue-500/50"></span>
       </span>
       and <strong className="text-white">cloud-native technologies</strong>. I
       build <strong className="text-white">secure and scalable systems</strong>{" "}
@@ -46,7 +45,7 @@ export const Description = () => {
         <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
           certified knowledge of AWS and Kubernetes
         </span>
-        <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-gradient-to-r from-cyan-500/50 to-blue-500/50"></span>
+        <span className="from-cyan-580 to-blue-580 absolute -bottom-0.5 left-0 h-0.5 w-full bg-gradient-to-r"></span>
       </span>
       , practical
       <span className="relative mx-1">
@@ -59,7 +58,6 @@ export const Description = () => {
         <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
           DevOps practices
         </span>
-        <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-gradient-to-r from-cyan-500/50 to-blue-500/50"></span>
       </span>
       to deliver{" "}
       <strong className="text-white">optimized and automated solutions</strong>{" "}

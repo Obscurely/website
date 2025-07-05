@@ -27,12 +27,12 @@ export const CategoryIcons: Record<SkillCategory, ReactNode> = {
 
 // Color class mapping for each category
 export enum CategoryColorClass {
-  KeySkills = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-cyan-300/30 hover:border-cyan-300/50",
-  Frontend = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-cyan-500/30 hover:border-cyan-500/50",
-  Backend = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-indigo-500/30 hover:border-indigo-500/50",
-  Languages = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-emerald-500/30 hover:border-emerald-500/50",
-  DevOps = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-teal-500/30 hover:border-teal-500/50",
-  Business = "bg-slate-800/50 hover:bg-slate-700/60 border border-l-2 border-blue-400/30 hover:border-blue-400/50",
+  KeySkills = "bg-slate-850 hover:bg-slate-750 border border-l-2 border-cyan-330 hover:border-cyan-350",
+  Frontend = "bg-slate-850 hover:bg-slate-750 border border-l-2 border-cyan-430 hover:border-cyan-450",
+  Backend = "bg-slate-850 hover:bg-slate-750 border border-l-2 border-indigo-530 hover:border-indigo-550",
+  Languages = "bg-slate-850 hover:bg-slate-750 border border-l-2 border-emerald-530 hover:border-emerald-550",
+  DevOps = "bg-slate-850 hover:bg-slate-750 border border-l-2 border-teal-530 hover:border-teal-550",
+  Business = "bg-slate-850 hover:bg-slate-750 border border-l-2 border-blue-430 hover:border-blue-450",
 }
 
 // Active tab color mapping

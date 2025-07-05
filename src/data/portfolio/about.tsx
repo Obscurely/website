@@ -49,13 +49,13 @@ export const AboutMe = () => {
       <span className="font-medium text-slate-200">self-taught</span> has helped
       me become{" "}
       <span className="relative inline-block">
-        <span className="bg-gradient-to-r from-cyan-400/90 to-blue-500/90 bg-clip-text font-bold text-transparent">
+        <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-bold text-transparent">
           highly adaptable
         </span>
       </span>{" "}
       and{" "}
       <span className="relative inline-block">
-        <span className="bg-gradient-to-r from-cyan-400/90 to-blue-500/90 bg-clip-text font-bold text-transparent">
+        <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-bold text-transparent">
           quick to learn
         </span>
       </span>{" "}
