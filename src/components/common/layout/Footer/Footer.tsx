@@ -70,7 +70,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
                     rel="noopener noreferrer"
                     className="group"
                   >
-                    <div className="-mt-0.5 flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/50 text-cyan-500 transition-colors duration-300 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none">
+                    <div className="bg-slate-820 -mt-0.5 flex h-10 w-10 items-center justify-center rounded-full text-cyan-500 transition-colors duration-300 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none">
                       <social.icon size={20} strokeWidth={2.5} />
                     </div>
                   </a>
@@ -126,7 +126,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
               <ul className="space-y-4">
                 {contactInfo.map((contact, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="rounded-full bg-slate-800/50 p-2 text-cyan-400">
+                    <div className="bg-slate-820 rounded-full p-2 text-cyan-400">
                       <contact.icon className="h-4 w-4" />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -159,7 +159,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 flex flex-col items-center justify-between border-t border-slate-800/50 pt-8 md:flex-row"
+          className="border-slate-820 mt-16 flex flex-col items-center justify-between border-t pt-8 md:flex-row"
         >
           <div className="mb-4 md:mb-0">
             <p className="text-center text-sm text-slate-400 md:text-left">
@@ -204,13 +204,12 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
               variant="ghost"
               size="icon"
               onClick={scrollToTop}
-              className="group relative cursor-pointer rounded-full border border-slate-700/50 bg-slate-800/30 text-slate-400 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-700/50 hover:text-cyan-400"
+              className="group border-slate-740 bg-slate-820 hover:border-cyan-590 hover:bg-slate-740 relative cursor-pointer rounded-full border text-slate-400 transition-all duration-300 hover:text-cyan-400"
             >
               <IconArrowUp
                 size={18}
                 className="transition-transform duration-300 group-hover:-translate-y-0.5"
               />
-              <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </Button>
           </div>
         </motion.div>

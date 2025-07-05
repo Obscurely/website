@@ -30,9 +30,7 @@ export const Navbar = ({ isBlog = false, isMain = false }: NavbarProps) => {
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled
-          ? "bg-slate-900/90 py-2 shadow-md backdrop-blur-md"
-          : "bg-transparent py-4"
+        isScrolled ? "bg-slate-980 py-2 shadow-md" : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-4">
@@ -117,7 +115,7 @@ export const Navbar = ({ isBlog = false, isMain = false }: NavbarProps) => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-slate-700/50 bg-slate-900/95 md:hidden"
+            className="border-slate-750 bg-slate-980 overflow-hidden border-t md:hidden"
           >
             <div className="container mx-auto px-4 py-6">
               <div className="flex flex-col space-y-1">
