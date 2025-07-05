@@ -116,11 +116,15 @@
   /* Custom colors */
   --color-slate-630: #212d3f;
   --color-slate-640: #283547;
-  --color-red-470: #ba525b --color-yellow-470: #b89812;
+  --color-red-470: #ba525b;
+  --color-yellow-470: #b89812;
   --color-green-470: #0aa762;
+  --color-green-520: #0a3630;
+  --color-emerald-520: #0a3439;
   --color-cyan-510: #114059;
   --color-cyan-530: #143249;
   --color-cyan-560: #0e3b50;
+  --color-cyan-570: #08445d;
   --color-blue-520: #1c2f4e;
   --color-cyan-540: #0d4359;
   --color-cyan-550: #11425a;
@@ -142,7 +146,9 @@
   --color-slate-750: #243047;
   --color-slate-760: #27344a;
   --color-main-bg-dark: #070d1f;
+  --color-main-bg-light: #0c1327;
   --color-slate-930: #091023;
   --color-slate-860: #0f172a;
   --color-slate-790: #2d3c52;
+  --color-slate-890: #1b273b;
 }

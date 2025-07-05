@@ -51,10 +51,10 @@ export const FormField = ({
         required={required}
         maxLength={maxLength}
         aria-invalid={!!error}
-        className={`h-11 rounded-lg border-1 text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-500/70 focus:bg-slate-900/70 focus:shadow-lg focus:!ring-2 focus:!ring-cyan-500/30 focus:!outline-none dark:bg-slate-800/32 ${
+        className={`dark:bg-slate-830 focus:!ring-cyan-570 h-11 rounded-lg border-1 text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-600 focus:shadow-lg focus:!ring-2 focus:!outline-none ${
           error
             ? "border-red-500 focus:border-red-400"
-            : "border-slate-700/50 focus:border-cyan-500"
+            : "border-slate-730 focus:border-cyan-500"
         }`}
       />
     </div>

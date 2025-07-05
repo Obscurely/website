@@ -18,7 +18,7 @@ export const Contact = () => {
     <section
       id="contact"
       ref={ref}
-      className="relative z-0 overflow-hidden bg-slate-900/40 py-20"
+      className="bg-main-bg-dark relative z-0 overflow-hidden py-20"
       aria-labelledby="contact-heading"
     >
       {/* Background elements */}

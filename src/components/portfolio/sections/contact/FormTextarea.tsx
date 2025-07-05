@@ -50,10 +50,10 @@ export const FormTextarea = ({
         required={required}
         maxLength={maxLength}
         aria-invalid={!!error}
-        className={`scrollbar-thin scrollbar-track-slate-900/0 scrollbar-thumb-slate-600 k max-h-[10px] min-h-[100px] flex-1 resize-none overflow-y-auto rounded-lg border-1 wrap-anywhere text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-500/70 focus:bg-slate-900/70 focus:shadow-lg focus:!ring-2 focus:!ring-cyan-500/30 focus:!outline-none lg:max-h-[199.5px] xl:max-h-[112px] dark:bg-slate-800/32 ${
+        className={`scrollbar-thin scrollbar-track-slate-900/0 scrollbar-thumb-slate-600 k focus:!ring-cyan-570 dark:bg-slate-830 max-h-[10px] min-h-[100px] flex-1 resize-none overflow-y-auto rounded-lg border-1 wrap-anywhere text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-600 focus:shadow-lg focus:!ring-2 focus:!outline-none lg:max-h-[199.5px] xl:max-h-[112px] ${
           error
             ? "border-red-500 focus:border-red-400"
-            : "border-slate-700/50 focus:border-cyan-500"
+            : "border-slate-730 focus:border-cyan-500"
         }`}
       />
     </div>

@@ -54,7 +54,7 @@ export const Blog = () => {
     <section
       id="blog"
       ref={ref}
-      className="relative z-0 overflow-hidden bg-slate-900/80 pt-16 pb-20"
+      className="bg-main-bg-light relative z-0 overflow-hidden pt-16 pb-20"
     >
       {/* Subtle background elements */}
       <div className="absolute inset-0 -z-10 opacity-10">
@@ -123,7 +123,7 @@ export const Blog = () => {
           className="flex flex-col items-center"
         >
           <Link href="/blog" passHref>
-            <Button className="group relative h-10 w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20">
+            <Button className="group relative h-10 w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20">
               <span className="relative z-10 flex items-center gap-2 text-sm font-medium">
                 View All Posts
                 <IconArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

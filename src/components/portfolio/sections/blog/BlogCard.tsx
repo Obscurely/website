@@ -54,7 +54,7 @@ export const BlogCard = memo(
         className="group relative z-50 h-full"
       >
         <Link href={`/blog/${post.slug}`} className="block h-full">
-          <Card className="relative flex h-full flex-col overflow-hidden border-slate-700/50 bg-transparent transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">
+          <Card className="border-slate-740 hover:border-cyan-590 relative flex h-full flex-col overflow-hidden bg-transparent transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-cyan-500/10">
             {/* Background layers */}
             <div className="absolute inset-0 z-0">
               <div className="h-54 bg-slate-900/30"></div>
@@ -128,7 +128,7 @@ export const BlogCard = memo(
                     <Badge
                       key={tag}
                       variant="outline"
-                      className="border-slate-700/70 bg-slate-800/30 text-xs text-slate-300"
+                      className="border-slate-770 bg-slate-840 text-xs text-slate-300"
                     >
                       {tag}
                     </Badge>
@@ -136,7 +136,7 @@ export const BlogCard = memo(
                   {remainingTagsCount > 0 && (
                     <Badge
                       variant="outline"
-                      className="border-slate-700/70 bg-slate-800/30 text-xs text-slate-400"
+                      className="border-slate-770 bg-slate-840 text-xs text-slate-400"
                     >
                       +{remainingTagsCount}
                     </Badge>
@@ -145,7 +145,7 @@ export const BlogCard = memo(
               </CardContent>
 
               {/* Footer */}
-              <CardFooter className="mt-auto border-t border-slate-800/50 bg-slate-900/30 p-4">
+              <CardFooter className="border-slate-740 mt-auto border-t bg-slate-900/30 p-4">
                 <div className="flex w-full items-center justify-between">
                   <span className="text-sm text-cyan-400 transition-colors duration-300 group-hover:text-cyan-300">
                     Read Article

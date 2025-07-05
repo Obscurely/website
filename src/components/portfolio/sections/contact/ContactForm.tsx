@@ -32,7 +32,7 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
       transition={{ duration: 0.7, delay: 0.4 }}
       className="flex-1 lg:flex-[2]"
     >
-      <div className="flex h-full flex-col rounded-xl border border-slate-700/30 bg-slate-800/20 p-6">
+      <div className="border-slate-740 flex h-full flex-col rounded-xl border bg-slate-800/20 p-6">
         <h3 className="mb-6 text-2xl font-bold text-white">Send Message</h3>
 
         <div className="flex flex-1 flex-col">
@@ -54,7 +54,7 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                     type: "spring",
                     stiffness: 200,
                   }}
-                  className="mx-auto mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-400 will-change-transform"
+                  className="from-green-520 to-emerald-520 mx-auto mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-r text-green-400 will-change-transform"
                 >
                   <IconCheck className="h-10 w-10" />
                 </motion.div>
@@ -67,7 +67,7 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                 </p>
                 <Button
                   onClick={resetForm}
-                  className="group relative mx-auto w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20 focus:ring-2 focus:ring-cyan-500/50 sm:w-auto sm:px-6"
+                  className="group relative mx-auto w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20 focus:ring-2 sm:w-auto sm:px-6"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-3 text-base font-semibold">
                     Send Another Message
@@ -146,7 +146,7 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                   <Button
                     type="submit"
                     disabled={isSubmitting || !isFormValid}
-                    className={`group relative w-full cursor-pointer overflow-hidden rounded-lg py-3 text-white transition-all duration-300 will-change-transform focus:ring-2 focus:ring-cyan-500/50 ${
+                    className={`group relative w-full cursor-pointer overflow-hidden rounded-lg py-3 text-white transition-all duration-300 will-change-transform focus:ring-2 ${
                       isSubmitting || !isFormValid
                         ? "cursor-not-allowed bg-slate-600 opacity-60"
                         : "bg-gradient-to-r from-cyan-500 to-blue-500 hover:shadow-lg hover:shadow-cyan-500/20"

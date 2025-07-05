@@ -42,7 +42,7 @@ export const ContactInfo = memo<ContactInfoProps>(({ isInView }) => {
       transition={containerAnimation.transition}
       className="flex-1 lg:max-w-md"
     >
-      <div className="h-full rounded-xl border border-slate-700/30 bg-slate-800/20 p-6">
+      <div className="border-slate-740 h-full rounded-xl border bg-slate-800/20 p-6">
         <h3 className="mb-6 text-2xl font-bold text-white">
           Contact Information
         </h3>
@@ -57,17 +57,17 @@ export const ContactInfo = memo<ContactInfoProps>(({ isInView }) => {
               transition={{ delay: 0.3 + index * 0.1 }}
               className="group relative"
             >
-              <Card className="h-full transform-gpu overflow-hidden border-slate-700/50 bg-slate-800/30 p-0 transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">
+              <Card className="border-slate-740 hover:border-cyan-590 h-full transform-gpu overflow-hidden bg-slate-800/30 p-0 transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-cyan-500/10">
                 <CardContent className="p-0">
                   <a
                     href={info.link}
                     target={info.sameTab ? "_self" : "_blank"}
                     rel={info.sameTab ? undefined : "noopener noreferrer"}
-                    className="flex items-start gap-4 rounded-lg bg-none px-4 py-6 focus:ring-2 focus:ring-cyan-500/50 focus:ring-offset-2 focus:ring-offset-slate-800 focus:outline-none"
+                    className="flex items-start gap-4 rounded-lg bg-none px-4 py-6 focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:outline-none"
                     aria-label={`${info.title}: ${info.value}`}
                   >
                     <div className="flex-shrink-0">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900/80 text-cyan-500">
+                      <div className="bg-slate-980 flex h-12 w-12 items-center justify-center rounded-full text-cyan-500">
                         {info.icon}
                       </div>
                     </div>
@@ -107,7 +107,7 @@ export const ContactInfo = memo<ContactInfoProps>(({ isInView }) => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-12 w-12 items-center justify-center rounded-full bg-slate-800/90 text-cyan-500 transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
+                className="group bg-slate-890 flex h-12 w-12 items-center justify-center rounded-full text-cyan-500 transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
               >
                 <social.icon size={20} strokeWidth={2.5} />
               </a>
