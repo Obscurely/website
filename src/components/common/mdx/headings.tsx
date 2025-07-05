@@ -105,7 +105,7 @@ export const MDXHeadings = {
     ...props
   }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
-      className="my-6 border-l-4 border-cyan-500 bg-slate-800/50 p-6 text-slate-300 italic shadow-lg"
+      className="bg-slate-970 my-6 border-l-4 border-cyan-500 p-6 text-slate-300 italic shadow-lg"
       {...props}
     >
       {children}
@@ -127,7 +127,7 @@ export const MDXHeadings = {
     children,
     ...props
   }: React.HTMLAttributes<HTMLTableSectionElement>) => (
-    <thead className="bg-slate-800/50" {...props}>
+    <thead className="bg-slate-970" {...props}>
       {children}
     </thead>
   ),
@@ -138,7 +138,7 @@ export const MDXHeadings = {
     <tbody {...props}>{children}</tbody>
   ),
   tr: ({ children, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr className="border-b border-slate-700 hover:bg-slate-800/30" {...props}>
+    <tr className="hover:bg-slate-830 border-b border-slate-700" {...props}>
       {children}
     </tr>
   ),

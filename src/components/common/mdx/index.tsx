@@ -62,13 +62,13 @@ export function CodeBlock({
   return (
     <div className="group relative my-6">
       <pre
-        className={`${className} overflow-x-auto rounded-xl border border-slate-700/30 bg-slate-950/15 p-4 text-sm leading-relaxed break-words whitespace-pre-wrap shadow-lg`}
+        className={`${className} bg-slate-970 border-slate-730 overflow-x-auto rounded-xl border p-4 text-sm leading-relaxed break-words whitespace-pre-wrap shadow-lg`}
       >
         {children}
       </pre>
       <button
         onClick={handleCopy}
-        className="absolute top-3 right-3 cursor-pointer rounded-lg bg-slate-800/80 p-2 opacity-50 transition-all duration-200 group-hover:opacity-100 hover:bg-slate-700/80"
+        className="bg-slate-880 hover:bg-slate-780 absolute top-3 right-3 cursor-pointer rounded-lg p-2 opacity-50 transition-all duration-200 group-hover:opacity-100"
         aria-label="Copy code"
       >
         {copied ? (
@@ -96,31 +96,31 @@ export function Callout({
   const config = {
     info: {
       icon: IconInfoCircle,
-      styles: "bg-blue-500/10 border-blue-500/30 text-blue-100",
+      styles: "bg-blue-510 border-blue-540 text-blue-100",
       iconColor: "text-blue-400",
       titleColor: "text-blue-300",
     },
     warning: {
       icon: IconAlertTriangle,
-      styles: "bg-yellow-500/10 border-yellow-500/30 text-yellow-100",
+      styles: "bg-yellow-510 border-yellow-530 text-yellow-100",
       iconColor: "text-yellow-400",
       titleColor: "text-yellow-300",
     },
     error: {
       icon: IconX,
-      styles: "bg-red-500/10 border-red-500/30 text-red-100",
+      styles: "bg-red-510 border-red-530 text-red-100",
       iconColor: "text-red-400",
       titleColor: "text-red-300",
     },
     success: {
       icon: IconCircleCheck,
-      styles: "bg-green-500/10 border-green-500/30 text-green-100",
+      styles: "bg-green-510 border-green-530 text-green-100",
       iconColor: "text-green-400",
       titleColor: "text-green-300",
     },
     tip: {
       icon: IconBulb,
-      styles: "bg-purple-500/10 border-purple-500/30 text-purple-100",
+      styles: "bg-purple-510 border-purple-530 text-purple-100",
       iconColor: "text-purple-400",
       titleColor: "text-purple-300",
     },
@@ -170,10 +170,10 @@ export function FeatureCard({
 }) {
   return (
     <div className="group relative">
-      <Card className="h-full overflow-hidden border-slate-700/50 bg-slate-800/30 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-md hover:shadow-cyan-500/10">
+      <Card className="border-slate-730 bg-slate-840 hover:border-cyan-590 h-full overflow-hidden transition-all duration-300 hover:shadow-md hover:shadow-cyan-500/10">
         <CardContent className="flex flex-col items-center px-3 text-center">
           {icon && (
-            <div className="mb-2 rounded-full bg-slate-900/80 p-4 group-hover:bg-slate-900/80">
+            <div className="bg-slate-980 mb-2 rounded-full p-4">
               <div className="text-2xl">{icon}</div>
             </div>
           )}
@@ -208,7 +208,7 @@ export function Step({
 }) {
   return (
     <div className="flex gap-4">
-      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-cyan-500/20 text-sm font-bold text-cyan-400">
+      <div className="bg-cyan-530 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-cyan-400">
         {number}
       </div>
       <div className="flex-1">
@@ -230,7 +230,7 @@ export function QuickLinks({
   links: Array<{ title: string; href: string; description?: string }>;
 }) {
   return (
-    <div className="my-10 rounded-xl border border-slate-700/30 bg-slate-800/20 p-6">
+    <div className="border-slate-740 bg-slate-980 my-10 rounded-xl border p-6">
       <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
         <IconExternalLink size={20} className="text-cyan-400" />
         Quick Links
@@ -240,7 +240,7 @@ export function QuickLinks({
           <a
             key={index}
             href={link.href}
-            className="block rounded-lg border border-slate-700/50 bg-slate-900/30 p-4 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-900/50 hover:shadow-md hover:shadow-cyan-500/10"
+            className="border-slate-740 bg-slate-840 hover:border-cyan-590 hover:bg-slate-860 block rounded-lg border p-4 transition-all duration-300 hover:shadow-md hover:shadow-cyan-500/10"
             target="_blank"
             rel="noopener noreferrer"
           >

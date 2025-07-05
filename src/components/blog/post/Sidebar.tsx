@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { TableOfContents } from "./TableOfContents";
-import { Separator } from "../mdx";
+import { Separator } from "@common/mdx";
 import { sidebarVariants } from "./variants";
 import { useMemo } from "react";
 import { getTableOfContents } from "@lib/blogToc";
