@@ -18,8 +18,8 @@ function Checkbox({
         "peer group relative size-5 shrink-0 cursor-pointer rounded-md border-2 transition-transform duration-200 ease-out outline-none",
 
         // Default state
-        "border-slate-700 bg-slate-800/50 shadow-sm",
-        "hover:translate-y-[-0.5px] hover:border-cyan-500/50 hover:bg-slate-800/70 hover:shadow-md hover:shadow-cyan-500/10",
+        "bg-slate-850 border-slate-700 shadow-sm",
+        "hover:border-cyan-590 hover:bg-slate-870 hover:translate-y-[-0.5px] hover:shadow-md hover:shadow-cyan-500/10",
 
         // Checked state
         "data-[state=checked]:border-cyan-500 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-cyan-500 data-[state=checked]:to-blue-500",

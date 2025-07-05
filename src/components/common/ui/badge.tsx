@@ -12,7 +12,7 @@ const badgeVariants = cva(
         default:
           "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-sm hover:shadow-md hover:shadow-cyan-500/20 hover:brightness-110 [a&]:hover:translate-y-[-1px] [button&]:hover:translate-y-[-1px]",
         secondary:
-          "bg-slate-800 text-slate-200 shadow-sm border border-slate-700/50 hover:bg-slate-700 hover:shadow-md hover:shadow-slate-900/20 [a&]:hover:translate-y-[-1px] [button&]:hover:translate-y-[-1px]",
+          "bg-slate-800 text-slate-200 shadow-sm border border-slate-750 hover:bg-slate-700 hover:shadow-md hover:shadow-slate-900/20 [a&]:hover:translate-y-[-1px] [button&]:hover:translate-y-[-1px]",
         destructive:
           "bg-gradient-to-r from-red-500 to-rose-500 text-white shadow-sm hover:shadow-md hover:shadow-red-500/20 hover:brightness-110 [a&]:hover:translate-y-[-1px] [button&]:hover:translate-y-[-1px]",
         success:
@@ -21,9 +21,9 @@ const badgeVariants = cva(
           "bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm hover:shadow-md hover:shadow-amber-500/20 hover:brightness-110 [a&]:hover:translate-y-[-1px] [button&]:hover:translate-y-[-1px]",
         info: "bg-gradient-to-r from-sky-500 to-indigo-500 text-white shadow-sm hover:shadow-md hover:shadow-sky-500/20 hover:brightness-110 [a&]:hover:translate-y-[-1px] [button&]:hover:translate-y-[-1px]",
         outline:
-          "border border-slate-700 bg-transparent text-slate-300 shadow-sm hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-md hover:shadow-cyan-500/10 [a&]:hover:translate-y-[-1px] [button&]:hover:translate-y-[-1px]",
+          "border border-slate-750 bg-transparent text-slate-300 shadow-sm hover:border-cyan-590 hover:bg-slate-850 hover:text-white hover:shadow-md hover:shadow-cyan-500/10 [a&]:hover:translate-y-[-1px] [button&]:hover:translate-y-[-1px]",
         ghost:
-          "bg-slate-800/30 text-slate-300 hover:bg-slate-800/60 hover:text-cyan-400 border border-slate-700/30 hover:border-slate-600/50",
+          "bg-slate-830 text-slate-300 hover:bg-slate-860 hover:text-cyan-400 border border-slate-750 hover:border-slate-600",
       },
     },
     defaultVariants: {
