@@ -93,10 +93,10 @@ export function Posts({ posts, isInView }: PostsProps) {
             transition={{ duration: 0.3 }}
             className="group"
           >
-            <div className="relative overflow-hidden rounded-xl border border-slate-700/30 bg-slate-800/30 transition-all duration-300 hover:border-slate-600/40 hover:shadow-xl hover:shadow-slate-500/5">
+            <div className="border-slate-730 bg-slate-830 hover:border-slate-590 relative overflow-hidden rounded-xl border transition-all duration-300 hover:shadow-xl hover:shadow-slate-500/5">
               <div className="flex h-40 flex-col items-center justify-center p-4 sm:h-48 sm:p-6 md:h-auto md:min-h-[200px]">
                 <div className="space-y-3 text-center sm:space-y-4">
-                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-slate-700/30 sm:mb-4 sm:h-16 sm:w-16">
+                  <div className="bg-slate-730 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full sm:mb-4 sm:h-16 sm:w-16">
                     <IconFileText
                       size={24}
                       className="text-slate-400 sm:size-8"

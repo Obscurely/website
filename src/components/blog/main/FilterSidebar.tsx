@@ -74,7 +74,7 @@ export function FilterSidebar({
             className="mb-6"
           >
             {/* Tags Filter */}
-            <AccordionItem value="tags" className="border-slate-700/50">
+            <AccordionItem value="tags" className="border-slate-750">
               <AccordionTrigger className="cursor-pointer text-white hover:text-cyan-400">
                 <div className="flex items-center">
                   <IconTag className="mr-2 h-5 w-5" />
@@ -87,10 +87,10 @@ export function FilterSidebar({
                     <Badge
                       key={tag}
                       variant="outline"
-                      className={`cursor-pointer border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 hover:bg-slate-700/50 hover:shadow-sm ${
+                      className={`hover:bg-slate-750 cursor-pointer border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 hover:shadow-sm ${
                         selectedTag === tag
-                          ? "border-cyan-500/50 bg-gradient-to-r from-slate-800/70 to-slate-700/70 text-white shadow-sm"
-                          : "border-slate-700/50 bg-slate-800/30 text-slate-300 hover:border-cyan-500/50"
+                          ? "border-cyan-590 from-slate-870 to-slate-770 bg-gradient-to-r text-white shadow-sm"
+                          : "border-slate-750 bg-slate-830 hover:border-cyan-590 text-slate-300"
                       }`}
                       onClick={() =>
                         setSelectedTag(tag === selectedTag ? null : tag)
@@ -104,7 +104,7 @@ export function FilterSidebar({
             </AccordionItem>
 
             {/* Years Filter */}
-            <AccordionItem value="years" className="border-slate-700/50">
+            <AccordionItem value="years" className="border-slate-750">
               <AccordionTrigger className="cursor-pointer text-white hover:text-cyan-400">
                 <div className="flex items-center">
                   <IconCalendar className="mr-2 h-5 w-5" />
@@ -117,10 +117,10 @@ export function FilterSidebar({
                     <Badge
                       key={year}
                       variant="outline"
-                      className={`cursor-pointer border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 hover:bg-slate-700/50 hover:shadow-sm ${
+                      className={`hover:bg-slate-750 cursor-pointer border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 hover:shadow-sm ${
                         selectedYear === year
-                          ? "border-cyan-500/50 bg-gradient-to-r from-slate-800/70 to-slate-700/70 text-white shadow-sm"
-                          : "border-slate-700/50 bg-slate-800/30 text-slate-300 hover:border-cyan-500/50"
+                          ? "border-cyan-590 from-slate-870 to-slate-770 bg-gradient-to-r text-white shadow-sm"
+                          : "border-slate-750 bg-slate-830 hover:border-cyan-590 text-slate-300"
                       }`}
                       onClick={() =>
                         setSelectedYear(year === selectedYear ? null : year)
@@ -173,7 +173,7 @@ export function FilterSidebar({
             clearFilters();
             setDrawerOpen?.(false); // Close drawer if it exists
           }}
-          className="group-hover-translate-0 flex-1 cursor-pointer rounded-lg border-slate-700 px-6 py-3 text-slate-300 transition-all duration-300 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-white hover:shadow-md hover:shadow-cyan-500/10"
+          className="group-hover-translate-0 hover:border-cyan-590 hover:bg-slate-850 flex-1 cursor-pointer rounded-lg border-slate-700 px-6 py-3 text-slate-300 transition-all duration-300 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:text-white hover:shadow-md hover:shadow-cyan-500/10"
         >
           Clear All
         </Button>

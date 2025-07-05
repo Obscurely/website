@@ -18,7 +18,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
   }
 
   return (
-    <div className="rounded-xl border border-slate-700/30 bg-slate-800/20 p-6">
+    <div className="border-slate-730 bg-slate-980 rounded-xl border p-6">
       <h3 className="mb-4 text-lg font-semibold text-white">
         Table of Contents
       </h3>

@@ -33,7 +33,7 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
       className="group"
     >
       <Link href={`/blog/${post.slug}`} className="block">
-        <article className="relative overflow-hidden rounded-xl border border-slate-700/30 bg-slate-800/30 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-md hover:shadow-cyan-500/10">
+        <article className="border-slate-730 bg-slate-830 hover:border-cyan-590 relative overflow-hidden rounded-xl border transition-all duration-300 hover:shadow-md hover:shadow-cyan-500/10">
           <div className="flex flex-col md:flex-row">
             {/* Image Section */}
             {post.frontmatter.image && (
@@ -96,7 +96,7 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
                   {post.frontmatter.featured && (
                     <Badge
                       variant="outline"
-                      className="border-cyan-400/60 bg-cyan-500/20 text-xs font-medium text-cyan-300 hover:bg-cyan-500/30"
+                      className="border-cyan-460 bg-cyan-510 hover:bg-cyan-520 text-xs font-medium text-cyan-300"
                     >
                       Featured
                     </Badge>
@@ -105,7 +105,7 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
                     <Badge
                       key={tag}
                       variant="outline"
-                      className="border-slate-600/50 bg-slate-700/30 text-xs font-medium text-slate-300 transition-colors duration-200 hover:border-slate-500/70 hover:bg-slate-600/40"
+                      className="border-slate-650 bg-slate-730 hover:border-slate-570 hover:bg-slate-640 text-xs font-medium text-slate-300 transition-colors duration-200 hover:shadow-slate-500/10"
                     >
                       {tag}
                     </Badge>
@@ -113,7 +113,7 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
                   {post.frontmatter.tags.length > 4 && (
                     <Badge
                       variant="outline"
-                      className="border-slate-600/50 bg-slate-700/30 text-xs text-slate-400"
+                      className="border-slate-650 bg-slate-730 hover:border-slate-570 hover:bg-slate-640 text-xs text-slate-400 transition-colors duration-200 hover:shadow-slate-500/10"
                     >
                       +{post.frontmatter.tags.length - 4}
                     </Badge>

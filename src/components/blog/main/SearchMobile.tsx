@@ -37,7 +37,7 @@ export const SearchMobile = ({
               applyFilters();
             }
           }}
-          className="w-full rounded-lg border-slate-700/50 bg-slate-800/30 py-3 pr-10 pl-10 text-slate-200 transition-all duration-200 placeholder:text-slate-500 hover:border-slate-600/70 hover:bg-slate-800/50 focus:bg-slate-800/60 focus:shadow-lg focus:!ring-2 focus:!ring-cyan-500/30 focus:!outline-none"
+          className="border-slate-750 bg-slate-830 focus:!ring-cyan-570 w-full rounded-lg py-3 pr-10 pl-10 text-slate-200 transition-all duration-200 placeholder:text-slate-500 hover:border-slate-600 focus:shadow-lg focus:!ring-2 focus:!outline-none"
         />
         {searchQuery && (
           <button

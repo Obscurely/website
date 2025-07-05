@@ -79,7 +79,7 @@ export const Sidebar = ({
       >
         <TableOfContents toc={toc} />
 
-        <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 p-6">
+        <div className="border-slate-730 bg-slate-980 rounded-2xl border p-6">
           <h3 className="mb-4 text-lg font-semibold text-white">
             About the Author
           </h3>
@@ -90,7 +90,7 @@ export const Sidebar = ({
                 alt="Adrian Crîșmaruc"
                 width={60}
                 height={60}
-                className="rounded-full ring-2 ring-cyan-500/20"
+                className="ring-cyan-520 rounded-full ring-2"
               />
             </div>
             <div>

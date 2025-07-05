@@ -46,7 +46,7 @@ export const Header = ({
           {post.frontmatter.featured && (
             <Badge
               variant="outline"
-              className="border-cyan-400/60 bg-cyan-500/20 text-xs font-medium text-cyan-300 hover:bg-cyan-500/30"
+              className="border-cyan-460 bg-cyan-510 hover:bg-cyan-520 text-xs font-medium text-cyan-300"
             >
               Featured
             </Badge>
@@ -55,7 +55,7 @@ export const Header = ({
             <Badge
               key={tag}
               variant="outline"
-              className="border-slate-600/50 bg-slate-800/40 px-3 py-1 text-slate-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-400"
+              className="border-slate-650 bg-slate-730 hover:border-slate-570 hover:bg-slate-640 px-3 py-1 text-slate-300 transition-colors hover:shadow-slate-500/10"
             >
               {tag}
             </Badge>
@@ -88,14 +88,14 @@ export const Header = ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="z-50 flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400 hover:shadow-md">
+              <Button className="border-slate-750 bg-slate-830 hover:border-cyan-590 hover:bg-slate-850 z-50 flex cursor-pointer items-center gap-2 rounded-lg border px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:text-cyan-400 hover:shadow-md">
                 <IconCoffee size={18} />
                 <span className="hidden sm:inline">Coffee</span>
               </Button>
             </a>
             <Button
               onClick={handleShare}
-              className="z-50 flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400 hover:shadow-md"
+              className="border-slate-750 bg-slate-830 hover:border-cyan-590 hover:bg-slate-850 z-50 flex cursor-pointer items-center gap-2 rounded-lg border px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:text-cyan-400 hover:shadow-md"
             >
               {shareState === "copied" ? (
                 <IconCheck size={18} className="text-green-400" />

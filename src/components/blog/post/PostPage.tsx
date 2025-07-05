@@ -56,7 +56,7 @@ export function PostPage({ post }: PostPageProps) {
           <Link href="/blog" className="inline-block">
             <Button
               variant="link"
-              className="group inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg border-cyan-500/20 px-4 py-3 text-slate-300 transition-all duration-300 hover:border-cyan-500/50 hover:text-white"
+              className="group inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg px-4 py-3 text-slate-300 transition-all duration-300 hover:text-white"
             >
               <span className="flex items-center justify-center gap-2 text-sm">
                 <IconArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
@@ -92,14 +92,14 @@ export function PostPage({ post }: PostPageProps) {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="order-3 lg:order-1 lg:col-span-3"
           >
-            <article className="prose prose-invert prose-slate prose-lg prose-headings:font-bold prose-headings:text-white prose-headings:tracking-tight prose-p:text-slate-300 prose-p:leading-relaxed prose-a:text-cyan-400 prose-a:no-underline prose-a:transition-colors prose-a:duration-200 hover:prose-a:text-cyan-300 prose-blockquote:border-l-4 prose-blockquote:border-cyan-500 prose-blockquote:bg-slate-800/50 prose-blockquote:p-6 prose-blockquote:not-italic prose-blockquote:shadow-lg prose-code:rounded prose-code:bg-slate-800/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-cyan-400 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-slate-900 prose-pre:shadow-xl prose-img:rounded-xl prose-img:shadow-2xl prose-hr:border-slate-700 max-w-none">
+            <article className="prose prose-invert prose-slate prose-lg prose-headings:font-bold prose-headings:text-white prose-headings:tracking-tight prose-p:text-slate-300 prose-p:leading-relaxed prose-a:text-cyan-400 prose-a:no-underline prose-a:transition-colors prose-a:duration-200 hover:prose-a:text-cyan-300 prose-blockquote:border-l-4 prose-blockquote:border-cyan-500 prose-blockquote:bg-slate-970 prose-blockquote:p-6 prose-blockquote:not-italic prose-blockquote:shadow-lg prose-code:rounded prose-code:bg-slate-970 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-cyan-400 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-slate-900 prose-pre:shadow-xl prose-img:rounded-xl prose-img:shadow-2xl prose-hr:border-slate-700 max-w-none">
               {/* Header - only visible on desktop */}
               <header className="not-prose mb-12 hidden lg:block">
                 <div className="mb-6 flex flex-wrap gap-2">
                   {post.frontmatter.featured && (
                     <Badge
                       variant="outline"
-                      className="border-cyan-400/60 bg-cyan-500/20 text-xs font-medium text-cyan-300 hover:bg-cyan-500/30"
+                      className="border-cyan-460 bg-cyan-510 hover:bg-cyan-520 text-xs font-medium text-cyan-300"
                     >
                       Featured
                     </Badge>
@@ -108,7 +108,7 @@ export function PostPage({ post }: PostPageProps) {
                     <Badge
                       key={tag}
                       variant="outline"
-                      className="border-slate-600/50 bg-slate-800/40 px-3 py-1 text-slate-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-400"
+                      className="border-slate-650 bg-slate-730 hover:border-slate-570 hover:bg-slate-640 px-3 py-1 text-slate-300 transition-colors hover:shadow-slate-500/10"
                     >
                       {tag}
                     </Badge>
@@ -141,14 +141,14 @@ export function PostPage({ post }: PostPageProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Button className="z-50 flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400 hover:shadow-md">
+                      <Button className="border-slate-750 bg-slate-830 hover:border-cyan-590 hover:bg-slate-850 z-50 flex cursor-pointer items-center gap-2 rounded-lg border px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:text-cyan-400 hover:shadow-md">
                         <IconCoffee size={18} />
                         <span className="hidden sm:inline">Coffee</span>
                       </Button>
                     </a>
                     <Button
                       onClick={handleShare}
-                      className="z-50 flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700/50 bg-slate-800/30 px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:text-cyan-400 hover:shadow-md"
+                      className="border-slate-750 bg-slate-830 hover:border-cyan-590 hover:bg-slate-850 z-50 flex cursor-pointer items-center gap-2 rounded-lg border px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:text-cyan-400 hover:shadow-md"
                     >
                       <IconShare size={18} />
                       <span className="hidden sm:inline">Share</span>
@@ -184,7 +184,7 @@ export function PostPage({ post }: PostPageProps) {
               className="mt-20 min-h-[430px]"
             >
               {/* Wrapper - hidden on mobile, visible on larger screens */}
-              <div className="mb-8 hidden rounded-2xl border border-slate-700/30 bg-slate-800/20 p-8 sm:block">
+              <div className="border-slate-730 bg-slate-980 mb-8 hidden rounded-2xl border p-8 sm:block">
                 <h2 className="mb-6 text-3xl font-bold text-white">
                   Join the Discussion
                 </h2>
@@ -216,7 +216,7 @@ export function PostPage({ post }: PostPageProps) {
           scale: showBackToTop ? 1 : 0,
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="fixed right-6 bottom-6 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-slate-700/50 bg-slate-800/80 text-slate-300 shadow-lg transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-800/90 hover:text-cyan-400 hover:shadow-xl focus:ring-2 focus:ring-cyan-500/50 focus:outline-none sm:h-14 sm:w-14"
+        className="border-slate-750 bg-slate-880 hover:border-cyan-590 hover:bg-slate-890 focus:ring-cyan-590 fixed right-6 bottom-6 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border text-slate-300 shadow-lg transition-all duration-300 hover:text-cyan-400 hover:shadow-xl focus:ring-2 focus:outline-none sm:h-14 sm:w-14"
         aria-label="Back to top"
       >
         <IconArrowUp size={20} className="sm:h-6 sm:w-6" />
