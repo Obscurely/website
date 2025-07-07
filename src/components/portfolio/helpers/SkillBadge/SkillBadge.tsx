@@ -104,7 +104,7 @@ export const SkillBadge = React.memo(function SkillBadge({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 5, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="border-slate-760 absolute z-[60] w-lg max-w-[95vw] overflow-hidden rounded-xl border bg-gradient-to-b from-slate-800 to-slate-900 p-4 text-slate-200 shadow-xl"
+            className="border-slate-760 absolute z-[60] w-lg max-w-[95vw] overflow-hidden rounded-xl border bg-gradient-to-b from-slate-800 to-slate-900 p-4 text-slate-200 shadow-xl will-change-transform"
             style={{
               position: strategy,
               top: y ?? 0,
