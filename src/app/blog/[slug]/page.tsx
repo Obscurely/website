@@ -7,15 +7,16 @@ import { Toaster } from "sonner";
 import { Navbar } from "@common/layout/Navbar/Navbar";
 
 interface BlogPostParams {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: BlogPostParams): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return {
@@ -62,7 +63,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Post({ params }: BlogPostParams) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
