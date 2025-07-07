@@ -24,6 +24,8 @@ export const ProjectsNavigation = memo(
   }: ProjectsNavigationProps) => {
     // Ensure totalPages is at least 1
     const pages = Math.max(totalPages, 1);
+    const isPrevDisabled = totalPages <= 1 || currentPage === 0;
+    const isNextDisabled = totalPages <= 1 || currentPage >= totalPages - 1;
 
     return (
       <motion.div
@@ -33,17 +35,18 @@ export const ProjectsNavigation = memo(
         variants={navigationButtonVariants}
       >
         <motion.div
-          whileHover="hover"
-          whileTap="tap"
+          whileHover={!isPrevDisabled ? "hover" : ""}
+          whileTap={!isPrevDisabled ? "tap" : ""}
           variants={navigationButtonVariants}
+          className="flex-shrink-0"
         >
           <Button
             onClick={onPrevPage}
-            className="bg-slate-850 hover:bg-slate-790 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg will-change-transform sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
+            className="bg-slate-850 hover:bg-slate-790 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg will-change-transform disabled:cursor-not-allowed disabled:opacity-50 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
             size="icon"
             variant="ghost"
             aria-label="Previous page"
-            disabled={totalPages <= 1 || currentPage === 0}
+            disabled={isPrevDisabled}
           >
             <IconChevronLeft
               size={24}
@@ -52,23 +55,26 @@ export const ProjectsNavigation = memo(
           </Button>
         </motion.div>
 
-        <div className="text-sm text-slate-400 sm:text-sm md:text-sm">
-          <span className="font-medium text-cyan-400">{currentPage + 1}</span>
-          <span> / {pages}</span>
+        <div className="min-w-[2rem] flex-shrink-0 text-center text-sm text-slate-400 sm:text-sm md:text-sm">
+          <span className="font-mono font-medium text-cyan-400">
+            {currentPage + 1}
+          </span>
+          <span className="font-mono font-medium"> / {pages}</span>
         </div>
 
         <motion.div
-          whileHover="hover"
-          whileTap="tap"
+          whileHover={!isNextDisabled ? "hover" : ""}
+          whileTap={!isNextDisabled ? "tap" : ""}
           variants={navigationButtonVariants}
+          className="flex-shrink-0"
         >
           <Button
             onClick={onNextPage}
-            className="bg-slate-850 hover:bg-slate-790 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg will-change-transform sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
+            className="bg-slate-850 hover:bg-slate-790 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg will-change-transform disabled:cursor-not-allowed disabled:opacity-50 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
             size="icon"
             variant="ghost"
             aria-label="Next page"
-            disabled={totalPages <= 1 || currentPage >= totalPages - 1}
+            disabled={isNextDisabled}
           >
             <IconChevronRight
               size={24}
