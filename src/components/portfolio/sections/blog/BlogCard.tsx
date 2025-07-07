@@ -145,7 +145,7 @@ export const BlogCard = memo(
               </CardContent>
 
               {/* Footer */}
-              <CardFooter className="border-slate-740 mt-auto border-t bg-slate-900/30 p-4">
+              <CardFooter className="border-slate-740 mt-auto border-t bg-slate-900/30 p-5">
                 <div className="flex w-full items-center justify-between">
                   <span className="text-sm text-cyan-400 transition-colors duration-300 group-hover:text-cyan-300">
                     Read Article

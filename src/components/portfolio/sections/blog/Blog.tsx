@@ -42,7 +42,7 @@ export const Blog = () => {
   const gridClassName = useMemo(() => {
     const baseClasses = "grid gap-8";
     if (latestPosts.length === 1) {
-      return `${baseClasses} mx-auto max-w-md grid-cols-1`;
+      return `${baseClasses} mx-auto max-w-[475px] grid-cols-1`;
     } else if (latestPosts.length === 2) {
       return `${baseClasses} mx-auto max-w-4xl grid-cols-1 md:grid-cols-2`;
     } else {
@@ -84,7 +84,7 @@ export const Blog = () => {
         {/* Blog posts grid */}
         <div className="mb-12">
           {loading ? (
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {LOADING_POSTS.map((post, index) => (
                 <div key={post.slug}>
                   <BlogCard post={post} index={index} isInView={isInView} />

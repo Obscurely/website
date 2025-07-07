@@ -24,7 +24,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
 
   return (
     <footer className="relative z-10 border-t border-slate-900 bg-[#080e22]">
-      <div className="relative container mx-auto px-4 py-16">
+      <div className="relative container mx-auto px-4 py-16 sm:px-6 lg:px-8">
         {/* Main footer content */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-14 lg:gap-8">
           {/* Brand section */}

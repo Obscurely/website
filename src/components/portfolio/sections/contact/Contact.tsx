@@ -32,7 +32,7 @@ export const Contact = () => {
         {/* Header */}
         <Header isInView={isInView} />
 
-        <div className="mx-auto max-w-7xl">
+        <div className="max-w-8xl mx-auto">
           <div className="flex flex-col items-stretch gap-8 lg:flex-row lg:gap-10">
             {/* Contact Information */}
             <ContactInfo isInView={isInView} />

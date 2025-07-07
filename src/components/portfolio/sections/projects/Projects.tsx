@@ -37,7 +37,7 @@ export const Projects = () => {
           <div className="absolute bottom-1/4 left-1/4 h-64 w-64 rounded-full bg-purple-600 blur-[100px]"></div>
         </div>
 
-        <div className="relative container mx-auto px-4 sm:px-6">
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header and description */}
           <ProjectsHeader isInView={isInView} />
 

@@ -23,7 +23,7 @@ export const Hero = () => {
       ref={sectionRef}
       className="relative flex min-h-screen items-center justify-center pt-16 pb-6"
     >
-      <div className="z-10 container mx-auto px-4">
+      <div className="z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
