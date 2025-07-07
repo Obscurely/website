@@ -72,7 +72,7 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                   <span className="relative z-10 flex items-center justify-center gap-3 text-base font-semibold">
                     Send Another Message
                   </span>
-                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 will-change-transform group-hover:opacity-100"></span>
                 </Button>
               </motion.div>
             ) : (
@@ -168,7 +168,7 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                         </>
                       )}
                     </span>
-                    <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+                    <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 will-change-transform group-hover:opacity-100"></span>
                   </Button>
                 </div>
               </motion.form>

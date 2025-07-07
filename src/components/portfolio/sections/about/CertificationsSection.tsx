@@ -69,7 +69,7 @@ const CertificationCard = memo(function CertificationCard({
       href={certification.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group border-slate-730 hover:border-cyan-590 flex transform-gpu flex-col rounded-lg border bg-slate-800/40 p-4 transition-all duration-300 ease-out hover:translate-y-[-2px] hover:bg-slate-800/40 hover:shadow-lg hover:shadow-cyan-500/5"
+      className="group border-slate-730 hover:border-cyan-590 flex transform-gpu flex-col rounded-lg border bg-slate-800/40 p-4 transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:bg-slate-800/40 hover:shadow-lg hover:shadow-cyan-500/5"
     >
       <div className="flex items-center">
         <div className="relative h-16 w-16 overflow-hidden">

@@ -161,7 +161,7 @@ const CategorySkills = memo(function CategorySkills({
   );
 
   return (
-    <div className="flex flex-wrap gap-1.5">
+    <div className="flex flex-wrap gap-1.5 will-change-transform">
       {categorySkills.map((skill) => (
         <SkillBadge
           key={

@@ -91,7 +91,7 @@ export const Terminal = ({ currentTime }: TerminalProps) => {
               >
                 <IconSearch
                   size={16}
-                  className="mr-2 text-cyan-400 transition-transform duration-300 group-hover:scale-110"
+                  className="mr-2 text-cyan-400 transition-transform duration-300 will-change-transform group-hover:scale-110"
                 />
                 <span className="text-sm font-semibold text-cyan-400 transition-all duration-300 group-hover:text-cyan-300">
                   Founder of RekoSearch - AI File Search Engine
@@ -151,7 +151,7 @@ export const Terminal = ({ currentTime }: TerminalProps) => {
                     Get in Touch
                     <IconArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
-                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 will-change-transform group-hover:opacity-100"></span>
                 </Button>
                 <Button
                   variant="outline"
