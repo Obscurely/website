@@ -6,7 +6,7 @@ import { IconUser } from "@tabler/icons-react";
 import Image from "next/image";
 
 interface SidebarProps {
-  currentTime: Date;
+  currentTime: Date | null;
 }
 
 export const Sidebar = ({ currentTime }: SidebarProps) => {
@@ -66,12 +66,12 @@ export const Sidebar = ({ currentTime }: SidebarProps) => {
           <div className="flex justify-between">
             <span className="text-slate-400">Local Time:</span>
             <span className="text-slate-200">
-              {currentTime.toLocaleTimeString("en-US", {
+              {currentTime?.toLocaleTimeString("en-US", {
                 hour12: false,
                 timeZone: "Europe/Bucharest",
                 hour: "2-digit",
                 minute: "2-digit",
-              })}
+              }) ?? "--:--"}
             </span>
           </div>
 

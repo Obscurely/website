@@ -10,9 +10,12 @@ import { Sidebar } from "./Sidebar";
 
 export const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [currentTime, setCurrentTime] = useState<Date | null>(null);
 
   useEffect(() => {
+    // Set initial time on client mount
+    setCurrentTime(new Date());
+
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);

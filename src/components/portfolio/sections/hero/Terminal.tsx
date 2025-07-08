@@ -19,7 +19,7 @@ import { Description } from "@data/portfolio/hero";
 import { socials } from "@data/common/socials";
 
 interface TerminalProps {
-  currentTime: Date;
+  currentTime: Date | null;
 }
 
 export const Terminal = ({ currentTime }: TerminalProps) => {
@@ -48,11 +48,11 @@ export const Terminal = ({ currentTime }: TerminalProps) => {
             </div>
           </div>
           <div className="font-mono text-sm text-slate-400">
-            {currentTime.toLocaleTimeString("en-US", {
+            {currentTime?.toLocaleTimeString("en-US", {
               hour12: false,
               hour: "2-digit",
               minute: "2-digit",
-            })}
+            }) ?? "--:--"}
           </div>
         </motion.div>
 
