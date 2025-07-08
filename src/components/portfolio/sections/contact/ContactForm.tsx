@@ -44,7 +44,7 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="flex flex-1 flex-col justify-center py-8 text-center"
+                className="min-h-none flex min-h-[484px] flex-1 flex-col justify-center py-8 text-center sm:min-h-[483px] md:min-h-[387px]"
               >
                 <motion.div
                   initial={{ scale: 0 }}

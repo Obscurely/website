@@ -61,6 +61,7 @@ export function BlogPage({ initialPosts }: BlogPageProps) {
           className="fixed inset-y-0 right-0 z-50 w-80 max-w-full overflow-y-auto bg-slate-800 px-6 py-8 shadow-xl transition duration-300 ease-in-out data-[closed]:translate-x-full"
         >
           <FilterSidebar
+            isMobile={true}
             searchQuery={searchQuery}
             setSearchQueryAction={setSearchQuery}
             tags={allTags}

@@ -14,6 +14,7 @@ import { Search } from "./Search";
 import { Checkbox } from "@ui/checkbox";
 
 interface FilterSidebarProps {
+  isMobile?: boolean; // Optional prop for mobile drawer
   searchQuery: string;
   setSearchQueryAction: React.Dispatch<React.SetStateAction<string>>;
   tags: string[];
@@ -33,6 +34,7 @@ interface FilterSidebarProps {
  * FilterSidebar component provides a sidebar for filtering blog posts by search query, tags, years, and featured status.
  */
 export function FilterSidebar({
+  isMobile,
   searchQuery,
   setSearchQueryAction: setSearchQuery,
   tags,
@@ -90,7 +92,9 @@ export function FilterSidebar({
                       className={`hover:bg-slate-750 cursor-pointer border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 hover:shadow-sm ${
                         selectedTag === tag
                           ? "border-cyan-590 from-slate-870 to-slate-770 bg-gradient-to-r text-white shadow-sm"
-                          : "border-slate-750 bg-slate-830 hover:border-cyan-590 text-slate-300"
+                          : isMobile
+                            ? "border-slate-750 bg-slate-720 hover:border-cyan-590 text-slate-300"
+                            : "border-slate-750 bg-slate-830 hover:border-cyan-590 text-slate-300"
                       }`}
                       onClick={() =>
                         setSelectedTag(tag === selectedTag ? null : tag)
@@ -120,7 +124,9 @@ export function FilterSidebar({
                       className={`hover:bg-slate-750 cursor-pointer border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 hover:shadow-sm ${
                         selectedYear === year
                           ? "border-cyan-590 from-slate-870 to-slate-770 bg-gradient-to-r text-white shadow-sm"
-                          : "border-slate-750 bg-slate-830 hover:border-cyan-590 text-slate-300"
+                          : isMobile
+                            ? "border-slate-750 bg-slate-720 hover:border-cyan-590 text-slate-300"
+                            : "border-slate-750 bg-slate-830 hover:border-cyan-590 text-slate-300"
                       }`}
                       onClick={() =>
                         setSelectedYear(year === selectedYear ? null : year)

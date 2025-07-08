@@ -181,7 +181,7 @@ export function PostPage({ post }: PostPageProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-20 min-h-[430px]"
+              className="mt-20 min-h-[430px] sm:min-h-[650px]"
             >
               {/* Wrapper - hidden on mobile, visible on larger screens */}
               <div className="border-slate-730 bg-slate-980 mb-8 hidden rounded-2xl border p-8 sm:block">
