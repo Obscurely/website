@@ -92,11 +92,11 @@ export function Sidebar() {
       {/* Blog Title */}
       <div className="mb-6">
         <Link href="/blog">
-          <h1 className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-3xl font-bold text-transparent">
+          <h1 className="bg-blue-400 bg-clip-text text-3xl font-bold text-transparent">
             Blog
           </h1>
         </Link>
-        <div className="mt-2 h-1 w-20 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+        <div className="mt-2 h-1 w-20 rounded-full bg-blue-400"></div>
 
         {/* Description text */}
         <motion.p
@@ -114,9 +114,9 @@ export function Sidebar() {
       <motion.div variants={itemVariants} className="mb-6 space-y-2">
         <Button
           variant="ghost"
-          className={`group hover:border-slate-750 hover:bg-slate-860 w-full justify-start rounded-xl border border-transparent font-medium transition-all duration-300 hover:text-cyan-400 hover:shadow-lg ${
+          className={`group hover:border-slate-750 hover:bg-slate-850 w-full justify-start rounded-xl border border-transparent font-medium transition-all duration-300 hover:text-cyan-400 hover:shadow-lg ${
             pathname === "/blog" && !isFeatured
-              ? "border-cyan-590 bg-slate-880 text-cyan-400"
+              ? "border-cyan-590 bg-slate-740 text-cyan-400"
               : "text-slate-300"
           }`}
           asChild

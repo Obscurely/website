@@ -33,7 +33,7 @@ export const Description = () => {
       I am a <strong className="text-white">Full-Stack Developer</strong>{" "}
       specializing in
       <span className="relative mx-1">
-        <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
+        <span className="bg-blue-400 bg-clip-text font-semibold text-transparent">
           Rust, Python, React, TypeScript, Next.js, Flask
         </span>
       </span>
@@ -42,20 +42,20 @@ export const Description = () => {
       from the backend and infrastructure to the user interface while leveraging
       my
       <span className="relative mx-1">
-        <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
+        <span className="bg-blue-400 bg-clip-text font-semibold text-transparent">
           certified knowledge of AWS and Kubernetes
         </span>
-        <span className="from-cyan-580 to-blue-580 absolute -bottom-0.5 left-0 h-0.5 w-full bg-gradient-to-r"></span>
+        <span className="bg-blue-580 absolute -bottom-0.5 left-0 h-0.5 w-full"></span>
       </span>
       , practical
       <span className="relative mx-1">
-        <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
+        <span className="bg-blue-400 bg-clip-text font-semibold text-transparent">
           Home Lab SysAdmin
         </span>
       </span>
       experience and
       <span className="relative mx-1">
-        <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold text-transparent">
+        <span className="bg-blue-400 bg-clip-text font-semibold text-transparent">
           DevOps practices
         </span>
       </span>

@@ -71,10 +71,10 @@ export const Blog = () => {
           transition={{ duration: 0.7 }}
           className="mb-16 text-center"
         >
-          <h2 className="mb-0.5 inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-3xl leading-relaxed font-bold text-transparent md:text-4xl lg:text-5xl">
+          <h2 className="mb-0.5 inline-block bg-blue-400 bg-clip-text text-3xl leading-relaxed font-bold text-transparent md:text-4xl lg:text-5xl">
             Latest Posts
           </h2>
-          <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+          <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-blue-400"></div>
           <p className="mx-auto max-w-3xl text-lg text-slate-400">
             Practical tutorials, in-depth guides and insights on software
             development, Linux, servers and more.
@@ -123,12 +123,11 @@ export const Blog = () => {
           className="flex flex-col items-center"
         >
           <Link href="/blog" passHref>
-            <Button className="group relative h-10 w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20">
+            <Button className="group relative h-10 w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300 will-change-transform">
               <span className="relative z-10 flex items-center gap-2 text-sm font-medium">
                 View All Posts
                 <IconArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
-              <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 will-change-transform group-hover:opacity-100"></span>
             </Button>
           </Link>
         </motion.div>

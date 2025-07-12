@@ -26,10 +26,10 @@ export const ProjectsHeader = ({ isInView }: ProjectsHeaderProps) => {
       transition={{ duration: 0.7 }}
       className="mb-16 text-center"
     >
-      <h2 className="mb-2 inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-3xl leading-relaxed font-bold text-transparent md:text-4xl lg:text-5xl">
+      <h2 className="mb-2 inline-block bg-blue-400 bg-clip-text text-3xl leading-relaxed font-bold text-transparent md:text-4xl lg:text-5xl">
         {HEADER_TEXT.title}
       </h2>
-      <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+      <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-blue-400"></div>
       <p className="mx-auto max-w-3xl text-lg text-slate-400">
         {HEADER_TEXT.description}
       </p>

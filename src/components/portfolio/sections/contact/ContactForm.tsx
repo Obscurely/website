@@ -67,12 +67,11 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                 </p>
                 <Button
                   onClick={resetForm}
-                  className="group relative mx-auto w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 py-3 text-white transition-all duration-300 will-change-transform hover:shadow-lg hover:shadow-cyan-500/20 focus:ring-2 sm:w-auto sm:px-6"
+                  className="group overflow-hiddenpy-3 relative mx-auto w-full cursor-pointer text-white transition-all duration-300 will-change-transform focus:ring-2 sm:w-auto sm:px-6"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-3 text-base font-semibold">
                     Send Another Message
                   </span>
-                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 will-change-transform group-hover:opacity-100"></span>
                 </Button>
               </motion.div>
             ) : (
@@ -149,7 +148,7 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                     className={`group relative w-full cursor-pointer overflow-hidden rounded-lg py-3 text-white transition-all duration-300 will-change-transform focus:ring-2 ${
                       isSubmitting || !isFormValid
                         ? "cursor-not-allowed bg-slate-600 opacity-60"
-                        : "bg-gradient-to-r from-cyan-500 to-blue-500 hover:shadow-lg hover:shadow-cyan-500/20"
+                        : ""
                     }`}
                     aria-describedby="submit-status"
                   >
@@ -168,7 +167,6 @@ export const ContactForm = ({ isInView }: ContactFormProps) => {
                         </>
                       )}
                     </span>
-                    <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 will-change-transform group-hover:opacity-100"></span>
                   </Button>
                 </div>
               </motion.form>

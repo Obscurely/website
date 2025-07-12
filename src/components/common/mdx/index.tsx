@@ -173,7 +173,7 @@ export function FeatureCard({
       <Card className="border-slate-730 bg-slate-840 hover:border-cyan-590 h-full overflow-hidden transition-all duration-300 hover:shadow-md hover:shadow-cyan-500/10">
         <CardContent className="flex flex-col items-center px-3 text-center">
           {icon && (
-            <div className="bg-slate-980 mb-2 rounded-full p-4">
+            <div className="bg-slate-990 mb-2 rounded-full p-4">
               <div className="text-2xl">{icon}</div>
             </div>
           )}

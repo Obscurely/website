@@ -89,7 +89,7 @@ const CertificationCard = memo(function CertificationCard({
         </div>
       </div>
       <div className="mt-3 flex items-center justify-between">
-        <span className="text-xs text-slate-500">{formattedDate}</span>
+        <span className="text-xs text-slate-400">{formattedDate}</span>
         <span className="text-xs text-cyan-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           View credential →
         </span>

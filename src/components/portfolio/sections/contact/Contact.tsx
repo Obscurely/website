@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { useInView } from "framer-motion";
-import { Header } from "./Header";
+import { ContactHeader } from "./ContactHeader";
 import { ContactInfo } from "./ContactInfo";
 import { ContactForm } from "./ContactForm";
 
@@ -30,7 +30,7 @@ export const Contact = () => {
       {/* Main content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <Header isInView={isInView} />
+        <ContactHeader isInView={isInView} />
 
         <div className="max-w-8xl mx-auto">
           <div className="flex flex-col items-stretch gap-8 lg:flex-row lg:gap-10">

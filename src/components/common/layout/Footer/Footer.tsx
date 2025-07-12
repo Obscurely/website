@@ -40,7 +40,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
                   href="/"
                   className="group mb-6 block text-2xl font-bold text-slate-100"
                 >
-                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-2xl font-extrabold text-transparent transition-all duration-300 group-hover:from-cyan-300 group-hover:to-blue-400">
+                  <span className="bg-blue-400 bg-clip-text text-2xl font-extrabold text-transparent transition-all duration-300 group-hover:from-cyan-300 group-hover:to-blue-400">
                     Adrian Crîșmaruc
                   </span>
                 </Link>
@@ -49,7 +49,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
                   onClick={() => handleNavClick("#home")}
                   className="group mb-6 block cursor-pointer text-2xl font-bold text-slate-100 transition-all duration-300"
                 >
-                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-2xl font-extrabold text-transparent">
+                  <span className="bg-blue-400 bg-clip-text text-2xl font-extrabold text-transparent">
                     Adrian Crîșmaruc
                   </span>
                 </button>
@@ -92,7 +92,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
                 >
                   <h3 className="relative mb-6 text-lg font-semibold text-slate-200">
                     {section.title}
-                    <span className="absolute -bottom-2 left-0 h-0.5 w-8 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" />
+                    <span className="absolute -bottom-2 left-0 h-0.5 w-8 rounded-full bg-blue-400" />
                   </h3>
                   <ul className="space-y-3">
                     {section.links.map((link, linkIndex) => (
@@ -121,7 +121,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
             >
               <h3 className="relative mb-6 text-lg font-semibold text-slate-200">
                 Get in Touch
-                <span className="absolute -bottom-2 left-0 h-0.5 w-8 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" />
+                <span className="absolute -bottom-2 left-0 h-0.5 w-8 rounded-full bg-blue-400" />
               </h3>
               <ul className="space-y-4">
                 {contactInfo.map((contact, index) => (
@@ -165,7 +165,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
             <p className="text-center text-sm text-slate-400 md:text-left">
               © {currentYear} Adrian Crîșmaruc. All rights reserved.
             </p>
-            <p className="mt-1.5 text-center text-xs text-slate-500 md:text-left">
+            <p className="mt-1.5 text-center text-xs text-slate-400 md:text-left">
               Built with{" "}
               <a
                 href="https://nextjs.org/"
@@ -197,7 +197,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="hidden text-xs text-slate-500 sm:block">
+            <span className="hidden text-xs text-slate-400 sm:block">
               Back to top
             </span>
             <Button

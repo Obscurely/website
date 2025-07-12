@@ -94,7 +94,7 @@ export function FilterSidebar({
                           ? "border-cyan-590 from-slate-870 to-slate-770 bg-gradient-to-r text-white shadow-sm"
                           : isMobile
                             ? "border-slate-750 bg-slate-720 hover:border-cyan-590 text-slate-300"
-                            : "border-slate-750 bg-slate-830 hover:border-cyan-590 text-slate-300"
+                            : "border-slate-750 bg-slate-840 hover:border-cyan-590 text-slate-300"
                       }`}
                       onClick={() =>
                         setSelectedTag(tag === selectedTag ? null : tag)
@@ -126,7 +126,7 @@ export function FilterSidebar({
                           ? "border-cyan-590 from-slate-870 to-slate-770 bg-gradient-to-r text-white shadow-sm"
                           : isMobile
                             ? "border-slate-750 bg-slate-720 hover:border-cyan-590 text-slate-300"
-                            : "border-slate-750 bg-slate-830 hover:border-cyan-590 text-slate-300"
+                            : "border-slate-750 bg-slate-840 hover:border-cyan-590 text-slate-300"
                       }`}
                       onClick={() =>
                         setSelectedYear(year === selectedYear ? null : year)
@@ -165,13 +165,12 @@ export function FilterSidebar({
             applyFilters();
             setDrawerOpen?.(false); // Close drawer if it exists
           }}
-          className="group relative flex-1 cursor-pointer rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 text-white transition-all duration-300 group-hover:translate-0 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:shadow-md hover:shadow-cyan-500/20"
+          className="group relative flex-1 cursor-pointer px-6 py-3 text-white transition-all duration-300 group-hover:translate-0 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:shadow-md"
         >
           <span className="relative z-10 flex items-center justify-center gap-2 font-medium">
             <IconFilter className="h-4 w-4" />
             Apply
           </span>
-          <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </Button>
         <Button
           variant="outline"

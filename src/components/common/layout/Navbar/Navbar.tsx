@@ -41,7 +41,7 @@ export const Navbar = ({ isBlog = false, isMain = false }: NavbarProps) => {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2"
           >
-            <span className="sm:text-1xl truncate bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-xl font-extrabold text-transparent md:text-2xl">
+            <span className="sm:text-1xl truncate bg-blue-400 bg-clip-text text-xl font-extrabold text-transparent md:text-2xl">
               Adrian Crîșmaruc
             </span>
           </motion.div>
@@ -77,14 +77,13 @@ export const Navbar = ({ isBlog = false, isMain = false }: NavbarProps) => {
             className="ml-0 lg:ml-1"
           >
             <Button
-              className="group relative w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 group-hover:translate-0 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:shadow-md hover:shadow-cyan-500/20"
+              className="group relative w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300 group-hover:translate-0 group-hover:scale-100 hover:translate-y-0 hover:scale-100"
               onClick={handleResumeClick}
             >
               <span className="relative z-10 flex items-center justify-center gap-2 text-sm font-medium">
                 <IconDownload className="h-4 w-4 transition-transform duration-300" />
                 Resume
               </span>
-              <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </Button>
           </motion.div>
         </nav>
