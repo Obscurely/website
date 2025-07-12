@@ -151,14 +151,13 @@ export const Navbar = ({ isBlog = false, isMain = false }: NavbarProps) => {
                   className="pt-4"
                 >
                   <Button
-                    className="group relative w-full cursor-pointer overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 text-white transition-all duration-300 group-hover:translate-0 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:shadow-md hover:shadow-cyan-500/20"
+                    className="group relative w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300 group-hover:translate-0 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:shadow-md"
                     onClick={handleResumeClick}
                   >
                     <span className="relative z-10 flex items-center justify-center gap-2 text-sm font-medium">
                       <IconDownload className="h-4 w-4 transition-transform duration-300" />
                       Resume
                     </span>
-                    <span className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </Button>
                 </motion.div>
               </div>

@@ -40,7 +40,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
                   href="/"
                   className="group mb-6 block text-2xl font-bold text-slate-100"
                 >
-                  <span className="bg-blue-400 bg-clip-text text-2xl font-extrabold text-transparent transition-all duration-300 group-hover:from-cyan-300 group-hover:to-blue-400">
+                  <span className="bg-blue-400 bg-clip-text text-2xl font-extrabold text-transparent transition-all duration-300">
                     Adrian Crîșmaruc
                   </span>
                 </Link>

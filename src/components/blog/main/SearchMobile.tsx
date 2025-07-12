@@ -54,13 +54,12 @@ export const SearchMobile = ({
       </div>
       <Button
         onClick={() => setDrawerOpen(true)}
-        className="group relative shrink-0 cursor-pointer rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 text-white transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20"
+        className="group relative shrink-0 cursor-pointer px-6 py-3 text-white transition-all duration-300"
       >
         <span className="relative z-10 flex items-center justify-center gap-2 font-medium">
           <IconFilter className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
           Filters
         </span>
-        <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
       </Button>
     </div>
   );

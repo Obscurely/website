@@ -41,7 +41,7 @@ export const DesktopNavItem = ({
       >
         <IconRss size={16} />
         <span className="relative z-10">RSS</span>
-        <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 group-hover:left-0 group-hover:w-full" />
+        <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 rounded-full bg-blue-400 transition-all duration-300 group-hover:left-0 group-hover:w-full" />
       </a>
     );
   }
@@ -54,7 +54,7 @@ export const DesktopNavItem = ({
         className={`${commonClasses} ${activeClasses} flex items-center`}
       >
         <span className="relative z-10">{item.name}</span>
-        <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 group-hover:left-0 group-hover:w-full" />
+        <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 rounded-full bg-blue-400 transition-all duration-300 group-hover:left-0 group-hover:w-full" />
       </a>
     );
   }
@@ -66,7 +66,7 @@ export const DesktopNavItem = ({
       className={`${commonClasses} ${activeClasses} cursor-pointer`}
     >
       <span className="relative z-10">{item.name}</span>
-      <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 group-hover:left-0 group-hover:w-full" />
+      <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 rounded-full bg-blue-400 transition-all duration-300 group-hover:left-0 group-hover:w-full" />
     </button>
   );
 };
