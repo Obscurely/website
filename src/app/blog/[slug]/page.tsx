@@ -25,10 +25,13 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.frontmatter.title} | Adrian Crîșmaruc`,
+    title: `${post.frontmatter.title}`,
     description: post.frontmatter.description,
     authors: [{ name: "Adrian Crîșmaruc" }],
     keywords: post.frontmatter.tags,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title: post.frontmatter.title,
       description: post.frontmatter.description,
@@ -43,13 +46,20 @@ export async function generateMetadata({
               alt: post.frontmatter.title,
             },
           ]
-        : undefined,
+        : [
+            {
+              url: "/og-blog-post.jpg", // Default blog post OG image
+              width: 1200,
+              height: 630,
+              alt: post.frontmatter.title,
+            },
+          ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.frontmatter.title,
       description: post.frontmatter.description,
-      images: post.frontmatter.image,
+      images: post.frontmatter.image || "/og-blog-post.jpg",
     },
   };
 }

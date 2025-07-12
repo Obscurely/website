@@ -33,11 +33,27 @@ export const viewport: Viewport = {
   themeColor: "#000000",
 };
 
+const DESCRIPTION: string =
+  "Full-Stack Developer specializing in Rust, Python, React, TypeScript, Next.js, Flask and cloud-native technologies. AWS & Kubernetes certified with experience in building secure and scalable systems.";
+
 export const metadata: Metadata = {
-  title: "Adrian Crîșmaruc",
-  description: "Personal portfolio website and Blog",
-  authors: [{ name: "Adrian Crîșmaruc" }],
+  title: {
+    default: "Adrian Crîșmaruc",
+    template: "%s | Adrian Crîșmaruc",
+  },
+  description: DESCRIPTION,
+  authors: [{ name: "Adrian Crîșmaruc", url: "https://adriancrismaruc.com" }],
+  creator: "Adrian Crîșmaruc",
+  publisher: "Adrian Crîșmaruc",
+
+  // metabase url
+  metadataBase: new URL("https://adriancrismaruc.com"),
+
   alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+    },
     types: {
       "application/rss+xml": [
         {
@@ -47,6 +63,60 @@ export const metadata: Metadata = {
       ],
     },
   },
+
+  // Icons and manifest
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        url: "/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        url: "/android-chrome-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+  },
+  manifest: "/site.webmanifest",
+
+  // Open Graph defaults (can be overridden by pages)
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Adrian Crîșmaruc",
+    images: [
+      {
+        url: "/og-image.jpg", // default OG image
+        width: 1200,
+        height: 630,
+        alt: "Adrian Crîșmaruc - Full-Stack Developer",
+      },
+    ],
+  },
+
+  // Twitter defaults
+  twitter: {
+    card: "summary_large_image",
+    // creator: "@",
+  },
+
+  // Additional meta tags
+  other: {
+    "theme-color": "#0f172a", // slate-950 background
+    "color-scheme": "dark",
+  },
+
+  // category
+  category: "technology",
 };
 
 export default function RootLayout({

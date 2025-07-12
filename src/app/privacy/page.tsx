@@ -6,9 +6,12 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Adrian Crîșmaruc",
+  title: "Privacy Policy",
   description:
     "Privacy policy and data handling practices for Adrian Crîșmaruc's website.",
+  alternates: {
+    canonical: "/privacy",
+  },
   openGraph: {
     title: "Privacy Policy | Adrian Crîșmaruc",
     description:
@@ -21,6 +24,10 @@ export const metadata: Metadata = {
     title: "Privacy Policy | Adrian Crîșmaruc",
     description:
       "Privacy policy and data handling practices for Adrian Crîșmaruc's website.",
+  },
+  robots: {
+    index: false, // Don't index policy pages
+    follow: true,
   },
 };
 

@@ -1,7 +1,3 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { Hero } from "@portfolio/sections/hero/Hero";
 import { About } from "@portfolio/sections/about/About";
 import { Projects } from "@portfolio/sections/projects/Projects";
@@ -10,34 +6,89 @@ import { Contact } from "@portfolio/sections/contact/Contact";
 import { Navbar } from "@common/layout/Navbar/Navbar";
 import { Footer } from "@common/layout/Footer/Footer";
 import { Toaster } from "sonner";
+import { Background } from "@components/portfolio/sections/hero/Background";
+import { Metadata } from "next";
+
+const DESCRIPTION: string =
+  "Full-Stack Developer specializing in Rust, Python, React, TypeScript, Next.js, Flask and cloud-native technologies. AWS & Kubernetes certified with experience in building secure and scalable systems.";
+
+const KEYWORDS: string[] = [
+  "adrian crismaruc",
+  "full stack developer",
+  "rust developer",
+  "python developer",
+  "react developer",
+  "aws certified",
+  "kubernetes certified",
+  "cloud native engineer",
+  "devops engineer",
+  "software engineer",
+];
+
+export const metadata: Metadata = {
+  title: "Adrian Crîșmaruc",
+  description: DESCRIPTION,
+  authors: [{ name: "Adrian Crîșmaruc" }],
+  keywords: KEYWORDS,
+  alternates: {
+    types: {
+      "application/rss+xml": [
+        {
+          url: "/rss.xml",
+          title: "Adrian Crîșmaruc - Blog RSS Feed",
+        },
+      ],
+    },
+  },
+  openGraph: {
+    title: "Adrian Crîșmaruc",
+    description: DESCRIPTION,
+    type: "website",
+    url: "/",
+    siteName: "Adrian Crîșmaruc",
+    images: [
+      {
+        url: "/og-home.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Adrian Crîșmaruc - Full-Stack Developer Portfolio",
+      },
+    ],
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Adrian Crîșmaruc",
+    description: DESCRIPTION,
+    // creator: "@",
+    images: ["/og-home.jpg"],
+  },
+
+  // JSON-LD structured data
+  other: {
+    "application/ld+json": JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Adrian Crîșmaruc",
+      jobTitle: "Full-Stack Developer",
+      description: DESCRIPTION,
+      url: "https://adriancrismaruc.com",
+      sameAs: [
+        "https://github.com/Obscurely",
+        "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0/",
+        "https://www.reddit.com/user/CrismarucAdrian/",
+      ],
+      knowsAbout: KEYWORDS,
+    }),
+  },
+};
 
 export default function Home() {
-  // Create a ref for the entire page
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Use the document as the scroll container instead of a specific element
-  const { scrollYProgress } = useScroll({
-    offset: ["start start", "end end"],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 1.05]);
-
   return (
-    <div
-      ref={containerRef}
-      className="relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-200"
-    >
+    <div className="relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-200">
+      <Background />
       <Navbar isMain={true} />
       <main className="relative">
-        <motion.div
-          style={{ opacity, scale }}
-          className="pointer-events-none fixed inset-0 z-0 h-screen w-screen"
-        >
-          <div className="bg-slate-850 absolute inset-0 h-full w-full" />
-          <div className="absolute inset-0 h-full w-full bg-[url('/background.avif')] bg-cover bg-center bg-no-repeat opacity-10" />
-        </motion.div>
-
         <div className="relative z-10">
           <Hero />
           <About />

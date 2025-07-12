@@ -6,9 +6,12 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | Adrian Crîșmaruc",
+  title: "Cookie Policy",
   description:
     "Cookie policy for Adrian Crîșmaruc's website - privacy-first approach without tracking cookies.",
+  alternates: {
+    canonical: "/cookies",
+  },
   openGraph: {
     title: "Cookie Policy | Adrian Crîșmaruc",
     description:
@@ -21,6 +24,10 @@ export const metadata: Metadata = {
     title: "Cookie Policy | Adrian Crîșmaruc",
     description:
       "Cookie policy for Adrian Crîșmaruc's website - privacy-first approach without tracking cookies.",
+  },
+  robots: {
+    index: false, // Don't index policy pages
+    follow: true,
   },
 };
 

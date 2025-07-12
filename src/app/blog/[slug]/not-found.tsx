@@ -1,6 +1,16 @@
 import Link from "next/link";
 import { Button } from "@ui/button";
 import { IconArrowLeft, IconHome } from "@tabler/icons-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Post Not Found",
+  description: "The blog post you're looking for doesn't exist.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFound() {
   return (

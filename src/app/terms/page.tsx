@@ -6,9 +6,12 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Adrian Crîșmaruc",
+  title: "Terms of Service",
   description:
     "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
+  alternates: {
+    canonical: "/terms",
+  },
   openGraph: {
     title: "Terms of Service | Adrian Crîșmaruc",
     description:
@@ -21,6 +24,10 @@ export const metadata: Metadata = {
     title: "Terms of Service | Adrian Crîșmaruc",
     description:
       "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
+  },
+  robots: {
+    index: false, // Don't index policy pages
+    follow: true,
   },
 };
 
