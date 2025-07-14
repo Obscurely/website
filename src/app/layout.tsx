@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@common/theme/ThemeProvider";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 
 // Primary font
 const inter = Inter({
@@ -138,6 +139,7 @@ export default function RootLayout({
         >
           <div className="flex flex-1 flex-col">{children}</div>
         </ThemeProvider>
+        <Script src="/animations.js" strategy="afterInteractive" />
       </body>
     </html>
   );

@@ -1,19 +1,12 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { sidebarVariants } from "./animations";
 import { IconUser } from "@tabler/icons-react";
 import Image from "next/image";
+import { SidebarClock } from "./SidebarClock";
 
-interface SidebarProps {
-  currentTime: Date | null;
-}
-
-export const Sidebar = ({ currentTime }: SidebarProps) => {
+export const Sidebar = () => {
   return (
-    <motion.div
-      variants={sidebarVariants}
-      className="flex flex-col justify-between space-y-8 rounded-2xl backdrop-blur-xs will-change-transform md:flex-row md:space-y-0 md:space-x-6 lg:flex-col lg:space-y-8 lg:space-x-0"
+    <div
+      className="data-[state=once]:animate-in flex flex-col justify-between space-y-8 rounded-2xl backdrop-blur-xs duration-800 ease-out will-change-transform data-[state=once]:scale-95 md:flex-row md:space-y-0 md:space-x-6 lg:flex-col lg:space-y-8 lg:space-x-0"
+      data-state="once"
     >
       {/* Profile Widget */}
       <div className="flex flex-1 flex-col rounded-2xl border border-slate-600/30 bg-slate-900/30 p-6 shadow-xl shadow-black/10 md:w-1/2 lg:w-full">
@@ -65,14 +58,7 @@ export const Sidebar = ({ currentTime }: SidebarProps) => {
 
           <div className="flex justify-between">
             <span className="text-slate-400">Local Time:</span>
-            <span className="text-slate-200">
-              {currentTime?.toLocaleTimeString("en-US", {
-                hour12: false,
-                timeZone: "Europe/Bucharest",
-                hour: "2-digit",
-                minute: "2-digit",
-              }) ?? "--:--"}
-            </span>
+            <SidebarClock />
           </div>
 
           <div className="flex justify-between">
@@ -86,6 +72,6 @@ export const Sidebar = ({ currentTime }: SidebarProps) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
