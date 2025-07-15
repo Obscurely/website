@@ -1,130 +1,133 @@
-(function() {
+(function () {
   'use strict';
-  
+
   if (typeof window === 'undefined') return;
-  
+
   class AnimationHandler {
     constructor(options = {}) {
       this.observer = null;
       this.timeouts = new Map();
-      this.config = {
-        threshold: options.threshold || 0.2,
-        rootMargin: options.rootMargin || '0px 0px 100px 0px',
-        once: options.once || false,
-        ...options
+      this.config   = {
+        threshold : 0.2,
+        rootMargin: '0px 0px 0px 0px',
+        ...options,
       };
-      
+
       this.handleIntersection = this.handleIntersection.bind(this);
       this.init();
     }
-    
+
+	// check if an element is in the viewport
+    isInViewport(el, threshold = 0) {
+      const rect      = el.getBoundingClientRect();
+      const vHeight   = window.innerHeight || document.documentElement.clientHeight;
+      const vWidth    = window.innerWidth  || document.documentElement.clientWidth;
+
+      return (
+        rect.bottom  >= 0 - threshold &&
+        rect.top     <= vHeight + threshold &&
+        rect.right   >= 0 - threshold &&
+        rect.left    <= vWidth  + threshold
+      );
+    }
+
+	// handle intersection events
     handleIntersection(entries) {
       entries.forEach((entry) => {
-        const element = entry.target;
-        const delay = parseInt(element.dataset.delay || '0', 10);
-        const once = element.dataset.once === 'true' || this.config.once;
-        
-        // Clear existing timeout for this element
-        if (this.timeouts.has(element)) {
-          clearTimeout(this.timeouts.get(element));
-          this.timeouts.delete(element);
+        const el      = entry.target;
+        const delay   = parseInt(el.dataset.delay || '0', 10);
+        const isOnce  = el.dataset.once === 'true';
+
+        if (this.timeouts.has(el)) {
+          clearTimeout(this.timeouts.get(el));
+          this.timeouts.delete(el);
         }
-        
+
         if (entry.isIntersecting) {
-          const timeoutId = setTimeout(() => {
-            element.dataset.state = 'show';
-            this.timeouts.delete(element);
-            
-            // Unobserve if one-time animation
-            if (once) {
-              this.observer.unobserve(element);
-            }
+          const id = setTimeout(() => {
+            el.dataset.state = isOnce ? 'once' : 'show';
+            this.timeouts.delete(el);
+            if (isOnce) this.observer.unobserve(el);
           }, Math.max(0, delay));
-          
-          this.timeouts.set(element, timeoutId);
-        } else if (!once) {
-          // Only hide if not a one-time animation
-          element.dataset.state = 'hide';
+
+          this.timeouts.set(el, id);
+
+        } else if (!isOnce) {
+          el.dataset.state = 'hide';
         }
       });
     }
-    
+
+	// initialise the observer and animations
     init() {
       try {
-        this.observer = new IntersectionObserver(
-          this.handleIntersection,
-          {
-            threshold: this.config.threshold,
-            rootMargin: this.config.rootMargin
-          }
-        );
-        
+        this.observer = new IntersectionObserver(this.handleIntersection, {
+          threshold : this.config.threshold,
+          rootMargin: this.config.rootMargin,
+        });
+
         this.initAnimations();
-      } catch (error) {
-        console.warn('Animation handler failed to initialize:', error);
+      } catch (err) {
+        console.warn('Animation handler failed to initialise:', err);
       }
     }
-    
+
+	// initialise animations on elements with data-state
     initAnimations() {
-      const elements = document.querySelectorAll('[data-state]');
-      elements.forEach((el) => {
+	  const els = document.querySelectorAll('[data-state]:not([data-animation-exclude="true"])'); 
+
+      els.forEach((el) => {
+        if (el.dataset.state === 'once') {
+          el.dataset.once = 'true'; // mark as once-element
+
+          if (this.isInViewport(el)) {
+			// already in viewport trigger immediately
+            return;
+          }
+
+		  // prevent premature triggering
+          el.dataset.state = 'hide';
+        }
+
+		// observe other cases
         this.observer.observe(el);
       });
     }
-    
+
+	// destroy the observer and clear timeouts
     destroy() {
-      if (this.observer) {
-        this.observer.disconnect();
-      }
-      
-      // Clear all pending timeouts
-      this.timeouts.forEach((timeoutId) => {
-        clearTimeout(timeoutId);
-      });
+      if (this.observer) this.observer.disconnect();
+      this.timeouts.forEach((id) => clearTimeout(id));
       this.timeouts.clear();
     }
-    
-    // Method to add new elements dynamically
-    observe(element) {
-      if (this.observer && element) {
-        this.observer.observe(element);
-      }
-    }
-    
-    unobserve(element) {
-      if (this.observer && element) {
-        this.observer.unobserve(element);
-        if (this.timeouts.has(element)) {
-          clearTimeout(this.timeouts.get(element));
-          this.timeouts.delete(element);
+
+    observe(el)   { if (this.observer && el) this.observer.observe(el); }
+    unobserve(el) {
+      if (this.observer && el) {
+        this.observer.unobserve(el);
+        if (this.timeouts.has(el)) {
+          clearTimeout(this.timeouts.get(el));
+          this.timeouts.delete(el);
         }
       }
     }
   }
-  
-  // Initialize when DOM is ready
+
+  // Initialize the AnimationHandler when the DOM is ready
   let animationHandler;
-  
+
   const initHandler = () => {
-    animationHandler = new AnimationHandler({
-      threshold: 0.2,
-      rootMargin: '0px 0px 100px 0px'
-    });
-    
-    // Expose handler globally after it's created
-    window.animationHandler = animationHandler;
+    animationHandler = new AnimationHandler();
+    window.animationHandler = animationHandler; // debugging and access
   };
-  
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initHandler);
   } else {
     initHandler();
   }
-  
-  // Cleanup on page unload
+
   window.addEventListener('beforeunload', () => {
-    if (animationHandler) {
-      animationHandler.destroy();
-    }
+    if (animationHandler) animationHandler.destroy();
   });
 })();

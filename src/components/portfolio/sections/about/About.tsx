@@ -1,7 +1,3 @@
-"use client";
-
-import { useRef } from "react";
-import { useInView } from "framer-motion";
 import { AboutHeader } from "./AboutHeader";
 import { AboutJourney } from "./AboutJourney";
 import { SkillsSection } from "./SkillsSection";
@@ -12,13 +8,9 @@ import { CertificationsSection } from "./CertificationsSection";
  * About component that serves as the main section for the "About" page.
  */
 export const About = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-
   return (
     <section
       id="about"
-      ref={ref}
       className="relative z-0 overflow-hidden bg-slate-900/80 py-20"
     >
       {/* Subtle background elements */}
@@ -29,22 +21,22 @@ export const About = () => {
 
       {/* Main content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <AboutHeader isInView={isInView} />
+        <AboutHeader />
 
         <div
           className="relative mb-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10"
           style={{ zIndex: 30 }}
         >
-          <AboutJourney isInView={isInView} />
-          <SkillsSection isInView={isInView} />
+          <AboutJourney />
+          <SkillsSection />
         </div>
 
         <div className="mb-20">
-          <CertificationsSection isInView={isInView} />
+          <CertificationsSection />
         </div>
 
         <div>
-          <ServicesSection isInView={isInView} />
+          <ServicesSection />
         </div>
       </div>
     </section>

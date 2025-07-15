@@ -6,7 +6,7 @@ import { Button } from "@ui/button";
 export const ArrowDown = () => {
   return (
     <div
-      className="data-[state=show]:animate-in slide-in-from-top-30 repeat-infinite direction-alternate backdrop-blur-[2px] duration-1500"
+      className="data-[state=show]:animate-in slide-in-from-top-30 repeat-infinite direction-alternate-reverse backdrop-blur-[2px] delay-800 duration-1500"
       data-state="show"
     >
       <Button

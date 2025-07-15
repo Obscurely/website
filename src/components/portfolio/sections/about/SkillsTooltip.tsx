@@ -1,5 +1,3 @@
-"use client";
-
 import { IconClick } from "@tabler/icons-react";
 import {
   Tooltip,

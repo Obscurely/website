@@ -1,7 +1,6 @@
 "use client";
 
 import { memo, useMemo } from "react";
-import { motion } from "framer-motion";
 import { skills } from "@data/portfolio/skills/skills";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tabs";
 import {
@@ -26,31 +25,14 @@ const mobileTabStyles = [
   { gridColumn: "4 / span 3", gridRow: 2, marginTop: "-0.125rem" }, // 5th item
 ];
 
-interface SkillsSectionProps {
-  isInView: boolean;
-}
-
 /**
  * SkillsSection component that displays a list of skills.
- * It uses framer-motion for animation and memoization for performance.
- *
- * @param isInView - A boolean indicating whether the component is in view or not.
  */
-export const SkillsSection = ({ isInView }: SkillsSectionProps) => {
-  // Memoize animation props to prevent recalculation
-  const animationProps = useMemo(
-    () => ({
-      initial: { opacity: 0, x: 50 },
-      animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 },
-      transition: { duration: 0.7, delay: 0.4 },
-    }),
-    [isInView]
-  );
-
+export const SkillsSection = () => {
   return (
-    <motion.div
-      {...animationProps}
-      className="border-slate-730 rounded-xl border bg-slate-800/20 p-6 backdrop-blur-[0px]"
+    <div
+      className="border-slate-730 data-[state=once]:animate-in fade-in slide-in-from-right-25 rounded-xl border bg-slate-800/20 p-6 opacity-0 backdrop-blur-[0px] duration-500 ease-out data-[state=once]:opacity-100"
+      data-state="once"
     >
       <h3 className="mb-2 text-2xl font-bold text-white">My Skills</h3>
 
@@ -63,7 +45,7 @@ export const SkillsSection = ({ isInView }: SkillsSectionProps) => {
 
         <SkillsTabs />
       </SkillBadgeProvider>
-    </motion.div>
+    </div>
   );
 };
 
@@ -88,7 +70,7 @@ const KeySkillsSection = memo(function KeySkillsSection() {
         </h4>
         <SkillsTooltip />
       </div>
-      <div className="flex flex-wrap gap-1.5">
+      <div className="flex flex-wrap gap-1.5 will-change-transform">
         {keySkills.map((skill) => (
           <SkillBadge
             key={
@@ -192,6 +174,7 @@ const DesktopTabsList = memo(function DesktopTabsList() {
             key={category}
             value={category}
             className="data-[state=active]:from-cyan-535 data-[state=active]:to-blue-530 relative flex-1 cursor-pointer rounded-lg py-2.5 text-sm font-medium text-slate-300 transition-all duration-200 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:text-white"
+            data-animation-exclude="true"
           >
             <span className="flex items-center justify-center">
               <span className="mr-1.5">{CategoryIcons[category]}</span>
@@ -234,6 +217,7 @@ const MobileTabsList = memo(function MobileTabsList() {
             key={category}
             value={category}
             className="data-[state=active]:from-cyan-535 data-[state=active]:to-blue-530 relative flex cursor-pointer items-center justify-center px-1 py-1.5 text-xs font-medium text-slate-300 transition-all duration-200 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:text-white"
+            data-animation-exclude="true"
             style={mobileTabStyles[Math.min(idx, mobileTabStyles.length - 1)]}
           >
             <span className="flex items-center justify-center">

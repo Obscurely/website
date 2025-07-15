@@ -1,36 +1,17 @@
-"use client";
-
 import { memo, useMemo } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { certifications } from "@data/portfolio/skills/certifications";
-
-interface CertificationsSectionProps {
-  isInView: boolean;
-}
 
 /**
  * CertificationsSection component that displays a list of certifications.
  *
  * @param isInView - A boolean indicating whether the component is in view or not.
  */
-export const CertificationsSection = ({
-  isInView,
-}: CertificationsSectionProps) => {
-  // Memoize animation props to prevent recalculation
-  const animationProps = useMemo(
-    () => ({
-      initial: { opacity: 0, y: 30 },
-      animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
-      transition: { duration: 0.7, delay: 0.3 },
-    }),
-    [isInView]
-  );
-
+export const CertificationsSection = () => {
   return (
-    <motion.div
-      {...animationProps}
-      className="border-slate-730 rounded-xl border bg-slate-800/20 p-6"
+    <div
+      className="border-slate-730 data-[state=once]:animate-in fade-in slide-in-from-bottom-25 rounded-xl border bg-slate-800/20 p-6 opacity-0 duration-500 ease-out data-[state=once]:opacity-100"
+      data-state="once"
     >
       <h3 className="mb-6 text-2xl font-bold text-white">My Certifications</h3>
 
@@ -39,7 +20,7 @@ export const CertificationsSection = ({
           <CertificationCard key={cert.id} certification={cert} />
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

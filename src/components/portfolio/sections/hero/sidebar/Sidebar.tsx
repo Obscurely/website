@@ -5,7 +5,7 @@ import { SidebarClock } from "./SidebarClock";
 export const Sidebar = () => {
   return (
     <div
-      className="data-[state=once]:animate-in flex flex-col justify-between space-y-8 rounded-2xl backdrop-blur-xs duration-800 ease-out will-change-transform data-[state=once]:scale-95 md:flex-row md:space-y-0 md:space-x-6 lg:flex-col lg:space-y-8 lg:space-x-0"
+      className="data-[state=once]:animate-in data-[state=once]:zoom-in-90 flex flex-col justify-between space-y-8 rounded-2xl opacity-0 backdrop-blur-xs duration-500 ease-out will-change-transform data-[state=once]:opacity-100 md:flex-row md:space-y-0 md:space-x-6 lg:flex-col lg:space-y-8 lg:space-x-0"
       data-state="once"
     >
       {/* Profile Widget */}
