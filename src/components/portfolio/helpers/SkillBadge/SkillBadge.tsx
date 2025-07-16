@@ -1,5 +1,6 @@
+"use client";
+
 import { useState, createContext, useContext } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Skill } from "@data/portfolio/skills/types";
 import React from "react";
 import { IconX } from "@tabler/icons-react";
@@ -86,7 +87,7 @@ export const SkillBadge = React.memo(function SkillBadge({
       <button
         ref={refs.setReference}
         {...getReferenceProps()}
-        className={`flex cursor-pointer items-center rounded-full border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 ${
+        className={`flex cursor-pointer items-center rounded-full border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 will-change-transform ${
           isExpanded
             ? "from-slate-870 to-slate-770 bg-gradient-to-r shadow-sm"
             : "hover:bg-slate-750 hover:shadow-sm"
@@ -95,71 +96,63 @@ export const SkillBadge = React.memo(function SkillBadge({
         {skill.name}
       </button>
 
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            ref={refs.setFloating}
-            {...getFloatingProps()}
-            initial={{ opacity: 0, y: 5, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 5, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="border-slate-760 absolute z-[60] w-lg max-w-[95vw] overflow-hidden rounded-xl border bg-gradient-to-b from-slate-800 to-slate-900 p-4 text-slate-200 shadow-xl will-change-transform"
-            style={{
-              position: strategy,
-              top: y ?? 0,
-              left: x ?? 0,
-              zIndex: 9999,
-              boxShadow:
-                "0 0 15px rgba(0, 0, 0, 0.2), 0 0 3px rgba(14, 165, 233, 0.15)",
-            }}
-          >
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-lg font-semibold text-white">
-                  {skill.name}
-                </h4>
-                <div className="mt-2 text-sm leading-relaxed text-slate-300">
-                  {skill.description}
-                </div>
+      {isExpanded && (
+        <div
+          ref={refs.setFloating}
+          {...getFloatingProps()}
+          className="border-slate-760 animate-in fade-in zoom-in-90 duraton-500 absolute z-[60] w-lg max-w-[95vw] overflow-hidden rounded-xl border bg-gradient-to-b from-slate-800 to-slate-900 p-4 text-slate-200 shadow-xl ease-out will-change-transform"
+          style={{
+            position: strategy,
+            top: y ?? 0,
+            left: x ?? 0,
+            zIndex: 9999,
+            boxShadow:
+              "0 0 15px rgba(0, 0, 0, 0.2), 0 0 3px rgba(14, 165, 233, 0.15)",
+          }}
+        >
+          <div className="space-y-4">
+            <div>
+              <h4 className="text-lg font-semibold text-white">{skill.name}</h4>
+              <div className="mt-2 text-sm leading-relaxed text-slate-300">
+                {skill.description}
               </div>
-
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <h5 className="text-xs font-medium tracking-wider text-slate-400 uppercase">
-                    Proficiency Level
-                  </h5>
-                  <span className="mb-1 text-xs text-slate-500 italic">
-                    Hover elements for details
-                  </span>
-                </div>
-                <ProficiencyScale proficiency={skill.proficiency} />
-              </div>
-
-              {skill.notableProjects && skill.notableProjects.length > 0 && (
-                <div>
-                  <h5 className="mb-2 text-xs font-medium tracking-wider text-slate-400 uppercase">
-                    Notable Projects
-                  </h5>
-                  <ul className="flex flex-wrap gap-2">
-                    {skill.notableProjects.map((project) => (
-                      <ProjectItem key={project.name} project={project} />
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
 
-            <button
-              onClick={() => setExpandedSkillId(null)}
-              className="hover:bg-slate-750 absolute top-2 right-2 cursor-pointer rounded-full p-1.5 text-slate-400 transition-colors hover:text-white"
-              aria-label="Close details"
-            >
-              <IconX size={16} />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <h5 className="text-xs font-medium tracking-wider text-slate-400 uppercase">
+                  Proficiency Level
+                </h5>
+                <span className="mb-1 text-xs text-slate-500 italic">
+                  Hover elements for details
+                </span>
+              </div>
+              <ProficiencyScale proficiency={skill.proficiency} />
+            </div>
+
+            {skill.notableProjects && skill.notableProjects.length > 0 && (
+              <div>
+                <h5 className="mb-2 text-xs font-medium tracking-wider text-slate-400 uppercase">
+                  Notable Projects
+                </h5>
+                <ul className="flex flex-wrap gap-2">
+                  {skill.notableProjects.map((project) => (
+                    <ProjectItem key={project.name} project={project} />
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          <button
+            onClick={() => setExpandedSkillId(null)}
+            className="hover:bg-slate-750 absolute top-2 right-2 cursor-pointer rounded-full p-1.5 text-slate-400 transition-colors hover:text-white"
+            aria-label="Close details"
+          >
+            <IconX size={16} />
+          </button>
+        </div>
+      )}
     </div>
   );
 });

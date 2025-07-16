@@ -1,6 +1,6 @@
 import { AboutHeader } from "./AboutHeader";
 import { AboutJourney } from "./AboutJourney";
-import { SkillsSection } from "./SkillsSection";
+import { SkillsSection } from "./skills/SkillsSection";
 import { ServicesSection } from "./ServicesSection";
 import { CertificationsSection } from "./CertificationsSection";
 
