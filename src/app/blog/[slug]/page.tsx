@@ -5,6 +5,8 @@ import { Metadata } from "next";
 import { Footer } from "@components/common/layout/Footer/Footer";
 import { Toaster } from "sonner";
 import { Navbar } from "@common/layout/Navbar/Navbar";
+import { generateBlogPostJsonLd } from "@data/blog/postJsonld";
+import Script from "next/script";
 
 interface BlogPostParams {
   params: Promise<{
@@ -27,10 +29,23 @@ export async function generateMetadata({
   return {
     title: `${post.frontmatter.title}`,
     description: post.frontmatter.description,
-    authors: [{ name: "Adrian Crîșmaruc" }],
+    authors: [
+      {
+        name: "Adrian Crîșmaruc",
+        url: "https://adriancrismaruc.com",
+      },
+    ],
     keywords: post.frontmatter.tags,
     alternates: {
-      canonical: `/blog/${slug}`,
+      canonical: `https://adriancrismaruc.com/blog/${slug}`,
+      types: {
+        "application/rss+xml": [
+          {
+            url: "https://adriancrismaruc.com/rss.xml",
+            title: "Adrian Crîșmaruc - Blog RSS Feed",
+          },
+        ],
+      },
     },
     openGraph: {
       title: post.frontmatter.title,
@@ -39,6 +54,7 @@ export async function generateMetadata({
       publishedTime: post.frontmatter.date,
       authors: ["Adrian Crîșmaruc"],
       tags: post.frontmatter.tags,
+      siteName: "Adrian Crîșmaruc - Blog",
       images: post.frontmatter.image
         ? [
             {
@@ -54,6 +70,7 @@ export async function generateMetadata({
               alt: post.frontmatter.title,
             },
           ],
+      locale: "en_US",
     },
     twitter: {
       card: "summary_large_image",
@@ -80,26 +97,43 @@ export default async function Post({ params }: BlogPostParams) {
     notFound();
   }
 
+  const { blogPostJsonLd, personJsonLd, organizationJsonLd } =
+    generateBlogPostJsonLd(slug, post);
+
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#0c1327] text-slate-200">
-      <Navbar isBlog={true} />
-      <main className="relative">
-        <div className="relative z-10">
-          <PostPage post={post} />
-        </div>
-      </main>
-      <Footer isBlog={true} />
-      <Toaster
-        position="bottom-right"
-        theme="dark"
-        toastOptions={{
-          style: {
-            background: "#1e293b",
-            border: "1px solid #475569",
-            color: "#f1f5f9",
-          },
+    <>
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            blogPostJsonLd,
+            organizationJsonLd,
+            personJsonLd,
+          ]),
         }}
       />
-    </div>
+
+      <div className="relative min-h-screen overflow-x-hidden bg-[#0c1327] text-slate-200">
+        <Navbar isBlog={true} />
+        <main className="relative">
+          <div className="relative z-10">
+            <PostPage post={post} />
+          </div>
+        </main>
+        <Footer isBlog={true} />
+        <Toaster
+          position="bottom-right"
+          theme="dark"
+          toastOptions={{
+            style: {
+              background: "#1e293b",
+              border: "1px solid #475569",
+              color: "#f1f5f9",
+            },
+          }}
+        />
+      </div>
+    </>
   );
 }

@@ -38,10 +38,6 @@ const DESCRIPTION: string =
   "Full-Stack Developer specializing in Rust, Python, React, TypeScript, Next.js, Flask and cloud-native technologies. AWS & Kubernetes certified with experience in building secure and scalable systems.";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Adrian Crîșmaruc",
-    template: "%s | Adrian Crîșmaruc",
-  },
   description: DESCRIPTION,
   authors: [{ name: "Adrian Crîșmaruc", url: "https://adriancrismaruc.com" }],
   creator: "Adrian Crîșmaruc",
@@ -58,7 +54,7 @@ export const metadata: Metadata = {
     types: {
       "application/rss+xml": [
         {
-          url: "/rss.xml",
+          url: "https://adriancrismaruc.com/rss.xml",
           title: "Adrian Crîșmaruc - Blog RSS Feed",
         },
       ],
@@ -107,7 +103,6 @@ export const metadata: Metadata = {
   // Twitter defaults
   twitter: {
     card: "summary_large_image",
-    // creator: "@",
   },
 
   // Additional meta tags

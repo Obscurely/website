@@ -5,75 +5,48 @@ import { Navbar } from "@common/layout/Navbar/Navbar";
 import { getAllPosts } from "@lib/blog";
 import { Metadata } from "next";
 import { Suspense } from "react";
+import { pageMetadata } from "@data/blog/metadata";
+import Script from "next/script";
+import {
+  blogBreadcrumbJsonLd,
+  blogJsonLd,
+  blogWebsiteJsonLd,
+  organizationJsonLd,
+  personJsonLd,
+} from "@data/blog/blogJsonld";
 
-const DESCRIPTION: string =
-  "Practical tutorials, in-depth guides and insights on software development, Linux, servers and more.";
-
-const KEYWORDS: string[] = [
-  "blog",
-  "software development",
-  "tutorials",
-  "guides",
-  "cloud",
-  "linux",
-  "rust programming",
-  "linux servers",
-  "aws",
-  "kubernetes",
-];
-
-export const metadata: Metadata = {
-  title: "Blog",
-  description: DESCRIPTION,
-  authors: [{ name: "Adrian Crîșmaruc" }],
-  keywords: KEYWORDS,
-  alternates: {
-    canonical: "/blog",
-    types: {
-      "application/rss+xml": [
-        {
-          url: "/rss.xml",
-          title: "Adrian Crîșmaruc - Blog RSS Feed",
-        },
-      ],
-    },
-  },
-  openGraph: {
-    title: "Blog | Adrian Crîșmaruc",
-    description: DESCRIPTION,
-    type: "website",
-    url: "/blog",
-    images: [
-      {
-        url: "/og-blog.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Adrian Crîșmaruc - Blog",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Blog | Adrian Crîșmaruc",
-    description: DESCRIPTION,
-    images: ["/og-blog.jpg"],
-  },
-};
+export const metadata: Metadata = pageMetadata;
 
 export default async function Blog() {
   const posts = await getAllPosts();
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#0c1327] text-slate-200">
-      <Navbar isBlog={true} />
-      <main className="relative">
-        <div className="relative z-10">
-          <Suspense fallback={<BlogLoadingFallback />}>
-            <BlogPage initialPosts={posts} />
-          </Suspense>
-        </div>
-      </main>
-      <Footer isBlog={true} />
-    </div>
+    <>
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            blogJsonLd,
+            blogWebsiteJsonLd,
+            blogBreadcrumbJsonLd,
+            organizationJsonLd,
+            personJsonLd,
+          ]),
+        }}
+      />
+
+      <div className="relative min-h-screen overflow-x-hidden bg-[#0c1327] text-slate-200">
+        <Navbar isBlog={true} />
+        <main className="relative">
+          <div className="relative z-10">
+            <Suspense fallback={<BlogLoadingFallback />}>
+              <BlogPage initialPosts={posts} />
+            </Suspense>
+          </div>
+        </main>
+        <Footer isBlog={true} />
+      </div>
+    </>
   );
 }
