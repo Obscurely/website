@@ -18,7 +18,7 @@ import { SkillsTabs } from "./SkillsTabs";
 export const SkillsSection = () => {
   return (
     <div
-      className="border-slate-730 data-[state=once]:animate-in fade-in slide-in-from-right-25 rounded-xl border bg-slate-800/20 p-6 opacity-0 backdrop-blur-[0px] duration-500 ease-out data-[state=once]:opacity-100"
+      className="border-slate-730 data-[state=once]:animate-in fade-in slide-in-from-right-25 rounded-xl border bg-slate-800/20 p-6 opacity-0 backdrop-blur-[0px] duration-500 ease-out will-change-transform data-[state=once]:opacity-100"
       data-state="once"
     >
       <h3 className="mb-2 text-2xl font-bold text-white">My Skills</h3>

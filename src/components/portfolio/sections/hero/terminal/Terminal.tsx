@@ -69,7 +69,7 @@ export const Terminal = () => {
             </a>
 
             {/* Animated Role */}
-            <div className="mb-6 text-2xl font-semibold md:text-2xl lg:text-3xl">
+            <div className="mb-6 min-h-[2.5rem] text-2xl font-semibold md:text-2xl lg:text-3xl">
               <AnimatedRole />
             </div>
 

@@ -87,7 +87,7 @@ export const SkillBadge = React.memo(function SkillBadge({
       <button
         ref={refs.setReference}
         {...getReferenceProps()}
-        className={`flex cursor-pointer items-center rounded-full border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 will-change-transform ${
+        className={`flex cursor-pointer items-center rounded-full border px-3 py-1 text-sm font-medium text-slate-200 transition-all duration-200 ${
           isExpanded
             ? "from-slate-870 to-slate-770 bg-gradient-to-r shadow-sm"
             : "hover:bg-slate-750 hover:shadow-sm"

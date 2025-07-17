@@ -11,7 +11,6 @@ interface ProjectsNavigationProps {
   totalPages: number;
   onPrevPage: () => void;
   onNextPage: () => void;
-  isInView: boolean;
 }
 
 export const ProjectsNavigation = memo(
@@ -20,7 +19,6 @@ export const ProjectsNavigation = memo(
     totalPages,
     onPrevPage,
     onNextPage,
-    isInView,
   }: ProjectsNavigationProps) => {
     // Ensure totalPages is at least 1
     const pages = Math.max(totalPages, 1);
@@ -28,11 +26,9 @@ export const ProjectsNavigation = memo(
     const isNextDisabled = totalPages <= 1 || currentPage >= totalPages - 1;
 
     return (
-      <motion.div
-        className="mt-12 flex items-center justify-center gap-4"
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={navigationButtonVariants}
+      <div
+        className="data-[state=once]:animate-in fade-in zoom-in-90 mt-12 flex items-center justify-center gap-4 opacity-0 duration-500 ease-out data-[state=once]:opacity-100"
+        data-state="once"
       >
         <motion.div
           whileHover={!isPrevDisabled ? "hover" : ""}
@@ -42,7 +38,7 @@ export const ProjectsNavigation = memo(
         >
           <Button
             onClick={onPrevPage}
-            className="bg-slate-850 hover:bg-slate-790 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg will-change-transform disabled:cursor-not-allowed disabled:opacity-50 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
+            className="bg-slate-850 hover:bg-slate-790 disabled:bg-slate-980 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg will-change-transform disabled:cursor-not-allowed disabled:text-slate-400 disabled:opacity-100 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
             size="icon"
             variant="ghost"
             aria-label="Previous page"
@@ -70,7 +66,7 @@ export const ProjectsNavigation = memo(
         >
           <Button
             onClick={onNextPage}
-            className="bg-slate-850 hover:bg-slate-790 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg will-change-transform disabled:cursor-not-allowed disabled:opacity-50 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
+            className="bg-slate-850 hover:bg-slate-790 disabled:bg-slate-980 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg will-change-transform disabled:cursor-not-allowed disabled:text-slate-400 disabled:opacity-100 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
             size="icon"
             variant="ghost"
             aria-label="Next page"
@@ -82,7 +78,7 @@ export const ProjectsNavigation = memo(
             />
           </Button>
         </motion.div>
-      </motion.div>
+      </div>
     );
   }
 );

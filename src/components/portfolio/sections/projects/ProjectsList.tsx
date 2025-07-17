@@ -39,6 +39,9 @@ export const ProjectsList = memo(
                 key={project.name}
                 variants={cardVariants}
                 custom={idx}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                whileHover="hover"
               >
                 <ProjectCard
                   project={project}

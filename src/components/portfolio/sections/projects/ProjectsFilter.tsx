@@ -1,22 +1,11 @@
-"use client";
-
 import { memo } from "react";
-import { motion } from "framer-motion";
 import { categoriesDisplay } from "@data/portfolio/projects";
 
 interface ProjectsFilterProps {
   filterCategories: string[];
   activeCategory: string;
   handleCategoryChangeAction: (category: string) => void;
-  isInView: boolean;
 }
-
-const ANIMATION_VARIANTS = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const ANIMATION_TRANSITION = { delay: 0.2, duration: 0.4 };
 
 /**
  * ProjectsFilter component that displays a filter for project categories.
@@ -31,16 +20,11 @@ export const ProjectsFilter = memo(
     filterCategories,
     activeCategory,
     handleCategoryChangeAction: onCategoryChange,
-    isInView,
   }: ProjectsFilterProps) => {
     return (
-      <motion.div
-        initial={ANIMATION_VARIANTS.hidden}
-        animate={
-          isInView ? ANIMATION_VARIANTS.visible : ANIMATION_VARIANTS.hidden
-        }
-        transition={ANIMATION_TRANSITION}
-        className="mb-12 flex flex-wrap justify-center gap-3"
+      <div
+        className="data-[state=once]:animate-in fade-in slide-in-from-bottom-50 mb-12 flex flex-wrap justify-center gap-3 opacity-0 duration-500 ease-out will-change-transform data-[state=once]:opacity-100"
+        data-state="once"
       >
         <div className="border-slate-730 bg-slate-830 flex flex-wrap justify-center gap-2 rounded-xl border p-1.5 shadow-lg">
           {filterCategories.map((category) => (
@@ -55,18 +39,12 @@ export const ProjectsFilter = memo(
                 {categoriesDisplay[category] || category}
               </span>
               {activeCategory === category && (
-                <motion.div
-                  className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                />
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 transition-all duration-300" />
               )}
             </button>
           ))}
         </div>
-      </motion.div>
+      </div>
     );
   }
 );

@@ -21,8 +21,8 @@ export const SkillsTabs = memo(function SkillsTabs() {
 
         <div
           style={{
-            height: contentHeight || "65px",
-            minHeight: "65px",
+            height: contentHeight || "66px",
+            minHeight: "66px",
             transition: "height 0.3s ease-in-out",
           }}
         >

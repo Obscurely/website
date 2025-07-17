@@ -1,7 +1,6 @@
 "use client";
 
 import { memo } from "react";
-import { motion } from "framer-motion";
 import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
 import { Card, CardContent, CardFooter } from "@ui/card";
@@ -12,7 +11,6 @@ import {
 } from "@tabler/icons-react";
 import Image from "next/image";
 import { Project } from "@data/portfolio/projects";
-import { cardVariants } from "./animations";
 
 /**
  * ProjectImage component that displays the project image.
@@ -60,7 +58,6 @@ export const ProjectCard = memo(
   ({
     project,
     index = 0,
-    isInView = false,
     registerCard = () => {},
     maxHeight = 0,
   }: {
@@ -71,12 +68,7 @@ export const ProjectCard = memo(
     maxHeight?: number;
   }) => {
     return (
-      <motion.div
-        variants={cardVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        custom={index}
-        whileHover="hover"
+      <div
         className="group relative z-0 h-full"
         ref={(el) => registerCard(index, el)}
       >
@@ -169,7 +161,7 @@ export const ProjectCard = memo(
             </CardFooter>
           </div>
         </Card>
-      </motion.div>
+      </div>
     );
   },
   // Prevent unnecessary re-renders
