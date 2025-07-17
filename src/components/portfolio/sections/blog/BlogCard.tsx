@@ -17,6 +17,25 @@ import {
 import { Post } from "@lib/blog";
 import { cardVariants } from "./animations";
 
+const CardWrapper = ({
+  children,
+  isLoading,
+  href,
+}: {
+  children: React.ReactNode;
+  isLoading: boolean;
+  href: string;
+}) => {
+  if (isLoading) {
+    return <div className="block h-full cursor-default">{children}</div>;
+  }
+  return (
+    <Link href={href} className="block h-full">
+      {children}
+    </Link>
+  );
+};
+
 /**
  * BlogCard component displays a single blog post card.
  */
@@ -25,10 +44,12 @@ export const BlogCard = memo(
     post,
     index,
     isInView,
+    isLoadingCard = false,
   }: {
     post: Post;
     index: number;
     isInView: boolean;
+    isLoadingCard?: boolean;
   }) => {
     const formattedDate = useMemo(
       () => format(new Date(post.frontmatter.date), "MMM d, yyyy"),
@@ -53,7 +74,7 @@ export const BlogCard = memo(
         whileHover="hover"
         className="group relative z-50 h-full"
       >
-        <Link href={`/blog/${post.slug}`} className="block h-full">
+        <CardWrapper isLoading={isLoadingCard} href={`/blog/${post.slug}`}>
           <Card className="border-slate-740 hover:border-cyan-590 relative flex h-full flex-col overflow-hidden bg-transparent transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-cyan-500/10">
             {/* Background layers */}
             <div className="absolute inset-0 z-0">
@@ -145,7 +166,7 @@ export const BlogCard = memo(
               </CardContent>
 
               {/* Footer */}
-              <CardFooter className="border-slate-740 mt-auto border-t bg-slate-900/30 p-5">
+              <CardFooter className="border-slate-740 mt-auto border-t p-5">
                 <div className="flex w-full items-center justify-between">
                   <span className="text-sm text-cyan-400 transition-colors duration-300 group-hover:text-cyan-300">
                     Read Article
@@ -158,7 +179,7 @@ export const BlogCard = memo(
               </CardFooter>
             </div>
           </Card>
-        </Link>
+        </CardWrapper>
       </motion.div>
     );
   }

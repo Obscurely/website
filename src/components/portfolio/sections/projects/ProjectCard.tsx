@@ -122,7 +122,7 @@ export const ProjectCard = memo(
               </div>
             </CardContent>
 
-            <CardFooter className="border-slate-850 mt-auto flex justify-between border-t bg-slate-900/30 p-5">
+            <CardFooter className="border-slate-850 mt-auto flex justify-between border-t p-5">
               <Button
                 variant="ghost"
                 size="sm"

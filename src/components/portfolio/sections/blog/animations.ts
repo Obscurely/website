@@ -8,7 +8,7 @@ export const cardVariants: Variants = {
     transition: {
       // Cap the delay to prevent exponential slowdown
       delay: Math.min(0.1 * (i % 3), 0.2),
-      duration: 0.4,
+      duration: 0.2,
       ease: "easeOut",
     },
   }),

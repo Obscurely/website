@@ -1,14 +1,7 @@
-"use client";
-
-import { useRef, useState, useEffect, useMemo } from "react";
-import { useInView } from "framer-motion";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@ui/button";
 import { IconArrowRight } from "@tabler/icons-react";
-import { getAllPosts, Post } from "@lib/blog";
-import { LOADING_POSTS } from "./utils";
-import { BlogCard } from "./BlogCard";
+// import { PostsList } from "./PostsList";
 
 /**
  * Blog component that fetches and displays the latest blog posts.
@@ -16,44 +9,9 @@ import { BlogCard } from "./BlogCard";
  * @returns The Blog component that displays the latest blog posts.
  */
 export const Blog = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  // Fetch posts on component mount
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const allPosts = await getAllPosts();
-        setPosts(allPosts);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
-  const latestPosts = useMemo(() => posts.slice(0, 3), [posts]);
-
-  const gridClassName = useMemo(() => {
-    const baseClasses = "grid gap-8";
-    if (latestPosts.length === 1) {
-      return `${baseClasses} mx-auto max-w-[475px] grid-cols-1`;
-    } else if (latestPosts.length === 2) {
-      return `${baseClasses} mx-auto max-w-4xl grid-cols-1 md:grid-cols-2`;
-    } else {
-      return `${baseClasses} grid-cols-1 md:grid-cols-2 lg:grid-cols-3`;
-    }
-  }, [latestPosts.length]);
-
   return (
     <section
       id="blog"
-      ref={ref}
       className="bg-main-bg-light relative z-0 overflow-hidden pt-16 pb-20"
     >
       {/* Subtle background elements */}
@@ -65,11 +23,9 @@ export const Blog = () => {
       {/* Main content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7 }}
-          className="mb-16 text-center"
+        <div
+          className="data-[state=once]:animate-in fade-in slide-in-from-bottom-15 mb-16 text-center opacity-0 duration-500 ease-out will-change-transform data-[state=once]:opacity-100"
+          data-state="once"
         >
           <h2 className="mb-0.5 inline-block bg-blue-400 bg-clip-text text-3xl leading-relaxed font-bold text-transparent md:text-4xl lg:text-5xl">
             Latest Posts
@@ -79,48 +35,21 @@ export const Blog = () => {
             Practical tutorials, in-depth guides and insights on software
             development, Linux, servers and more.
           </p>
-        </motion.div>
+        </div>
 
         {/* Blog posts grid */}
-        <div className="mb-12">
-          {loading ? (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {LOADING_POSTS.map((post, index) => (
-                <div key={post.slug}>
-                  <BlogCard post={post} index={index} isInView={isInView} />
-                </div>
-              ))}
-            </div>
-          ) : latestPosts.length > 0 ? (
-            <div className={gridClassName}>
-              {latestPosts.map((post, index) => (
-                <div
-                  key={post.slug}
-                  className={
-                    latestPosts.length === 3 && index === 2
-                      ? "md:col-span-2 md:mx-auto md:max-w-md lg:col-span-1 lg:mx-0 lg:max-w-none"
-                      : ""
-                  }
-                >
-                  <BlogCard post={post} index={index} isInView={isInView} />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="py-12 text-center">
-              <p className="text-lg text-slate-400">
-                No blog posts available yet.
-              </p>
-            </div>
-          )}
+        {/* <PostsList /> HACK: Keeping this disabled since there are not posts yet, there is better performance without it */}
+        <div
+          className="data-[state=once]:animate-in fade-in slide-in-from-bottom-15 pb-16 text-center opacity-0 duration-500 ease-out will-change-transform data-[state=once]:opacity-100"
+          data-state="once"
+        >
+          <p className="text-lg text-slate-400">No blog posts available yet.</p>
         </div>
 
         {/* View all posts button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="flex flex-col items-center"
+        <div
+          className="data-[state=once]:animate-in fade-in slide-in-from-bottom-50 flex flex-col items-center opacity-0 duration-500 ease-out will-change-transform data-[state=once]:opacity-100"
+          data-state="once"
         >
           <Link href="/blog" passHref>
             <Button className="group relative h-10 w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300 will-change-transform">
@@ -130,7 +59,7 @@ export const Blog = () => {
               </span>
             </Button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
