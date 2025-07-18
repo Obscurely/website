@@ -1,24 +1,9 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { headerVariants } from "./animations";
-
-interface HeaderProps {
-  isInView: boolean;
-}
-
 /**
  * Header component displays the main heading and description for the contact section.
  */
-export const ContactHeader = ({ isInView }: HeaderProps) => {
+export const ContactHeader = () => {
   return (
-    <motion.div
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={headerVariants}
-      transition={{ duration: 0.7 }}
-      className="mb-20 text-center"
-    >
+    <div className="mb-20 text-center">
       <h2 className="mb-4 inline-block bg-blue-400 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl">
         Get in Touch
       </h2>
@@ -29,6 +14,6 @@ export const ContactHeader = ({ isInView }: HeaderProps) => {
           Feel free to reach out!
         </p>
       </div>
-    </motion.div>
+    </div>
   );
 };

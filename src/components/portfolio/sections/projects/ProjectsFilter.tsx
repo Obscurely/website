@@ -22,10 +22,7 @@ export const ProjectsFilter = memo(
     handleCategoryChangeAction: onCategoryChange,
   }: ProjectsFilterProps) => {
     return (
-      <div
-        className="data-[state=once]:animate-in fade-in slide-in-from-bottom-50 mb-12 flex flex-wrap justify-center gap-3 opacity-0 duration-500 ease-out will-change-transform data-[state=once]:opacity-100"
-        data-state="once"
-      >
+      <div className="mb-12 flex flex-wrap justify-center gap-3">
         <div className="border-slate-730 bg-slate-830 flex flex-wrap justify-center gap-2 rounded-xl border p-1.5 shadow-lg">
           {filterCategories.map((category) => (
             <button

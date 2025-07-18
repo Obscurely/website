@@ -7,8 +7,12 @@
     constructor(options = {}) {
       this.observer = null;
       this.timeouts = new Map();
+
+	  // Mobile detection
+	  const isMobile = this.isMobileDevice(); 
+
       this.config   = {
-        threshold : 0.2,
+        threshold : isMobile ? 0.025 : 0.1,
         rootMargin: '0px 0px 0px 0px',
         ...options,
       };
@@ -16,6 +20,12 @@
       this.handleIntersection = this.handleIntersection.bind(this);
       this.init();
     }
+
+	// Detect mobile devices
+	isMobileDevice() {
+	  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+			 window.innerWidth <= 768;
+	}
 
 	// check if an element is in the viewport
     isInViewport(el, threshold = 0) {

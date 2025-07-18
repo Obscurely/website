@@ -1,47 +1,14 @@
-"use client";
-
-import React, { memo, useMemo } from "react";
-import { motion } from "framer-motion";
+import React, { memo } from "react";
 import { Card, CardContent } from "@ui/card";
 import { socials } from "@data/common/socials";
-import {
-  containerAnimation,
-  itemVariants,
-  socialSectionAnimation,
-} from "./animations";
 import { contactInfo } from "@data/portfolio/contact";
-
-interface ContactInfoProps {
-  isInView: boolean;
-}
 
 /**
  * ContactInfo component displays contact information and social links.
  */
-export const ContactInfo = memo<ContactInfoProps>(({ isInView }) => {
-  // Memoize animation states to prevent object recreation
-  const containerAnimateState = useMemo(
-    () => (isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }),
-    [isInView]
-  );
-
-  const socialAnimateState = useMemo(
-    () => (isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }),
-    [isInView]
-  );
-
-  const itemAnimateState = useMemo(
-    () => (isInView ? "visible" : "hidden"),
-    [isInView]
-  );
-
+export const ContactInfo = memo(() => {
   return (
-    <motion.div
-      initial={containerAnimation.initial}
-      animate={containerAnimateState}
-      transition={containerAnimation.transition}
-      className="flex-1 lg:max-w-md"
-    >
+    <div className="flex-1 lg:max-w-md">
       <div className="border-slate-740 h-full rounded-xl border bg-slate-800/20 p-6">
         <h3 className="mb-6 text-2xl font-bold text-white">
           Contact Information
@@ -49,12 +16,8 @@ export const ContactInfo = memo<ContactInfoProps>(({ isInView }) => {
 
         <div className="mb-6 space-y-6">
           {contactInfo.map((info, index) => (
-            <motion.div
+            <div
               key={`contact-${info.title}-${index}`}
-              variants={itemVariants}
-              initial="hidden"
-              animate={itemAnimateState}
-              transition={{ delay: 0.3 + index * 0.1 }}
               className="group relative"
             >
               <Card className="border-slate-740 hover:border-cyan-590 h-full transform-gpu overflow-hidden bg-slate-800/30 p-0 transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-cyan-500/10">
@@ -85,37 +48,28 @@ export const ContactInfo = memo<ContactInfoProps>(({ isInView }) => {
                   </a>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={socialSectionAnimation.initial}
-          animate={socialAnimateState}
-          transition={socialSectionAnimation.transition}
-        >
-          <h4 className="mb-4 text-xl font-semibold text-white">
-            Connect With Me
-          </h4>
-          <motion.div
-            variants={itemVariants}
-            className="flex justify-center gap-4 sm:justify-start"
-          >
-            {socials.map((social, index) => (
-              <a
-                key={`social-${social.href}-${index}`}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-slate-890 flex h-12 w-12 items-center justify-center rounded-full text-cyan-500 transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
-              >
-                <social.icon size={20} strokeWidth={2.5} />
-              </a>
-            ))}
-          </motion.div>
-        </motion.div>
+        <h4 className="mb-4 text-xl font-semibold text-white">
+          Connect With Me
+        </h4>
+        <div className="flex justify-center gap-4 sm:justify-start">
+          {socials.map((social, index) => (
+            <a
+              key={`social-${social.href}-${index}`}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-slate-890 flex h-12 w-12 items-center justify-center rounded-full text-cyan-500 transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
+            >
+              <social.icon size={20} strokeWidth={2.5} />
+            </a>
+          ))}
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 });
 

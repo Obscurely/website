@@ -1,7 +1,3 @@
-"use client";
-
-import React, { useRef } from "react";
-import { useInView } from "framer-motion";
 import { ContactHeader } from "./ContactHeader";
 import { ContactInfo } from "./ContactInfo";
 import { ContactForm } from "./ContactForm";
@@ -11,13 +7,9 @@ import { ContactForm } from "./ContactForm";
  * @returns A section containing the contact form and contact details.
  */
 export const Contact = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-
   return (
     <section
       id="contact"
-      ref={ref}
       className="bg-main-bg-dark relative z-0 overflow-hidden py-20"
       aria-labelledby="contact-heading"
     >
@@ -30,15 +22,15 @@ export const Contact = () => {
       {/* Main content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <ContactHeader isInView={isInView} />
+        <ContactHeader />
 
         <div className="max-w-8xl mx-auto">
           <div className="flex flex-col items-stretch gap-8 lg:flex-row lg:gap-10">
             {/* Contact Information */}
-            <ContactInfo isInView={isInView} />
+            <ContactInfo />
 
             {/* Contact Form */}
-            <ContactForm isInView={isInView} />
+            <ContactForm />
           </div>
         </div>
       </div>

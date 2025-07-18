@@ -26,10 +26,7 @@ export const ProjectsNavigation = memo(
     const isNextDisabled = totalPages <= 1 || currentPage >= totalPages - 1;
 
     return (
-      <div
-        className="data-[state=once]:animate-in fade-in zoom-in-90 mt-12 flex items-center justify-center gap-4 opacity-0 duration-500 ease-out data-[state=once]:opacity-100"
-        data-state="once"
-      >
+      <div className="mt-12 flex items-center justify-center gap-4">
         <motion.div
           whileHover={!isPrevDisabled ? "hover" : ""}
           whileTap={!isPrevDisabled ? "tap" : ""}

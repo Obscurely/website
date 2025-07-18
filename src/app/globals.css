@@ -182,4 +182,61 @@
   --color-teal-550: #127677;
   --color-blue-430: #274773;
   --color-blue-450: #3a69a6;
+
+  /* Custom animations */
+  --animate-spring: spring 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --animate-spring-bounce: spring-bounce 0.8s
+    cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --animate-spring-scale: spring-scale 0.5s
+    cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes spring {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1) rotate(180deg);
+  }
+
+  75% {
+    opacity: 0.9;
+    transform: scale(0.95) rotate(270deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes spring-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-12px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes spring-scale {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

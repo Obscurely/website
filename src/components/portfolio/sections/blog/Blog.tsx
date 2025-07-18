@@ -23,10 +23,7 @@ export const Blog = () => {
       {/* Main content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div
-          className="data-[state=once]:animate-in fade-in slide-in-from-bottom-15 mb-16 text-center opacity-0 duration-500 ease-out will-change-transform data-[state=once]:opacity-100"
-          data-state="once"
-        >
+        <div className="mb-16 text-center">
           <h2 className="mb-0.5 inline-block bg-blue-400 bg-clip-text text-3xl leading-relaxed font-bold text-transparent md:text-4xl lg:text-5xl">
             Latest Posts
           </h2>
@@ -38,19 +35,13 @@ export const Blog = () => {
         </div>
 
         {/* Blog posts grid */}
-        {/* <PostsList /> HACK: Keeping this disabled since there are not posts yet, there is better performance without it */}
-        <div
-          className="data-[state=once]:animate-in fade-in slide-in-from-bottom-15 pb-16 text-center opacity-0 duration-500 ease-out will-change-transform data-[state=once]:opacity-100"
-          data-state="once"
-        >
+        {/* <PostsList /> HACK: Keeping this disabled since there are not posts yet, so there is better performance without it */}
+        <div className="pb-16 text-center">
           <p className="text-lg text-slate-400">No blog posts available yet.</p>
         </div>
 
         {/* View all posts button */}
-        <div
-          className="data-[state=once]:animate-in fade-in slide-in-from-bottom-50 flex flex-col items-center opacity-0 duration-500 ease-out will-change-transform data-[state=once]:opacity-100"
-          data-state="once"
-        >
+        <div className="flex flex-col items-center">
           <Link href="/blog" passHref>
             <Button className="group relative h-10 w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300 will-change-transform">
               <span className="relative z-10 flex items-center gap-2 text-sm font-medium">
