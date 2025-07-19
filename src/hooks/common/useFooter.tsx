@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import {
   FooterSection,
   getLegalLinks,
@@ -18,15 +18,6 @@ export const useFooter = (isBlog: boolean, isMain: boolean) => {
     if (isBlog) return true; // isBlog overrides isMain
     return !isMain; // if not blog, use anchor links when isMain is false
   }, [isBlog, isMain]);
-
-  const handleNavClick = useCallback((href: string) => {
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
-  }, []);
-
-  const scrollToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
 
   const footerSections: FooterSection[] = [
     {
@@ -49,8 +40,6 @@ export const useFooter = (isBlog: boolean, isMain: boolean) => {
 
   return {
     useAnchorLinks,
-    handleNavClick,
-    scrollToTop,
     footerSections,
   };
 };

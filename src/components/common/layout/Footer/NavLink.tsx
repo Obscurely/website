@@ -1,19 +1,14 @@
 import { FooterLink } from "@data/common/footer";
 import { IconDownload, IconRss } from "@tabler/icons-react";
+import { LinkButton } from "./LinkButton";
 
 interface NavLinkProps {
   isBlog: boolean;
   link: FooterLink;
   useAnchorLinks: boolean;
-  handleNavClick: (href: string) => void;
 }
 
-export const NavLink = ({
-  isBlog,
-  link,
-  useAnchorLinks,
-  handleNavClick,
-}: NavLinkProps) => {
+export const NavLink = ({ isBlog, link, useAnchorLinks }: NavLinkProps) => {
   const isRSS = link.name === "RSS";
 
   if (link.external) {
@@ -49,11 +44,11 @@ export const NavLink = ({
     );
   }
 
-  // Add "/" prefix when isMain=false and isBlog=false
-  const href = !isBlog && useAnchorLinks ? `/${link.href}` : link.href;
-
   // Use anchor links when isBlog=true OR when useAnchorLinks=true (isMain=false)
   if (isBlog || useAnchorLinks) {
+    // Add "/" prefix when isMain=false and isBlog=false
+    const href = !isBlog && useAnchorLinks ? `/${link.href}` : link.href;
+
     return (
       <a
         href={href}
@@ -65,12 +60,5 @@ export const NavLink = ({
   }
 
   // Use buttons with smooth scrolling when isMain=true and isBlog=false
-  return (
-    <button
-      onClick={() => handleNavClick(link.href)}
-      className="cursor-pointer text-sm text-slate-400 transition-all duration-300 hover:text-cyan-400"
-    >
-      {link.name}
-    </button>
-  );
+  return <LinkButton name={link.name} href={link.href} />;
 };
