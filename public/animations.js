@@ -7,6 +7,10 @@
     constructor(options = {}) {
       this.observer = null;
       this.timeouts = new Map();
+      this.scrollElements = new Set();
+      this.isScrolled = false;
+      this.scrollThreshold = 20;
+      this.ticking = false;
 
 	  // Mobile detection
 	  const isMobile = this.isMobileDevice(); 
@@ -18,6 +22,8 @@
       };
 
       this.handleIntersection = this.handleIntersection.bind(this);
+      this.handleScroll = this.handleScroll.bind(this);
+      this.updateScrollState = this.updateScrollState.bind(this);
       this.init();
     }
 
@@ -39,6 +45,31 @@
         rect.right   >= 0 - threshold &&
         rect.left    <= vWidth  + threshold
       );
+    }
+
+    // Handle scroll events with throttling
+    handleScroll() {
+      if (!this.ticking) {
+        requestAnimationFrame(this.updateScrollState);
+        this.ticking = true;
+      }
+    }
+
+    // Update scroll state for elements
+    updateScrollState() {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      const shouldBeScrolled = scrollY > this.scrollThreshold;
+
+      if (shouldBeScrolled !== this.isScrolled) {
+        this.isScrolled = shouldBeScrolled;
+        const state = shouldBeScrolled ? 'show' : 'hide';
+        
+        this.scrollElements.forEach(el => {
+          el.dataset.state = state;
+        });
+      }
+
+      this.ticking = false;
     }
 
 	// handle intersection events
@@ -77,9 +108,18 @@
         });
 
         this.initAnimations();
+        this.initScrollHandler();
       } catch (err) {
         console.warn('Animation handler failed to initialise:', err);
       }
+    }
+
+    // Initialize scroll handler
+    initScrollHandler() {
+      window.addEventListener('scroll', this.handleScroll, { passive: true });
+      
+      // Initial check
+      this.updateScrollState();
     }
 
 	// initialise animations on elements with data-state
@@ -87,11 +127,18 @@
 	  const els = document.querySelectorAll('[data-state]:not([data-animation-exclude="true"])'); 
 
       els.forEach((el) => {
+        // Handle scroll-based elements
+        if (el.dataset.state === 'scrolled') {
+          this.scrollElements.add(el);
+          el.dataset.state = this.isScrolled ? 'show' : 'hide';
+          return;
+        }
+
         if (el.dataset.state === 'once') {
           el.dataset.once = 'true'; // mark as once-element
 
           if (this.isInViewport(el)) {
-			// already in viewport trigger immediately
+		    // already in viewport trigger immediately
             return;
           }
 
@@ -109,6 +156,8 @@
       if (this.observer) this.observer.disconnect();
       this.timeouts.forEach((id) => clearTimeout(id));
       this.timeouts.clear();
+      this.scrollElements.clear();
+      window.removeEventListener('scroll', this.handleScroll);
     }
 
     observe(el)   { if (this.observer && el) this.observer.observe(el); }

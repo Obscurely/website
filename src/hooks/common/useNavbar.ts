@@ -2,13 +2,9 @@ import { throttle } from "@lib/utils";
 import { navItemsBlog, navItemsPortfolio } from "@data/common/navbar";
 import { useState, useEffect, useCallback, useMemo } from "react";
 
-const HEADER_HEIGHT = 50;
-const SCROLL_THRESHOLD = 20;
 const SECTION_OFFSET = 100;
 
 export const useNavbar = (isBlog: boolean, isMain: boolean) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
   const navItems = useMemo(
@@ -23,8 +19,6 @@ export const useNavbar = (isBlog: boolean, isMain: boolean) => {
   }, [isBlog, isMain]);
 
   const handleScroll = useCallback(() => {
-    setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
-
     // Only track sections when isMain is true
     if (isMain) {
       const sections = navItems
@@ -61,48 +55,10 @@ export const useNavbar = (isBlog: boolean, isMain: boolean) => {
     element?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  const handleMobileNavClick = useCallback((href: string) => {
-    setMobileMenuOpen(false);
-
-    setTimeout(() => {
-      const element = document.querySelector(href);
-      if (element) {
-        const elementPosition =
-          element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - HEADER_HEIGHT;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
-    }, 100);
-  }, []);
-
-  const toggleMobileMenu = useCallback(() => {
-    setMobileMenuOpen((prev) => !prev);
-  }, []);
-
-  const closeMobileMenu = useCallback(() => {
-    setMobileMenuOpen(false);
-  }, []);
-
-  const handleResumeClick = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    window.open("/resume.pdf", "_blank");
-  }, []);
-
   return {
-    isScrolled,
-    mobileMenuOpen,
+    handleNavClick,
     activeSection,
     navItems,
     useAnchorLinks,
-    handleScroll,
-    handleNavClick,
-    handleMobileNavClick,
-    toggleMobileMenu,
-    closeMobileMenu,
-    handleResumeClick,
   };
 };
