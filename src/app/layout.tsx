@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@common/theme/ThemeProvider";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 
@@ -125,15 +124,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${inter.className} flex min-h-screen flex-col font-sans antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={true}
-          forcedTheme="dark"
-          disableTransitionOnChange
-        >
-          <div className="flex flex-1 flex-col">{children}</div>
-        </ThemeProvider>
+        <div className="flex flex-1 flex-col">{children}</div>
         <Script src="/animations.js" strategy="afterInteractive" />
       </body>
     </html>

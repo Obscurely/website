@@ -13,7 +13,7 @@ export const Navbar = ({ isBlog = false, isMain = false }: NavbarProps) => {
   return (
     <header
       data-state="scrolled"
-      className="data-[state=show]:bg-slate-980 fixed top-0 z-50 w-full bg-transparent py-4 transition-all duration-300 data-[state=show]:py-2 data-[state=show]:shadow-md"
+      className="data-[state=show]:bg-slate-980 fixed top-0 z-50 w-full bg-transparent py-2 transition-all duration-300 data-[state=show]:shadow-md md:py-3"
     >
       <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href={nameHref} className="text-2xl font-bold text-slate-100">
