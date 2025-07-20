@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Post } from "@lib/blog";

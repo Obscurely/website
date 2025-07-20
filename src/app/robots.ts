@@ -10,23 +10,48 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*",
         allow: "/",
         disallow: [
-          "/api/", // Prevent crawling API routes
-          "/_next/", // Prevent crawling Next.js internal files
-          "/admin/", // Prevent crawling admin areas (if any)
-          "*.json", // Prevent crawling JSON files
-          "/private/", // Prevent crawling private content (if any)
+          "/api/",
+          "/_next/",
+          "/admin/",
+          "*.json",
+          "/private/",
+          "/temp/",
+          "/search?*", // Block search result pages
+          "/*?utm_*", // Block URLs with UTM parameters
+          "/404", // Block 404 page
+          "/500", // Block error pages
         ],
       },
+      // Specific rules for search engines
       {
-        userAgent: "GPTBot", // OpenAI's web crawler
-        disallow: "/", // Block AI training crawlers if desired
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: ["/api/", "/_next/", "/admin/", "/private/"],
+      },
+      {
+        userAgent: "Bingbot",
+        allow: "/",
+        disallow: ["/api/", "/_next/", "/admin/", "/private/"],
+      },
+      // Block additional AI crawlers
+      {
+        userAgent: "GPTBot",
+        disallow: "/",
       },
       {
         userAgent: "ChatGPT-User",
         disallow: "/",
       },
       {
-        userAgent: "CCBot", // Common Crawl bot
+        userAgent: "CCBot",
+        disallow: "/",
+      },
+      {
+        userAgent: "anthropic-ai",
+        disallow: "/",
+      },
+      {
+        userAgent: "Claude-Web",
         disallow: "/",
       },
     ],
