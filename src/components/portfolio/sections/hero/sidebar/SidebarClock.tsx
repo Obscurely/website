@@ -1,6 +1,6 @@
 "use client";
 
-import { useCurrentTime } from "@contexts/TimeContext";
+import { useCurrentTime } from "@contexts/portfolio/TimeContext";
 
 export const SidebarClock = () => {
   const currentTime = useCurrentTime();

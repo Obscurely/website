@@ -1,16 +1,8 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { Badge } from "@ui/badge";
-import {
-  IconCalendar,
-  IconClock,
-  IconShare,
-  IconCoffee,
-  IconCheck,
-} from "@tabler/icons-react";
+import { IconCalendar, IconClock, IconCoffee } from "@tabler/icons-react";
 import { Button } from "@ui/button";
+import { ShareButton } from "./ShareButton";
 
 interface HeaderProps {
   post: {
@@ -24,23 +16,11 @@ interface HeaderProps {
     readingTime: string;
   };
   formattedDate: string;
-  shareState: "idle" | "copied" | "error";
-  handleShareAction: () => void;
 }
 
-export const Header = ({
-  post,
-  formattedDate,
-  shareState,
-  handleShareAction: handleShare,
-}: HeaderProps) => {
+export const Header = ({ post, formattedDate }: HeaderProps) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.1 }}
-      className="order-1 lg:hidden"
-    >
+    <div className="order-1 lg:hidden">
       <header className="not-prose mb-8">
         <div className="mb-6 flex flex-wrap gap-2">
           {post.frontmatter.featured && (
@@ -93,19 +73,7 @@ export const Header = ({
                 <span className="hidden sm:inline">Coffee</span>
               </Button>
             </a>
-            <Button
-              onClick={handleShare}
-              className="border-slate-750 bg-slate-840 hover:border-cyan-590 hover:bg-slate-850 z-50 flex cursor-pointer items-center gap-2 rounded-lg border px-4 py-2 text-slate-300 transition-all duration-300 group-hover:translate-0 hover:translate-0 hover:text-cyan-400 hover:shadow-md"
-            >
-              {shareState === "copied" ? (
-                <IconCheck size={18} className="text-green-400" />
-              ) : (
-                <IconShare size={18} />
-              )}
-              <span className="hidden sm:inline">
-                {shareState === "copied" ? "Copied!" : "Share"}
-              </span>
-            </Button>
+            <ShareButton />
           </div>
         </div>
 
@@ -124,6 +92,6 @@ export const Header = ({
           </div>
         )}
       </header>
-    </motion.div>
+    </div>
   );
 };

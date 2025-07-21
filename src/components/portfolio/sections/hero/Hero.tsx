@@ -1,7 +1,7 @@
 import { Terminal } from "./terminal/Terminal";
 import { Sidebar } from "./sidebar/Sidebar";
 import { ArrowDown } from "./ArrowDown";
-import { TimeProvider } from "@contexts/TimeContext";
+import { TimeProvider } from "@contexts/portfolio/TimeContext";
 
 export const Hero = () => {
   return (
