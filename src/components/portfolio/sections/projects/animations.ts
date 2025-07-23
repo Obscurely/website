@@ -12,13 +12,6 @@ export const cardVariants: Variants = {
       ease: "easeOut",
     },
   }),
-  hover: {
-    y: -2,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
-    },
-  },
 };
 
 export const carouselVariants = {

@@ -61,7 +61,7 @@ export const MobileNavbar = ({ isBlog, isMain }: MobileNavbarProps) => {
 
               <div className="pt-4 will-change-transform">
                 <Button
-                  className="group relative w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300 group-hover:translate-0 group-hover:scale-100 hover:translate-y-0 hover:scale-100 hover:shadow-md"
+                  className="group relative w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300 hover:shadow-md"
                   onClick={handleResumeClick}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2 text-sm font-medium">

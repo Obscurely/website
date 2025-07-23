@@ -44,7 +44,7 @@ export const ContactForm = () => {
               </p>
               <Button
                 onClick={resetForm}
-                className="group overflow-hiddenpy-3 relative mx-auto w-full cursor-pointer text-white transition-all duration-300 will-change-transform focus:ring-2 sm:w-auto sm:px-6"
+                className="group overflow-hiddenpy-3 relative mx-auto w-full cursor-pointer text-white transition-all duration-300 focus:ring-2 sm:w-auto sm:px-6"
               >
                 <span className="relative z-10 flex items-center justify-center gap-3 text-base font-semibold">
                   Send Another Message
@@ -119,7 +119,7 @@ export const ContactForm = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting || !isFormValid}
-                  className={`group relative w-full cursor-pointer overflow-hidden rounded-lg py-3 text-white transition-all duration-300 will-change-transform focus:ring-2 ${
+                  className={`group relative w-full cursor-pointer overflow-hidden rounded-lg py-3 text-white transition-all duration-300 focus:ring-2 ${
                     isSubmitting || !isFormValid
                       ? "cursor-not-allowed bg-slate-600 opacity-60"
                       : ""
@@ -134,7 +134,7 @@ export const ContactForm = () => {
                       </>
                     ) : (
                       <>
-                        <IconSend className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <IconSend className="h-5 w-5 transition-transform duration-300 will-change-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         <span id="submit-status">Send Message</span>
                       </>
                     )}

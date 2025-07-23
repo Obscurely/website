@@ -35,7 +35,7 @@ export default function NotFound() {
 
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
           <Link href="/" passHref>
-            <Button className="group relative h-10 w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300 will-change-transform sm:w-auto">
+            <Button className="group relative h-10 w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300 sm:w-auto">
               <span className="relative z-10 flex items-center justify-center gap-2 text-sm font-medium">
                 <IconHome className="h-4 w-4" />
                 Go Home

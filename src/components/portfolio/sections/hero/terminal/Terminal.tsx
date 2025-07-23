@@ -13,7 +13,7 @@ export const Terminal = () => {
       className="data-[state=once]:animate-in data-[state=once]:zoom-in-90 flex rounded-2xl opacity-0 backdrop-blur-xs duration-500 ease-out will-change-transform data-[state=once]:opacity-100 lg:col-span-2"
       data-state="once"
     >
-      <div className="relative flex w-full transform-gpu flex-col overflow-hidden rounded-2xl border border-slate-600/30 bg-slate-900/30 shadow-2xl shadow-black/20">
+      <div className="relative flex w-full flex-col overflow-hidden rounded-2xl border border-slate-600/30 bg-slate-900/30 shadow-2xl shadow-black/20">
         {/* Terminal Header */}
         <div className="flex flex-shrink-0 items-center justify-between border-b border-slate-600/30 bg-slate-800/40 px-6 py-2">
           <div className="flex items-center gap-4">
@@ -56,10 +56,7 @@ export const Terminal = () => {
               rel="noopener noreferrer"
               className="group border-cyan-510 from-cyan-530 to-blue-520 hover:from-cyan-550 hover:to-blue-550 hover:shadow-cyan-520 mb-4 inline-flex items-center rounded-full border bg-gradient-to-r px-3 py-1 transition-all duration-300 hover:shadow-xs"
             >
-              <IconSearch
-                size={16}
-                className="mr-2 text-cyan-400 transition-transform duration-300 will-change-transform group-hover:scale-110"
-              />
+              <IconSearch size={16} className="mr-2 text-cyan-400" />
               <span className="text-sm font-semibold text-cyan-400 transition-all duration-300 group-hover:text-cyan-300">
                 Founder of RekoSearch - AI File Search Engine
               </span>
@@ -97,7 +94,7 @@ export const Terminal = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-slate-880 flex h-10 w-10 items-center justify-center rounded-full text-slate-400 shadow-[inset_0_0_0_1px_rgb(6_182_212_/_0.1)] transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
+                className="group bg-slate-880 flex h-10 w-10 items-center justify-center rounded-full text-slate-400 shadow-[inset_0_0_0_1px_rgb(6_182_212_/_0.1)] transition-all duration-300 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
               >
                 <social.icon size={20} strokeWidth={2.5} />
               </a>

@@ -7,7 +7,7 @@ export const Buttons = () => {
   return (
     <>
       <Button
-        className="group relative h-10 w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300 will-change-transform"
+        className="group relative h-10 w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300"
         onClick={(e) => {
           e.preventDefault();
           document
@@ -22,7 +22,7 @@ export const Buttons = () => {
       </Button>
       <Button
         variant="outline"
-        className="border-cyan-570 hover:border-cyan-590 h-10 w-full cursor-pointer rounded-lg px-4 py-3 text-slate-300 transition-all duration-300 will-change-transform hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
+        className="border-cyan-570 hover:border-cyan-590 h-10 w-full cursor-pointer rounded-lg px-4 py-3 text-slate-300 transition-all duration-300 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
         onClick={(e) => {
           e.preventDefault();
           document
@@ -37,7 +37,7 @@ export const Buttons = () => {
       </Button>
       <Button
         variant="outline"
-        className="border-cyan-570 hover:border-cyan-590 h-10 w-full cursor-pointer rounded-lg px-4 py-3 text-slate-300 transition-all duration-300 will-change-transform hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
+        className="border-cyan-570 hover:border-cyan-590 h-10 w-full cursor-pointer rounded-lg px-4 py-3 text-slate-300 transition-all duration-300 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
         onClick={(e) => {
           e.preventDefault();
           window.open("/resume.pdf", "_blank");

@@ -16,7 +16,7 @@ export const ServicesSection = () => {
       <div className="relative z-0 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {services.map((service) => (
           <div key={service.title} className="group relative z-0">
-            <Card className="border-slate-730 bg-slate-830 hover:border-cyan-590 h-full transform-gpu overflow-hidden transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-cyan-500/10">
+            <Card className="border-slate-730 bg-slate-830 hover:border-cyan-590 h-full overflow-hidden transition-all duration-300 ease-out hover:shadow-lg hover:shadow-cyan-500/10">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="bg-slate-990 mb-5 rounded-full p-4">
                   {service.icon}

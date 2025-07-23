@@ -10,7 +10,7 @@ export const AnimatedRole = () => {
       wrapper="span"
       speed={50}
       repeat={Infinity}
-      className="bg-blue-400 bg-clip-text text-transparent will-change-contents"
+      className="bg-blue-400 bg-clip-text text-transparent"
       style={{
         display: "inline-block",
         minHeight: "1em",

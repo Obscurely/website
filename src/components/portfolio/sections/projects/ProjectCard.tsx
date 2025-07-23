@@ -73,7 +73,7 @@ export const ProjectCard = memo(
         ref={(el) => registerCard(index, el)}
       >
         <Card
-          className="border-slate-740 hover:border-cyan-590 relative flex h-full flex-col overflow-hidden bg-transparent transition-all duration-300 ease-out will-change-transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-cyan-500/10"
+          className="border-slate-740 hover:border-cyan-590 relative flex h-full flex-col overflow-hidden bg-transparent transition-all duration-300 ease-out hover:shadow-lg hover:shadow-cyan-500/10"
           style={{
             background: "transparent",
             transformStyle: "preserve-3d",

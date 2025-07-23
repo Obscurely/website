@@ -35,7 +35,7 @@ export const ProjectsNavigation = memo(
         >
           <Button
             onClick={onPrevPage}
-            className="bg-slate-850 hover:bg-slate-790 disabled:bg-slate-980 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg will-change-transform disabled:cursor-not-allowed disabled:text-slate-400 disabled:opacity-100 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
+            className="bg-slate-850 hover:bg-slate-790 disabled:bg-slate-980 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg disabled:cursor-not-allowed disabled:text-slate-400 disabled:opacity-100 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
             size="icon"
             variant="ghost"
             aria-label="Previous page"
@@ -63,7 +63,7 @@ export const ProjectsNavigation = memo(
         >
           <Button
             onClick={onNextPage}
-            className="bg-slate-850 hover:bg-slate-790 disabled:bg-slate-980 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg will-change-transform disabled:cursor-not-allowed disabled:text-slate-400 disabled:opacity-100 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
+            className="bg-slate-850 hover:bg-slate-790 disabled:bg-slate-980 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg disabled:cursor-not-allowed disabled:text-slate-400 disabled:opacity-100 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
             size="icon"
             variant="ghost"
             aria-label="Next page"

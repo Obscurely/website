@@ -16,10 +16,7 @@ export const ScrollToTop = () => {
       onClick={scrollToTop}
       className="group border-slate-740 bg-slate-820 hover:border-cyan-590 hover:bg-slate-740 relative cursor-pointer rounded-full border text-slate-400 transition-all duration-300 hover:text-cyan-400"
     >
-      <IconArrowUp
-        size={18}
-        className="transition-transform duration-300 group-hover:-translate-y-0.5"
-      />
+      <IconArrowUp size={18} />
     </Button>
   );
 };

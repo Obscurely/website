@@ -5,18 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-colors transition-shadow transition-transform duration-200 ease-out disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive relative overflow-hidden",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 ease-out disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive relative overflow-hidden",
   {
     variants: {
       variant: {
         default:
-          "bg-gradient-to-r from-[#0479D1] to-[#0A6CFF] text-white shadow-sm hover:shadow-lg hover:shadow-blue-500/20 hover:translate-y-[-1px] hover:brightness-110  active:translate-y-[0px]",
+          "bg-gradient-to-r from-[#0479D1] to-[#0A6CFF] text-white shadow-sm hover:shadow-lg hover:shadow-blue-500/20 hover:brightness-110",
         destructive:
           "bg-gradient-to-r from-red-500 to-rose-500 text-white shadow-sm hover:shadow-md hover:shadow-red-500/20 hover:translate-y-[-1px] hover:bg-gradient-to-r hover:from-red-500 hover:to-rose-500 hover:brightness-110 active:translate-y-[0px]",
         outline:
-          "border border-slate-700 bg-transparent text-slate-300 shadow-sm hover:border-cyan-590 hover:bg-slate-850 hover:text-white hover:shadow-md hover:shadow-cyan-500/10 hover:translate-y-[-1px] active:translate-y-[0px]",
+          "border border-slate-700 bg-transparent text-slate-300 shadow-sm hover:border-cyan-590 hover:bg-slate-850 hover:text-white hover:shadow-md hover:shadow-cyan-500/10",
         secondary:
-          "bg-slate-800 text-slate-200 shadow-sm hover:bg-slate-700 hover:shadow-md hover:shadow-slate-900/20 hover:translate-y-[-1px] active:translate-y-[0px]",
+          "bg-slate-800 text-slate-200 shadow-sm hover:bg-slate-700 hover:shadow-md hover:shadow-slate-900/20",
         ghost:
           "bg-transparent hover:bg-slate-850 hover:text-cyan-400 transition-all",
         link: "text-cyan-400 underline-offset-4 hover:underline hover:text-cyan-300 p-0 h-auto",
