@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { format } from "date-fns";
@@ -10,28 +9,16 @@ import { IconCalendar, IconClock, IconArrowRight } from "@tabler/icons-react";
 
 interface PostRowProps {
   post: Post;
-  index: number;
-  isInView: boolean;
 }
 
 /**
  * PostRow component displays a single blog post in a row format.
  */
-export function PostRow({ post, index, isInView }: PostRowProps) {
+export function PostRow({ post }: PostRowProps) {
   const formattedDate = format(new Date(post.frontmatter.date), "MMMM d, yyyy");
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{
-        duration: 0.5,
-        delay: 0.1 * Math.min(index, 5),
-        layout: { duration: 0.3 },
-      }}
-      className="group"
-    >
+    <div className="group">
       <Link href={`/blog/${post.slug}`} className="block">
         <article className="border-slate-730 bg-slate-830 hover:border-cyan-590 relative overflow-hidden rounded-xl border transition-all duration-300 hover:shadow-md hover:shadow-cyan-500/10">
           <div className="flex flex-col md:flex-row">
@@ -124,6 +111,6 @@ export function PostRow({ post, index, isInView }: PostRowProps) {
           </div>
         </article>
       </Link>
-    </motion.div>
+    </div>
   );
 }

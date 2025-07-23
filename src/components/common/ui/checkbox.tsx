@@ -43,6 +43,7 @@ function Checkbox({
 
         className
       )}
+      data-animation-exclude="true"
       {...props}
     >
       <CheckboxPrimitive.Indicator
@@ -52,6 +53,7 @@ function Checkbox({
           "data-[state=checked]:scale-100 data-[state=unchecked]:scale-0",
           "data-[state=checked]:opacity-100 data-[state=unchecked]:opacity-0"
         )}
+        data-animation-exclude="true"
       >
         <IconCheck
           className="size-3 stroke-[3]"
@@ -61,7 +63,10 @@ function Checkbox({
       </CheckboxPrimitive.Indicator>
 
       {/* inner glow effect */}
-      <div className="absolute inset-0 rounded-md bg-gradient-to-br from-white/10 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-data-[state=checked]:opacity-20" />
+      <div
+        className="absolute inset-0 rounded-md bg-gradient-to-br from-white/10 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-data-[state=checked]:opacity-20"
+        data-animation-exclude="true"
+      />
     </CheckboxPrimitive.Root>
   );
 }

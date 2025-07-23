@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@ui/button";
@@ -21,26 +20,11 @@ export function Sidebar() {
   const searchParams = useSearchParams();
   const isFeatured = searchParams.get("featured") === "true";
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 },
-  };
-
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-      className="flex h-full flex-col"
-    >
+    <div className="flex h-full flex-col">
       {/* Profile Section */}
       <div className="mb-8">
-        <motion.div
-          className="relative mb-6 flex justify-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="relative mb-6 flex justify-center">
           <div className="border-cyan-520 hover:border-cyan-590 relative overflow-hidden rounded-full border-2 shadow-lg shadow-cyan-500/10 transition-all duration-600">
             <Image
               src="/profile.webp"
@@ -51,7 +35,7 @@ export function Sidebar() {
               priority
             />
           </div>
-        </motion.div>
+        </div>
         <h3 className="mb-2 text-center text-xl font-medium text-white">
           Adrian Crîșmaruc
         </h3>
@@ -99,19 +83,14 @@ export function Sidebar() {
         <div className="mt-2 h-1 w-20 rounded-full bg-blue-400"></div>
 
         {/* Description text */}
-        <motion.p
-          className="mt-4 text-sm leading-relaxed text-slate-300"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-        >
+        <p className="mt-4 text-sm leading-relaxed text-slate-300">
           Practical tutorials, in-depth guides and insights on software
           development, Linux, servers and more.
-        </motion.p>
+        </p>
       </div>
 
       {/* Navigation Buttons */}
-      <motion.div variants={itemVariants} className="mb-6 space-y-2">
+      <div className="mb-6 space-y-2">
         <Button
           variant="ghost"
           className={`group hover:border-slate-750 hover:bg-slate-850 w-full justify-start rounded-xl border border-transparent font-medium transition-all duration-300 hover:text-cyan-400 hover:shadow-lg ${
@@ -140,7 +119,7 @@ export function Sidebar() {
             Featured
           </Link>
         </Button>
-      </motion.div>
+      </div>
 
       {/* Buy Me a Coffee Button */}
       <div className="mt-auto">
@@ -159,6 +138,6 @@ export function Sidebar() {
           </Button>
         </a>
       </div>
-    </motion.div>
+    </div>
   );
 }

@@ -1,25 +1,17 @@
+"use client";
+
 import { Button } from "@components/common/ui/button";
 import { Input } from "@components/common/ui/input";
+import { useFilterContext } from "@contexts/blog/FilterContext";
 import { IconSearch, IconX, IconFilter } from "@tabler/icons-react";
-
-interface SearchMobileProps {
-  searchQuery: string;
-  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
-  applyFilters: (overrideSearchQuery?: string) => void;
-  handleClear: () => void;
-  setDrawerOpen: (open: boolean) => void;
-}
 
 /**
  * SearchMobile component provides a search input and filter button for mobile view.
  */
-export const SearchMobile = ({
-  searchQuery,
-  setSearchQuery,
-  applyFilters,
-  handleClear,
-  setDrawerOpen,
-}: SearchMobileProps) => {
+export const SearchMobile = () => {
+  const { searchQuery, setSearchQuery, setDrawerOpen, applyFilters } =
+    useFilterContext();
+
   return (
     <div className="mb-8 flex items-center justify-between gap-4 lg:hidden">
       <div className="group relative flex-1">
@@ -42,7 +34,7 @@ export const SearchMobile = ({
         {searchQuery && (
           <button
             onClick={() => {
-              handleClear();
+              setSearchQuery("");
               applyFilters("");
             }}
             className="absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer text-slate-400 transition-colors duration-200 hover:text-slate-200 focus:outline-none"

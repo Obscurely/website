@@ -1,3 +1,6 @@
+/**
+ * Fallback skeleton loading for the blog page.
+ */
 export const BlogLoadingFallback = () => {
   return (
     <div className="relative min-h-screen pt-16">

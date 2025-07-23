@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { IconFilter, IconCalendar, IconTag } from "@tabler/icons-react";
 import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
@@ -12,50 +11,34 @@ import {
 } from "@ui/accordion";
 import { Search } from "./Search";
 import { Checkbox } from "@ui/checkbox";
+import { useFilterContext } from "@contexts/blog/FilterContext";
 
 interface FilterSidebarProps {
   isMobile?: boolean; // Optional prop for mobile drawer
-  searchQuery: string;
-  setSearchQueryAction: React.Dispatch<React.SetStateAction<string>>;
   tags: string[];
-  selectedTag: string | null;
-  setSelectedTagAction: React.Dispatch<React.SetStateAction<string | null>>;
   years: string[];
-  selectedYear: string | null;
-  setSelectedYearAction: React.Dispatch<React.SetStateAction<string | null>>;
-  isFeatured: boolean;
-  setIsFeaturedAction: React.Dispatch<React.SetStateAction<boolean>>;
-  applyFiltersAction: () => void;
-  clearFiltersAction: () => void;
-  setDrawerOpenAction: (open: boolean) => void; // Optional for mobile drawer
 }
 
 /**
  * FilterSidebar component provides a sidebar for filtering blog posts by search query, tags, years, and featured status.
  */
-export function FilterSidebar({
-  isMobile,
-  searchQuery,
-  setSearchQueryAction: setSearchQuery,
-  tags,
-  selectedTag,
-  setSelectedTagAction: setSelectedTag,
-  years,
-  selectedYear,
-  setSelectedYearAction: setSelectedYear,
-  isFeatured,
-  setIsFeaturedAction: setIsFeatured,
-  applyFiltersAction: applyFilters,
-  clearFiltersAction: clearFilters,
-  setDrawerOpenAction: setDrawerOpen, // Optional for mobile drawer
-}: FilterSidebarProps) {
+export function FilterSidebar({ isMobile, tags, years }: FilterSidebarProps) {
+  const {
+    searchQuery,
+    setSearchQuery,
+    selectedTag,
+    setSelectedTag,
+    selectedYear,
+    setSelectedYear,
+    isFeatured,
+    setIsFeatured,
+    setDrawerOpen,
+    applyFilters,
+    clearFilters,
+  } = useFilterContext();
+
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-      className="flex h-full flex-col"
-    >
+    <div className="flex h-full flex-col">
       {/* Search */}
       <div className="mb-3">
         <Search
@@ -183,6 +166,6 @@ export function FilterSidebar({
           Clear All
         </Button>
       </div>
-    </motion.div>
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import { BlogLoadingFallback } from "@components/blog/main/LoadingFallback";
 import { Footer } from "@components/common/layout/Footer/Footer";
 import { Navbar } from "@common/layout/Navbar/Navbar";
 import { getAllPosts } from "@lib/blog";
+import { filterPosts, getUniqueTagsAndYears } from "@utils/blog/filter";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import { pageMetadata } from "@data/blog/metadata";
@@ -17,8 +18,20 @@ import {
 
 export const metadata: Metadata = pageMetadata;
 
-export default async function Blog() {
-  const posts = await getAllPosts();
+interface BlogPageProps {
+  searchParams: Promise<{
+    search?: string;
+    tag?: string;
+    year?: string;
+    featured?: string;
+  }>;
+}
+
+export default async function Blog({ searchParams }: BlogPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const allPosts = await getAllPosts();
+  const filteredPosts = filterPosts(allPosts, resolvedSearchParams);
+  const { allTags, allYears } = getUniqueTagsAndYears(allPosts);
 
   return (
     <>
@@ -41,7 +54,12 @@ export default async function Blog() {
         <main className="relative">
           <div className="relative z-10">
             <Suspense fallback={<BlogLoadingFallback />}>
-              <BlogPage initialPosts={posts} />
+              <BlogPage
+                filteredPosts={filteredPosts}
+                allTags={allTags}
+                allYears={allYears}
+                currentFilters={resolvedSearchParams}
+              />
             </Suspense>
           </div>
         </main>

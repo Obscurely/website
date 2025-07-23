@@ -1,47 +1,38 @@
 import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-interface FilterHook {
-  selectedTag: string | null;
-  setSelectedTag: React.Dispatch<React.SetStateAction<string | null>>;
-  searchQuery: string;
-  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+interface CurrentFilters {
+  search?: string;
+  tag?: string;
+  year?: string;
+  featured?: string;
 }
 
 /**
  * Custom hook to manage filtering of blog posts based on tags, years, search queries, and featured status.
- *
- * @param selectedTag - The currently selected tag for filtering blog posts.
- * @param setSelectedTag - Function to update the selected tag.
- * @param searchQuery - The current search query for filtering blog posts.
- * @param setSearchQuery - Function to update the search query.
- * @returns
  */
-export const useFilter = ({
-  selectedTag,
-  setSelectedTag,
-  searchQuery,
-  setSearchQuery,
-}: FilterHook) => {
+export const useFilter = (currentFilters: CurrentFilters) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
-  const [selectedYear, setSelectedYear] = useState<string | null>(null);
-  const [isFeatured, setIsFeatured] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(currentFilters.search || "");
+  const [selectedTag, setSelectedTag] = useState<string | null>(
+    currentFilters.tag || null
+  );
+  const [selectedYear, setSelectedYear] = useState<string | null>(
+    currentFilters.year || null
+  );
+  const [isFeatured, setIsFeatured] = useState(
+    currentFilters.featured === "true"
+  );
+  const [drawerOpen, setDrawerOpen] = useState(false); // handle mobile drawer state
 
-  // Initialize filters from URL
+  // Update state when current filters change
   useEffect(() => {
-    const tagParam = searchParams.get("tag");
-    const yearParam = searchParams.get("year");
-    const searchParam = searchParams.get("search");
-    const featuredParam = searchParams.get("featured");
-
-    if (tagParam) setSelectedTag(tagParam);
-    if (yearParam) setSelectedYear(yearParam);
-    if (searchParam) setSearchQuery(searchParam);
-
-    setIsFeatured(featuredParam === "true");
-  }, [searchParams, setSearchQuery, setSelectedTag]);
+    setSearchQuery(currentFilters.search || "");
+    setSelectedTag(currentFilters.tag || null);
+    setSelectedYear(currentFilters.year || null);
+    setIsFeatured(currentFilters.featured === "true");
+  }, [currentFilters]);
 
   // Apply filters
   const applyFilters = (overrideSearchQuery?: string) => {
@@ -74,10 +65,16 @@ export const useFilter = ({
   };
 
   return {
+    searchQuery,
+    setSearchQuery,
+    selectedTag,
+    setSelectedTag,
     selectedYear,
     setSelectedYear,
     isFeatured,
     setIsFeatured,
+    drawerOpen,
+    setDrawerOpen,
     applyFilters,
     clearFilters,
   };
