@@ -9,11 +9,10 @@ export const Background = () => {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 1.05]);
 
   return (
     <motion.div
-      style={{ opacity, scale }}
+      style={{ opacity }}
       className="pointer-events-none fixed inset-0 z-0 h-screen w-screen"
     >
       <div className="bg-slate-850 absolute inset-0 h-full w-full" />
