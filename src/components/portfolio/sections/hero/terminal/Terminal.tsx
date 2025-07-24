@@ -10,10 +10,10 @@ import { AnimatedRole } from "./AnimatedRole";
 export const Terminal = () => {
   return (
     <div
-      className="data-[state=once]:animate-in data-[state=once]:zoom-in-90 flex rounded-2xl opacity-0 backdrop-blur-xs duration-500 ease-out will-change-transform data-[state=once]:opacity-100 lg:col-span-2"
+      className="data-[state=once]:animate-in data-[state=once]:zoom-in-90 flex rounded-2xl opacity-0 duration-500 ease-out will-change-transform data-[state=once]:opacity-100 lg:col-span-2"
       data-state="once"
     >
-      <div className="relative flex w-full flex-col overflow-hidden rounded-2xl border border-slate-600/30 bg-slate-900/30 shadow-2xl shadow-black/20">
+      <div className="relative flex w-full flex-col overflow-hidden rounded-2xl border border-slate-600/30 bg-slate-900/40 shadow-2xl shadow-black/20">
         {/* Terminal Header */}
         <div className="flex flex-shrink-0 items-center justify-between border-b border-slate-600/30 bg-slate-800/40 px-6 py-2">
           <div className="flex items-center gap-4">
