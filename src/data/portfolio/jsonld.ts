@@ -6,7 +6,7 @@ export const personJsonLd = {
   name: "Adrian Crîșmaruc",
   givenName: "Adrian",
   familyName: "Crîșmaruc",
-  jobTitle: "Full-Stack Developer",
+  jobTitle: "Full-Stack Developer, Founder & CEO of RekoSearch",
   description: DESCRIPTION,
   url: "https://adriancrismaruc.com",
   image: "https://adriancrismaruc.com/og-home.jpg",
@@ -124,16 +124,32 @@ export const personJsonLd = {
     "@type": "Organization",
     name: "Self-Taught",
   },
+  founder: [
+    {
+      "@type": "SoftwareApplication",
+      name: "RekoSearch",
+      url: "https://rekosearch.com",
+    },
+  ],
+  brand: {
+    "@type": "Brand",
+    name: "RekoSearch",
+    url: "https://rekosearch.com",
+  },
   owns: [
     {
       "@type": "SoftwareApplication",
       name: "RekoSearch",
       description:
-        "An AI-powered file search engine for images, videos, documents and audio that understands the content of your files, enabling semantic search across them.",
+        "An AI-powered file search engine for images, videos, documents and audio that understands the content of your files, enabling semantic search across them. Founded and developed by Adrian Crîșmaruc.",
       url: "https://rekosearch.com",
       applicationCategory: "WebApplication",
       operatingSystem: "Web",
       programmingLanguage: ["Rust", "Python", "TypeScript"],
+      founder: {
+        "@type": "Person",
+        name: "Adrian Crîșmaruc",
+      },
       offers: {
         "@type": "Offer",
         availability: "https://schema.org/InStock",
@@ -263,6 +279,8 @@ export const organizationJsonLd = {
     "Infrastructure as Code",
     "Performance Optimization",
     "Automation",
+    "RekoSearch Development",
+    "AI-Powered Search Engines",
   ],
   makesOffer: [
     {
