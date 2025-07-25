@@ -3,6 +3,9 @@ import { Sidebar } from "./sidebar/Sidebar";
 import { ArrowDown } from "./ArrowDown";
 import { TimeProvider } from "@contexts/portfolio/TimeContext";
 
+/**
+ * The hero section of the portfolio page
+ */
 export const Hero = () => {
   return (
     <section

@@ -2,6 +2,9 @@ const HEADER_HEIGHT = 50;
 
 import { useState, useCallback } from "react";
 
+/**
+ * Custom hook to manage mobile navigation bar behavior.
+ */
 export const useNavbarMobile = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 

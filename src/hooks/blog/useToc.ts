@@ -1,6 +1,9 @@
 import { TocItem } from "@data/blog/toc";
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 
+/**
+ * Custom hook to manage Table of Contents (TOC) behavior.
+ */
 export const useToc = (toc: TocItem[]) => {
   const [activeId, setActiveId] = useState<string>("");
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);

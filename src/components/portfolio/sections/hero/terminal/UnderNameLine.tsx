@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 
+/**
+ * Animated line that gets drawn under the name in the hero section.
+ */
 export const UnderNameLine = () => {
   return (
     <motion.div

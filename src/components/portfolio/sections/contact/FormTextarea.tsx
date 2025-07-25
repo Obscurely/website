@@ -15,6 +15,19 @@ interface FormTextareaProps {
   className?: string;
 }
 
+/**
+ * FormTextarea component renders a labeled textarea with validation error handling.
+ *
+ * @param id - The unique identifier for the textarea
+ * @param label - The label text for the textarea
+ * @param value - The current value of the textarea
+ * @param error - Error message to display if validation fails
+ * @param placeholder - Placeholder text for the textarea
+ * @param required - Whether the textarea is required (default is false)
+ * @param maxLength - Maximum length of the textarea value
+ * @param onChange - Callback function to handle value changes
+ * @param onBlur - Callback function to handle blur events
+ */
 export const FormTextarea = ({
   id,
   label,

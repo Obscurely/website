@@ -15,6 +15,9 @@ export const filterCategories = ["All", "Featured", ...categories];
 const featuredProjects: Project[] = projectsArray.filter((p) => p.featured);
 const nonFeaturedProjects: Project[] = projectsArray.filter((p) => !p.featured);
 
+/**
+ * Custom hook to manage project filtering, pagination, and responsive behavior.
+ */
 export const useProjects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);

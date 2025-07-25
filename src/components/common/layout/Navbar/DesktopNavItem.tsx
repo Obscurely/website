@@ -10,6 +10,15 @@ interface DesktopNavItemProps {
   onNavClickAction: (href: string) => void;
 }
 
+/**
+ * DesktopNavItem component renders a navigation item for desktop view.
+ *
+ * @param item - The navigation item object containing name and href.
+ * @param isBlog - Indicates if the component is called from the blog or not.
+ * @param activeSection - The currently active section for highlighting.
+ * @param useAnchorLinks - Whether to use anchor links for navigation.
+ * @param onNavClickAction - Function to handle navigation click actions.
+ */
 export const DesktopNavItem = ({
   item,
   isBlog,

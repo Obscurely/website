@@ -15,7 +15,7 @@ import {
   IconStar,
 } from "@tabler/icons-react";
 import { Post } from "@lib/blog";
-import { cardVariants } from "./animations";
+import { cardVariants } from "@data/portfolio/animations";
 
 const CardWrapper = ({
   children,

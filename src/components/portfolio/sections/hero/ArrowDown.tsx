@@ -3,6 +3,9 @@
 import { IconArrowDown } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 
+/**
+ * A button component that scrolls the page to the "About" section
+ */
 export const ArrowDown = () => {
   return (
     <div

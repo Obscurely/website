@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 
+/**
+ * Custom hook to manage the maximum height of a set of card elements.
+ */
 export const useMaxCardHeight = () => {
   const [maxHeight, setMaxHeight] = useState<number>(0);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);

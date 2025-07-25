@@ -4,6 +4,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 type SidebarState = "initial" | "fixed" | "bottom";
 
+/**
+ * Custom hook to manage sidebar positioning based on scroll position.
+ */
 export function useSidebarPositioning() {
   const [sidebarState, setSidebarState] = useState<SidebarState>("initial");
   const [sidebarWidth, setSidebarWidth] = useState(0);

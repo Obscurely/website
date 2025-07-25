@@ -7,6 +7,12 @@ interface NavbarProps {
   isMain?: boolean;
 }
 
+/**
+ * Navbar component renders the navigation bar for the website.
+ *
+ * @param isBlog - Indicates if the navbar is for the blog section.
+ * @param isMain - Indicates if the navbar is for the main section.
+ */
 export const Navbar = ({ isBlog = false, isMain = false }: NavbarProps) => {
   const nameHref = isBlog ? "/blog" : "/#home";
 

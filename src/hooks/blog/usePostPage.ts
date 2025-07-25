@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+/**
+ * Custom hook to manage the post page state, including initial sidebar width and mobile viewport detection.
+ */
 export const usePostPage = (sidebarWidth: number) => {
   const [initialWidth, setInitialWidth] = useState<number | null>(null);
 

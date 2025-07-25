@@ -11,6 +11,17 @@ interface MobileNavItemProps {
   onMenuCloseAction: () => void;
 }
 
+/**
+ * MobileNavItem component renders a navigation item for mobile view.
+ *
+ * @param item - The navigation item object containing name and href.
+ * @param isBlog - Indicates if the component is called from the blog or not.
+ * @param activeSection - The currently active section for highlighting.
+ * @param useAnchorLinks - Whether to use anchor links for navigation.
+ * @param onNavClickAction - Function to handle navigation click actions.
+ * @param onMenuCloseAction - Function to handle closing the mobile menu.
+ * @returns
+ */
 export const MobileNavItem = ({
   item,
   isBlog,

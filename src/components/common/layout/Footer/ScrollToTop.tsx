@@ -4,6 +4,9 @@ import { IconArrowUp } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 import { useCallback } from "react";
 
+/**
+ * ScrollToTop component that renders a button to scroll the page to the top.
+ */
 export const ScrollToTop = () => {
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });

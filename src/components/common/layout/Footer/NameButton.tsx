@@ -2,6 +2,9 @@
 
 import { useCallback } from "react";
 
+/**
+ * NameButton component that renders a button with the name "Adrian Crîșmaruc".
+ */
 export const NameButton = () => {
   const handleNavClick = useCallback((href: string) => {
     const element = document.querySelector(href);

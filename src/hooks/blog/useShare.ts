@@ -1,6 +1,9 @@
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 
+/**
+ * Custom hook to handle sharing the current page URL.
+ */
 export const useShare = () => {
   const [shareState, setShareState] = useState<"idle" | "copied" | "error">(
     "idle"

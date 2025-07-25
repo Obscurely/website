@@ -32,6 +32,9 @@ const INITIAL_TOUCHED_STATE = {
   message: true,
 };
 
+/**
+ * Custom hook to manage contact form state and validation.
+ */
 export const useContact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);

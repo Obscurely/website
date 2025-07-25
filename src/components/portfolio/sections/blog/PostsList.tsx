@@ -6,6 +6,9 @@ import { LOADING_POSTS } from "@utils/portfolio/blog";
 import { BlogCard } from "./BlogCard";
 import { useInView } from "framer-motion";
 
+/**
+ * PostsList component fetches and displays the latest blog posts.
+ */
 export const PostsList = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref);

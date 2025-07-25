@@ -3,6 +3,9 @@
 import { IconArrowRight, IconCode, IconUser } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 
+/**
+ * The get in touch, view projects, and view resume buttons.
+ */
 export const Buttons = () => {
   return (
     <>

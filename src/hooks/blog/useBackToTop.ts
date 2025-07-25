@@ -2,6 +2,9 @@ import { SCROLL_CONFIG } from "@data/blog/config";
 import { throttle } from "@lib/utils";
 import { useState, useEffect, useCallback } from "react";
 
+/**
+ * Handle scrolling back to the top of the page.
+ */
 export function useBackToTop() {
   const [showBackToTop, setShowBackToTop] = useState(false);
 

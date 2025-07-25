@@ -4,6 +4,9 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 
 const SECTION_OFFSET = 100;
 
+/**
+ * Custom hook to manage navigation bar behavior and active section tracking.
+ */
 export const useNavbar = (isBlog: boolean, isMain: boolean) => {
   const [activeSection, setActiveSection] = useState("home");
 

@@ -6,6 +6,9 @@ import { useContact } from "@hooks/portfolio/useContact";
 import { FormField } from "./FormField";
 import { FormTextarea } from "./FormTextarea";
 
+/**
+ * ContactForm component that allows users to send messages.
+ */
 export const ContactForm = () => {
   const {
     formData,

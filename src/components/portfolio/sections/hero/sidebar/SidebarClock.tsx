@@ -2,6 +2,9 @@
 
 import { useCurrentTime } from "@contexts/portfolio/TimeContext";
 
+/**
+ * TerminalClock component that displays the current time in a terminal-like format.
+ */
 export const SidebarClock = () => {
   const currentTime = useCurrentTime();
 

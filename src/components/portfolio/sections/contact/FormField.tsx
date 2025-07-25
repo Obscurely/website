@@ -15,6 +15,20 @@ interface FormFieldProps {
   onBlur: () => void;
 }
 
+/**
+ * FormField component renders a labeled input field with validation error handling.
+ *
+ * @param id - The unique identifier for the form field
+ * @param label - The label text for the form field
+ * @param type - The type of input (default is "text")
+ * @param value - The current value of the input field
+ * @param error - Error message to display if validation fails
+ * @param placeholder - Placeholder text for the input field
+ * @param required - Whether the field is required (default is false)
+ * @param maxLength - Maximum length of the input value
+ * @param onChange - Callback function to handle value changes
+ * @param onBlur - Callback function to handle blur events
+ */
 export const FormField = ({
   id,
   label,

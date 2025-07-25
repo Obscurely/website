@@ -2,6 +2,9 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 
+/**
+ * Background component that applies a background image and color
+ */
 export const Background = () => {
   // Use the document as the scroll container instead of a specific element
   const { scrollYProgress } = useScroll({

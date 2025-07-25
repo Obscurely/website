@@ -2,6 +2,9 @@
 
 import { useCurrentTime } from "@contexts/portfolio/TimeContext";
 
+/**
+ * Grabs the current time from a context and displays it in the terminal header
+ */
 export const TerminalClock = () => {
   const currentTime = useCurrentTime();
 

@@ -7,6 +7,9 @@ import {
   navItemsPortfolio,
 } from "@data/common/footer";
 
+/**
+ * useFooter hook to manage footer navigation and sections.
+ */
 export const useFooter = (isBlog: boolean, isMain: boolean) => {
   const navItems = useMemo(
     () => (isBlog ? navItemsBlog : navItemsPortfolio),

@@ -1,5 +1,8 @@
 "use client";
 
+/**
+ * The many more button that scrolls you to the "About" section
+ */
 export const ManyMore = () => {
   return (
     <p

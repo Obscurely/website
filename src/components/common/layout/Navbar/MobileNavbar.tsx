@@ -12,6 +12,12 @@ interface MobileNavbarProps {
   isMain: boolean;
 }
 
+/**
+ * MobileNavbar component renders a responsive navigation bar for mobile devices.
+ *
+ * @param isBlog - Indicates if the navbar is for the blog section.
+ * @param isMain - Indicates if the navbar is for the main section.
+ */
 export const MobileNavbar = ({ isBlog, isMain }: MobileNavbarProps) => {
   const { activeSection, navItems, useAnchorLinks } = useNavbar(isBlog, isMain);
 

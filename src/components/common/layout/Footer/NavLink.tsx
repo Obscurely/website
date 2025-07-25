@@ -8,6 +8,13 @@ interface NavLinkProps {
   useAnchorLinks: boolean;
 }
 
+/**
+ * Either scrolls you to the section or navigates to a link.
+ *
+ * @param isBlog - Indicates if the the component is called from the blog or not.
+ * @param link - The link object containing name, href, and external properties.
+ * @param useAnchorLinks - Whether to use anchor links for navigation.
+ */
 export const NavLink = ({ isBlog, link, useAnchorLinks }: NavLinkProps) => {
   const isRSS = link.name === "RSS";
 

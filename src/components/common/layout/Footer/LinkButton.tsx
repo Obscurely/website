@@ -7,6 +7,12 @@ interface LinkButtonProps {
   href: string;
 }
 
+/**
+ * LinkButton component that renders a button to navigate to a specific section.
+ *
+ * @param name - The name of the button to display.
+ * @param href - The target section ID to scroll to when the button is clicked.
+ */
 export const LinkButton = ({ name, href }: LinkButtonProps) => {
   const handleNavClick = useCallback((href: string) => {
     const element = document.querySelector(href);

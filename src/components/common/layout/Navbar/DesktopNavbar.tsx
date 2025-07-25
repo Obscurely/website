@@ -11,6 +11,12 @@ interface DesktopNavbarProps {
   isMain: boolean;
 }
 
+/**
+ * DesktopNavbar component renders a navigation bar for desktop devices.
+ *
+ * @param isBlog - Indicates if the navbar is for the blog section.
+ * @param isMain - Indicates if the navbar is for the main section.
+ */
 export const DesktopNavbar = ({ isBlog, isMain }: DesktopNavbarProps) => {
   const { handleNavClick, activeSection, navItems, useAnchorLinks } = useNavbar(
     isBlog,

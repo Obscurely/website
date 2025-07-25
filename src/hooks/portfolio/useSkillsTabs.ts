@@ -7,6 +7,9 @@ export const tabCategories = Object.values(SkillCategory).filter(
   (category) => category !== SkillCategory.KeySkills
 );
 
+/**
+ * Custom hook to manage skills tabs and their content height.
+ */
 export const useSkillsTabs = () => {
   const defaultValue = useMemo(
     () => tabCategories[0] || SkillCategory.Frontend,

@@ -4,7 +4,7 @@ import { memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Project } from "@data/portfolio/projects";
 import { ProjectCard } from "./ProjectCard";
-import { carouselVariants, cardVariants } from "./animations";
+import { carouselVariants, cardVariants } from "@data/portfolio/animations";
 import { useMaxCardHeight } from "@hooks/portfolio/useMaxCardHeight";
 
 interface ProjectsListProps {

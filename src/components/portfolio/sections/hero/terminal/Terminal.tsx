@@ -7,6 +7,9 @@ import { UnderNameLine } from "./UnderNameLine";
 import { TerminalClock } from "./TerminalClock";
 import { AnimatedRole } from "./AnimatedRole";
 
+/**
+ * The terminal and main part of the portfolio hero section.
+ */
 export const Terminal = () => {
   return (
     <div

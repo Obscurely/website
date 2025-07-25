@@ -2,6 +2,9 @@ import { IconUser } from "@tabler/icons-react";
 import Image from "next/image";
 import { SidebarClock } from "./SidebarClock";
 
+/**
+ * The sidebar part of the hero section containing the 2 widgets (profile image and system status).
+ */
 export const Sidebar = () => {
   return (
     <div
