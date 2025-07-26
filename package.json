@@ -10,7 +10,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "next lint",
-    "minify": "terser scripts/animations.js -c -m -o public/animations.min.js",
+    "minify": "terser src/scripts/animations.js -c -m -o public/animations.min.js",
     "minify:watch": "chokidar 'scripts/**/*.js' -c 'npm run minify'",
     "prepare": "husky",
     "start": "next start",
