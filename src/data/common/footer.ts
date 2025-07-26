@@ -18,9 +18,9 @@ export const getResourceLinks = (): FooterLink[] => [
 ];
 
 export const getLegalLinks = (): FooterLink[] => [
-  { name: "Privacy Policy", href: "/privacy", external: true },
-  { name: "Terms of Service", href: "/terms", external: true },
-  { name: "Cookie Policy", href: "/cookies", external: true },
+  { name: "Privacy Policy", href: "/privacy-policy", external: true },
+  { name: "Terms of Service", href: "/terms-of-service", external: true },
+  { name: "Cookie Policy", href: "/cookie-policy", external: true },
 ];
 
 export const navItemsPortfolio = [

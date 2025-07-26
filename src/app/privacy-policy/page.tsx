@@ -7,29 +7,29 @@ import { Metadata } from "next";
 import Script from "next/script";
 
 const DESCRIPTION =
-  "Cookie policy for Adrian Crîșmaruc's website - privacy-first approach without tracking cookies.";
+  "Privacy policy and data handling practices for Adrian Crîșmaruc's website.";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | Adrian Crîșmaruc",
+  title: "Privacy Policy | Adrian Crîșmaruc",
   authors: [{ name: "Adrian Crîșmaruc", url: "https://adriancrismaruc.com" }],
   description: DESCRIPTION,
   alternates: {
-    canonical: "https://adriancrismaruc.com/cookies",
+    canonical: "https://adriancrismaruc.com/privacy-policy",
   },
   openGraph: {
-    title: "Cookie Policy | Adrian Crîșmaruc",
+    title: "Privacy Policy | Adrian Crîșmaruc",
     description:
-      "Cookie policy for Adrian Crîșmaruc's website - privacy-first approach without tracking cookies.",
+      "Privacy policy and data handling practices for Adrian Crîșmaruc's website.",
     type: "website",
-    url: "https://adriancrismaruc.com/cookies",
-    siteName: "Cookie Policy | Adrian Crîșmaruc",
+    url: "https://adriancrismaruc.com/privacy-policy",
+    siteName: "Privacy Policy | Adrian Crîșmaruc",
     locale: "en_US",
   },
   twitter: {
     card: "summary",
-    title: "Cookie Policy | Adrian Crîșmaruc",
+    title: "Privacy Policy | Adrian Crîșmaruc",
     description:
-      "Cookie policy for Adrian Crîșmaruc's website - privacy-first approach without tracking cookies.",
+      "Privacy policy and data handling practices for Adrian Crîșmaruc's website.",
   },
   robots: {
     index: false, // Don't index policy pages
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Cookies() {
-  const policy = await getPolicyBySlug("COOKIES");
+export default async function Privacy() {
+  const policy = await getPolicyBySlug("PRIVACY");
 
   if (!policy) {
     notFound();
@@ -47,9 +47,9 @@ export default async function Cookies() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Cookies Policy",
+    name: "Privacy Policy",
     description: DESCRIPTION,
-    url: "https://adriancrismaruc.com/cookies",
+    url: "https://adriancrismaruc.com/privacy-policy",
     author: {
       "@type": "Person",
       name: "Adrian Crîșmaruc",
@@ -71,7 +71,7 @@ export default async function Cookies() {
   return (
     <>
       <Script
-        id="cookies-jsonld"
+        id="privacy-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

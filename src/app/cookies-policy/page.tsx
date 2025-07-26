@@ -6,28 +6,30 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Script from "next/script";
 
+const DESCRIPTION =
+  "Cookie policy for Adrian Crîșmaruc's website - privacy-first approach without tracking cookies.";
+
 export const metadata: Metadata = {
-  title: "Terms of Service | Adrian Crîșmaruc",
+  title: "Cookie Policy | Adrian Crîșmaruc",
   authors: [{ name: "Adrian Crîșmaruc", url: "https://adriancrismaruc.com" }],
-  description:
-    "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
+  description: DESCRIPTION,
   alternates: {
-    canonical: "https://adriancrismaruc.com/terms",
+    canonical: "https://adriancrismaruc.com/cookie-policy",
   },
   openGraph: {
-    title: "Terms of Service | Adrian Crîșmaruc",
+    title: "Cookie Policy | Adrian Crîșmaruc",
     description:
-      "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
+      "Cookie policy for Adrian Crîșmaruc's website - privacy-first approach without tracking cookies.",
     type: "website",
-    url: "https://adriancrismaruc.com/terms",
-    siteName: "Terms of Service | Adrian Crîșmaruc",
+    url: "https://adriancrismaruc.com/cookie-policy",
+    siteName: "Cookie Policy | Adrian Crîșmaruc",
     locale: "en_US",
   },
   twitter: {
     card: "summary",
-    title: "Terms of Service | Adrian Crîșmaruc",
+    title: "Cookie Policy | Adrian Crîșmaruc",
     description:
-      "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
+      "Cookie policy for Adrian Crîșmaruc's website - privacy-first approach without tracking cookies.",
   },
   robots: {
     index: false, // Don't index policy pages
@@ -35,8 +37,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function TermsOfService() {
-  const policy = await getPolicyBySlug("TOS");
+export default async function Cookies() {
+  const policy = await getPolicyBySlug("COOKIES");
 
   if (!policy) {
     notFound();
@@ -45,10 +47,9 @@ export default async function TermsOfService() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Terms of Service",
-    description:
-      "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
-    url: "https://adriancrismaruc.com/terms",
+    name: "Cookies Policy",
+    description: DESCRIPTION,
+    url: "https://adriancrismaruc.com/cookie-policy",
     author: {
       "@type": "Person",
       name: "Adrian Crîșmaruc",
@@ -70,7 +71,7 @@ export default async function TermsOfService() {
   return (
     <>
       <Script
-        id="terms-jsonld"
+        id="cookies-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

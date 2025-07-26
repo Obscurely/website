@@ -6,30 +6,28 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Script from "next/script";
 
-const DESCRIPTION =
-  "Privacy policy and data handling practices for Adrian Crîșmaruc's website.";
-
 export const metadata: Metadata = {
-  title: "Privacy Policy | Adrian Crîșmaruc",
+  title: "Terms of Service | Adrian Crîșmaruc",
   authors: [{ name: "Adrian Crîșmaruc", url: "https://adriancrismaruc.com" }],
-  description: DESCRIPTION,
+  description:
+    "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
   alternates: {
-    canonical: "https://adriancrismaruc.com/privacy",
+    canonical: "https://adriancrismaruc.com/terms-of-service",
   },
   openGraph: {
-    title: "Privacy Policy | Adrian Crîșmaruc",
+    title: "Terms of Service | Adrian Crîșmaruc",
     description:
-      "Privacy policy and data handling practices for Adrian Crîșmaruc's website.",
+      "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
     type: "website",
-    url: "https://adriancrismaruc.com/privacy",
-    siteName: "Privacy Policy | Adrian Crîșmaruc",
+    url: "https://adriancrismaruc.com/terms-of-service",
+    siteName: "Terms of Service | Adrian Crîșmaruc",
     locale: "en_US",
   },
   twitter: {
     card: "summary",
-    title: "Privacy Policy | Adrian Crîșmaruc",
+    title: "Terms of Service | Adrian Crîșmaruc",
     description:
-      "Privacy policy and data handling practices for Adrian Crîșmaruc's website.",
+      "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
   },
   robots: {
     index: false, // Don't index policy pages
@@ -37,8 +35,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Privacy() {
-  const policy = await getPolicyBySlug("PRIVACY");
+export default async function TermsOfService() {
+  const policy = await getPolicyBySlug("TOS");
 
   if (!policy) {
     notFound();
@@ -47,9 +45,10 @@ export default async function Privacy() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Privacy Policy",
-    description: DESCRIPTION,
-    url: "https://adriancrismaruc.com/privacy",
+    name: "Terms of Service",
+    description:
+      "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
+    url: "https://adriancrismaruc.com/terms-of-service",
     author: {
       "@type": "Person",
       name: "Adrian Crîșmaruc",
@@ -71,7 +70,7 @@ export default async function Privacy() {
   return (
     <>
       <Script
-        id="privacy-jsonld"
+        id="terms-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
