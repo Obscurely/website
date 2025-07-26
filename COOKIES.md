@@ -1,7 +1,9 @@
 ---
 title: Cookie Policy
 lastUpdated: 2025-06-28
-description: The privacy-first approach to cookies and analytics on my website.
+description:
+  The privacy-first approach to cookies and analytics on Adrian Crîșmaruc's
+  website.
 ---
 
 # Cookie Policy

@@ -1,0 +1,47 @@
+/* TEAM */
+    Developer: Adrian Crîșmaruc
+    Contact: contact [at] adriancrismaruc.com
+    From: Iași, Romania
+
+/* CONTACT */
+    GitHub: https://github.com/Obscurely
+    LinkedIn:https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0
+    Reddit:https://www.reddit.com/user/CrismarucAdrian 
+    Website: https://adriancrismaruc.com
+    
+/* THANKS */
+    Next.js - React Framework
+    React - JavaScript Library
+    TypeScript - Programming Language
+    TailwindCSS - CSS Framework
+    Shadcn/ui - UI Components
+    ESLint - JavaScript Linter
+    Prettier - Code Formatter
+    Framer Motion - Animation Library
+    GitHub - Version Control
+    AWS - Cloud Infrastructure
+    The Linux Foundation - Kubernetes Certification
+    Amazon Web Services - AWS Certifications
+
+/* SITE */
+    Last update: July 2025
+    Language: English
+    Doctype: HTML5
+    IDE: NeoVim
+    URL: https://adriancrismaruc.com
+    Components: Next.js, React, TypeScript, TailwindCSS, Shadcn/ui
+    Software: Node.js, NixOS, Docker, Git, Zsh, Terraform, AWS
+    
+/* FOUNDER */
+    Adrian Crîșmaruc
+    Full-Stack Developer, Founder of RekoSearch
+    Specializing in Rust, Python, React, and Cloud-Native Technologies
+    AWS & Kubernetes Certified
+    
+/* PROJECTS */
+    RekoSearch - AI-powered file search engine
+    Falion - Privacy-focused programming resources tool
+    EStash - Encrypted digital vault
+    RustTemplate - Cross-platform Rust project template
+    NixObscurely - NixOS configuration system
+    ArchObscurely - Automated Arch Linux install
