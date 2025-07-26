@@ -11,6 +11,7 @@ import {
 } from "@tabler/icons-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { socials } from "@data/common/socials";
+import { SITE_CONFIG } from "@data/common/site";
 
 /**
  * Sidebar component that displays the blog sidebar with profile, navigation, and social links.
@@ -28,7 +29,7 @@ export function Sidebar() {
           <div className="border-cyan-520 hover:border-cyan-590 relative overflow-hidden rounded-full border-2 shadow-lg shadow-cyan-500/10 transition-all duration-600">
             <Image
               src="/profile.webp"
-              alt="Adrian Crîșmaruc"
+              alt={SITE_CONFIG.name}
               width={128}
               height={128}
               className="transform object-cover transition-transform duration-300 ease-in-out hover:scale-110"
@@ -37,7 +38,7 @@ export function Sidebar() {
           </div>
         </div>
         <h3 className="mb-2 text-center text-xl font-medium text-white">
-          Adrian Crîșmaruc
+          {SITE_CONFIG.name}
         </h3>
         <div className="mb-1 flex items-center justify-center gap-2 text-sm text-slate-300">
           <IconCode size={16} className="text-cyan-400" />
@@ -84,8 +85,7 @@ export function Sidebar() {
 
         {/* Description text */}
         <p className="mt-4 text-sm leading-relaxed text-slate-300">
-          Practical tutorials, in-depth guides and insights on software
-          development, Linux, servers and more.
+          {SITE_CONFIG.blogDescription}
         </p>
       </div>
 

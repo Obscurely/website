@@ -1,4 +1,5 @@
 import { IconForms, IconMail, IconMapPin } from "@tabler/icons-react";
+import { SITE_CONFIG } from "./site";
 
 export interface FooterLink {
   name: string;
@@ -44,7 +45,7 @@ export const contactInfo = [
     icon: IconMail,
     label: "Email",
     value: "contact@​adriancrismaruc.com",
-    href: "mailto:contact@adriancrismaruc.com",
+    href: `mailto:${SITE_CONFIG.toEmail}`,
   },
   {
     icon: IconForms,

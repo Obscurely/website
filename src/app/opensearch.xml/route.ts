@@ -1,12 +1,14 @@
+import { SITE_CONFIG } from "@data/common/site";
+
 export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-  <ShortName>Adrian Crîşmaruc's Blog</ShortName>
-  <Description>Search articles and tutorials on Adrian Crîşmaruc's blog</Description>
-  <Url type="text/html" template="https://adriancrismaruc.com/blog?search={searchTerms}"/>
-  <Image height="16" width="16" type="image/x-icon">https://adriancrismaruc.com/favicon.ico</Image>
-  <Developer>Adrian Crîşmaruc</Developer>
-  <Contact>contact@adriancrismaruc.com</Contact>
+  <ShortName>${SITE_CONFIG.name}'s Blog</ShortName>
+  <Description>Search articles and tutorials on ${SITE_CONFIG.name}'s blog</Description>
+  <Url type="text/html" template="${SITE_CONFIG.url}/blog?search={searchTerms}"/>
+  <Image height="16" width="16" type="image/x-icon">${SITE_CONFIG.url}/favicon.ico</Image>
+  <Developer>${SITE_CONFIG.name}</Developer>
+  <Contact>${SITE_CONFIG.toEmail}</Contact>
   <Language>en-us</Language>
   <InputEncoding>UTF-8</InputEncoding>
   <OutputEncoding>UTF-8</OutputEncoding>

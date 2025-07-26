@@ -5,31 +5,29 @@ import { getPolicyBySlug } from "@lib/policies";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Script from "next/script";
+import { SITE_CONFIG } from "@data/common/site";
 
-const DESCRIPTION =
-  "Cookie policy for Adrian Crîșmaruc's website - privacy-first approach without tracking cookies.";
+const DESCRIPTION = `Cookie policy for ${SITE_CONFIG.name}'s website - privacy-first approach without tracking cookies.`;
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | Adrian Crîșmaruc",
-  authors: [{ name: "Adrian Crîșmaruc", url: "https://adriancrismaruc.com" }],
+  title: `Cookie Policy | ${SITE_CONFIG.name}`,
+  authors: [SITE_CONFIG.author],
   description: DESCRIPTION,
   alternates: {
-    canonical: "https://adriancrismaruc.com/cookie-policy",
+    canonical: `${SITE_CONFIG.url}/cookie-policy`,
   },
   openGraph: {
-    title: "Cookie Policy | Adrian Crîșmaruc",
-    description:
-      "Cookie policy for Adrian Crîșmaruc's website - privacy-first approach without tracking cookies.",
+    title: `Cookie Policy | ${SITE_CONFIG.name}`,
+    description: DESCRIPTION,
     type: "website",
-    url: "https://adriancrismaruc.com/cookie-policy",
-    siteName: "Cookie Policy | Adrian Crîșmaruc",
+    url: `${SITE_CONFIG.url}/cookie-policy`,
+    siteName: SITE_CONFIG.name,
     locale: "en_US",
   },
   twitter: {
     card: "summary",
-    title: "Cookie Policy | Adrian Crîșmaruc",
-    description:
-      "Cookie policy for Adrian Crîșmaruc's website - privacy-first approach without tracking cookies.",
+    title: `Cookie Policy | ${SITE_CONFIG.name}`,
+    description: DESCRIPTION,
   },
   robots: {
     index: false, // Don't index policy pages
@@ -49,22 +47,22 @@ export default async function Cookies() {
     "@type": "WebPage",
     name: "Cookies Policy",
     description: DESCRIPTION,
-    url: "https://adriancrismaruc.com/cookie-policy",
+    url: `${SITE_CONFIG.url}/cookie-policy`,
     author: {
       "@type": "Person",
-      name: "Adrian Crîșmaruc",
-      url: "https://adriancrismaruc.com",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
     },
     publisher: {
       "@type": "Person",
-      name: "Adrian Crîșmaruc",
-      url: "https://adriancrismaruc.com",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
     },
     inLanguage: "en-US",
     isPartOf: {
       "@type": "WebSite",
-      name: "Adrian Crîșmaruc",
-      url: "https://adriancrismaruc.com",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
     },
   };
 

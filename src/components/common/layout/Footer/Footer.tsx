@@ -5,6 +5,7 @@ import { NavLink } from "./NavLink";
 import { contactInfo } from "@data/common/footer";
 import { NameButton } from "./NameButton";
 import { ScrollToTop } from "./ScrollToTop";
+import { SITE_CONFIG } from "@data/common/site";
 
 interface FooterProps {
   isBlog?: boolean;
@@ -31,7 +32,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
                 className="group mb-6 block text-2xl font-bold text-slate-100"
               >
                 <span className="bg-blue-400 bg-clip-text text-2xl font-extrabold text-transparent transition-all duration-300">
-                  Adrian Crîșmaruc
+                  {SITE_CONFIG.name}
                 </span>
               </Link>
             ) : (
@@ -125,7 +126,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
         <div className="border-slate-820 mt-16 flex flex-col items-center justify-between border-t pt-8 md:flex-row">
           <div className="mb-4 md:mb-0">
             <p className="text-center text-sm text-slate-400 md:text-left">
-              © {currentYear} Adrian Crîșmaruc. All rights reserved.
+              © {currentYear} {SITE_CONFIG.name}. All rights reserved.
             </p>
             <p className="mt-1.5 text-center text-xs text-slate-400 md:text-left">
               Built with{" "}

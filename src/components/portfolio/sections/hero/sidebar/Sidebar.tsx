@@ -1,6 +1,7 @@
 import { IconUser } from "@tabler/icons-react";
 import Image from "next/image";
 import { SidebarClock } from "./SidebarClock";
+import { SITE_CONFIG } from "@data/common/site";
 
 /**
  * The sidebar part of the hero section containing the 2 widgets (profile image and system status).
@@ -29,7 +30,7 @@ export const Sidebar = () => {
                 src="/profile.webp"
                 width={512}
                 height={512}
-                alt="Adrian Crîșmaruc"
+                alt={SITE_CONFIG.name}
                 className="h-full w-full transform object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
                 priority
               />

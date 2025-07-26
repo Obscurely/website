@@ -1,43 +1,41 @@
+import { SITE_CONFIG } from "@data/common/site";
 import { Metadata } from "next";
 
-export const DESCRIPTION: string =
-  "Practical tutorials, in-depth guides and insights on software development, Linux, servers and more.";
-
 export const pageMetadata: Metadata = {
-  title: "Blog | Adrian Crîșmaruc",
-  description: DESCRIPTION,
-  authors: [{ name: "Adrian Crîșmaruc", url: "https://adriancrismaruc.com" }],
+  title: `Blog | ${SITE_CONFIG.name}`,
+  description: SITE_CONFIG.blogDescription,
+  authors: [SITE_CONFIG.author],
   alternates: {
-    canonical: "https://adriancrismaruc.com/blog",
+    canonical: `${SITE_CONFIG.url}/blog`,
     types: {
       "application/rss+xml": [
         {
-          url: "https://adriancrismaruc.com/rss.xml",
-          title: "Adrian Crîșmaruc - Blog RSS Feed",
+          url: `${SITE_CONFIG.url}/rss.xml`,
+          title: `${SITE_CONFIG.name} - Blog RSS Feed`,
         },
       ],
     },
   },
   openGraph: {
-    title: "Blog | Adrian Crîșmaruc",
-    description: DESCRIPTION,
+    title: `Blog | ${SITE_CONFIG.name}`,
+    description: SITE_CONFIG.blogDescription,
     type: "website",
-    url: "https://adriancrismaruc.com/blog",
-    siteName: "Blog | Adrian Crîșmaruc",
+    url: `${SITE_CONFIG.url}/blog`,
+    siteName: SITE_CONFIG.name,
     images: [
       {
         url: "/og-blog.jpg",
         width: 1200,
         height: 630,
-        alt: "Adrian Crîșmaruc - Blog",
+        alt: `${SITE_CONFIG.name} - Blog`,
       },
     ],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog | Adrian Crîșmaruc",
-    description: DESCRIPTION,
+    title: `Blog | ${SITE_CONFIG.name}`,
+    description: SITE_CONFIG.blogDescription,
     images: ["/og-blog.jpg"],
   },
 };

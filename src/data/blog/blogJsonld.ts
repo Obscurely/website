@@ -1,33 +1,33 @@
-import { DESCRIPTION } from "./metadata";
+import { SITE_CONFIG } from "@data/common/site";
 
 export const blogJsonLd = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  name: "Adrian Crîșmaruc - Blog",
-  alternateName: "Adrian Crîșmaruc's Technical Blog",
-  description: DESCRIPTION,
-  url: "https://adriancrismaruc.com/blog",
+  name: `${SITE_CONFIG.name} - Blog`,
+  alternateName: `${SITE_CONFIG.name}'s Technical Blog`,
+  description: SITE_CONFIG.blogDescription,
+  url: `${SITE_CONFIG.url}/blog`,
   inLanguage: "en-US",
   dateCreated: "2025-01-01",
   dateModified: new Date().toISOString().split("T")[0],
   author: {
     "@type": "Person",
-    name: "Adrian Crîșmaruc",
-    givenName: "Adrian",
-    familyName: "Crîșmaruc",
+    name: SITE_CONFIG.name,
+    givenName: SITE_CONFIG.firstName,
+    familyName: SITE_CONFIG.lastName,
     jobTitle: "Full-Stack Developer",
-    url: "https://adriancrismaruc.com",
-    email: "contact@adriancrismaruc.com",
-    image: "https://adriancrismaruc.com/og-home.jpg",
+    url: SITE_CONFIG.url,
+    email: SITE_CONFIG.toEmail,
+    image: `${SITE_CONFIG.url}/og-home.jpg`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Iași",
       addressCountry: "Romania",
     },
     sameAs: [
-      "https://github.com/Obscurely",
-      "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0/",
-      "https://www.reddit.com/user/CrismarucAdrian/",
+      SITE_CONFIG.social.github,
+      SITE_CONFIG.social.linkedIn,
+      SITE_CONFIG.social.reddit,
     ],
     knowsAbout: [
       "Software Development",
@@ -87,20 +87,22 @@ export const blogJsonLd = {
   },
   publisher: {
     "@type": "Person",
-    name: "Adrian Crîșmaruc",
-    url: "https://adriancrismaruc.com",
-    logo: "https://adriancrismaruc.com/og-home.jpg",
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_CONFIG.url}/og-home.jpg`,
+    },
   },
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": "https://adriancrismaruc.com/blog",
+    "@id": `${SITE_CONFIG.url}/blog`,
   },
   isPartOf: {
     "@type": "WebSite",
-    name: "Adrian Crîșmaruc",
-    url: "https://adriancrismaruc.com",
-    description:
-      "Full-Stack Developer specializing in cloud-native solutions and DevOps engineering",
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    description: SITE_CONFIG.description,
   },
   about: [
     "Software Development Tutorials",
@@ -147,41 +149,40 @@ export const blogJsonLd = {
   potentialAction: [
     {
       "@type": "ReadAction",
-      target: "https://adriancrismaruc.com/blog",
+      target: `${SITE_CONFIG.url}/blog`,
       name: "Read Blog Posts",
     },
     {
       "@type": "SubscribeAction",
-      target: "https://adriancrismaruc.com/rss.xml",
+      target: `${SITE_CONFIG.url}/rss.xml`,
       name: "Subscribe to RSS Feed",
     },
     {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate:
-          "https://adriancrismaruc.com/blog?search={search_term_string}",
+        urlTemplate: `${SITE_CONFIG.url}/blog?search={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },
     {
       "@type": "ContactAction",
-      target: "mailto:contact@adriancrismaruc.com",
+      target: `mailto:${SITE_CONFIG.toEmail}`,
       name: "Contact Author",
     },
   ],
   contactPoint: {
     "@type": "ContactPoint",
-    email: "contact@adriancrismaruc.com",
+    email: SITE_CONFIG.toEmail,
     contactType: "Author",
     availableLanguage: "English",
   },
   copyrightHolder: {
     "@type": "Person",
-    name: "Adrian Crîșmaruc",
+    name: SITE_CONFIG.name,
   },
   copyrightYear: "2025",
-  license: "https://github.com/Obscurely/website/blob/main/LICENSE",
+  license: `${SITE_CONFIG.websiteSource}/blob/main/LICENSE`,
   accessibilityFeature: [
     "readingOrder",
     "structuralNavigation",
@@ -194,28 +195,27 @@ export const blogJsonLd = {
 export const blogWebsiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Adrian Crîșmaruc - Technical Blog",
-  url: "https://adriancrismaruc.com/blog",
-  description: DESCRIPTION,
+  name: `${SITE_CONFIG.name} - Technical Blog`,
+  url: `${SITE_CONFIG.url}/blog`,
+  description: SITE_CONFIG.blogDescription,
   inLanguage: "en-US",
   author: {
     "@type": "Person",
-    name: "Adrian Crîșmaruc",
-    url: "https://adriancrismaruc.com",
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
   },
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate:
-        "https://adriancrismaruc.com/blog?search={search_term_string}",
+      urlTemplate: `${SITE_CONFIG.url}/blog?search={search_term_string}`,
     },
     "query-input": "required name=search_term_string",
   },
   hasPart: {
     "@type": "Blog",
-    name: "Adrian Crîșmaruc - Blog",
-    url: "https://adriancrismaruc.com/blog",
+    name: `${SITE_CONFIG.name} - Blog`,
+    url: `${SITE_CONFIG.url}/blog`,
   },
 };
 
@@ -227,13 +227,13 @@ export const blogBreadcrumbJsonLd = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://adriancrismaruc.com",
+      item: SITE_CONFIG.url,
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Blog",
-      item: "https://adriancrismaruc.com/blog",
+      item: `${SITE_CONFIG.url}/blog`,
     },
   ],
 };
@@ -241,21 +241,24 @@ export const blogBreadcrumbJsonLd = {
 export const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Adrian Crîșmaruc",
-  url: "https://adriancrismaruc.com",
+  name: SITE_CONFIG.name,
+  url: SITE_CONFIG.url,
   jobTitle: "Full-Stack Developer",
-  image: "https://adriancrismaruc.com/og-home.jpg",
+  image: `${SITE_CONFIG.url}/og-home.jpg`,
   sameAs: [
-    "https://github.com/Obscurely",
-    "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0/",
-    "https://www.reddit.com/user/CrismarucAdrian/",
+    SITE_CONFIG.social.github,
+    SITE_CONFIG.social.linkedIn,
+    SITE_CONFIG.social.reddit,
   ],
 };
 
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Adrian Crîșmaruc",
-  url: "https://adriancrismaruc.com",
-  logo: "https://adriancrismaruc.com/og-home.jpg",
+  name: SITE_CONFIG.name,
+  url: SITE_CONFIG.url,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_CONFIG.url}/og-home.jpg`,
+  },
 };

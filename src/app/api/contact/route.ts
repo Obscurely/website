@@ -4,11 +4,12 @@ import { fromIni, fromEnv } from "@aws-sdk/credential-providers";
 import { rateLimit } from "@lib/rate-limit";
 import DOMPurify from "isomorphic-dompurify";
 import { checkEmail } from "@utils/portfolio/contact";
+import { SITE_CONFIG } from "@data/common/site";
 
 // Validate required environment variables
 const requiredEnvVars = {
-  FROM_EMAIL: process.env["FROM_EMAIL"],
-  TO_EMAIL: process.env["TO_EMAIL"],
+  FROM_EMAIL: SITE_CONFIG.fromEmail,
+  TO_EMAIL: SITE_CONFIG.toEmail,
 } as const;
 
 // Check for missing environment variables

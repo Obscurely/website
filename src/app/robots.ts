@@ -1,9 +1,7 @@
+import { SITE_CONFIG } from "@data/common/site";
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl =
-    process.env["NEXT_PUBLIC_SITE_URL"] || "https://adriancrismaruc.com";
-
   return {
     rules: [
       {
@@ -55,7 +53,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: "/",
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
+    sitemap: `${SITE_CONFIG.url}/sitemap.xml`,
+    host: SITE_CONFIG.url,
   };
 }

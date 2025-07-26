@@ -5,29 +5,29 @@ import { getPolicyBySlug } from "@lib/policies";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Script from "next/script";
+import { SITE_CONFIG } from "@data/common/site";
+
+const DESCRIPTION = `Legal terms for using ${SITE_CONFIG.name}'s personal website, including intellectual property rights, user responsibilities, and dispute resolution.`;
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Adrian Crîșmaruc",
-  authors: [{ name: "Adrian Crîșmaruc", url: "https://adriancrismaruc.com" }],
-  description:
-    "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
+  title: `Terms of Service | ${SITE_CONFIG.name}`,
+  authors: [SITE_CONFIG.author],
+  description: DESCRIPTION,
   alternates: {
-    canonical: "https://adriancrismaruc.com/terms-of-service",
+    canonical: `${SITE_CONFIG.url}/terms-of-service`,
   },
   openGraph: {
-    title: "Terms of Service | Adrian Crîșmaruc",
-    description:
-      "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
+    title: `Terms of Service | ${SITE_CONFIG.name}`,
+    description: DESCRIPTION,
     type: "website",
-    url: "https://adriancrismaruc.com/terms-of-service",
-    siteName: "Terms of Service | Adrian Crîșmaruc",
+    url: `${SITE_CONFIG.url}/terms-of-service`,
+    siteName: SITE_CONFIG.name,
     locale: "en_US",
   },
   twitter: {
     card: "summary",
-    title: "Terms of Service | Adrian Crîșmaruc",
-    description:
-      "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
+    title: `Terms of Service | ${SITE_CONFIG.name}`,
+    description: DESCRIPTION,
   },
   robots: {
     index: false, // Don't index policy pages
@@ -46,24 +46,23 @@ export default async function TermsOfService() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Terms of Service",
-    description:
-      "Legal terms for using Adrian Crîșmaruc's personal website, including intellectual property rights, user responsibilities, and dispute resolution.",
-    url: "https://adriancrismaruc.com/terms-of-service",
+    description: DESCRIPTION,
+    url: `${SITE_CONFIG.url}/terms-of-service`,
     author: {
       "@type": "Person",
-      name: "Adrian Crîșmaruc",
-      url: "https://adriancrismaruc.com",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
     },
     publisher: {
       "@type": "Person",
-      name: "Adrian Crîșmaruc",
-      url: "https://adriancrismaruc.com",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
     },
     inLanguage: "en-US",
     isPartOf: {
       "@type": "WebSite",
-      name: "Adrian Crîșmaruc",
-      url: "https://adriancrismaruc.com",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
     },
   };
 

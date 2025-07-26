@@ -1,5 +1,6 @@
 "use client";
 
+import { SITE_CONFIG } from "@data/common/site";
 import { useCallback } from "react";
 
 /**
@@ -17,7 +18,7 @@ export const NameButton = () => {
       className="group mb-6 block cursor-pointer text-2xl font-bold text-slate-100 transition-all duration-300"
     >
       <span className="bg-blue-400 bg-clip-text text-2xl font-extrabold text-transparent">
-        Adrian Crîșmaruc
+        {SITE_CONFIG.name}
       </span>
     </button>
   );

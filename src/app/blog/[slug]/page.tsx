@@ -7,6 +7,7 @@ import { Toaster } from "sonner";
 import { Navbar } from "@common/layout/Navbar/Navbar";
 import { generateBlogPostJsonLd } from "@data/blog/postJsonld";
 import Script from "next/script";
+import { SITE_CONFIG } from "@data/common/site";
 
 interface BlogPostParams {
   params: Promise<{
@@ -22,27 +23,22 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Post Not Found | Adrian Crîșmaruc",
+      title: `Post Not Found | ${SITE_CONFIG.name}`,
     };
   }
 
   return {
     title: `${post.frontmatter.title}`,
     description: post.frontmatter.description,
-    authors: [
-      {
-        name: "Adrian Crîșmaruc",
-        url: "https://adriancrismaruc.com",
-      },
-    ],
+    authors: [SITE_CONFIG.author],
     keywords: post.frontmatter.tags,
     alternates: {
-      canonical: `https://adriancrismaruc.com/blog/${slug}`,
+      canonical: `${SITE_CONFIG.url}/blog/${slug}`,
       types: {
         "application/rss+xml": [
           {
-            url: "https://adriancrismaruc.com/rss.xml",
-            title: "Adrian Crîșmaruc - Blog RSS Feed",
+            url: `${SITE_CONFIG.url}/rss.xml`,
+            title: `${SITE_CONFIG.name} - Blog RSS Feed`,
           },
         ],
       },
@@ -52,9 +48,9 @@ export async function generateMetadata({
       description: post.frontmatter.description,
       type: "article",
       publishedTime: post.frontmatter.date,
-      authors: ["Adrian Crîșmaruc"],
+      authors: [SITE_CONFIG.name],
       tags: post.frontmatter.tags,
-      siteName: "Adrian Crîșmaruc - Blog",
+      siteName: SITE_CONFIG.name,
       images: post.frontmatter.image
         ? [
             {

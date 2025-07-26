@@ -6,6 +6,7 @@ import { Separator } from "@common/mdx";
 import { useMemo } from "react";
 import { getTableOfContents } from "@lib/blogToc";
 import { useSidebarPositioningContext } from "@contexts/blog/SidebarPositioningContext";
+import { SITE_CONFIG } from "@data/common/site";
 
 const SIDEBAR_CLASSES = {
   base: "space-y-8 overflow-y-auto pb-4 transition-all duration-300 ease-out",
@@ -70,7 +71,7 @@ export const Sidebar = ({ post }: SidebarProps) => {
             <div className="relative">
               <Image
                 src="/profile.webp"
-                alt="Adrian Crîșmaruc"
+                alt={SITE_CONFIG.name}
                 width={60}
                 height={60}
                 className="ring-cyan-520 rounded-full ring-2"
@@ -78,7 +79,7 @@ export const Sidebar = ({ post }: SidebarProps) => {
             </div>
             <div>
               <h4 className="mb-1 font-semibold text-white">
-                Adrian Crîșmaruc
+                {SITE_CONFIG.name}
               </h4>
               <div className="mb-0.5 flex items-center gap-1 text-sm text-slate-300">
                 <span>Full-Stack Developer</span>

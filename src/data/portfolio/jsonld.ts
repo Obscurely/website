@@ -1,16 +1,16 @@
-import { DESCRIPTION } from "./metadata";
+import { SITE_CONFIG } from "@data/common/site";
 
 export const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Adrian Crîșmaruc",
-  givenName: "Adrian",
-  familyName: "Crîșmaruc",
+  name: SITE_CONFIG.name,
+  givenName: SITE_CONFIG.firstName,
+  familyName: SITE_CONFIG.lastName,
   jobTitle: "Full-Stack Developer, Founder & CEO of RekoSearch",
-  description: DESCRIPTION,
-  url: "https://adriancrismaruc.com",
-  image: "https://adriancrismaruc.com/og-home.jpg",
-  email: "contact@adriancrismaruc.com",
+  description: SITE_CONFIG.description,
+  url: SITE_CONFIG.url,
+  image: `${SITE_CONFIG.url}/og-home.jpg`,
+  email: SITE_CONFIG.toEmail,
   hasOccupation: {
     "@type": "Occupation",
     name: "Full-Stack Developer",
@@ -33,24 +33,24 @@ export const personJsonLd = {
     addressCountry: "Romania",
   },
   sameAs: [
-    "https://github.com/Obscurely",
-    "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0/",
-    "https://www.reddit.com/user/CrismarucAdrian/",
+    SITE_CONFIG.social.github,
+    SITE_CONFIG.social.linkedIn,
+    SITE_CONFIG.social.reddit,
   ],
   potentialAction: [
     {
       "@type": "ContactAction",
-      target: "mailto:contact@adriancrismaruc.com",
+      target: `mailto:${SITE_CONFIG.toEmail}`,
       name: "Contact for Work",
     },
     {
       "@type": "ViewAction",
-      target: "https://github.com/Obscurely",
+      target: SITE_CONFIG.social.github,
       name: "View GitHub Profile",
     },
     {
       "@type": "ViewAction",
-      target: "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0/",
+      target: SITE_CONFIG.social.linkedIn,
       name: "View LinkedIn Profile",
     },
   ],
@@ -117,8 +117,7 @@ export const personJsonLd = {
   worksFor: {
     "@type": "Organization",
     name: "Freelance Developer",
-    description:
-      "Independent full-stack developer specializing in cloud-native solutions",
+    description: SITE_CONFIG.description,
   },
   alumniOf: {
     "@type": "Organization",
@@ -140,15 +139,14 @@ export const personJsonLd = {
     {
       "@type": "SoftwareApplication",
       name: "RekoSearch",
-      description:
-        "An AI-powered file search engine for images, videos, documents and audio that understands the content of your files, enabling semantic search across them. Founded and developed by Adrian Crîșmaruc.",
+      description: `An AI-powered file search engine for images, videos, documents and audio that understands the content of your files, enabling semantic search across them. Founded and developed by ${SITE_CONFIG.name}.`,
       url: "https://rekosearch.com",
       applicationCategory: "WebApplication",
       operatingSystem: "Web",
       programmingLanguage: ["Rust", "Python", "TypeScript"],
       founder: {
         "@type": "Person",
-        name: "Adrian Crîșmaruc",
+        name: SITE_CONFIG.name,
       },
       offers: {
         "@type": "Offer",
@@ -165,7 +163,7 @@ export const personJsonLd = {
       applicationCategory: "DeveloperApplication",
       operatingSystem: "Cross-Platform",
       programmingLanguage: "Rust",
-      downloadUrl: "https://github.com/Obscurely/falion",
+      downloadUrl: `${SITE_CONFIG.social.github}/falion`,
     },
     {
       "@type": "SoftwareApplication",
@@ -175,14 +173,14 @@ export const personJsonLd = {
       applicationCategory: "SecurityApplication",
       operatingSystem: "Cross-Platform",
       programmingLanguage: "Rust",
-      downloadUrl: "https://github.com/Obscurely/EStash",
+      downloadUrl: `${SITE_CONFIG.social.github}/EStash`,
     },
     {
       "@type": "SoftwareApplication",
       name: "Personal Website",
       description:
         "My personal static tech website portfolio and blog, made with Next.js, React, Typescript, TailwindCSS and Shadcn/ui, deployed using CI/CD on AWS.",
-      url: "https://adriancrismaruc.com",
+      url: SITE_CONFIG.url,
       applicationCategory: "WebApplication",
       operatingSystem: "Web",
       programmingLanguage: ["TypeScript", "JavaScript"],
@@ -194,7 +192,7 @@ export const personJsonLd = {
         "A complete template for cross-platform Rust projects. It includes scripts to customize the repository automatically and CI/CD pipelines to deploy on any platform in multiple formats.",
       applicationCategory: "DeveloperApplication",
       programmingLanguage: "Rust",
-      downloadUrl: "https://github.com/Obscurely/RustTemplate",
+      downloadUrl: `${SITE_CONFIG.social.github}/RustTemplate`,
     },
     {
       "@type": "SoftwareApplication",
@@ -204,7 +202,7 @@ export const personJsonLd = {
       applicationCategory: "SystemApplication",
       operatingSystem: "NixOS",
       programmingLanguage: "Nix",
-      downloadUrl: "https://github.com/Obscurely/NixObscurely",
+      downloadUrl: `${SITE_CONFIG.social.github}/NixObscurely`,
     },
     {
       "@type": "SoftwareApplication",
@@ -214,7 +212,7 @@ export const personJsonLd = {
       applicationCategory: "SystemApplication",
       operatingSystem: "Arch Linux",
       programmingLanguage: "Bash",
-      downloadUrl: "https://github.com/Obscurely/ArchObscurely",
+      downloadUrl: `${SITE_CONFIG.social.github}/ArchObscurely`,
     },
   ],
   workExample: [
@@ -228,13 +226,13 @@ export const personJsonLd = {
     {
       "@type": "CreativeWork",
       name: "Personal Portfolio",
-      url: "https://adriancrismaruc.com",
+      url: SITE_CONFIG.url,
       description: "Full-stack portfolio website with modern tech stack",
     },
     {
       "@type": "CreativeWork",
       name: "Falion",
-      url: "https://github.com/Obscurely/falion",
+      url: `${SITE_CONFIG.social.github}/falion`,
       description: "Privacy-focused CLI/GUI tool for programming resources",
     },
   ],
@@ -243,17 +241,17 @@ export const personJsonLd = {
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Adrian Crîșmaruc",
-  url: "https://adriancrismaruc.com",
-  logo: "https://adriancrismaruc.com/og-home.jpg",
-  description: DESCRIPTION,
+  name: SITE_CONFIG.name,
+  url: SITE_CONFIG.url,
+  logo: `${SITE_CONFIG.url}/og-home.jpg`,
+  description: SITE_CONFIG.description,
   founder: {
     "@type": "Person",
-    name: "Adrian Crîșmaruc",
+    name: SITE_CONFIG.name,
   },
   contactPoint: {
     "@type": "ContactPoint",
-    email: "contact@adriancrismaruc.com",
+    email: SITE_CONFIG.toEmail,
     contactType: "Professional",
     availableLanguage: "English",
   },
@@ -263,9 +261,9 @@ export const organizationJsonLd = {
     addressCountry: "Romania",
   },
   sameAs: [
-    "https://github.com/Obscurely",
-    "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0/",
-    "https://www.reddit.com/user/CrismarucAdrian/",
+    SITE_CONFIG.social.github,
+    SITE_CONFIG.social.linkedIn,
+    SITE_CONFIG.social.reddit,
   ],
   knowsAbout: [
     "Full-Stack Development",
@@ -333,17 +331,17 @@ export const organizationJsonLd = {
 export const portfolioJsonLd = {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
-  name: "Adrian Crîșmaruc",
-  description: DESCRIPTION,
-  url: "https://adriancrismaruc.com",
+  name: SITE_CONFIG.name,
+  description: SITE_CONFIG.description,
+  url: SITE_CONFIG.url,
   author: {
     "@type": "Person",
-    name: "Adrian Crîșmaruc",
+    name: SITE_CONFIG.name,
   },
   mainEntity: {
     "@type": "Person",
-    name: "Adrian Crîșmaruc",
-    url: "https://adriancrismaruc.com",
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
   },
   dateCreated: "2025-01-01",
   inLanguage: "en-US",
@@ -371,7 +369,7 @@ export const portfolioJsonLd = {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://adriancrismaruc.com",
+        item: SITE_CONFIG.url,
       },
     ],
   },

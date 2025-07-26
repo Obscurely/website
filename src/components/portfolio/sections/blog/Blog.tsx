@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@ui/button";
 import { IconArrowRight } from "@tabler/icons-react";
+import { SITE_CONFIG } from "@data/common/site";
 // import { PostsList } from "./PostsList";
 
 /**
@@ -29,8 +30,7 @@ export const Blog = () => {
           </h2>
           <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-blue-400"></div>
           <p className="mx-auto max-w-3xl text-lg text-slate-400">
-            Practical tutorials, in-depth guides and insights on software
-            development, Linux, servers and more.
+            {SITE_CONFIG.blogDescription}
           </p>
         </div>
 

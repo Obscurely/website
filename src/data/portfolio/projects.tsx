@@ -1,3 +1,4 @@
+import { SITE_CONFIG } from "@data/common/site";
 import {
   IconApps,
   IconDeviceDesktop,
@@ -82,7 +83,7 @@ export const projects: Record<ProjectKey, Project> = {
     imageSize: 75,
     tags: ["AWS", "Kubernetes", "Rust", "Python", "React", "MUI", "Flask"],
     liveUrl: "https://rekosearch.com",
-    githubUrl: "https://github.com/Obscurely/RekoSearch",
+    githubUrl: `${SITE_CONFIG.social.github}/RekoSearch`,
     featured: true,
   },
   Falion: {
@@ -100,7 +101,7 @@ export const projects: Record<ProjectKey, Project> = {
     image: "/projects/falion.avif",
     imageSize: 100,
     tags: ["Rust", "Async", "Parallel", "Cross-Platform", "CI/CD", "Library"],
-    githubUrl: "https://github.com/Obscurely/falion",
+    githubUrl: `${SITE_CONFIG.social.github}/falion`,
     featured: true,
   },
   website: {
@@ -117,8 +118,8 @@ export const projects: Record<ProjectKey, Project> = {
     image: "/projects/nextjs.svg",
     imageSize: 75,
     tags: ["Next.js", "React", "TailwindCSS", "Shadcn/ui", "AWS"],
-    liveUrl: "https://adriancrismaruc.com",
-    githubUrl: "https://github.com/Obscurely/website",
+    liveUrl: SITE_CONFIG.url,
+    githubUrl: `${SITE_CONFIG.social.github}/website`,
     featured: true,
   },
   EStash: {
@@ -135,7 +136,7 @@ export const projects: Record<ProjectKey, Project> = {
     image: "/projects/estash.avif",
     imageSize: 65,
     tags: ["Rust", "Encryption", "Secure", "Cross-Platform", "Jenkins"],
-    githubUrl: "https://github.com/Obscurely/EStash",
+    githubUrl: `${SITE_CONFIG.social.github}/EStash`,
     featured: true,
   },
   RustTemplate: {
@@ -151,7 +152,7 @@ export const projects: Record<ProjectKey, Project> = {
       </p>
     ),
     tags: ["CI/CD", "GitHub Actions", "Template", "Rust", "Cross-Platform"],
-    githubUrl: "https://github.com/Obscurely/RustTemplate",
+    githubUrl: `${SITE_CONFIG.social.github}/RustTemplate`,
     featured: true,
   },
   NixObscurely: {
@@ -168,7 +169,7 @@ export const projects: Record<ProjectKey, Project> = {
     image: "/projects/nix.svg",
     imageSize: 80,
     tags: ["Automated", "NixOS", "Linux", "Home-manager", "Flakes"],
-    githubUrl: "https://github.com/Obscurely/NixObscurely",
+    githubUrl: `${SITE_CONFIG.social.github}/NixObscurely`,
     featured: true,
   },
   ArchObscurely: {
@@ -184,7 +185,7 @@ export const projects: Record<ProjectKey, Project> = {
     image: "/projects/archlinux.svg",
     imageSize: 70,
     tags: ["Automated", "Arch Linux", "Linux"],
-    githubUrl: "https://github.com/Obscurely/ArchObscurely",
+    githubUrl: `${SITE_CONFIG.social.github}/ArchObscurely`,
     featured: true,
   },
   PbthalArchiveManager: {
@@ -200,7 +201,7 @@ export const projects: Record<ProjectKey, Project> = {
       </p>
     ),
     tags: ["Python", "CLI", "Scripts", "Automation"],
-    githubUrl: "https://github.com/Obscurely/Pbthal-Archive-Manager",
+    githubUrl: `${SITE_CONFIG.social.github}/Pbthal-Archive-Manager`,
     featured: false,
   },
   PyPassMan: {
@@ -215,7 +216,7 @@ export const projects: Record<ProjectKey, Project> = {
       </p>
     ),
     tags: ["Python", "QT", "Cross-Platform", "Encryption"],
-    githubUrl: "https://github.com/Obscurely/PyPassMan",
+    githubUrl: `${SITE_CONFIG.social.github}/PyPassMan`,
     featured: false,
   },
   DiscordBot: {
@@ -229,7 +230,7 @@ export const projects: Record<ProjectKey, Project> = {
       </p>
     ),
     tags: ["Python", "API Integration", "Bot"],
-    githubUrl: "https://github.com/Obscurely/Discord-Bot",
+    githubUrl: `${SITE_CONFIG.social.github}/Discord-Bot`,
     featured: false,
   },
   RustySorter: {
@@ -243,7 +244,7 @@ export const projects: Record<ProjectKey, Project> = {
       </p>
     ),
     tags: ["Rust", "File Sorter", "CLI", "Automation"],
-    githubUrl: "https://github.com/Obscurely/RustySorter",
+    githubUrl: `${SITE_CONFIG.social.github}/RustySorter`,
     featured: false,
   },
   SharpPlayer: {
@@ -252,7 +253,7 @@ export const projects: Record<ProjectKey, Project> = {
     index: 11,
     description: <p>A simple audio player with a GUI made in C#!</p>,
     tags: ["C#", "Audio Player", "GUI"],
-    githubUrl: "https://github.com/Obscurely/Sharp-Player",
+    githubUrl: `${SITE_CONFIG.social.github}/Sharp-Player`,
     featured: false,
   },
   ArduinoAlarm: {
@@ -267,7 +268,7 @@ export const projects: Record<ProjectKey, Project> = {
       </p>
     ),
     tags: ["Arduino", "Alarm", "IR Remote", "Tiny RTC", "C++"],
-    githubUrl: "https://github.com/Obscurely/ArduinoAlarm",
+    githubUrl: `${SITE_CONFIG.social.github}/ArduinoAlarm`,
     featured: false,
   },
 };

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import { SITE_CONFIG } from "@data/common/site";
 
 // Primary font
 const inter = Inter({
@@ -35,17 +36,18 @@ export const viewport: Viewport = {
   themeColor: "#000000",
 };
 
-const DESCRIPTION: string =
-  "Full-Stack Developer specializing in Rust, Python, React, TypeScript, Next.js, Flask and cloud-native technologies. AWS & Kubernetes certified with experience in building secure and scalable systems.";
-
 export const metadata: Metadata = {
-  description: DESCRIPTION,
-  authors: [{ name: "Adrian Crîșmaruc", url: "https://adriancrismaruc.com" }],
-  creator: "Adrian Crîșmaruc",
-  publisher: "Adrian Crîșmaruc",
+  title: {
+    default: SITE_CONFIG.name,
+    template: `%s`,
+  },
+  description: SITE_CONFIG.description,
+  authors: [SITE_CONFIG.author],
+  creator: SITE_CONFIG.name,
+  publisher: SITE_CONFIG.name,
 
   // metabase url
-  metadataBase: new URL("https://adriancrismaruc.com"),
+  metadataBase: new URL(SITE_CONFIG.url),
 
   alternates: {
     canonical: "/",
@@ -55,8 +57,8 @@ export const metadata: Metadata = {
     types: {
       "application/rss+xml": [
         {
-          url: "https://adriancrismaruc.com/rss.xml",
-          title: "Adrian Crîșmaruc - Blog RSS Feed",
+          url: `${SITE_CONFIG.url}/rss.xml`,
+          title: `${SITE_CONFIG.name} - Blog RSS Feed`,
         },
       ],
     },
@@ -91,13 +93,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Adrian Crîșmaruc",
+    siteName: SITE_CONFIG.name,
     images: [
       {
         url: "/og-image.jpg", // default OG image
         width: 1200,
         height: 630,
-        alt: "Adrian Crîșmaruc - Full-Stack Developer",
+        alt: `${SITE_CONFIG.name} - Full-Stack Developer`,
       },
     ],
   },

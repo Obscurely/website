@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { DesktopNavbar } from "./DesktopNavbar";
 import { MobileNavbar } from "./MobileNavbar";
+import { SITE_CONFIG } from "@data/common/site";
 
 interface NavbarProps {
   isBlog?: boolean;
@@ -25,7 +26,7 @@ export const Navbar = ({ isBlog = false, isMain = false }: NavbarProps) => {
         <Link href={nameHref} className="text-2xl font-bold text-slate-100">
           <div className="flex items-center gap-2">
             <span className="sm:text-1xl truncate bg-blue-400 bg-clip-text text-xl font-extrabold text-transparent md:text-2xl">
-              Adrian Crîșmaruc
+              {SITE_CONFIG.name}
             </span>
           </div>
         </Link>

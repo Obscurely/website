@@ -6,6 +6,7 @@ import { Buttons } from "./Buttons";
 import { UnderNameLine } from "./UnderNameLine";
 import { TerminalClock } from "./TerminalClock";
 import { AnimatedRole } from "./AnimatedRole";
+import { SITE_CONFIG } from "@data/common/site";
 
 /**
  * The terminal and main part of the portfolio hero section.
@@ -47,7 +48,7 @@ export const Terminal = () => {
           <div className="mb-9">
             <h1 className="mb-4 text-3xl font-bold tracking-tight text-slate-300 md:text-5xl lg:text-4xl">
               <span className="relative">
-                Adrian Crîșmaruc
+                {SITE_CONFIG.name}
                 <UnderNameLine />
               </span>
             </h1>

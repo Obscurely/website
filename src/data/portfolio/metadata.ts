@@ -1,43 +1,41 @@
+import { SITE_CONFIG } from "@data/common/site";
 import { Metadata } from "next";
 
-export const DESCRIPTION: string =
-  "Full-Stack Developer Adrian Crîșmaruc (Adrian Crismaruc) specializing in Rust, Python, React, TypeScript, Next.js, Flask and cloud-native technologies. AWS & Kubernetes certified with experience in building secure and scalable systems.";
-
 export const pageMetadata: Metadata = {
-  title: "Adrian Crîșmaruc - Full-Stack Developer",
-  description: DESCRIPTION,
-  authors: [{ name: "Adrian Crîșmaruc", url: "https://adriancrismaruc.com" }],
+  title: `${SITE_CONFIG.name} - Full-Stack Developer`,
+  description: SITE_CONFIG.description,
+  authors: [SITE_CONFIG.author],
   alternates: {
-    canonical: "https://adriancrismaruc.com/",
+    canonical: SITE_CONFIG.url,
     types: {
       "application/rss+xml": [
         {
-          url: "https://adriancrismaruc.com/rss.xml",
-          title: "Adrian Crîșmaruc - Blog RSS Feed",
+          url: `${SITE_CONFIG.url}/rss.xml`,
+          title: `${SITE_CONFIG.name} - Blog RSS Feed`,
         },
       ],
     },
   },
   openGraph: {
-    title: "Adrian Crîșmaruc - Full-Stack Developer",
-    description: DESCRIPTION,
+    title: `${SITE_CONFIG.name} - Full-Stack Developer`,
+    description: SITE_CONFIG.description,
     type: "website",
-    url: "https://adriancrismaruc.com",
-    siteName: "Adrian Crîșmaruc",
+    url: SITE_CONFIG.url,
+    siteName: SITE_CONFIG.name,
     images: [
       {
         url: "/og-home.jpg",
         width: 1200,
         height: 630,
-        alt: "Adrian Crîșmaruc - Full-Stack Developer",
+        alt: `${SITE_CONFIG.name} - Full-Stack Developer`,
       },
     ],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adrian Crîșmaruc - Full-Stack Developer",
-    description: DESCRIPTION,
+    title: `${SITE_CONFIG.name} - Full-Stack Developer`,
+    description: SITE_CONFIG.description,
     images: ["/og-home.jpg"],
   },
 };

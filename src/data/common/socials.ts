@@ -3,6 +3,7 @@ import {
   IconBrandLinkedin,
   IconBrandReddit,
 } from "@tabler/icons-react";
+import { SITE_CONFIG } from "./site";
 
 interface Social {
   icon: React.ComponentType<{ size?: number; strokeWidth?: number }>;
@@ -10,13 +11,13 @@ interface Social {
 }
 
 export const socials: Social[] = [
-  { icon: IconBrandGithub, href: "https://github.com/Obscurely" },
+  { icon: IconBrandGithub, href: SITE_CONFIG.social.github },
   {
     icon: IconBrandLinkedin,
-    href: "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0/",
+    href: SITE_CONFIG.social.linkedIn,
   },
   {
     icon: IconBrandReddit,
-    href: "https://www.reddit.com/user/CrismarucAdrian/",
+    href: SITE_CONFIG.social.reddit,
   },
 ];

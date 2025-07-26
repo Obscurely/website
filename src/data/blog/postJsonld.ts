@@ -1,5 +1,5 @@
+import { SITE_CONFIG } from "@data/common/site";
 import { Post } from "@lib/blog";
-import { DESCRIPTION } from "./metadata";
 
 export const generateBlogPostJsonLd = (slug: string, post: Post) => {
   const blogPostJsonLd = {
@@ -7,7 +7,7 @@ export const generateBlogPostJsonLd = (slug: string, post: Post) => {
     "@type": "BlogPosting",
     headline: post.frontmatter.title,
     description: post.frontmatter.description,
-    url: `https://adriancrismaruc.com/blog/${slug}`,
+    url: `${SITE_CONFIG.url}/blog/${slug}`,
     datePublished: post.frontmatter.date,
     dateModified: post.frontmatter.date,
     inLanguage: "en-US",
@@ -16,9 +16,7 @@ export const generateBlogPostJsonLd = (slug: string, post: Post) => {
     // Enhanced image object
     image: {
       "@type": "ImageObject",
-      url:
-        post.frontmatter.image ||
-        "https://adriancrismaruc.com/og-blog-post.jpg",
+      url: post.frontmatter.image || `${SITE_CONFIG.url}/og-blog-post.jpg`,
       width: 1200,
       height: 630,
       caption: post.frontmatter.title,
@@ -36,24 +34,25 @@ export const generateBlogPostJsonLd = (slug: string, post: Post) => {
 
     author: {
       "@type": "Person",
-      name: "Adrian Crîșmaruc",
-      url: "https://adriancrismaruc.com",
-      email: "contact@adriancrismaruc.com",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
+      email: SITE_CONFIG.toEmail,
       jobTitle: "Full-Stack Developer",
-      image: "https://adriancrismaruc.com/og-home.jpg",
+      image: `${SITE_CONFIG.url}/og-home.jpg`,
       sameAs: [
-        "https://github.com/Obscurely",
-        "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0/",
+        SITE_CONFIG.social.github,
+        SITE_CONFIG.social.linkedIn,
+        SITE_CONFIG.social.reddit,
       ],
     },
 
     publisher: {
       "@type": "Organization",
-      name: "Adrian Crîșmaruc",
-      url: "https://adriancrismaruc.com",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
       logo: {
         "@type": "ImageObject",
-        url: "https://adriancrismaruc.com/og-home.jpg",
+        url: `${SITE_CONFIG.url}/og-home.jpg`,
         width: 1200,
         height: 630,
       },
@@ -61,7 +60,7 @@ export const generateBlogPostJsonLd = (slug: string, post: Post) => {
 
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://adriancrismaruc.com/blog/${slug}`,
+      "@id": `${SITE_CONFIG.url}/blog/${slug}`,
     },
 
     breadcrumb: {
@@ -71,19 +70,19 @@ export const generateBlogPostJsonLd = (slug: string, post: Post) => {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://adriancrismaruc.com",
+          item: SITE_CONFIG.url,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Blog",
-          item: "https://adriancrismaruc.com/blog",
+          item: `${SITE_CONFIG.url}/blog`,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: post.frontmatter.title,
-          item: `https://adriancrismaruc.com/blog/${slug}`,
+          item: `${SITE_CONFIG.url}/blog/${slug}`,
         },
       ],
     },
@@ -96,13 +95,13 @@ export const generateBlogPostJsonLd = (slug: string, post: Post) => {
 
     isPartOf: {
       "@type": "Blog",
-      name: "Adrian Crîșmaruc - Blog",
-      url: "https://adriancrismaruc.com/blog",
-      description: DESCRIPTION,
+      name: `${SITE_CONFIG.name} - Blog`,
+      url: `${SITE_CONFIG.url}/blog`,
+      description: SITE_CONFIG.blogDescription,
     },
 
     // License information
-    license: "https://github.com/Obscurely/website/blob/main/LICENSE",
+    license: `${SITE_CONFIG.websiteSource}/blob/main/LICENSE`,
 
     // Audience
     audience: {
@@ -115,23 +114,23 @@ export const generateBlogPostJsonLd = (slug: string, post: Post) => {
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Adrian Crîșmaruc",
-    url: "https://adriancrismaruc.com",
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
     jobTitle: "Full-Stack Developer",
-    image: "https://adriancrismaruc.com/og-home.jpg",
+    image: `${SITE_CONFIG.url}/og-home.jpg`,
     sameAs: [
-      "https://github.com/Obscurely",
-      "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0/",
-      "https://www.reddit.com/user/CrismarucAdrian/",
+      SITE_CONFIG.social.github,
+      SITE_CONFIG.social.linkedIn,
+      SITE_CONFIG.social.reddit,
     ],
   };
 
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Adrian Crîșmaruc",
-    url: "https://adriancrismaruc.com",
-    logo: "https://adriancrismaruc.com/og-home.jpg",
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    logo: `${SITE_CONFIG.url}/og-home.jpg`,
   };
 
   return { blogPostJsonLd, personJsonLd, organizationJsonLd };
