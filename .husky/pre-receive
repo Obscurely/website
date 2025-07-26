@@ -1,0 +1,2 @@
+# Security scanning before accepting pushes
+pnpm audit --audit-level moderate

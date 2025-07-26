@@ -1,0 +1,2 @@
+# Auto-install dependencies when switching branches
+if [ $3 == 1 ]; then pnpm install; fi

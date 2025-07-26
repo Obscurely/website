@@ -1,1 +1,2 @@
+# Reinstall dependencies after merge
 pnpm install

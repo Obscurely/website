@@ -1,0 +1,2 @@
+# do a full check before pushing
+pnpm run type-check && pnpm run lint && pnpm run build

@@ -1,0 +1,2 @@
+# Reinstall after rebases/amends
+pnpm install

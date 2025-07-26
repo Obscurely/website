@@ -1,1 +1,2 @@
+# lint the code before committing
 pnpm lint-staged
