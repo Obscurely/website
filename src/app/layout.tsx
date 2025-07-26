@@ -128,7 +128,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${inter.className} flex min-h-screen flex-col font-sans antialiased`}
       >
         <div className="flex flex-1 flex-col">{children}</div>
-        <Script src="/animations.js" strategy="afterInteractive" />
+        <Script src="/animations.min.js" strategy="afterInteractive" />
       </body>
     </html>
   );

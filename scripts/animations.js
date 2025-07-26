@@ -1,7 +1,7 @@
 (function () {
-  'use strict';
+  "use strict";
 
-  if (typeof window === 'undefined') return;
+  if (typeof window === "undefined") return;
 
   class AnimationHandler {
     constructor(options = {}) {
@@ -12,12 +12,12 @@
       this.scrollThreshold = 20;
       this.ticking = false;
 
-	  // Mobile detection
-	  const isMobile = this.isMobileDevice(); 
+      // Mobile detection
+      const isMobile = this.isMobileDevice();
 
-      this.config   = {
-        threshold : isMobile ? 0.025 : 0.1,
-        rootMargin: '0px 0px 0px 0px',
+      this.config = {
+        threshold: isMobile ? 0.025 : 0.1,
+        rootMargin: "0px 0px 0px 0px",
         ...options,
       };
 
@@ -27,23 +27,27 @@
       this.init();
     }
 
-	// Detect mobile devices
-	isMobileDevice() {
-	  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-			 window.innerWidth <= 768;
-	}
+    // Detect mobile devices
+    isMobileDevice() {
+      return (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        ) || window.innerWidth <= 768
+      );
+    }
 
-	// check if an element is in the viewport
+    // check if an element is in the viewport
     isInViewport(el, threshold = 0) {
-      const rect      = el.getBoundingClientRect();
-      const vHeight   = window.innerHeight || document.documentElement.clientHeight;
-      const vWidth    = window.innerWidth  || document.documentElement.clientWidth;
+      const rect = el.getBoundingClientRect();
+      const vHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+      const vWidth = window.innerWidth || document.documentElement.clientWidth;
 
       return (
-        rect.bottom  >= 0 - threshold &&
-        rect.top     <= vHeight + threshold &&
-        rect.right   >= 0 - threshold &&
-        rect.left    <= vWidth  + threshold
+        rect.bottom >= 0 - threshold &&
+        rect.top <= vHeight + threshold &&
+        rect.right >= 0 - threshold &&
+        rect.left <= vWidth + threshold
       );
     }
 
@@ -62,9 +66,9 @@
 
       if (shouldBeScrolled !== this.isScrolled) {
         this.isScrolled = shouldBeScrolled;
-        const state = shouldBeScrolled ? 'show' : 'hide';
-        
-        this.scrollElements.forEach(el => {
+        const state = shouldBeScrolled ? "show" : "hide";
+
+        this.scrollElements.forEach((el) => {
           el.dataset.state = state;
         });
       }
@@ -72,12 +76,12 @@
       this.ticking = false;
     }
 
-	// handle intersection events
+    // handle intersection events
     handleIntersection(entries) {
       entries.forEach((entry) => {
-        const el      = entry.target;
-        const delay   = parseInt(el.dataset.delay || '0', 10);
-        const isOnce  = el.dataset.once === 'true';
+        const el = entry.target;
+        const delay = parseInt(el.dataset.delay || "0", 10);
+        const isOnce = el.dataset.once === "true";
 
         if (this.timeouts.has(el)) {
           clearTimeout(this.timeouts.get(el));
@@ -85,82 +89,88 @@
         }
 
         if (entry.isIntersecting) {
-          const id = setTimeout(() => {
-            el.dataset.state = isOnce ? 'once' : 'show';
-            this.timeouts.delete(el);
-            if (isOnce) this.observer.unobserve(el);
-          }, Math.max(0, delay));
+          const id = setTimeout(
+            () => {
+              el.dataset.state = isOnce ? "once" : "show";
+              this.timeouts.delete(el);
+              if (isOnce) this.observer.unobserve(el);
+            },
+            Math.max(0, delay)
+          );
 
           this.timeouts.set(el, id);
-
         } else if (!isOnce) {
-          el.dataset.state = 'hide';
+          el.dataset.state = "hide";
         }
       });
     }
 
-	// initialise the observer and animations
+    // initialise the observer and animations
     init() {
       try {
         this.observer = new IntersectionObserver(this.handleIntersection, {
-          threshold : this.config.threshold,
+          threshold: this.config.threshold,
           rootMargin: this.config.rootMargin,
         });
 
         this.initAnimations();
         this.initScrollHandler();
       } catch (err) {
-        console.warn('Animation handler failed to initialise:', err);
+        console.warn("Animation handler failed to initialise:", err);
       }
     }
 
     // Initialize scroll handler
     initScrollHandler() {
-      window.addEventListener('scroll', this.handleScroll, { passive: true });
-      
+      window.addEventListener("scroll", this.handleScroll, { passive: true });
+
       // Initial check
       this.updateScrollState();
     }
 
-	// initialise animations on elements with data-state
+    // initialise animations on elements with data-state
     initAnimations() {
-	  const els = document.querySelectorAll('[data-state]:not([data-animation-exclude="true"])'); 
+      const els = document.querySelectorAll(
+        '[data-state]:not([data-animation-exclude="true"])'
+      );
 
       els.forEach((el) => {
         // Handle scroll-based elements
-        if (el.dataset.state === 'scrolled') {
+        if (el.dataset.state === "scrolled") {
           this.scrollElements.add(el);
-          el.dataset.state = this.isScrolled ? 'show' : 'hide';
+          el.dataset.state = this.isScrolled ? "show" : "hide";
           return;
         }
 
-        if (el.dataset.state === 'once') {
-          el.dataset.once = 'true'; // mark as once-element
+        if (el.dataset.state === "once") {
+          el.dataset.once = "true"; // mark as once-element
 
           if (this.isInViewport(el)) {
-		    // already in viewport trigger immediately
+            // already in viewport trigger immediately
             return;
           }
 
-		  // prevent premature triggering
-          el.dataset.state = 'hide';
+          // prevent premature triggering
+          el.dataset.state = "hide";
         }
 
-		// observe other cases
+        // observe other cases
         this.observer.observe(el);
       });
     }
 
-	// destroy the observer and clear timeouts
+    // destroy the observer and clear timeouts
     destroy() {
       if (this.observer) this.observer.disconnect();
       this.timeouts.forEach((id) => clearTimeout(id));
       this.timeouts.clear();
       this.scrollElements.clear();
-      window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener("scroll", this.handleScroll);
     }
 
-    observe(el)   { if (this.observer && el) this.observer.observe(el); }
+    observe(el) {
+      if (this.observer && el) this.observer.observe(el);
+    }
     unobserve(el) {
       if (this.observer && el) {
         this.observer.unobserve(el);
@@ -180,13 +190,13 @@
     window.animationHandler = animationHandler; // debugging and access
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHandler);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHandler);
   } else {
     initHandler();
   }
 
-  window.addEventListener('beforeunload', () => {
+  window.addEventListener("beforeunload", () => {
     if (animationHandler) animationHandler.destroy();
   });
 })();

@@ -42,3 +42,6 @@ next-env.d.ts
 
 # some dev files
 magick_command
+
+# ignore 
+public/**/*.min.js
