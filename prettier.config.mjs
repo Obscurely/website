@@ -14,6 +14,8 @@ const config = {
   proseWrap: "always",
   endOfLine: "lf",
   plugins: ["prettier-plugin-tailwindcss"],
+  printWidth: 80,
+  quoteProps: "as-needed",
 };
 
 export default config;
