@@ -39,6 +39,7 @@ export const MobileNavbar = ({ isBlog, isMain }: MobileNavbarProps) => {
           size="icon"
           onClick={toggleMobileMenu}
           className="ml-2 cursor-pointer text-slate-200 hover:bg-transparent"
+          aria-label="Toggle mobile menu"
         >
           <motion.div
             animate={{ rotate: mobileMenuOpen ? 90 : 0 }}

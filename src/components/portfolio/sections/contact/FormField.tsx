@@ -66,6 +66,7 @@ export const FormField = ({
         required={required}
         maxLength={maxLength}
         aria-invalid={!!error}
+        aria-required={true}
         className={`dark:bg-slate-830 focus:!ring-cyan-570 h-11 rounded-lg border-1 text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-600 focus:shadow-lg focus:!ring-2 focus:!outline-none ${
           error
             ? "border-red-500 focus:border-red-400"

@@ -22,7 +22,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
       <h3 className="mb-4 text-lg font-semibold text-white">
         Table of Contents
       </h3>
-      <nav>
+      <nav aria-label="Table of Contents">
         <ul className="space-y-2 text-sm">
           {toc.map((item) => (
             <li key={item.slug} className={`${item.level === 3 ? "ml-4" : ""}`}>

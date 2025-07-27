@@ -29,8 +29,12 @@ export const DesktopTabsList = memo(function DesktopTabsList() {
             value={category}
             className="data-[state=active]:from-cyan-535 data-[state=active]:to-blue-530 relative flex-1 cursor-pointer rounded-lg py-2.5 text-sm font-medium text-slate-300 transition-all duration-200 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:text-white"
             data-animation-exclude="true"
+            aria-label={`Skills category: ${category}`}
           >
-            <span className="flex items-center justify-center">
+            <span
+              className="flex items-center justify-center"
+              aria-label={`Skill category button for ${category}`}
+            >
               {/* Disable the rule because it's not a user input */}
               {/* eslint-disable-next-line security/detect-object-injection */}
               <span className="mr-1.5">{CategoryIcons[category]}</span>
@@ -75,8 +79,12 @@ export const MobileTabsList = memo(function MobileTabsList() {
             className="data-[state=active]:from-cyan-535 data-[state=active]:to-blue-530 relative flex cursor-pointer items-center justify-center px-1 py-1.5 text-xs font-medium text-slate-300 transition-all duration-200 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:text-white"
             data-animation-exclude="true"
             style={mobileTabStyles[Math.min(idx, mobileTabStyles.length - 1)]}
+            aria-label={`Skills mobile category: ${category}`}
           >
-            <span className="flex items-center justify-center">
+            <span
+              className="flex items-center justify-center"
+              aria-label={`Skill mobile category button for ${category}`}
+            >
               {/* Disable the rule because it's not a user input */}
               {/* eslint-disable-next-line security/detect-object-injection */}
               <span className="mr-1">{CategoryIcons[category]}</span>

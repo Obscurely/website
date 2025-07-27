@@ -26,7 +26,10 @@ export const CategorySkills = memo(function CategorySkills({
   );
 
   return (
-    <div className="flex flex-wrap gap-1.5 will-change-transform">
+    <div
+      className="flex flex-wrap gap-1.5 will-change-transform"
+      aria-label={`Skills category content: ${category}`}
+    >
       {categorySkills.map((skill) => (
         <SkillBadge
           key={

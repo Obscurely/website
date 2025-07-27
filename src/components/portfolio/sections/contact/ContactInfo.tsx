@@ -64,6 +64,7 @@ export const ContactInfo = memo(() => {
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-slate-890 flex h-12 w-12 items-center justify-center rounded-full text-cyan-500 transition-all duration-300 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
+              aria-label={`Follow me on ${social.name}`}
             >
               <social.icon size={20} strokeWidth={2.5} />
             </a>

@@ -11,7 +11,6 @@ export const Contact = () => {
     <section
       id="contact"
       className="bg-main-bg-dark relative z-0 overflow-hidden py-20"
-      aria-labelledby="contact-heading"
     >
       {/* Background elements */}
       <div className="absolute inset-0 -z-10 opacity-10">

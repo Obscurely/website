@@ -78,7 +78,7 @@ export const MDXHeadings = {
     return (
       <a
         href={href}
-        className="inline-flex items-center gap-1 text-cyan-400 no-underline transition-colors duration-200 hover:text-cyan-300 hover:underline"
+        className="inline-flex items-center gap-1 text-cyan-400 transition-colors duration-200 hover:text-cyan-300 underline"
         target={isExternal ? "_blank" : undefined}
         rel={isExternal ? "noopener noreferrer" : undefined}
         {...props}

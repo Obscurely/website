@@ -55,6 +55,7 @@ export const Footer = ({ isBlog = false, isMain = false }: FooterProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group"
+                  aria-label={`Follow on ${social.name}`}
                 >
                   <div className="bg-slate-820 -mt-0.5 flex h-10 w-10 items-center justify-center rounded-full text-cyan-500 transition-colors duration-300 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none">
                     <social.icon size={20} strokeWidth={2.5} />

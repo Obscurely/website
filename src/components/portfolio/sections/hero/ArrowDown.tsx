@@ -21,6 +21,7 @@ export const ArrowDown = () => {
             .querySelector("#about")
             ?.scrollIntoView({ behavior: "smooth" });
         }}
+        aria-label="Scroll to About section"
       >
         <IconArrowDown size={20} />
       </Button>

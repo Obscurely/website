@@ -30,6 +30,14 @@ export function BlogPage({
 }: BlogPageProps) {
   return (
     <div className="relative py-16">
+      {/* Mobile title - hidden on lg and up */}
+      <div className="mb-0 lg:hidden">
+        <h1 className="bg-blue-400 bg-clip-text text-center text-3xl font-bold text-transparent">
+          Blog
+        </h1>
+        <div className="mx-auto mt-2 h-1 w-20 rounded-full bg-blue-400"></div>
+      </div>
+
       <FilterProvider currentFilters={currentFilters}>
         {/* Mobile filter drawer */}
         <MobileFilterDrawer allTags={allTags} allYears={allYears} />
@@ -44,19 +52,25 @@ export function BlogPage({
           {/* Desktop layout with grid */}
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-14 lg:gap-10">
             {/* Left sidebar - hidden on mobile */}
-            <aside className="hidden lg:col-span-3 lg:block xl:col-span-3">
+            <aside
+              className="hidden lg:col-span-3 lg:block xl:col-span-3"
+              aria-label="Info Sidebar"
+            >
               <div className="sticky top-24">
                 <Sidebar />
               </div>
             </aside>
 
             {/* Main content */}
-            <main className="lg:col-span-8 xl:col-span-8">
+            <section className="lg:col-span-8 xl:col-span-8">
               <Posts posts={filteredPosts} />
-            </main>
+            </section>
 
             {/* Right sidebar - hidden on mobile */}
-            <aside className="hidden lg:col-span-3 lg:block xl:col-span-3">
+            <aside
+              className="hidden lg:col-span-3 lg:block xl:col-span-3"
+              aria-label="Filter Sidebar"
+            >
               <div className="sticky top-24">
                 <FilterSidebar tags={allTags} years={allYears} />
               </div>

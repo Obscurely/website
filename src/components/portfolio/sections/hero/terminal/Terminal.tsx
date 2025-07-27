@@ -100,6 +100,7 @@ export const Terminal = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-slate-880 flex h-10 w-10 items-center justify-center rounded-full text-slate-400 shadow-[inset_0_0_0_1px_rgb(6_182_212_/_0.1)] transition-all duration-300 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:shadow-none"
+                aria-label={`Follow me on ${social.name}`}
               >
                 <social.icon size={20} strokeWidth={2.5} />
               </a>

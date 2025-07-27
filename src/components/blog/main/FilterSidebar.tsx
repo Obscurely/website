@@ -130,6 +130,7 @@ export function FilterSidebar({ isMobile, tags, years }: FilterSidebarProps) {
                 checked={isFeatured}
                 onCheckedChange={(checked) => setIsFeatured(!!checked)}
                 className="border-slate-700 group-hover:translate-0 group-hover:scale-100 hover:translate-0 hover:scale-100 hover:shadow-md data-[state=checked]:border-cyan-500 data-[state=checked]:bg-cyan-500 data-[state=checked]:group-hover:translate-0 data-[state=checked]:group-hover:scale-100 data-[state=checked]:hover:translate-0 data-[state=checked]:hover:scale-100 data-[state=checked]:hover:shadow-md"
+                aria-label="Featured posts only checkbox"
               />
               <label
                 htmlFor="featured"
