@@ -1,6 +1,7 @@
+import { useCallback, useEffect, useState } from "react";
+
 import { SCROLL_CONFIG } from "@data/blog/config";
 import { throttle } from "@lib/utils";
-import { useState, useEffect, useCallback } from "react";
 
 /**
  * Handle scrolling back to the top of the page.

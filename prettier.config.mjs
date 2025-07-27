@@ -13,9 +13,23 @@ const config = {
   arrowParens: "always",
   proseWrap: "always",
   endOfLine: "lf",
-  plugins: ["prettier-plugin-tailwindcss"],
+  plugins: [
+    "prettier-plugin-tailwindcss", // Keep this last for compatibility
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-organize-attributes",
+  ],
   printWidth: 80,
   quoteProps: "as-needed",
+  // Import sorting configuration
+  importOrder: [
+    "^react",
+    "^next",
+    "<THIRD_PARTY_MODULES>",
+    "^@/(.*)$",
+    "^[./]",
+  ],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
 };
 
 export default config;

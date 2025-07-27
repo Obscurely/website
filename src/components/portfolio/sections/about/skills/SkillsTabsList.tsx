@@ -1,9 +1,10 @@
 "use client";
 
 import { memo, useMemo } from "react";
-import { TabsList, TabsTrigger } from "@ui/tabs";
+
 import { CategoryIcons } from "@data/portfolio/skills/types";
 import { tabCategories } from "@hooks/portfolio/useSkillsTabs";
+import { TabsList, TabsTrigger } from "@ui/tabs";
 
 // Mobile tab styles
 const mobileTabStyles = [
@@ -30,6 +31,8 @@ export const DesktopTabsList = memo(function DesktopTabsList() {
             data-animation-exclude="true"
           >
             <span className="flex items-center justify-center">
+              {/* Disable the rule because it's not a user input */}
+              {/* eslint-disable-next-line security/detect-object-injection */}
               <span className="mr-1.5">{CategoryIcons[category]}</span>
               {category}
             </span>
@@ -74,6 +77,8 @@ export const MobileTabsList = memo(function MobileTabsList() {
             style={mobileTabStyles[Math.min(idx, mobileTabStyles.length - 1)]}
           >
             <span className="flex items-center justify-center">
+              {/* Disable the rule because it's not a user input */}
+              {/* eslint-disable-next-line security/detect-object-injection */}
               <span className="mr-1">{CategoryIcons[category]}</span>
               {category}
             </span>

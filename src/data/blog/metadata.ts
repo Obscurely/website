@@ -1,5 +1,6 @@
-import { SITE_CONFIG } from "@data/common/site";
 import { Metadata } from "next";
+
+import { SITE_CONFIG } from "@data/common/site";
 
 export const pageMetadata: Metadata = {
   title: `Blog | ${SITE_CONFIG.name}`,

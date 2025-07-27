@@ -1,6 +1,7 @@
+import { useCallback, useEffect, useRef, useState } from "react";
+
 import { SCROLL_CONFIG } from "@data/blog/config";
 import { throttle } from "@lib/utils";
-import { useState, useEffect, useRef, useCallback } from "react";
 
 type SidebarState = "initial" | "fixed" | "bottom";
 

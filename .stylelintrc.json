@@ -1,11 +1,30 @@
 {
-  "extends": ["stylelint-config-standard-scss"],
-  "plugins": ["stylelint-order"],
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-tailwindcss/scss"
+  ],
+  "plugins": [
+    "stylelint-order",
+    "stylelint-use-logical-spec",
+    "stylelint-high-performance-animation",
+    "stylelint-declaration-block-no-ignored-properties",
+    "stylelint-no-unsupported-browser-features"
+  ],
   "rules": {
     "order/properties-alphabetical-order": true,
     "color-hex-length": "short",
     "selector-class-pattern": null,
     "no-empty-source": null,
+    "liberty/use-logical-spec": "always",
+    "plugin/no-low-performance-animation-properties": true,
+    "plugin/declaration-block-no-ignored-properties": true,
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "browsers": ["> 1%", "last 2 versions"],
+        "ignore": ["css-nesting"]
+      }
+    ],
     "scss/at-rule-no-unknown": [
       true,
       {

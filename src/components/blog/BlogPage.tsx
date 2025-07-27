@@ -1,10 +1,11 @@
-import { Post } from "@lib/blog";
-import { Sidebar } from "./main/Sidebar";
-import { Posts } from "./main/Posts";
-import { FilterSidebar } from "./main/FilterSidebar";
-import { SearchMobile } from "./main/SearchMobile";
 import { FilterProvider } from "@contexts/blog/FilterContext";
+import { Post } from "@lib/blog";
+
+import { FilterSidebar } from "./main/FilterSidebar";
 import { MobileFilterDrawer } from "./main/MobileFilterDrawer";
+import { Posts } from "./main/Posts";
+import { SearchMobile } from "./main/SearchMobile";
+import { Sidebar } from "./main/Sidebar";
 
 interface BlogPageProps {
   filteredPosts: Post[];

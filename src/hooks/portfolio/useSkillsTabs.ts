@@ -1,6 +1,7 @@
-import { SkillCategory } from "@data/portfolio/skills/types";
-import { calculateContentHeight, MIN_HEIGHT } from "@utils/portfolio/skills";
 import { useEffect, useMemo, useRef, useState } from "react";
+
+import { SkillCategory } from "@data/portfolio/skills/types";
+import { MIN_HEIGHT, calculateContentHeight } from "@utils/portfolio/skills";
 
 // Memoize static data
 export const tabCategories = Object.values(SkillCategory).filter(

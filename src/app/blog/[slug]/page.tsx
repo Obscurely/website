@@ -1,13 +1,14 @@
-import { PostPage } from "@blog/post/PostPage";
-import { getPostBySlug, getAllPosts } from "@lib/blog";
-import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { Footer } from "@components/common/layout/Footer/Footer";
-import { Toaster } from "sonner";
-import { Navbar } from "@common/layout/Navbar/Navbar";
-import { generateBlogPostJsonLd } from "@data/blog/postJsonld";
+import { notFound } from "next/navigation";
 import Script from "next/script";
+
+import { PostPage } from "@blog/post/PostPage";
+import { Navbar } from "@common/layout/Navbar/Navbar";
+import { Footer } from "@components/common/layout/Footer/Footer";
+import { generateBlogPostJsonLd } from "@data/blog/postJsonld";
 import { SITE_CONFIG } from "@data/common/site";
+import { getAllPosts, getPostBySlug } from "@lib/blog";
+import { Toaster } from "sonner";
 
 interface BlogPostParams {
   params: Promise<{

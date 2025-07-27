@@ -5,8 +5,8 @@
  */
 export const ManyMore = () => {
   return (
-    <p
-      className="cursor-pointer text-sm text-slate-400 italic transition-colors duration-300 hover:text-cyan-400"
+    <button
+      className="cursor-pointer text-sm text-slate-400 italic transition-colors duration-300 hover:text-cyan-400 bg-transparent border-none p-0 font-inherit text-left block w-fit"
       onClick={() => {
         document
           .querySelector("#about")
@@ -14,6 +14,6 @@ export const ManyMore = () => {
       }}
     >
       ...and many more technologies + skills in my toolkit
-    </p>
+    </button>
   );
 };

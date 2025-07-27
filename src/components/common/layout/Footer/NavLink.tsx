@@ -1,5 +1,6 @@
 import { FooterLink } from "@data/common/footer";
 import { IconDownload, IconRss } from "@tabler/icons-react";
+
 import { LinkButton } from "./LinkButton";
 
 interface NavLinkProps {

@@ -1,11 +1,13 @@
 import Link from "next/link";
+
+import { contactInfo } from "@data/common/footer";
+import { SITE_CONFIG } from "@data/common/site";
 import { socials } from "@data/common/socials";
 import { useFooter } from "@hooks/common/useFooter";
-import { NavLink } from "./NavLink";
-import { contactInfo } from "@data/common/footer";
+
 import { NameButton } from "./NameButton";
+import { NavLink } from "./NavLink";
 import { ScrollToTop } from "./ScrollToTop";
-import { SITE_CONFIG } from "@data/common/site";
 
 interface FooterProps {
   isBlog?: boolean;

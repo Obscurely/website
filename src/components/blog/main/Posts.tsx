@@ -1,6 +1,7 @@
 import { Post } from "@lib/blog";
-import { PostRow } from "../layout/PostRow";
 import { IconFileText } from "@tabler/icons-react";
+
+import { PostRow } from "../layout/PostRow";
 
 interface PostsProps {
   posts: Post[];

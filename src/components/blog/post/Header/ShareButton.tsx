@@ -1,7 +1,7 @@
 "use client";
 
 import { useShare } from "@hooks/blog/useShare";
-import { IconShare, IconCheck } from "@tabler/icons-react";
+import { IconCheck, IconShare } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 
 export const ShareButton = () => {

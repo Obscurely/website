@@ -1,11 +1,13 @@
 "use client";
 
 import { memo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
+import { cardVariants, carouselVariants } from "@data/portfolio/animations";
 import { Project } from "@data/portfolio/projects";
-import { ProjectCard } from "./ProjectCard";
-import { carouselVariants, cardVariants } from "@data/portfolio/animations";
 import { useMaxCardHeight } from "@hooks/portfolio/useMaxCardHeight";
+import { AnimatePresence, motion } from "framer-motion";
+
+import { ProjectCard } from "./ProjectCard";
 
 interface ProjectsListProps {
   isInView: boolean;

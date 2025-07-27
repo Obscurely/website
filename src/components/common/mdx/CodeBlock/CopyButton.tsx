@@ -1,7 +1,8 @@
 "use client";
 
-import { IconCheck, IconCopy } from "@tabler/icons-react";
 import { useState } from "react";
+
+import { IconCheck, IconCopy } from "@tabler/icons-react";
 
 export const CopyButton = () => {
   const [copied, setCopied] = useState(false);

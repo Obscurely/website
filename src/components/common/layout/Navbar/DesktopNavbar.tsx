@@ -1,10 +1,11 @@
 "use client";
 
+import { useNavbar } from "@hooks/common/useNavbar";
+import { cn } from "@lib/utils";
 import { IconDownload } from "@tabler/icons-react";
 import { buttonVariants } from "@ui/button";
+
 import { DesktopNavItem } from "./DesktopNavItem";
-import { cn } from "@lib/utils";
-import { useNavbar } from "@hooks/common/useNavbar";
 
 interface DesktopNavbarProps {
   isBlog: boolean;

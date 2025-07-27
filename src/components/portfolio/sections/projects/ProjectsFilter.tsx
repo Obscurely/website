@@ -1,4 +1,5 @@
 import { memo } from "react";
+
 import { categoriesDisplay } from "@data/portfolio/projects";
 
 interface ProjectsFilterProps {
@@ -33,6 +34,8 @@ export const ProjectsFilter = memo(
               } transition-all duration-200 hover:text-white`}
             >
               <span className="flex items-center justify-center">
+                {/* Disable the rule because it's not a user input */}
+                {/* eslint-disable-next-line security/detect-object-injection */}
                 {categoriesDisplay[category] || category}
               </span>
               {activeCategory === category && (

@@ -1,8 +1,8 @@
 "use client";
 
+import { useBackToTop } from "@hooks/blog/useBackToTop";
 import { IconArrowUp } from "@tabler/icons-react";
 import { motion } from "framer-motion";
-import { useBackToTop } from "@hooks/blog/useBackToTop";
 
 export const BackToTopButton = () => {
   const { showBackToTop, scrollToTop } = useBackToTop();

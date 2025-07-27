@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@ui/card";
 import { services } from "@data/portfolio/about";
+import { Card, CardContent } from "@ui/card";
 
 /**
  * ServicesSection component that displays a list of services.

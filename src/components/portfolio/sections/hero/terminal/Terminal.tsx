@@ -1,12 +1,13 @@
-import { IconArrowRight, IconSearch, IconCode } from "@tabler/icons-react";
-import { Description } from "@data/portfolio/hero";
-import { socials } from "@data/common/socials";
-import { ManyMore } from "./ManyMore";
-import { Buttons } from "./Buttons";
-import { UnderNameLine } from "./UnderNameLine";
-import { TerminalClock } from "./TerminalClock";
-import { AnimatedRole } from "./AnimatedRole";
 import { SITE_CONFIG } from "@data/common/site";
+import { socials } from "@data/common/socials";
+import { Description } from "@data/portfolio/hero";
+import { IconArrowRight, IconCode, IconSearch } from "@tabler/icons-react";
+
+import { AnimatedRole } from "./AnimatedRole";
+import { Buttons } from "./Buttons";
+import { ManyMore } from "./ManyMore";
+import { TerminalClock } from "./TerminalClock";
+import { UnderNameLine } from "./UnderNameLine";
 
 /**
  * The terminal and main part of the portfolio hero section.

@@ -1,11 +1,11 @@
+import projects from "@data/portfolio/skills/projects";
+import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
 import {
   IconBrandPython,
   IconBrandRust,
   IconBrandTypescript,
   IconHash,
 } from "@tabler/icons-react";
-import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
-import projects from "@data/portfolio/skills/projects";
 
 const languagesSkills: Skill[] = [
   {

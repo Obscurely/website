@@ -1,20 +1,21 @@
-import { Hero } from "@portfolio/sections/hero/Hero";
-import { About } from "@portfolio/sections/about/About";
-import { Projects } from "@portfolio/sections/projects/Projects";
-import { Blog } from "@portfolio/sections/blog/Blog";
-import { Contact } from "@portfolio/sections/contact/Contact";
-import { Navbar } from "@common/layout/Navbar/Navbar";
-import { Footer } from "@common/layout/Footer/Footer";
-import { Toaster } from "sonner";
-import { Background } from "@components/portfolio/sections/hero/Background";
-import { pageMetadata } from "@data/portfolio/metadata";
 import { Metadata } from "next";
 import Script from "next/script";
+
+import { Footer } from "@common/layout/Footer/Footer";
+import { Navbar } from "@common/layout/Navbar/Navbar";
+import { Background } from "@components/portfolio/sections/hero/Background";
 import {
   organizationJsonLd,
   personJsonLd,
   portfolioJsonLd,
 } from "@data/portfolio/jsonld";
+import { pageMetadata } from "@data/portfolio/metadata";
+import { About } from "@portfolio/sections/about/About";
+import { Blog } from "@portfolio/sections/blog/Blog";
+import { Contact } from "@portfolio/sections/contact/Contact";
+import { Hero } from "@portfolio/sections/hero/Hero";
+import { Projects } from "@portfolio/sections/projects/Projects";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = pageMetadata;
 

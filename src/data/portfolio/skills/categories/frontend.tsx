@@ -1,3 +1,6 @@
+import projects from "@data/portfolio/skills/projects";
+import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
+import { SiMui, SiShadcnui } from "@icons-pack/react-simple-icons";
 import {
   IconBrandFramerMotion,
   IconBrandNextjs,
@@ -6,9 +9,6 @@ import {
   IconDeviceDesktop,
   IconWorldWww,
 } from "@tabler/icons-react";
-import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
-import projects from "@data/portfolio/skills/projects";
-import { SiMui, SiShadcnui } from "@icons-pack/react-simple-icons";
 
 const frontendSkills: Skill[] = [
   // React

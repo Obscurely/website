@@ -1,4 +1,5 @@
 import { Post } from "@lib/blog";
+
 import { searchPosts } from "./search";
 
 export interface BlogFilters {

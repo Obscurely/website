@@ -1,8 +1,9 @@
 "use client";
 
-import { createContext, useContext, ReactNode } from "react";
-import { useSidebarPositioning } from "@hooks/blog/useSidebarPositioning";
+import { ReactNode, createContext, useContext } from "react";
+
 import { usePostPage } from "@hooks/blog/usePostPage";
+import { useSidebarPositioning } from "@hooks/blog/useSidebarPositioning";
 
 type SidebarState = "initial" | "fixed" | "bottom";
 

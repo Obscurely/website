@@ -1,11 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { format } from "date-fns";
+import Link from "next/link";
+
 import { Post } from "@lib/blog";
+import { IconArrowRight, IconCalendar, IconClock } from "@tabler/icons-react";
 import { Badge } from "@ui/badge";
-import { IconCalendar, IconClock, IconArrowRight } from "@tabler/icons-react";
+import { format } from "date-fns";
 
 interface PostRowProps {
   post: Post;

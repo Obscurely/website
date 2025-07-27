@@ -1,7 +1,8 @@
-import Link from "next/link";
-import { Button } from "@ui/button";
-import { IconArrowLeft, IconHome } from "@tabler/icons-react";
 import { Metadata } from "next";
+import Link from "next/link";
+
+import { IconArrowLeft, IconHome } from "@tabler/icons-react";
+import { Button } from "@ui/button";
 
 export const metadata: Metadata = {
   title: "Post Not Found",

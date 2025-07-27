@@ -1,4 +1,5 @@
 import { memo, useMemo } from "react";
+
 import { skills } from "@data/portfolio/skills/skills";
 import {
   CategoryColorClass,
@@ -16,6 +17,8 @@ export const CategorySkills = memo(function CategorySkills({
 }: {
   category: SkillCategory;
 }) {
+  // Disable the rule because it's not a user input
+  // eslint-disable-next-line security/detect-object-injection
   const categorySkills = useMemo(() => skills[category], [category]);
   const colorClass = useMemo(
     () => CategoryColorClass[category as keyof typeof CategoryColorClass],

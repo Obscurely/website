@@ -1,4 +1,5 @@
 import { SITE_CONFIG } from "@data/common/site";
+
 import { Project } from "./types";
 
 type ProjectKey =

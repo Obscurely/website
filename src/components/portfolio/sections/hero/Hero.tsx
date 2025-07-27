@@ -1,7 +1,8 @@
-import { Terminal } from "./terminal/Terminal";
-import { Sidebar } from "./sidebar/Sidebar";
-import { ArrowDown } from "./ArrowDown";
 import { TimeProvider } from "@contexts/portfolio/TimeContext";
+
+import { ArrowDown } from "./ArrowDown";
+import { Sidebar } from "./sidebar/Sidebar";
+import { Terminal } from "./terminal/Terminal";
 
 /**
  * The hero section of the portfolio page

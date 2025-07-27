@@ -3,6 +3,7 @@ import {
   IconBrandLinkedin,
   IconBrandReddit,
 } from "@tabler/icons-react";
+
 import { SITE_CONFIG } from "./site";
 
 interface Social {

@@ -1,23 +1,26 @@
 import { useMemo } from "react";
-import { format } from "date-fns";
+
 import Image from "next/image";
 import Link from "next/link";
+
+import { SidebarPositioningProvider } from "@contexts/blog/SidebarPositioningContext";
 import { MDXPost } from "@lib/blog";
-import { Badge } from "@ui/badge";
 import {
+  IconArrowLeft,
   IconCalendar,
   IconClock,
-  IconArrowLeft,
   IconCoffee,
 } from "@tabler/icons-react";
-import { Comments } from "./Comments";
+import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
-import { Sidebar } from "./Sidebar";
-import { Header } from "./Header/Header";
+import { format } from "date-fns";
+
 import { BackToTopButton } from "./BackToTopButton";
-import { ShareButton } from "./ShareButton";
+import { Comments } from "./Comments";
 import { Footer } from "./Footer";
-import { SidebarPositioningProvider } from "@contexts/blog/SidebarPositioningContext";
+import { Header } from "./Header/Header";
+import { ShareButton } from "./ShareButton";
+import { Sidebar } from "./Sidebar";
 
 interface PostPageProps {
   post: MDXPost;

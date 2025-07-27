@@ -1,8 +1,9 @@
 "use client";
 
 import { useFilterContext } from "@contexts/blog/FilterContext";
-import { FilterSidebar } from "./FilterSidebar";
 import { Dialog, DialogPanel } from "@headlessui/react";
+
+import { FilterSidebar } from "./FilterSidebar";
 
 interface MobileFilterDrawerProps {
   allTags: string[];

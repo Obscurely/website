@@ -1,7 +1,9 @@
 import Link from "next/link";
+
+import { SITE_CONFIG } from "@data/common/site";
+
 import { DesktopNavbar } from "./DesktopNavbar";
 import { MobileNavbar } from "./MobileNavbar";
-import { SITE_CONFIG } from "@data/common/site";
 
 interface NavbarProps {
   isBlog?: boolean;

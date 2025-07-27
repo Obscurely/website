@@ -1,25 +1,26 @@
 "use server";
 
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
-import readingTime from "reading-time";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import remarkGfm from "remark-gfm";
+
 import {
   Callout,
   CodeBlock,
-  FeatureGrid,
   FeatureCard,
-  StepGuide,
-  Step,
+  FeatureGrid,
   QuickLinks,
   Separator,
+  Step,
+  StepGuide,
 } from "@common/mdx";
 import { MDXHeadings } from "@common/mdx/headings";
+import fs from "fs";
+import matter from "gray-matter";
+import path from "path";
+import readingTime from "reading-time";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { rehypePrettyCode } from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 
 const POSTS_PATH = path.join(process.cwd(), "content/posts");
 
@@ -47,27 +48,61 @@ export interface MDXPost extends Post {
 }
 
 /**
+ * Validate that a path is within the posts directory and safe to use
+ */
+function isValidPostPath(filePath: string): boolean {
+  const resolvedPath = path.resolve(filePath);
+  const resolvedPostsPath = path.resolve(POSTS_PATH);
+  return resolvedPath.startsWith(resolvedPostsPath);
+}
+
+/**
  * Get all the blog posts parsed
  */
 export async function getAllPosts(): Promise<Post[]> {
   // Get all years (directories)
-  const yearDirs = fs
-    .readdirSync(POSTS_PATH)
-    .filter((dir) => fs.statSync(path.join(POSTS_PATH, dir)).isDirectory());
+
+  const yearDirs = fs.readdirSync(POSTS_PATH).filter((dir) => {
+    const dirPath = path.join(POSTS_PATH, dir);
+    if (!isValidPostPath(dirPath)) return false;
+    try {
+      // eslint-disable-next-line security/detect-non-literal-fs-filename
+      return fs.statSync(dirPath).isDirectory();
+    } catch {
+      return false;
+    }
+  });
 
   const allPosts: Post[] = [];
 
   // Loop through each year directory
   for (const year of yearDirs) {
     const yearPath = path.join(POSTS_PATH, year);
-    const postFiles = fs
-      .readdirSync(yearPath)
-      .filter((file) => file.endsWith(".mdx"));
+    if (!isValidPostPath(yearPath)) continue;
+
+    let postFiles: string[];
+    try {
+      // eslint-disable-next-line security/detect-non-literal-fs-filename
+      postFiles = fs
+        .readdirSync(yearPath)
+        .filter((file) => file.endsWith(".mdx"));
+    } catch {
+      continue;
+    }
 
     // Process each post file
     for (const file of postFiles) {
       const filePath = path.join(yearPath, file);
-      const fileContent = fs.readFileSync(filePath, "utf8");
+      if (!isValidPostPath(filePath)) continue;
+
+      let fileContent: string;
+      try {
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
+        fileContent = fs.readFileSync(filePath, "utf8");
+      } catch {
+        continue;
+      }
+
       const { data, content } = matter(fileContent);
 
       // Skip draft posts in production
@@ -100,16 +135,50 @@ export async function getAllPosts(): Promise<Post[]> {
  * Get a specific post content
  */
 export async function getPostBySlug(slug: string): Promise<MDXPost | null> {
+  // Sanitize slug to prevent path traversal
+  const sanitizedSlug = slug.replace(/[^a-zA-Z0-9-_]/g, "");
+  if (sanitizedSlug !== slug) {
+    return null;
+  }
+
   // Find the post in all year directories
-  const yearDirs = fs
-    .readdirSync(POSTS_PATH)
-    .filter((dir) => fs.statSync(path.join(POSTS_PATH, dir)).isDirectory());
+  let yearDirs: string[];
+  try {
+    yearDirs = fs.readdirSync(POSTS_PATH).filter((dir) => {
+      const dirPath = path.join(POSTS_PATH, dir);
+      if (!isValidPostPath(dirPath)) return false;
+      try {
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
+        return fs.statSync(dirPath).isDirectory();
+      } catch {
+        return false;
+      }
+    });
+  } catch {
+    return null;
+  }
 
   for (const year of yearDirs) {
-    const filePath = path.join(POSTS_PATH, year, `${slug}.mdx`);
+    const filePath = path.join(POSTS_PATH, year, `${sanitizedSlug}.mdx`);
+    if (!isValidPostPath(filePath)) continue;
 
-    if (fs.existsSync(filePath)) {
-      const fileContent = fs.readFileSync(filePath, "utf8");
+    let fileExists: boolean;
+    try {
+      // eslint-disable-next-line security/detect-non-literal-fs-filename
+      fileExists = fs.existsSync(filePath);
+    } catch {
+      continue;
+    }
+
+    if (fileExists) {
+      let fileContent: string;
+      try {
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
+        fileContent = fs.readFileSync(filePath, "utf8");
+      } catch {
+        continue;
+      }
+
       const { data, content } = matter(fileContent);
 
       // Skip draft posts in production
@@ -161,7 +230,7 @@ export async function getPostBySlug(slug: string): Promise<MDXPost | null> {
       });
 
       return {
-        slug,
+        slug: sanitizedSlug,
         frontmatter: data as PostFrontmatter,
         content,
         readingTime: readingTimeResult.text,

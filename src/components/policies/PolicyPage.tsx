@@ -1,9 +1,11 @@
 import { useMemo } from "react";
-import { format } from "date-fns";
+
 import Link from "next/link";
+
 import { MDXPolicy } from "@lib/policies";
-import { Button } from "@ui/button";
 import { IconArrowLeft, IconCalendar } from "@tabler/icons-react";
+import { Button } from "@ui/button";
+import { format } from "date-fns";
 
 interface PolicyPageProps {
   policy: MDXPolicy;

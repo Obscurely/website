@@ -1,7 +1,7 @@
-import { useState, useRef, useMemo, useCallback, useEffect } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+
+import { Project, categories, projects } from "@data/portfolio/projects";
 import { useInView } from "framer-motion";
-import { Project } from "@data/portfolio/projects";
-import { projects, categories } from "@data/portfolio/projects";
 
 // Convert projects to array and sort featured first
 const projectsArray = Object.values(projects).sort(

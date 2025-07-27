@@ -1,13 +1,12 @@
+import { Suspense } from "react";
+
+import { Metadata } from "next";
+import Script from "next/script";
+
+import { Navbar } from "@common/layout/Navbar/Navbar";
 import { BlogPage } from "@components/blog/BlogPage";
 import { BlogLoadingFallback } from "@components/blog/main/LoadingFallback";
 import { Footer } from "@components/common/layout/Footer/Footer";
-import { Navbar } from "@common/layout/Navbar/Navbar";
-import { getAllPosts } from "@lib/blog";
-import { filterPosts, getUniqueTagsAndYears } from "@utils/blog/filter";
-import { Metadata } from "next";
-import { Suspense } from "react";
-import { pageMetadata } from "@data/blog/metadata";
-import Script from "next/script";
 import {
   blogBreadcrumbJsonLd,
   blogJsonLd,
@@ -15,6 +14,9 @@ import {
   organizationJsonLd,
   personJsonLd,
 } from "@data/blog/blogJsonld";
+import { pageMetadata } from "@data/blog/metadata";
+import { getAllPosts } from "@lib/blog";
+import { filterPosts, getUniqueTagsAndYears } from "@utils/blog/filter";
 
 export const metadata: Metadata = pageMetadata;
 

@@ -1,8 +1,8 @@
 import { AboutHeader } from "./AboutHeader";
 import { AboutJourney } from "./AboutJourney";
-import { SkillsSection } from "./skills/SkillsSection";
-import { ServicesSection } from "./ServicesSection";
 import { CertificationsSection } from "./CertificationsSection";
+import { ServicesSection } from "./ServicesSection";
+import { SkillsSection } from "./skills/SkillsSection";
 
 /**
  * About component that serves as the main section for the "About" page.

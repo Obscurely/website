@@ -1,7 +1,7 @@
 import {
+  IconCloud,
   IconCode,
   IconRocket,
-  IconCloud,
   IconSettings,
 } from "@tabler/icons-react";
 

@@ -1,3 +1,6 @@
+import projects from "@data/portfolio/skills/projects";
+import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
+import { SiKubernetes, SiLinux } from "@icons-pack/react-simple-icons";
 import {
   IconBrandAws,
   IconBrandDocker,
@@ -9,9 +12,6 @@ import {
   IconBrandTypescript,
   IconGitMerge,
 } from "@tabler/icons-react";
-import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
-import projects from "@data/portfolio/skills/projects";
-import { SiKubernetes, SiLinux } from "@icons-pack/react-simple-icons";
 
 const keySkills: Skill[] = [
   // Rust

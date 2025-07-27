@@ -15,6 +15,8 @@ export const calculateContentHeight = (
   containerWidth: number,
   category: SkillCategory
 ) => {
+  // disable eslint rule as the categories are hard coded and not user input
+  // eslint-disable-next-line security/detect-object-injection
   const categorySkills = skills[category];
   if (!categorySkills || categorySkills.length === 0) return MIN_HEIGHT;
 

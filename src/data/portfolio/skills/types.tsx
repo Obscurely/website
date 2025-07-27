@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
+
 import {
-  IconCode,
   IconBrandReact,
-  IconServer,
-  IconCloud,
   IconBriefcase,
+  IconCloud,
+  IconCode,
+  IconServer,
 } from "@tabler/icons-react";
 
 export enum SkillCategory {

@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useState } from "react";
+
 import { checkEmail } from "@utils/portfolio/contact";
 import { toast } from "sonner";
 
@@ -47,25 +48,30 @@ export const useContact = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
 
-  const validateField = useCallback((name: string, value: string): string => {
-    switch (name) {
-      case "name":
-        return value.trim().length < 2 ? "Minimum 2 characters" : "";
-      case "email":
-        return !checkEmail(value) ? "Invalid email" : "";
-      case "subject":
-        return value.trim().length < 3 ? "Minimum 3 characters" : "";
-      case "message":
-        return value.trim().length < 10 ? "Minimum 10 characters" : "";
-      default:
-        return "";
-    }
-  }, []);
+  const validateField = useCallback(
+    (name: keyof FormData, value: string): string => {
+      switch (name) {
+        case "name":
+          return value.trim().length < 2 ? "Minimum 2 characters" : "";
+        case "email":
+          return !checkEmail(value) ? "Invalid email" : "";
+        case "subject":
+          return value.trim().length < 3 ? "Minimum 3 characters" : "";
+        case "message":
+          return value.trim().length < 10 ? "Minimum 10 characters" : "";
+        default:
+          return "";
+      }
+    },
+    []
+  );
 
   const handleInputChange = useCallback(
-    (name: string, value: string) => {
+    (name: keyof FormData, value: string) => {
       setFormData((prev) => ({ ...prev, [name]: value }));
 
+      // Disable as we check if the field key exists in the form
+      // eslint-disable-next-line security/detect-object-injection
       if (touched[name]) {
         const error = validateField(name, value);
         setErrors((prev) => ({ ...prev, [name]: error }));
@@ -75,9 +81,11 @@ export const useContact = () => {
   );
 
   const handleBlur = useCallback(
-    (name: string) => {
+    (name: keyof FormData) => {
       setTouched((prev) => ({ ...prev, [name]: true }));
-      const error = validateField(name, formData[name as keyof FormData]);
+      // Disable as we check if the field key exists in the form
+      // eslint-disable-next-line security/detect-object-injection
+      const error = validateField(name, formData[name]);
       setErrors((prev) => ({ ...prev, [name]: error }));
     },
     [formData, validateField]
@@ -88,7 +96,7 @@ export const useContact = () => {
     let isValid = true;
 
     for (const [key, value] of Object.entries(formData)) {
-      const error = validateField(key, value);
+      const error = validateField(key as keyof FormData, value);
       if (error) {
         newErrors[key as keyof FormErrors] = error;
         isValid = false;
@@ -109,7 +117,7 @@ export const useContact = () => {
     // Check current field values against validation rules in real-time
     const hasNoValidationErrors = Object.entries(formData).every(
       ([key, value]) => {
-        const error = validateField(key, value);
+        const error = validateField(key as keyof FormData, value);
         return !error;
       }
     );

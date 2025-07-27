@@ -1,11 +1,12 @@
 "use client";
 
-import { IconMenu2, IconDownload, IconX } from "@tabler/icons-react";
-import { Button } from "@ui/button";
-import { MobileNavItem } from "./MobileNavItem";
-import { motion } from "framer-motion";
-import { useNavbarMobile } from "@hooks/common/useNavbarMobile";
 import { useNavbar } from "@hooks/common/useNavbar";
+import { useNavbarMobile } from "@hooks/common/useNavbarMobile";
+import { IconDownload, IconMenu2, IconX } from "@tabler/icons-react";
+import { Button } from "@ui/button";
+import { motion } from "framer-motion";
+
+import { MobileNavItem } from "./MobileNavItem";
 
 interface MobileNavbarProps {
   isBlog: boolean;

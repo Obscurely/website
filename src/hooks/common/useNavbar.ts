@@ -1,6 +1,7 @@
-import { throttle } from "@lib/utils";
+import { useCallback, useEffect, useMemo, useState } from "react";
+
 import { navItemsBlog, navItemsPortfolio } from "@data/common/navbar";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { throttle } from "@lib/utils";
 
 const SECTION_OFFSET = 100;
 

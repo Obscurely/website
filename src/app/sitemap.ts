@@ -1,6 +1,7 @@
+import { MetadataRoute } from "next";
+
 import { SITE_CONFIG } from "@data/common/site";
 import { getAllPosts } from "@lib/blog";
-import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all blog posts for dynamic routes

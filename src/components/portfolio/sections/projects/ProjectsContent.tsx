@@ -1,9 +1,10 @@
 "use client";
 
+import { useProjects } from "@hooks/portfolio/useProjects";
+
 import { ProjectsFilter } from "./ProjectsFilter";
 import { ProjectsList } from "./ProjectsList";
 import { ProjectsNavigation } from "./ProjectsNavigation";
-import { useProjects } from "@hooks/portfolio/useProjects";
 
 export const ProjectsContent = () => {
   const {

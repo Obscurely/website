@@ -1,10 +1,12 @@
 "use client";
 
-import { Tabs, TabsContent } from "@ui/tabs";
 import { memo } from "react";
-import { DesktopTabsList, MobileTabsList } from "./SkillsTabsList";
+
 import { tabCategories, useSkillsTabs } from "@hooks/portfolio/useSkillsTabs";
+import { Tabs, TabsContent } from "@ui/tabs";
+
 import { CategorySkills } from "./CategorySkills";
+import { DesktopTabsList, MobileTabsList } from "./SkillsTabsList";
 
 /**
  * SkillsTabs component that displays skill categories and their respective skills.

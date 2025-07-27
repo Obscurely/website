@@ -1,6 +1,7 @@
-import { getAllPosts, Post } from "@lib/blog";
 import { NextResponse } from "next/server";
+
 import { SITE_CONFIG } from "@data/common/site";
+import { Post, getAllPosts } from "@lib/blog";
 
 function escapeXml(unsafe: string): string {
   return unsafe.replace(/[<>&'"]/g, (c) => {

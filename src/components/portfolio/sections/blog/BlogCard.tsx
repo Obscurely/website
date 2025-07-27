@@ -1,12 +1,12 @@
 "use client";
 
-import { useMemo, memo } from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { memo, useMemo } from "react";
+
 import Image from "next/image";
-import { format } from "date-fns";
-import { Badge } from "@ui/badge";
-import { Card, CardContent, CardFooter } from "@ui/card";
+import Link from "next/link";
+
+import { cardVariants } from "@data/portfolio/animations";
+import { Post } from "@lib/blog";
 import {
   IconArrowRight,
   IconCalendar,
@@ -14,8 +14,10 @@ import {
   IconExternalLink,
   IconStar,
 } from "@tabler/icons-react";
-import { Post } from "@lib/blog";
-import { cardVariants } from "@data/portfolio/animations";
+import { Badge } from "@ui/badge";
+import { Card, CardContent, CardFooter } from "@ui/card";
+import { format } from "date-fns";
+import { motion } from "framer-motion";
 
 const CardWrapper = ({
   children,

@@ -1,5 +1,7 @@
 import { memo, useMemo } from "react";
+
 import Image from "next/image";
+
 import { certifications } from "@data/portfolio/skills/certifications";
 
 /**

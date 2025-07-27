@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect, useMemo, useRef } from "react";
-import { getAllPosts, Post } from "@lib/blog";
+import { useEffect, useMemo, useRef, useState } from "react";
+
+import { Post, getAllPosts } from "@lib/blog";
 import { LOADING_POSTS } from "@utils/portfolio/blog";
-import { BlogCard } from "./BlogCard";
 import { useInView } from "framer-motion";
+
+import { BlogCard } from "./BlogCard";
 
 /**
  * PostsList component fetches and displays the latest blog posts.

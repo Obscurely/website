@@ -1,7 +1,9 @@
 import Image from "next/image";
-import { Badge } from "@ui/badge";
+
 import { IconCalendar, IconClock, IconCoffee } from "@tabler/icons-react";
+import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
+
 import { ShareButton } from "./ShareButton";
 
 interface HeaderProps {

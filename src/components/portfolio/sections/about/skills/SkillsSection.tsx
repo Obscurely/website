@@ -1,4 +1,5 @@
 import { memo, useMemo } from "react";
+
 import { skills } from "@data/portfolio/skills/skills";
 import {
   CategoryAccentColor,
@@ -9,6 +10,7 @@ import {
   SkillBadge,
   SkillBadgeProvider,
 } from "@portfolio/helpers/SkillBadge/SkillBadge";
+
 import { SkillsTooltip } from "../SkillsTooltip";
 import { SkillsTabs } from "./SkillsTabs";
 

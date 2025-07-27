@@ -1,7 +1,8 @@
 "use client";
 
-import { typeAnimation } from "@data/portfolio/hero";
 import { TypeAnimation } from "react-type-animation";
+
+import { typeAnimation } from "@data/portfolio/hero";
 
 /**
  * Type animation for a few title roles in the hero section.

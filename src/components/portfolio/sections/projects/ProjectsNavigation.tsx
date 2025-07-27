@@ -1,10 +1,11 @@
 "use client";
 
 import { memo } from "react";
-import { motion } from "framer-motion";
-import { Button } from "@ui/button";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+
 import { navigationButtonVariants } from "@data/portfolio/animations";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { Button } from "@ui/button";
+import { motion } from "framer-motion";
 
 interface ProjectsNavigationProps {
   currentPage: number;

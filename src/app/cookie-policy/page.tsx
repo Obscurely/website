@@ -1,11 +1,12 @@
-import { PolicyPage } from "@components/policies/PolicyPage";
-import { Footer } from "@components/common/layout/Footer/Footer";
-import { Navbar } from "@common/layout/Navbar/Navbar";
-import { getPolicyBySlug } from "@lib/policies";
-import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Script from "next/script";
+
+import { Navbar } from "@common/layout/Navbar/Navbar";
+import { Footer } from "@components/common/layout/Footer/Footer";
+import { PolicyPage } from "@components/policies/PolicyPage";
 import { SITE_CONFIG } from "@data/common/site";
+import { getPolicyBySlug } from "@lib/policies";
 
 const DESCRIPTION = `Cookie policy for ${SITE_CONFIG.name}'s website - privacy-first approach without tracking cookies.`;
 

@@ -1,7 +1,8 @@
 import React, { memo } from "react";
-import { Card, CardContent } from "@ui/card";
+
 import { socials } from "@data/common/socials";
 import { contactInfo } from "@data/portfolio/contact";
+import { Card, CardContent } from "@ui/card";
 
 /**
  * ContactInfo component displays contact information and social links.

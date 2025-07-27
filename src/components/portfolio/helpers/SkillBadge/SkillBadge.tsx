@@ -1,19 +1,20 @@
 "use client";
 
-import { useState, createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
+
 import { Skill } from "@data/portfolio/skills/types";
-import React from "react";
-import { IconX } from "@tabler/icons-react";
 import {
-  useFloating,
   autoUpdate,
+  flip,
   offset,
   shift,
   useClick,
   useDismiss,
+  useFloating,
   useInteractions,
-  flip,
 } from "@floating-ui/react";
+import { IconX } from "@tabler/icons-react";
+
 import { ProficiencyScale } from "./ProficiencyScale";
 import { ProjectItem } from "./ProjectItem";
 

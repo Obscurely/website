@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
-import { fromIni, fromEnv } from "@aws-sdk/credential-providers";
-import { rateLimit } from "@lib/rate-limit";
-import DOMPurify from "isomorphic-dompurify";
-import { checkEmail } from "@utils/portfolio/contact";
+import { fromEnv, fromIni } from "@aws-sdk/credential-providers";
 import { SITE_CONFIG } from "@data/common/site";
+import { rateLimit } from "@lib/rate-limit";
+import { checkEmail } from "@utils/portfolio/contact";
+import DOMPurify from "isomorphic-dompurify";
 
 // Validate required environment variables
 const requiredEnvVars = {

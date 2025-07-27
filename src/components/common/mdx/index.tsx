@@ -1,14 +1,15 @@
 import {
-  IconInfoCircle,
   IconAlertTriangle,
-  IconX,
-  IconCircleCheck,
   IconBulb,
+  IconCircleCheck,
   IconExternalLink,
+  IconInfoCircle,
+  IconX,
 } from "@tabler/icons-react";
-import { MDXHeadings } from "./headings";
 import { Card, CardContent } from "@ui/card";
+
 import { CodeBlock } from "./CodeBlock/CodeBlock";
+import { MDXHeadings } from "./headings";
 
 export { CodeBlock };
 
@@ -57,6 +58,8 @@ export function Callout({
     },
   };
 
+  // Disable the rule because it's not a user input
+  // eslint-disable-next-line security/detect-object-injection
   const { icon: Icon, styles, iconColor, titleColor } = config[type];
 
   return (

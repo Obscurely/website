@@ -1,12 +1,15 @@
 "use client";
 
-import Image from "next/image";
-import { TableOfContents } from "./TableOfContents";
-import { Separator } from "@common/mdx";
 import { useMemo } from "react";
-import { getTableOfContents } from "@lib/blogToc";
+
+import Image from "next/image";
+
+import { Separator } from "@common/mdx";
 import { useSidebarPositioningContext } from "@contexts/blog/SidebarPositioningContext";
 import { SITE_CONFIG } from "@data/common/site";
+import { getTableOfContents } from "@lib/blogToc";
+
+import { TableOfContents } from "./TableOfContents";
 
 const SIDEBAR_CLASSES = {
   base: "space-y-8 overflow-y-auto pb-4 transition-all duration-300 ease-out",
@@ -56,6 +59,8 @@ export const Sidebar = ({ post }: SidebarProps) => {
   const currentSidebarState = isMobile ? "mobile" : sidebarState;
 
   // Get the appropriate CSS classes for current state
+  // Disable the rule because it's not a user input
+  // eslint-disable-next-line security/detect-object-injection
   const sidebarClasses = `${SIDEBAR_CLASSES.base} ${SIDEBAR_CLASSES[currentSidebarState]} ${isMobile ? "mb-0" : ""}`;
 
   return (

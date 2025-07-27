@@ -1,6 +1,6 @@
-import { IconSettings2, IconWorldSearch } from "@tabler/icons-react";
-import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
 import projects from "@data/portfolio/skills/projects";
+import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
+import { IconSettings2, IconWorldSearch } from "@tabler/icons-react";
 
 const businessSkills: Skill[] = [
   {

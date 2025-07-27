@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { Button } from "@ui/button";
-import { IconArrowRight } from "@tabler/icons-react";
+
 import { SITE_CONFIG } from "@data/common/site";
+import { IconArrowRight } from "@tabler/icons-react";
+import { Button } from "@ui/button";
+
 // import { PostsList } from "./PostsList";
 
 /**

@@ -1,7 +1,9 @@
-import { IconUser } from "@tabler/icons-react";
 import Image from "next/image";
-import { SidebarClock } from "./SidebarClock";
+
 import { SITE_CONFIG } from "@data/common/site";
+import { IconUser } from "@tabler/icons-react";
+
+import { SidebarClock } from "./SidebarClock";
 
 /**
  * The sidebar part of the hero section containing the 2 widgets (profile image and system status).

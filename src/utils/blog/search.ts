@@ -1,5 +1,5 @@
-import Fuse from "fuse.js";
 import { Post } from "@lib/blog";
+import Fuse from "fuse.js";
 
 /**
  * @param posts - Array of blog posts to search through.

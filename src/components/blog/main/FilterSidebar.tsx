@@ -1,17 +1,18 @@
 "use client";
 
-import { IconFilter, IconCalendar, IconTag } from "@tabler/icons-react";
-import { Badge } from "@ui/badge";
-import { Button } from "@ui/button";
+import { useFilterContext } from "@contexts/blog/FilterContext";
+import { IconCalendar, IconFilter, IconTag } from "@tabler/icons-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@ui/accordion";
-import { Search } from "./Search";
+import { Badge } from "@ui/badge";
+import { Button } from "@ui/button";
 import { Checkbox } from "@ui/checkbox";
-import { useFilterContext } from "@contexts/blog/FilterContext";
+
+import { Search } from "./Search";
 
 interface FilterSidebarProps {
   isMobile?: boolean; // Optional prop for mobile drawer

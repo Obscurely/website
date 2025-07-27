@@ -1,8 +1,10 @@
+import React from "react";
+
 import {
   SkillProficiency,
   SkillProficiencyDescription,
-  skillProficiencyLevels,
   skillProficiencyColor,
+  skillProficiencyLevels,
 } from "@data/portfolio/skills/types";
 import {
   Tooltip,
@@ -10,7 +12,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@ui/tooltip";
-import React from "react";
 
 /**
  * @param proficiency - The proficiency level of the skill.
@@ -40,7 +41,9 @@ export const ProficiencyScale = ({
                     }`}
                     style={{
                       ...(index === currentIndex
-                        ? skillProficiencyColor[level]
+                        ? // Disable the rule because it's not a user input
+                          // eslint-disable-next-line security/detect-object-injection
+                          skillProficiencyColor[level]
                         : {}),
                       transform: "translate(0, 0)",
                       backfaceVisibility: "hidden",
@@ -73,6 +76,8 @@ export const ProficiencyScale = ({
               >
                 <div className="mb-1 font-medium text-cyan-400">{level}</div>
                 <div className="leading-relaxed text-slate-300">
+                  {/* Disable the rule because it's not a user input */}
+                  {/* eslint-disable-next-line security/detect-object-injection */}
                   {SkillProficiencyDescription[level]}
                 </div>
               </TooltipContent>

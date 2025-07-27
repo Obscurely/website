@@ -1,6 +1,6 @@
+import { ContactForm } from "./ContactForm";
 import { ContactHeader } from "./ContactHeader";
 import { ContactInfo } from "./ContactInfo";
-import { ContactForm } from "./ContactForm";
 
 /**
  * Contact component that displays a contact form and contact information.

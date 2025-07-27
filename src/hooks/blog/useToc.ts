@@ -1,5 +1,6 @@
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+
 import { TocItem } from "@data/blog/toc";
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 
 /**
  * Custom hook to manage Table of Contents (TOC) behavior.

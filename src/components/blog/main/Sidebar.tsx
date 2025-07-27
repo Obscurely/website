@@ -2,16 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@ui/button";
+import { usePathname, useSearchParams } from "next/navigation";
+
+import { SITE_CONFIG } from "@data/common/site";
+import { socials } from "@data/common/socials";
 import {
   IconBookmark,
   IconCode,
-  IconTags,
   IconCoffee,
+  IconTags,
 } from "@tabler/icons-react";
-import { usePathname, useSearchParams } from "next/navigation";
-import { socials } from "@data/common/socials";
-import { SITE_CONFIG } from "@data/common/site";
+import { Button } from "@ui/button";
 
 /**
  * Sidebar component that displays the blog sidebar with profile, navigation, and social links.

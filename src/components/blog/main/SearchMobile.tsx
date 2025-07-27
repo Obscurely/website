@@ -3,7 +3,7 @@
 import { Button } from "@components/common/ui/button";
 import { Input } from "@components/common/ui/input";
 import { useFilterContext } from "@contexts/blog/FilterContext";
-import { IconSearch, IconX, IconFilter } from "@tabler/icons-react";
+import { IconFilter, IconSearch, IconX } from "@tabler/icons-react";
 
 /**
  * SearchMobile component provides a search input and filter button for mobile view.

@@ -1,6 +1,6 @@
-const HEADER_HEIGHT = 50;
+import { useCallback, useState } from "react";
 
-import { useState, useCallback } from "react";
+const HEADER_HEIGHT = 50;
 
 /**
  * Custom hook to manage mobile navigation bar behavior.

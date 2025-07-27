@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import Script from "next/script";
+
 import { SITE_CONFIG } from "@data/common/site";
+
+import "./globals.css";
 
 // Primary font
 const inter = Inter({

@@ -1,6 +1,8 @@
 import React from "react";
-import { IconExternalLink } from "@tabler/icons-react";
+
 import Image from "next/image";
+
+import { IconExternalLink } from "@tabler/icons-react";
 
 export const MDXHeadings = {
   // Headings

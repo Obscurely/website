@@ -1,7 +1,8 @@
 "use client";
 
-import { SITE_CONFIG } from "@data/common/site";
 import { useCallback } from "react";
+
+import { SITE_CONFIG } from "@data/common/site";
 
 /**
  * NameButton component that renders a button with the name "Adrian Crîșmaruc".
