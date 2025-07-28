@@ -1,4 +1,4 @@
-import * as React from "react";
+import { ComponentProps } from "react";
 
 import { cn } from "@lib/utils";
 import { Slot } from "@radix-ui/react-slot";
@@ -37,7 +37,7 @@ const Badge = ({
   variant,
   asChild = false,
   ...props
-}: React.ComponentProps<"span"> &
+}: ComponentProps<"span"> &
   VariantProps<typeof badgeVariants> & { asChild?: boolean }) => {
   const Comp = asChild ? Slot : "span";
 

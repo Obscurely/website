@@ -1,17 +1,14 @@
 "use client";
 
-import * as React from "react";
+import { ComponentProps } from "react";
 
 import { cn } from "@lib/utils";
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import { Indicator, Root } from "@radix-ui/react-checkbox";
 import { IconCheck } from "@tabler/icons-react";
 
-function Checkbox({
-  className,
-  ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+function Checkbox({ className, ...props }: ComponentProps<typeof Root>) {
   return (
-    <CheckboxPrimitive.Root
+    <Root
       data-slot="checkbox"
       className={cn(
         // Base styles
@@ -46,7 +43,7 @@ function Checkbox({
       data-animation-exclude="true"
       {...props}
     >
-      <CheckboxPrimitive.Indicator
+      <Indicator
         data-slot="checkbox-indicator"
         className={cn(
           "flex items-center justify-center text-white transition-all duration-200 ease-out",
@@ -60,14 +57,14 @@ function Checkbox({
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-      </CheckboxPrimitive.Indicator>
+      </Indicator>
 
       {/* inner glow effect */}
       <div
         className="absolute inset-0 rounded-md bg-gradient-to-br from-white/10 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-data-[state=checked]:opacity-20"
         data-animation-exclude="true"
       />
-    </CheckboxPrimitive.Root>
+    </Root>
   );
 }
 
