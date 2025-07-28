@@ -1,5 +1,7 @@
 "use client";
 
+import { memo } from "react";
+
 import { IconRss } from "@tabler/icons-react";
 
 interface MobileNavItemProps {
@@ -22,63 +24,67 @@ interface MobileNavItemProps {
  * @param onMenuCloseAction - Function to handle closing the mobile menu.
  * @returns
  */
-export const MobileNavItem = ({
-  item,
-  isBlog,
-  activeSection,
-  useAnchorLinks,
-  onNavClickAction: onNavClick,
-  onMenuCloseAction: onMenuClose,
-}: MobileNavItemProps) => {
-  const isRSS = item.name === "RSS";
-  const isActive = useAnchorLinks
-    ? false
-    : activeSection === item.href.substring(1);
+export const MobileNavItem = memo(
+  ({
+    item,
+    isBlog,
+    activeSection,
+    useAnchorLinks,
+    onNavClickAction: onNavClick,
+    onMenuCloseAction: onMenuClose,
+  }: MobileNavItemProps) => {
+    const isRSS = item.name === "RSS";
+    const isActive = useAnchorLinks
+      ? false
+      : activeSection === item.href.substring(1);
 
-  // Add "/" prefix when isMain=false and isBlog=false
-  const href = !isBlog && useAnchorLinks ? `/${item.href}` : item.href;
+    // Add "/" prefix when isMain=false and isBlog=false
+    const href = !isBlog && useAnchorLinks ? `/${item.href}` : item.href;
 
-  const commonClasses =
-    "w-full cursor-pointer rounded-lg px-4 py-3 text-left text-base font-medium transition-colors duration-200";
-  const activeClasses = isActive
-    ? "text-cyan-400"
-    : "text-slate-300 hover:text-white";
+    const commonClasses =
+      "w-full cursor-pointer rounded-lg px-4 py-3 text-left text-base font-medium transition-colors duration-200";
+    const activeClasses = isActive
+      ? "text-cyan-400"
+      : "text-slate-300 hover:text-white";
 
-  if (isRSS) {
+    if (isRSS) {
+      return (
+        <a
+          href="/rss.xml"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${commonClasses} ${activeClasses} flex items-center gap-2`}
+          onClick={onMenuClose}
+        >
+          <IconRss size={16} />
+          RSS
+        </a>
+      );
+    }
+
+    // Use anchor links when isBlog=true OR when useAnchorLinks=true (isMain=false)
+    if (isBlog || useAnchorLinks) {
+      return (
+        <a
+          href={href}
+          className={`${commonClasses} ${activeClasses} block`}
+          onClick={onMenuClose}
+        >
+          {item.name}
+        </a>
+      );
+    }
+
+    // Use buttons with smooth scrolling when isMain=true and isBlog=false
     return (
-      <a
-        href="/rss.xml"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${commonClasses} ${activeClasses} flex items-center gap-2`}
-        onClick={onMenuClose}
-      >
-        <IconRss size={16} />
-        RSS
-      </a>
-    );
-  }
-
-  // Use anchor links when isBlog=true OR when useAnchorLinks=true (isMain=false)
-  if (isBlog || useAnchorLinks) {
-    return (
-      <a
-        href={href}
-        className={`${commonClasses} ${activeClasses} block`}
-        onClick={onMenuClose}
+      <button
+        onClick={() => onNavClick(item.href)}
+        className={`${commonClasses} ${activeClasses}`}
       >
         {item.name}
-      </a>
+      </button>
     );
   }
+);
 
-  // Use buttons with smooth scrolling when isMain=true and isBlog=false
-  return (
-    <button
-      onClick={() => onNavClick(item.href)}
-      className={`${commonClasses} ${activeClasses}`}
-    >
-      {item.name}
-    </button>
-  );
-};
+MobileNavItem.displayName = "MobileNavItem";

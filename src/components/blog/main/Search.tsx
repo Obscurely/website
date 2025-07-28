@@ -1,5 +1,7 @@
 "use client";
 
+import { memo } from "react";
+
 import { IconSearch, IconX } from "@tabler/icons-react";
 import { Input } from "@ui/input";
 
@@ -13,7 +15,7 @@ interface SearchProps {
 /**
  * Search component provides a search input for filtering blog posts.
  */
-export function Search({
+export const Search = memo(function Search({
   searchQuery,
   setSearchQueryAction: setSearchQuery,
   onSearch,
@@ -64,4 +66,6 @@ export function Search({
       )}
     </div>
   );
-}
+});
+
+Search.displayName = "Search";
