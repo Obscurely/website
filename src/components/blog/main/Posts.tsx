@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { Post } from "@lib/blog";
 import { IconFileText } from "@tabler/icons-react";
 
@@ -10,7 +12,7 @@ interface PostsProps {
 /**
  * Posts component displays a list of blog posts (already filtered server-side).
  */
-export function Posts({ posts }: PostsProps) {
+export const Posts = memo(function Posts({ posts }: PostsProps) {
   return (
     <div className="space-y-6 pb-10">
       {posts.length > 0 ? (
@@ -44,4 +46,6 @@ export function Posts({ posts }: PostsProps) {
       )}
     </div>
   );
-}
+});
+
+Posts.displayName = "Posts";

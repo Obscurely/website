@@ -1,5 +1,7 @@
 "use client";
 
+import { memo, useMemo } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,8 +17,21 @@ interface PostRowProps {
 /**
  * PostRow component displays a single blog post in a row format.
  */
-export function PostRow({ post }: PostRowProps) {
-  const formattedDate = format(new Date(post.frontmatter.date), "MMMM d, yyyy");
+export const PostRow = memo(function PostRow({ post }: PostRowProps) {
+  const formattedDate = useMemo(
+    () => format(new Date(post.frontmatter.date), "MMMM d, yyyy"),
+    [post.frontmatter.date]
+  );
+
+  const visibleTags = useMemo(
+    () => post.frontmatter.tags.slice(0, 4),
+    [post.frontmatter.tags]
+  );
+
+  const remainingTagsCount = useMemo(
+    () => Math.max(0, post.frontmatter.tags.length - 4),
+    [post.frontmatter.tags.length]
+  );
 
   return (
     <div className="group">
@@ -89,7 +104,7 @@ export function PostRow({ post }: PostRowProps) {
                       Featured
                     </Badge>
                   )}
-                  {post.frontmatter.tags.slice(0, 4).map((tag) => (
+                  {visibleTags.map((tag) => (
                     <Badge
                       key={tag}
                       variant="outline"
@@ -98,12 +113,12 @@ export function PostRow({ post }: PostRowProps) {
                       {tag}
                     </Badge>
                   ))}
-                  {post.frontmatter.tags.length > 4 && (
+                  {remainingTagsCount > 0 && (
                     <Badge
                       variant="outline"
                       className="border-slate-650 bg-slate-730 hover:border-slate-570 hover:bg-slate-640 text-xs text-slate-400 transition-colors duration-200 hover:shadow-slate-500/10"
                     >
-                      +{post.frontmatter.tags.length - 4}
+                      +{remainingTagsCount}
                     </Badge>
                   )}
                 </div>
@@ -114,4 +129,6 @@ export function PostRow({ post }: PostRowProps) {
       </Link>
     </div>
   );
-}
+});
+
+PostRow.displayName = "PostRow";

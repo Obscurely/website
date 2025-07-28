@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 /**
  * Custom hook to manage the maximum height of a set of card elements.
@@ -8,13 +8,16 @@ export const useMaxCardHeight = () => {
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
   const resizeObserver = useRef<ResizeObserver | null>(null);
 
-  const registerCard = (index: number, element: HTMLElement | null) => {
-    if (element) {
-      // Disable the eslint rule because we are using a ref array
-      // eslint-disable-next-line security/detect-object-injection
-      cardRefs.current[index] = element;
-    }
-  };
+  const registerCard = useCallback(
+    (index: number, element: HTMLElement | null) => {
+      if (element) {
+        // Disable the eslint rule because we are using a ref array
+        // eslint-disable-next-line security/detect-object-injection
+        cardRefs.current[index] = element;
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     const calculateMaxHeight = () => {
