@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { Project, categories, projects } from "@data/portfolio/projects";
+import { debounce } from "@lib/utils";
 import { useInView } from "framer-motion";
 
 // Convert projects to array and sort featured first
@@ -40,14 +41,17 @@ export const useProjects = () => {
       }
     };
 
+    // Debounce the resize handler
+    const debouncedUpdate = debounce(updateProjectsPerPage, 150);
+
     // Set initial value
     updateProjectsPerPage();
 
     // Update on resize
-    window.addEventListener("resize", updateProjectsPerPage);
+    window.addEventListener("resize", debouncedUpdate);
 
     return () => {
-      window.removeEventListener("resize", updateProjectsPerPage);
+      window.removeEventListener("resize", debouncedUpdate);
     };
   }, []);
 

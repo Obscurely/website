@@ -13,7 +13,7 @@ export const AnimatedRole = () => {
       sequence={typeAnimation}
       wrapper="span"
       speed={50}
-      repeat={Infinity}
+      repeat={0}
       className="bg-blue-400 bg-clip-text text-transparent"
       style={{
         display: "inline-block",

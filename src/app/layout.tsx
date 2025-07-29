@@ -13,6 +13,7 @@ const inter = Inter({
   display: "swap",
   preload: true,
   fallback: ["system-ui", "arial"],
+  weight: ["400", "500", "600", "700"], // normal, medium, semibold, bold
 });
 
 // UI fonts
@@ -20,12 +21,16 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
+  weight: ["400", "500", "600", "700", "800"], // normal, medium, semibold, bold, extrabold
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
+  preload: false, // not critical for initial render
+  weight: ["400", "500"], // normal, medium
 });
 
 // Define viewport settings for better responsiveness

@@ -33,3 +33,22 @@ export function throttle<T extends (...args: unknown[]) => void>(
     }
   };
 }
+
+/**
+ * A utility function to debounce the execution of a function.
+ * Delays the execution until after the specified delay has elapsed since the last invocation.
+ */
+export function debounce<T extends (...args: unknown[]) => void>(
+  func: T,
+  delay: number
+): (...args: Parameters<T>) => void {
+  let timeoutId: NodeJS.Timeout | null = null;
+
+  return (...args: Parameters<T>) => {
+    if (timeoutId) clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+}

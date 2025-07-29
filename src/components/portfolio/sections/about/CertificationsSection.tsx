@@ -59,6 +59,8 @@ const CertificationCard = memo(function CertificationCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             fill
             className="object-contain p-1"
+            loading="lazy"
+            priority={false}
           />
         </div>
         <div className="ml-4 flex-1">
