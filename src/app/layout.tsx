@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Fira_Mono, Inter } from "next/font/google";
 import Script from "next/script";
 
 import { SITE_CONFIG } from "@data/common/site";
@@ -16,21 +16,21 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"], // normal, medium, semibold, bold
 });
 
-// UI fonts
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const firaMono = Fira_Mono({
   subsets: ["latin"],
+  variable: "--font-fira-mono",
   display: "swap",
   preload: true,
-  weight: ["400", "500", "600", "700", "800"], // normal, medium, semibold, bold, extrabold
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-  preload: false, // not critical for initial render
   weight: ["400", "500"], // normal, medium
+  fallback: [
+    "ui-monospace",
+    "SFMono-Regular",
+    "Consolas",
+    "Liberation Mono",
+    "Menlo",
+    "monospace",
+  ],
+  style: ["normal"], // normal
 });
 
 // Define viewport settings for better responsiveness
@@ -133,7 +133,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${inter.className} flex min-h-screen flex-col font-sans antialiased`}
+        className={`${firaMono.variable} ${inter.variable} ${inter.className} flex min-h-screen flex-col font-sans antialiased`}
       >
         <div className="flex flex-1 flex-col">{children}</div>
         <Script src="/animations.min.js" strategy="afterInteractive" />

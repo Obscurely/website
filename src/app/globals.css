@@ -240,3 +240,22 @@
     transform: scale(1);
   }
 }
+
+.font-mono {
+  font-family:
+    var(--font-fira-mono),
+    /* iOS/iPadOS */ "SF Mono",
+    Menlo,
+    /* Android */ "Roboto Mono",
+    "Droid Sans Mono",
+    /* Windows */ Consolas,
+    "Courier New",
+    /* macOS (older versions) */ Monaco,
+    /* Linux */ "Liberation Mono",
+    "DejaVu Sans Mono",
+    "Ubuntu Mono",
+    /* Cross-platform fallbacks */ "Lucida Console",
+    "Andale Mono",
+    Courier,
+    /* Generic fallback */ monospace !important;
+}

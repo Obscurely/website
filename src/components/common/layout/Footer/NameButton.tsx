@@ -18,7 +18,7 @@ export const NameButton = () => {
       onClick={() => handleNavClick("#home")}
       className="group mb-6 block cursor-pointer text-2xl font-bold text-slate-100 transition-all duration-300"
     >
-      <span className="bg-blue-400 bg-clip-text text-2xl font-extrabold text-transparent">
+      <span className="bg-blue-400 bg-clip-text text-2xl font-bold text-transparent">
         {SITE_CONFIG.name}
       </span>
     </button>

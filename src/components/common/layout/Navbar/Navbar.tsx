@@ -27,7 +27,7 @@ export const Navbar = ({ isBlog = false, isMain = false }: NavbarProps) => {
       <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href={nameHref} className="text-2xl font-bold text-slate-100">
           <div className="flex items-center gap-2">
-            <span className="sm:text-1xl truncate bg-blue-400 bg-clip-text text-xl font-extrabold text-transparent md:text-2xl">
+            <span className="sm:text-1xl truncate bg-blue-400 bg-clip-text text-xl font-bold text-transparent md:text-2xl">
               {SITE_CONFIG.name}
             </span>
           </div>
