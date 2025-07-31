@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Script from "next/script";
 
 import { Footer } from "@common/layout/Footer/Footer";
@@ -15,7 +16,11 @@ import { Blog } from "@portfolio/sections/blog/Blog";
 import { Contact } from "@portfolio/sections/contact/Contact";
 import { Hero } from "@portfolio/sections/hero/Hero";
 import { Projects } from "@portfolio/sections/projects/Projects";
-import { Toaster } from "sonner";
+
+const Toaster = dynamic(
+  () => import("sonner").then((mod) => ({ default: mod.Toaster })),
+  { ssr: true }
+);
 
 export const metadata: Metadata = pageMetadata;
 

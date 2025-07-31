@@ -17,7 +17,7 @@ import {
 import { Badge } from "@ui/badge";
 import { Card, CardContent, CardFooter } from "@ui/card";
 import { format } from "date-fns";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const CardWrapper = ({
   children,
@@ -68,7 +68,7 @@ export const BlogCard = memo(
     );
 
     return (
-      <motion.div
+      <m.div
         variants={cardVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -182,7 +182,7 @@ export const BlogCard = memo(
             </div>
           </Card>
         </CardWrapper>
-      </motion.div>
+      </m.div>
     );
   }
 );

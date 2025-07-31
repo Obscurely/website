@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { Post, getAllPosts } from "@lib/blog";
 import { LOADING_POSTS } from "@utils/portfolio/blog";
-import { useInView } from "framer-motion";
+import { LazyMotion, domAnimation, useInView } from "framer-motion";
 
 import { BlogCard } from "./BlogCard";
 
@@ -48,39 +48,43 @@ export const PostsList = () => {
 
   return (
     <div className="mb-12" ref={ref}>
-      {loading ? (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {LOADING_POSTS.map((post, index) => (
-            <div key={post.slug}>
-              <BlogCard
-                post={post}
-                index={index}
-                isInView={isInView}
-                isLoadingCard={true}
-              />
-            </div>
-          ))}
-        </div>
-      ) : latestPosts.length > 0 ? (
-        <div className={gridClassName}>
-          {latestPosts.map((post, index) => (
-            <div
-              key={post.slug}
-              className={
-                latestPosts.length === 3 && index === 2
-                  ? "md:col-span-2 md:mx-auto md:max-w-md lg:col-span-1 lg:mx-0 lg:max-w-none"
-                  : ""
-              }
-            >
-              <BlogCard post={post} index={index} isInView={isInView} />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="py-12 text-center">
-          <p className="text-lg text-slate-400">No blog posts available yet.</p>
-        </div>
-      )}
+      <LazyMotion features={domAnimation} strict>
+        {loading ? (
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {LOADING_POSTS.map((post, index) => (
+              <div key={post.slug}>
+                <BlogCard
+                  post={post}
+                  index={index}
+                  isInView={isInView}
+                  isLoadingCard={true}
+                />
+              </div>
+            ))}
+          </div>
+        ) : latestPosts.length > 0 ? (
+          <div className={gridClassName}>
+            {latestPosts.map((post, index) => (
+              <div
+                key={post.slug}
+                className={
+                  latestPosts.length === 3 && index === 2
+                    ? "md:col-span-2 md:mx-auto md:max-w-md lg:col-span-1 lg:mx-0 lg:max-w-none"
+                    : ""
+                }
+              >
+                <BlogCard post={post} index={index} isInView={isInView} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="py-12 text-center">
+            <p className="text-lg text-slate-400">
+              No blog posts available yet.
+            </p>
+          </div>
+        )}
+      </LazyMotion>
     </div>
   );
 };

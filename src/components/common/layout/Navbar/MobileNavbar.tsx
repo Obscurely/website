@@ -4,7 +4,7 @@ import { useNavbar } from "@hooks/common/useNavbar";
 import { useNavbarMobile } from "@hooks/common/useNavbarMobile";
 import { IconDownload, IconMenu2, IconX } from "@tabler/icons-react";
 import { Button } from "@ui/button";
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 
 import { MobileNavItem } from "./MobileNavItem";
 
@@ -41,12 +41,14 @@ export const MobileNavbar = ({ isBlog, isMain }: MobileNavbarProps) => {
           className="ml-2 cursor-pointer text-slate-200 hover:bg-transparent"
           aria-label="Toggle mobile menu"
         >
-          <motion.div
-            animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            {mobileMenuOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
-          </motion.div>
+          <LazyMotion features={domAnimation} strict>
+            <m.div
+              animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              {mobileMenuOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
+            </m.div>
+          </LazyMotion>
         </Button>
       </div>
 

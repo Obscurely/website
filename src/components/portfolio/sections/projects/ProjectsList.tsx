@@ -5,7 +5,7 @@ import { memo } from "react";
 import { cardVariants, carouselVariants } from "@data/portfolio/animations";
 import { Project } from "@data/portfolio/projects";
 import { useMaxCardHeight } from "@hooks/portfolio/useMaxCardHeight";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 
 import { ProjectCard } from "./ProjectCard";
 
@@ -28,7 +28,7 @@ export const ProjectsList = memo(
     return (
       <div className="min-h-[550px]">
         <AnimatePresence mode="wait">
-          <motion.div
+          <m.div
             key={`${activeCategory}-${currentPage}`}
             className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
             variants={carouselVariants}
@@ -37,7 +37,7 @@ export const ProjectsList = memo(
             exit="exit"
           >
             {currentProjects.map((project, idx) => (
-              <motion.div
+              <m.div
                 key={project.name}
                 variants={cardVariants}
                 custom={idx}
@@ -52,9 +52,9 @@ export const ProjectsList = memo(
                   registerCard={registerCard}
                   maxHeight={maxHeight}
                 />
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </AnimatePresence>
       </div>
     );

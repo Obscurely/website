@@ -5,7 +5,7 @@ import { memo } from "react";
 import { navigationButtonVariants } from "@data/portfolio/animations";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { Button } from "@ui/button";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 interface ProjectsNavigationProps {
   currentPage: number;
@@ -28,7 +28,7 @@ export const ProjectsNavigation = memo(
 
     return (
       <div className="mt-12 flex items-center justify-center gap-4">
-        <motion.div
+        <m.div
           whileHover={!isPrevDisabled ? "hover" : ""}
           whileTap={!isPrevDisabled ? "tap" : ""}
           variants={navigationButtonVariants}
@@ -47,7 +47,7 @@ export const ProjectsNavigation = memo(
               className="sm:h-5 sm:w-5 md:h-5 md:w-5"
             />
           </Button>
-        </motion.div>
+        </m.div>
 
         <div className="min-w-[2rem] flex-shrink-0 text-center text-sm text-slate-400 sm:text-sm md:text-sm">
           <span className="font-mono font-medium text-cyan-400">
@@ -56,7 +56,7 @@ export const ProjectsNavigation = memo(
           <span className="font-mono font-medium"> / {pages}</span>
         </div>
 
-        <motion.div
+        <m.div
           whileHover={!isNextDisabled ? "hover" : ""}
           whileTap={!isNextDisabled ? "tap" : ""}
           variants={navigationButtonVariants}
@@ -75,7 +75,7 @@ export const ProjectsNavigation = memo(
               className="sm:h-5 sm:w-5 md:h-5 md:w-5"
             />
           </Button>
-        </motion.div>
+        </m.div>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useProjects } from "@hooks/portfolio/useProjects";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 import { ProjectsFilter } from "./ProjectsFilter";
 import { ProjectsList } from "./ProjectsList";
@@ -29,21 +30,23 @@ export const ProjectsContent = () => {
         handleCategoryChangeAction={handleCategoryChange}
       />
 
-      {/* Projects list - fixed height carousel */}
-      <ProjectsList
-        isInView={isInView}
-        activeCategory={activeCategory}
-        currentProjects={currentProjects}
-        currentPage={currentPage}
-      />
+      <LazyMotion features={domAnimation} strict>
+        {/* Projects list - fixed height carousel */}
+        <ProjectsList
+          isInView={isInView}
+          activeCategory={activeCategory}
+          currentProjects={currentProjects}
+          currentPage={currentPage}
+        />
 
-      {/* Navigation controls */}
-      <ProjectsNavigation
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPrevPage={goToPrevPage}
-        onNextPage={goToNextPage}
-      />
+        {/* Navigation controls */}
+        <ProjectsNavigation
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPrevPage={goToPrevPage}
+          onNextPage={goToNextPage}
+        />
+      </LazyMotion>
     </div>
   );
 };

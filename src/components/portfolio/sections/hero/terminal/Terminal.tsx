@@ -3,11 +3,11 @@ import { socials } from "@data/common/socials";
 import { Description } from "@data/portfolio/hero";
 import { IconArrowRight, IconCode, IconSearch } from "@tabler/icons-react";
 
-import { AnimatedRole } from "./AnimatedRole";
 import { Buttons } from "./Buttons";
+import { LazyAnimatedRole } from "./LazyAnimatedRole";
+import { LazyUnderNameLine } from "./LazyUnderNameLine";
 import { ManyMore } from "./ManyMore";
 import { TerminalClock } from "./TerminalClock";
-import { UnderNameLine } from "./UnderNameLine";
 
 /**
  * The terminal and main part of the portfolio hero section.
@@ -50,7 +50,7 @@ export const Terminal = () => {
             <h1 className="mb-4 text-3xl font-bold tracking-tight text-slate-300 md:text-5xl lg:text-4xl">
               <span className="relative">
                 {SITE_CONFIG.name}
-                <UnderNameLine />
+                <LazyUnderNameLine />
               </span>
             </h1>
 
@@ -72,7 +72,7 @@ export const Terminal = () => {
 
             {/* Animated Role */}
             <div className="mb-6 min-h-[2.5rem] text-2xl font-semibold md:text-2xl lg:text-3xl">
-              <AnimatedRole />
+              <LazyAnimatedRole />
             </div>
 
             {/* Description */}
