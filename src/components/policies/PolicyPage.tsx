@@ -5,7 +5,6 @@ import Link from "next/link";
 import { MDXPolicy } from "@lib/policies";
 import { IconArrowLeft, IconCalendar } from "@tabler/icons-react";
 import { Button } from "@ui/button";
-import { format } from "date-fns";
 
 interface PolicyPageProps {
   policy: MDXPolicy;
@@ -17,7 +16,12 @@ interface PolicyPageProps {
 export function PolicyPage({ policy }: PolicyPageProps) {
   // Memoized calculations
   const formattedDate = useMemo(
-    () => format(new Date(policy.frontmatter.lastUpdated), "MMMM d, yyyy"),
+    () =>
+      new Date(policy.frontmatter.lastUpdated).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
     [policy.frontmatter.lastUpdated]
   );
 

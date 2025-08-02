@@ -8,7 +8,6 @@ import Link from "next/link";
 import { Post } from "@lib/blog";
 import { IconArrowRight, IconCalendar, IconClock } from "@tabler/icons-react";
 import { Badge } from "@ui/badge";
-import { format } from "date-fns";
 
 interface PostRowProps {
   post: Post;
@@ -19,7 +18,12 @@ interface PostRowProps {
  */
 export const PostRow = memo(function PostRow({ post }: PostRowProps) {
   const formattedDate = useMemo(
-    () => format(new Date(post.frontmatter.date), "MMMM d, yyyy"),
+    () =>
+      new Date(post.frontmatter.date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
     [post.frontmatter.date]
   );
 

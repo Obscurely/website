@@ -16,7 +16,6 @@ import {
 } from "@tabler/icons-react";
 import { Badge } from "@ui/badge";
 import { Card, CardContent, CardFooter } from "@ui/card";
-import { format } from "date-fns";
 import { m } from "framer-motion";
 
 const CardWrapper = ({
@@ -54,7 +53,12 @@ export const BlogCard = memo(
     isLoadingCard?: boolean;
   }) => {
     const formattedDate = useMemo(
-      () => format(new Date(post.frontmatter.date), "MMM d, yyyy"),
+      () =>
+        new Date(post.frontmatter.date).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }),
       [post.frontmatter.date]
     );
 

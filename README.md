@@ -44,7 +44,6 @@
 - [giscus](https://giscus.app/)- A comment system powered by GitHub Discussions
 - [fuse.js](https://fusejs.io/) - A lightweight fuzzy-search library, with zero
   dependencies.
-- [date-fns](https://date-fns.org/) - A modern JavaScript date utility library.
 - [Simple Icons](https://simpleicons.org/) - A set of icons for popular brands
   in SVG format
 

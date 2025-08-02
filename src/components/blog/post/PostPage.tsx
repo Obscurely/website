@@ -13,7 +13,6 @@ import {
 } from "@tabler/icons-react";
 import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
-import { format } from "date-fns";
 
 import { BackToTopButton } from "./BackToTopButton";
 import { Comments } from "./Comments";
@@ -32,7 +31,12 @@ interface PostPageProps {
 export function PostPage({ post }: PostPageProps) {
   // Memoized calculations
   const formattedDate = useMemo(
-    () => format(new Date(post.frontmatter.date), "MMMM d, yyyy"),
+    () =>
+      new Date(post.frontmatter.date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
     [post.frontmatter.date]
   );
 
