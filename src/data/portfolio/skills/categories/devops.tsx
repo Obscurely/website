@@ -1,6 +1,6 @@
 import projects from "@data/portfolio/skills/projects";
 import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
-import { SiKubernetes, SiLinux } from "@icons-pack/react-simple-icons";
+
 import {
   IconBrandAws,
   IconBrandDocker,
@@ -9,14 +9,16 @@ import {
   IconHeartRateMonitor,
   IconPackage,
   IconServer,
-} from "@tabler/icons-react";
+  SiKubernetes,
+  SiLinux,
+} from "../icons";
 
 const devopsSkills: Skill[] = [
   {
     id: "aws-devops",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandAws /> AWS
+        <IconBrandAws size={24} /> AWS
       </span>
     ),
     description: (
@@ -76,7 +78,7 @@ const devopsSkills: Skill[] = [
     id: "terraform-devops",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandTerraform /> Terraform
+        <IconBrandTerraform size={24} /> Terraform
       </span>
     ),
     description: (
@@ -114,7 +116,7 @@ const devopsSkills: Skill[] = [
     id: "docker-devops",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandDocker /> Docker
+        <IconBrandDocker size={24} /> Docker
       </span>
     ),
     description: (
@@ -132,7 +134,7 @@ const devopsSkills: Skill[] = [
     id: "cicd-devops",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconGitMerge /> CI/CD
+        <IconGitMerge size={24} /> CI/CD
       </span>
     ),
     description: (
@@ -153,7 +155,7 @@ const devopsSkills: Skill[] = [
     id: "monitoring-devops",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconHeartRateMonitor /> Monitoring
+        <IconHeartRateMonitor size={24} /> Monitoring
       </span>
     ),
     description: (
@@ -168,7 +170,7 @@ const devopsSkills: Skill[] = [
     id: "sysadmin-devops",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconServer /> SysAdmin
+        <IconServer size={24} /> SysAdmin
       </span>
     ),
     description: (
@@ -185,7 +187,7 @@ const devopsSkills: Skill[] = [
     id: "linux-devops",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <SiLinux size={20} /> Linux
+        <SiLinux name="Linux" size={20} /> Linux
       </span>
     ),
     description: (
@@ -209,7 +211,7 @@ const devopsSkills: Skill[] = [
     id: "package-deployment-devops",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconPackage /> Package Deployment
+        <IconPackage size={24} /> Package Deployment
       </span>
     ),
     description: (

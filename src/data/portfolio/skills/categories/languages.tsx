@@ -1,18 +1,19 @@
 import projects from "@data/portfolio/skills/projects";
 import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
+
 import {
   IconBrandPython,
   IconBrandRust,
   IconBrandTypescript,
   IconHash,
-} from "@tabler/icons-react";
+} from "../icons";
 
 const languagesSkills: Skill[] = [
   {
     id: "rust-language",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandRust /> Rust
+        <IconBrandRust size={24} /> Rust
       </span>
     ),
     description: (
@@ -34,7 +35,7 @@ const languagesSkills: Skill[] = [
     id: "python-language",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandPython /> Python
+        <IconBrandPython size={24} /> Python
       </span>
     ),
     description: (
@@ -57,7 +58,7 @@ const languagesSkills: Skill[] = [
     id: "typescript-language",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandTypescript /> TypeScript
+        <IconBrandTypescript size={24} /> TypeScript
       </span>
     ),
     description: (
@@ -74,7 +75,7 @@ const languagesSkills: Skill[] = [
     id: "shell-script-language",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconHash /> Shell Script
+        <IconHash size={24} /> Shell Script
       </span>
     ),
     description: (

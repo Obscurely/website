@@ -1,6 +1,6 @@
 import projects from "@data/portfolio/skills/projects";
 import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
-import { SiFlask } from "@icons-pack/react-simple-icons";
+
 import {
   IconApps,
   IconArrowsSplit2,
@@ -9,7 +9,8 @@ import {
   IconDatabase,
   IconShieldLock,
   IconSitemap,
-} from "@tabler/icons-react";
+  SiFlask,
+} from "../icons";
 
 const backendSkills: Skill[] = [
   // API
@@ -17,7 +18,7 @@ const backendSkills: Skill[] = [
     id: "api-backend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconSitemap /> API
+        <IconSitemap size={24} /> API
       </span>
     ),
     description: (
@@ -77,7 +78,7 @@ const backendSkills: Skill[] = [
     id: "databases-backend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconDatabase /> Databases
+        <IconDatabase size={24} /> Databases
       </span>
     ),
     description: (
@@ -107,7 +108,7 @@ const backendSkills: Skill[] = [
     id: "security-backend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconShieldLock /> Security
+        <IconShieldLock size={24} /> Security
       </span>
     ),
     description: (
@@ -127,7 +128,7 @@ const backendSkills: Skill[] = [
     id: "oauth2.0-backend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandOauth /> OAuth 2.0
+        <IconBrandOauth size={24} /> OAuth 2.0
       </span>
     ),
     description: (
@@ -159,7 +160,7 @@ const backendSkills: Skill[] = [
     id: "payments-backend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconCreditCardPay /> Payments
+        <IconCreditCardPay size={24} /> Payments
       </span>
     ),
     description: (
@@ -188,7 +189,7 @@ const backendSkills: Skill[] = [
     id: "concurrency-parallelism-backend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconArrowsSplit2 /> Concurrency/Parallelism
+        <IconArrowsSplit2 size={24} /> Concurrency/Parallelism
       </span>
     ),
     description: (
@@ -208,7 +209,7 @@ const backendSkills: Skill[] = [
     id: "microservices-backend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconApps /> Microservices
+        <IconApps size={24} /> Microservices
       </span>
     ),
     description: (

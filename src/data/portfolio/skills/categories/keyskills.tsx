@@ -1,6 +1,6 @@
 import projects from "@data/portfolio/skills/projects";
 import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
-import { SiKubernetes, SiLinux } from "@icons-pack/react-simple-icons";
+
 import {
   IconBrandAws,
   IconBrandDocker,
@@ -11,7 +11,9 @@ import {
   IconBrandTerraform,
   IconBrandTypescript,
   IconGitMerge,
-} from "@tabler/icons-react";
+  SiKubernetes,
+  SiLinux,
+} from "../icons";
 
 const keySkills: Skill[] = [
   // Rust
@@ -19,7 +21,7 @@ const keySkills: Skill[] = [
     id: "rust-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandRust /> Rust
+        <IconBrandRust size={24} /> Rust
       </span>
     ),
     description: (
@@ -43,7 +45,7 @@ const keySkills: Skill[] = [
     id: "python-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandPython /> Python
+        <IconBrandPython size={24} /> Python
       </span>
     ),
     description: (
@@ -68,7 +70,7 @@ const keySkills: Skill[] = [
     id: "typescript-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandTypescript /> TypeScript
+        <IconBrandTypescript size={24} /> TypeScript
       </span>
     ),
     description: (
@@ -87,7 +89,7 @@ const keySkills: Skill[] = [
     id: "react-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandReact /> React
+        <IconBrandReact size={24} /> React
       </span>
     ),
     description: (
@@ -118,7 +120,7 @@ const keySkills: Skill[] = [
     id: "nextjs-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandNextjs /> Next.js
+        <IconBrandNextjs size={24} /> Next.js
       </span>
     ),
     description: (
@@ -138,7 +140,7 @@ const keySkills: Skill[] = [
     id: "aws-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandAws /> AWS
+        <IconBrandAws size={24} /> AWS
       </span>
     ),
     description: (
@@ -171,7 +173,8 @@ const keySkills: Skill[] = [
     id: "kubernetes-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <SiKubernetes size={22} /> Kubernetes
+        <SiKubernetes name="Kubernetes" size={22} className="min-w-6" />{" "}
+        Kubernetes
       </span>
     ),
     description: (
@@ -202,7 +205,7 @@ const keySkills: Skill[] = [
     id: "docker-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandDocker /> Docker
+        <IconBrandDocker size={24} /> Docker
       </span>
     ),
     description: (
@@ -222,7 +225,7 @@ const keySkills: Skill[] = [
     id: "terraform-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandTerraform /> Terraform
+        <IconBrandTerraform size={24} /> Terraform
       </span>
     ),
     description: (
@@ -262,7 +265,7 @@ const keySkills: Skill[] = [
     id: "cicd-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconGitMerge /> CI/CD
+        <IconGitMerge size={24} /> CI/CD
       </span>
     ),
     description: (
@@ -285,7 +288,7 @@ const keySkills: Skill[] = [
     id: "linux-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <SiLinux size={20} /> Linux
+        <SiLinux name="Linux" size={20} className="min-w-6" /> Linux
       </span>
     ),
     description: (

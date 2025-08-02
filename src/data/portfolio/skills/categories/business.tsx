@@ -1,13 +1,14 @@
 import projects from "@data/portfolio/skills/projects";
 import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
-import { IconSettings2, IconWorldSearch } from "@tabler/icons-react";
+
+import { IconSettings2, IconWorldSearch } from "../icons";
 
 const businessSkills: Skill[] = [
   {
     id: "saas-business",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconSettings2 /> SaaS Management
+        <IconSettings2 size={24} /> SaaS Management
       </span>
     ),
     description: (
@@ -35,7 +36,7 @@ const businessSkills: Skill[] = [
     id: "seo-optimization-business",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconWorldSearch /> SEO Optimization
+        <IconWorldSearch size={24} /> SEO Optimization
       </span>
     ),
     description: (

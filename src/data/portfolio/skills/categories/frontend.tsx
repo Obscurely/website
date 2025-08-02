@@ -1,6 +1,6 @@
 import projects from "@data/portfolio/skills/projects";
 import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
-import { SiMui, SiShadcnui } from "@icons-pack/react-simple-icons";
+
 import {
   IconBrandFramerMotion,
   IconBrandNextjs,
@@ -8,7 +8,9 @@ import {
   IconBrandTailwind,
   IconDeviceDesktop,
   IconWorldWww,
-} from "@tabler/icons-react";
+  SiMui,
+  SiShadcnui,
+} from "../icons";
 
 const frontendSkills: Skill[] = [
   // React
@@ -16,7 +18,7 @@ const frontendSkills: Skill[] = [
     id: "react-frontend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandReact /> React
+        <IconBrandReact size={24} /> React
       </span>
     ),
     description: (
@@ -47,7 +49,7 @@ const frontendSkills: Skill[] = [
     id: "nextjs-frontend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandNextjs /> Next.js
+        <IconBrandNextjs size={24} /> Next.js
       </span>
     ),
     description: (
@@ -67,7 +69,7 @@ const frontendSkills: Skill[] = [
     id: "materialui-frontend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <SiMui size={22} className="mt-0.5" /> Material UI
+        <SiMui size={22} className="mt-0.5 min-w-6" /> Material UI
       </span>
     ),
     description: (
@@ -98,7 +100,7 @@ const frontendSkills: Skill[] = [
     id: "tailwindcss-frontend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandTailwind /> Tailwind CSS
+        <IconBrandTailwind size={24} /> Tailwind CSS
       </span>
     ),
     description: (
@@ -116,7 +118,7 @@ const frontendSkills: Skill[] = [
     id: "shadcn-ui-frontend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <SiShadcnui size={15} /> Shadcn/ui
+        <SiShadcnui name="Shadcn/ui" size={15} className="min-w-6" /> Shadcn/ui
       </span>
     ),
     description: (
@@ -135,7 +137,7 @@ const frontendSkills: Skill[] = [
     id: "framer-motion-frontend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconBrandFramerMotion /> Framer Motion
+        <IconBrandFramerMotion size={24} /> Framer Motion
       </span>
     ),
     description: (
@@ -164,7 +166,7 @@ const frontendSkills: Skill[] = [
     id: "native-interfaces-frontend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconDeviceDesktop /> Native Interfaces
+        <IconDeviceDesktop size={24} /> Native Interfaces
       </span>
     ),
     description: (
@@ -187,7 +189,7 @@ const frontendSkills: Skill[] = [
     id: "web-performance-frontend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <IconWorldWww /> Web Performance
+        <IconWorldWww size={24} /> Web Performance
       </span>
     ),
     description: (
