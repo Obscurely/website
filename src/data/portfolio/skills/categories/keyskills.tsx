@@ -2,18 +2,18 @@ import projects from "@data/portfolio/skills/projects";
 import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
 
 import {
-  IconBrandAws,
-  IconBrandDocker,
-  IconBrandNextjs,
-  IconBrandPython,
-  IconBrandReact,
-  IconBrandRust,
-  IconBrandTerraform,
-  IconBrandTypescript,
-  IconGitMerge,
+  KeyIconBrandAws as IconBrandAws,
+  KeyIconBrandDocker as IconBrandDocker,
+  KeyIconBrandNextjs as IconBrandNextjs,
+  KeyIconBrandPython as IconBrandPython,
+  KeyIconBrandReact as IconBrandReact,
+  KeyIconBrandRust as IconBrandRust,
+  KeyIconBrandTerraform as IconBrandTerraform,
+  KeyIconBrandTypescript as IconBrandTypescript,
+  KeyIconGitMerge as IconGitMerge,
   SiKubernetes,
   SiLinux,
-} from "../icons";
+} from "../icons/icons";
 
 const keySkills: Skill[] = [
   // Rust
@@ -173,8 +173,7 @@ const keySkills: Skill[] = [
     id: "kubernetes-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <SiKubernetes name="Kubernetes" size={22} className="min-w-6" />{" "}
-        Kubernetes
+        <SiKubernetes name="Kubernetes" size={22} /> Kubernetes
       </span>
     ),
     description: (
@@ -288,7 +287,7 @@ const keySkills: Skill[] = [
     id: "linux-keyskill",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <SiLinux name="Linux" size={20} className="min-w-6" /> Linux
+        <SiLinux name="Linux" size={20} /> Linux
       </span>
     ),
     description: (

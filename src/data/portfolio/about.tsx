@@ -1,9 +1,4 @@
-import {
-  IconCloud,
-  IconCode,
-  IconRocket,
-  IconSettings,
-} from "@tabler/icons-react";
+import { IconCloud, IconCode, IconRocket, IconSettings } from "./icons/icons";
 
 /**
  * What I Do

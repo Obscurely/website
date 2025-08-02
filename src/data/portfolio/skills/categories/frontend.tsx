@@ -3,14 +3,14 @@ import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
 
 import {
   IconBrandFramerMotion,
-  IconBrandNextjs,
-  IconBrandReact,
+  KeyIconBrandNextjs as IconBrandNextjs,
+  KeyIconBrandReact as IconBrandReact,
   IconBrandTailwind,
   IconDeviceDesktop,
   IconWorldWww,
   SiMui,
   SiShadcnui,
-} from "../icons";
+} from "../icons/icons";
 
 const frontendSkills: Skill[] = [
   // React
@@ -69,7 +69,7 @@ const frontendSkills: Skill[] = [
     id: "materialui-frontend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <SiMui size={22} className="mt-0.5 min-w-6" /> Material UI
+        <SiMui size={22} className="mt-0.5" /> Material UI
       </span>
     ),
     description: (
@@ -118,7 +118,7 @@ const frontendSkills: Skill[] = [
     id: "shadcn-ui-frontend",
     name: (
       <span className="flex h-6 items-center gap-2">
-        <SiShadcnui name="Shadcn/ui" size={15} className="min-w-6" /> Shadcn/ui
+        <SiShadcnui name="Shadcn/ui" size={15} /> Shadcn/ui
       </span>
     ),
     description: (

@@ -2,16 +2,16 @@ import projects from "@data/portfolio/skills/projects";
 import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
 
 import {
-  IconBrandAws,
-  IconBrandDocker,
-  IconBrandTerraform,
-  IconGitMerge,
+  KeyIconBrandAws as IconBrandAws,
+  KeyIconBrandDocker as IconBrandDocker,
+  KeyIconBrandTerraform as IconBrandTerraform,
+  KeyIconGitMerge as IconGitMerge,
   IconHeartRateMonitor,
   IconPackage,
   IconServer,
   SiKubernetes,
   SiLinux,
-} from "../icons";
+} from "../icons/icons";
 
 const devopsSkills: Skill[] = [
   {

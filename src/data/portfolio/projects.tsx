@@ -1,11 +1,12 @@
 import { SITE_CONFIG } from "@data/common/site";
+
 import {
   IconApps,
   IconDeviceDesktop,
   IconStar,
   IconTools,
   IconWorld,
-} from "@tabler/icons-react";
+} from "./icons/icons";
 
 export const categories = ["Web", "Native", "Tool/Script"];
 export const categoriesDisplay: Record<string, React.ReactNode> = {

@@ -1,7 +1,7 @@
 import projects from "@data/portfolio/skills/projects";
 import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
 
-import { IconSettings2, IconWorldSearch } from "../icons";
+import { IconSettings2, IconWorldSearch } from "../icons/icons";
 
 const businessSkills: Skill[] = [
   {

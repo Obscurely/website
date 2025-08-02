@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-import { IconPlaceholder } from "./IconPlaceholder";
+import { IconPlaceholder } from "@common/IconPlaceholder";
 
 // backend
 export const IconApps = dynamic(
@@ -79,11 +79,11 @@ export const IconServer = dynamic(
 );
 export const SiKubernetes = dynamic(
   () => import("@icons-pack/react-simple-icons/icons/SiKubernetes.mjs"),
-  { loading: () => <IconPlaceholder />, ssr: false }
+  { loading: () => <IconPlaceholder size={22} />, ssr: false }
 );
 export const SiLinux = dynamic(
   () => import("@icons-pack/react-simple-icons/icons/SiLinux.mjs"),
-  { loading: () => <IconPlaceholder />, ssr: false }
+  { loading: () => <IconPlaceholder size={20} />, ssr: false }
 );
 
 // frontend
@@ -113,11 +113,11 @@ export const IconWorldWww = dynamic(
 );
 export const SiMui = dynamic(
   () => import("@icons-pack/react-simple-icons/icons/SiMui.mjs"),
-  { loading: () => <IconPlaceholder />, ssr: false }
+  { loading: () => <IconPlaceholder size={22} />, ssr: false }
 );
 export const SiShadcnui = dynamic(
   () => import("@icons-pack/react-simple-icons/icons/SiShadcnui.mjs"),
-  { loading: () => <IconPlaceholder />, ssr: false }
+  { loading: () => <IconPlaceholder size={15} />, ssr: false }
 );
 
 // languages

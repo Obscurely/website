@@ -2,11 +2,11 @@ import projects from "@data/portfolio/skills/projects";
 import { Skill, SkillProficiency } from "@data/portfolio/skills/types";
 
 import {
-  IconBrandPython,
-  IconBrandRust,
-  IconBrandTypescript,
+  KeyIconBrandPython as IconBrandPython,
+  KeyIconBrandRust as IconBrandRust,
+  KeyIconBrandTypescript as IconBrandTypescript,
   IconHash,
-} from "../icons";
+} from "../icons/icons";
 
 const languagesSkills: Skill[] = [
   {

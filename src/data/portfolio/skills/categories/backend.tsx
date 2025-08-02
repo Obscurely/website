@@ -10,7 +10,7 @@ import {
   IconShieldLock,
   IconSitemap,
   SiFlask,
-} from "../icons";
+} from "../icons/icons";
 
 const backendSkills: Skill[] = [
   // API
