@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fira_Mono, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 
 import { SITE_CONFIG } from "@data/common/site";
@@ -14,23 +14,6 @@ const inter = Inter({
   preload: true,
   fallback: ["system-ui", "arial"],
   weight: ["400", "500", "600", "700"], // normal, medium, semibold, bold
-});
-
-const firaMono = Fira_Mono({
-  subsets: ["latin"],
-  variable: "--font-fira-mono",
-  display: "swap",
-  preload: true,
-  weight: ["400", "500"], // normal, medium
-  fallback: [
-    "ui-monospace",
-    "SFMono-Regular",
-    "Consolas",
-    "Liberation Mono",
-    "Menlo",
-    "monospace",
-  ],
-  style: ["normal"], // normal
 });
 
 // Define viewport settings for better responsiveness
@@ -133,7 +116,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="dark">
       <body
-        className={`${firaMono.variable} ${inter.variable} ${inter.className} flex min-h-screen flex-col font-sans antialiased`}
+        className={`${inter.variable} ${inter.className} flex min-h-screen flex-col font-sans antialiased`}
       >
         <div className="flex flex-1 flex-col">{children}</div>
         <Script src="/animations.min.js" strategy="afterInteractive" />
