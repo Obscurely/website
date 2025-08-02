@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 
-import { IconArrowUp } from "@tabler/icons-react";
+import { IconArrowUp } from "@data/common/icons/icons";
 import { Button } from "@ui/button";
 
 /**

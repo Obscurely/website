@@ -2,6 +2,8 @@ import { ComponentType } from "react";
 
 import {
   IconApps as Apps,
+  IconChevronLeft as ChevronLeft,
+  IconChevronRight as ChevronRight,
   IconDeviceDesktop as DeviceDesktop,
   IconStar as Star,
   IconTools as Tools,
@@ -15,6 +17,8 @@ const ProjectsIcons: ComponentType<{ icon: string; [key: string]: unknown }> & {
   IconStar: typeof Star;
   IconTools: typeof Tools;
   IconWorld: typeof World;
+  IconChevronLeft: typeof ChevronLeft;
+  IconChevronRight: typeof ChevronRight;
 } = Object.assign(
   ({ icon, ...props }: { icon: string; [key: string]: unknown }) => {
     const icons = {
@@ -23,6 +27,8 @@ const ProjectsIcons: ComponentType<{ icon: string; [key: string]: unknown }> & {
       IconStar: Star,
       IconTools: Tools,
       IconWorld: World,
+      IconChevronLeft: ChevronLeft,
+      IconChevronRight: ChevronRight,
     };
     const Icon = icons[icon as keyof typeof icons];
     return Icon ? <Icon {...props} /> : null;
@@ -33,6 +39,8 @@ const ProjectsIcons: ComponentType<{ icon: string; [key: string]: unknown }> & {
     IconStar: Star,
     IconTools: Tools,
     IconWorld: World,
+    IconChevronLeft: ChevronLeft,
+    IconChevronRight: ChevronRight,
   }
 );
 

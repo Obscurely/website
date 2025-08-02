@@ -3,7 +3,7 @@
 import { memo } from "react";
 
 import { navigationButtonVariants } from "@data/portfolio/animations";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { IconChevronLeft, IconChevronRight } from "@data/portfolio/icons/icons";
 import { Button } from "@ui/button";
 import { m } from "framer-motion";
 

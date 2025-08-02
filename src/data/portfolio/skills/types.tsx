@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 
 import {
-  IconBrandReact,
-  IconBriefcase,
-  IconCloud,
-  IconCode,
-  IconServer,
-} from "@tabler/icons-react";
+  CategoryIconBrandReact,
+  CategoryIconBriefcase,
+  CategoryIconCloud,
+  CategoryIconCode,
+  CategoryIconServer,
+} from "./icons/icons";
 
 export enum SkillCategory {
   KeySkills = "Key Skills",
@@ -18,12 +18,12 @@ export enum SkillCategory {
 }
 
 export const CategoryIcons: Record<SkillCategory, ReactNode> = {
-  [SkillCategory.KeySkills]: <IconCode size={18} />,
-  [SkillCategory.Languages]: <IconCode size={18} />,
-  [SkillCategory.Frontend]: <IconBrandReact size={18} />,
-  [SkillCategory.Backend]: <IconServer size={18} />,
-  [SkillCategory.DevOps]: <IconCloud size={18} />,
-  [SkillCategory.Business]: <IconBriefcase size={18} />,
+  [SkillCategory.KeySkills]: <CategoryIconCode size={18} />,
+  [SkillCategory.Languages]: <CategoryIconCode size={18} />,
+  [SkillCategory.Frontend]: <CategoryIconBrandReact size={18} />,
+  [SkillCategory.Backend]: <CategoryIconServer size={18} />,
+  [SkillCategory.DevOps]: <CategoryIconCloud size={18} />,
+  [SkillCategory.Business]: <CategoryIconBriefcase size={18} />,
 };
 
 // Color class mapping for each category

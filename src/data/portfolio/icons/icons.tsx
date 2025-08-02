@@ -45,3 +45,22 @@ export const IconTools = (props: IconProps) => (
 export const IconWorld = (props: IconProps) => (
   <ProjectsIcons icon="IconWorld" {...props} />
 );
+export const IconChevronLeft = (props: IconProps) => (
+  <ProjectsIcons icon="IconChevronLeft" {...props} />
+);
+export const IconChevronRight = (props: IconProps) => (
+  <ProjectsIcons icon="IconChevronRight" {...props} />
+);
+
+// contact
+const ContactIcons = dynamic(() => import("./contactIcons"), {
+  loading: () => <IconPlaceholder size={22} />,
+  ssr: false,
+});
+
+export const IconMail = (props: IconProps) => (
+  <ContactIcons icon="IconMail" {...props} />
+);
+export const IconMapPin2 = (props: IconProps) => (
+  <ContactIcons icon="IconMapPin2" {...props} />
+);

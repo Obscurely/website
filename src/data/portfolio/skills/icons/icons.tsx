@@ -151,3 +151,25 @@ export const IconHash = dynamic(
   () => import("@tabler/icons-react/dist/esm/icons/IconHash.mjs"),
   { loading: () => <IconPlaceholder />, ssr: false }
 );
+
+// category icons
+export const CategoryIconCode = dynamic(
+  () => import("@tabler/icons-react/dist/esm/icons/IconCode.mjs"),
+  { loading: () => <IconPlaceholder size={16} />, ssr: false }
+);
+export const CategoryIconCloud = dynamic(
+  () => import("@tabler/icons-react/dist/esm/icons/IconCloud.mjs"),
+  { loading: () => <IconPlaceholder size={16} />, ssr: false }
+);
+export const CategoryIconBrandReact = dynamic(
+  () => import("@tabler/icons-react/dist/esm/icons/IconBrandReact.mjs"),
+  { loading: () => <IconPlaceholder size={16} />, ssr: false }
+);
+export const CategoryIconServer = dynamic(
+  () => import("@tabler/icons-react/dist/esm/icons/IconServer.mjs"),
+  { loading: () => <IconPlaceholder size={16} />, ssr: false }
+);
+export const CategoryIconBriefcase = dynamic(
+  () => import("@tabler/icons-react/dist/esm/icons/IconBriefcase.mjs"),
+  { loading: () => <IconPlaceholder size={16} />, ssr: false }
+);

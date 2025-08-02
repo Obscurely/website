@@ -1,5 +1,4 @@
-import { IconForms, IconMail, IconMapPin } from "@tabler/icons-react";
-
+import { IconForms, IconMail, IconMapPin } from "./icons/icons";
 import { SITE_CONFIG } from "./site";
 
 export interface FooterLink {

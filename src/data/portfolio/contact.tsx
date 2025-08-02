@@ -1,5 +1,6 @@
 import { SITE_CONFIG } from "@data/common/site";
-import { IconMail, IconMapPin2 } from "@tabler/icons-react";
+
+import { IconMail, IconMapPin2 } from "./icons/icons";
 
 export const contactInfo = [
   {
