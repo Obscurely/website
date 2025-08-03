@@ -14,10 +14,10 @@ import {
 import { Badge } from "@ui/badge";
 import { Button } from "@ui/button";
 
-import { BackToTopButton } from "./BackToTopButton";
 import { Comments } from "./Comments";
 import { Footer } from "./Footer";
 import { Header } from "./Header/Header";
+import { LazyBackToTopButton } from "./LazyBackToTopButton";
 import { ShareButton } from "./ShareButton";
 import { Sidebar } from "./Sidebar";
 
@@ -179,7 +179,7 @@ export function PostPage({ post }: PostPageProps) {
       </div>
 
       {/* Back to Top Button */}
-      <BackToTopButton />
+      <LazyBackToTopButton />
     </section>
   );
 }

@@ -2,10 +2,10 @@
 
 import { useNavbar } from "@hooks/common/useNavbar";
 import { useNavbarMobile } from "@hooks/common/useNavbarMobile";
-import { IconDownload, IconMenu2, IconX } from "@tabler/icons-react";
+import { IconDownload } from "@tabler/icons-react";
 import { Button } from "@ui/button";
-import { LazyMotion, domAnimation, m } from "framer-motion";
 
+import { MobileMenuButton } from "./MobileMenuButton";
 import { MobileNavItem } from "./MobileNavItem";
 
 interface MobileNavbarProps {
@@ -34,22 +34,10 @@ export const MobileNavbar = ({ isBlog, isMain }: MobileNavbarProps) => {
     <>
       {/* Mobile Menu Button */}
       <div className="flex items-center md:hidden">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={toggleMobileMenu}
-          className="ml-2 cursor-pointer text-slate-200 hover:bg-transparent"
-          aria-label="Toggle mobile menu"
-        >
-          <LazyMotion features={domAnimation} strict>
-            <m.div
-              animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              {mobileMenuOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
-            </m.div>
-          </LazyMotion>
-        </Button>
+        <MobileMenuButton
+          mobileMenuOpen={mobileMenuOpen}
+          toggleMobileMenu={toggleMobileMenu}
+        />
       </div>
 
       {/* Mobile Menu Dropdown */}
