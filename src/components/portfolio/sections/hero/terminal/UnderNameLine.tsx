@@ -1,19 +1,21 @@
 "use client";
 
-import { LazyMotion, domAnimation, m } from "framer-motion";
+import { animated, useSpring } from "@react-spring/web";
 
 /**
  * Animated line that gets drawn under the name in the hero section.
  */
 export const UnderNameLine = () => {
+  const styles = useSpring({
+    from: { width: "0rem" },
+    to: { width: "6rem" },
+    config: { duration: 600 },
+  });
+
   return (
-    <LazyMotion features={domAnimation} strict>
-      <m.div
-        className="mt-2 h-1 w-24 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"
-        initial={{ width: 0 }}
-        animate={{ width: "6rem" }} // 6rem = 96 px
-        transition={{ delay: 0, duration: 0.6 }}
-      />
-    </LazyMotion>
+    <animated.div
+      style={styles}
+      className="mt-2 h-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"
+    />
   );
 };
