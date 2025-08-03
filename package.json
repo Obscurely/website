@@ -10,6 +10,8 @@
     "dev": "concurrently \"pnpm run minify:watch\" \"next dev --turbopack\"",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "lighthouse-mobile": "pnpx lighthouse http://localhost:3000 --preset=perf --form-factor=mobile --screenEmulation.mobile=true --throttling-method=devtools --output=html --output-path=./lighthouse-mobile-report.html",
+    "lighthouse-mobile-unthrottled": "pnpx lighthouse http://localhost:3000 --form-factor=mobile --throttling-method=provided --screenEmulation.mobile=true --emulated-user-agent=\"Mozilla/5.0 (Linux; Android 7.0; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.101 Mobile Safari/537.36\" --output=html --output-path=./lighthouse-mobile-report.html",
     "lint": "next lint",
     "minify": "terser src/scripts/animations.js -c -m -o public/animations.min.js",
     "minify:watch": "chokidar 'scripts/**/*.js' -c 'npm run minify'",
