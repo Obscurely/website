@@ -5,7 +5,6 @@ import { memo, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { cardVariants } from "@data/portfolio/animations";
 import { Post } from "@lib/blog";
 import {
   IconArrowRight,
@@ -16,7 +15,6 @@ import {
 } from "@tabler/icons-react";
 import { Badge } from "@ui/badge";
 import { Card, CardContent, CardFooter } from "@ui/card";
-import { m } from "framer-motion";
 
 const CardWrapper = ({
   children,
@@ -43,13 +41,9 @@ const CardWrapper = ({
 export const BlogCard = memo(
   ({
     post,
-    index,
-    isInView,
     isLoadingCard = false,
   }: {
     post: Post;
-    index: number;
-    isInView: boolean;
     isLoadingCard?: boolean;
   }) => {
     const formattedDate = useMemo(
@@ -72,14 +66,7 @@ export const BlogCard = memo(
     );
 
     return (
-      <m.div
-        variants={cardVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        custom={index}
-        whileHover="hover"
-        className="group relative z-50 h-full"
-      >
+      <div className="group relative z-50 h-full">
         <CardWrapper isLoading={isLoadingCard} href={`/blog/${post.slug}`}>
           <Card className="border-slate-740 hover:border-cyan-590 relative flex h-full flex-col overflow-hidden bg-transparent transition-all duration-300 ease-out hover:shadow-lg hover:shadow-cyan-500/10">
             {/* Background layers */}
@@ -186,7 +173,7 @@ export const BlogCard = memo(
             </div>
           </Card>
         </CardWrapper>
-      </m.div>
+      </div>
     );
   }
 );
