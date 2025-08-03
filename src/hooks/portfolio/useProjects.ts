@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Project, categories, projects } from "@data/portfolio/projects";
 import { debounce } from "@lib/utils";
-import { useInView } from "framer-motion";
 
 // Convert projects to array and sort featured first
 const projectsArray = Object.values(projects).sort(
@@ -23,11 +22,7 @@ export const useProjects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);
   const [projectsPerPage, setProjectsPerPage] = useState(3); // Default to 3, will be updated based on screen size
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: true,
-    amount: 0.2,
-  });
+  const [direction, setDirection] = useState<"next" | "prev" | null>(null);
 
   // Update projects per page based on screen size
   useEffect(() => {
@@ -77,6 +72,7 @@ export const useProjects = () => {
   // Reset to first page when category changes or projects per page changes
   useEffect(() => {
     setCurrentPage(0);
+    setDirection(null); // Reset direction when category changes
   }, [activeCategory, projectsPerPage]);
 
   // Get current page projects
@@ -88,19 +84,20 @@ export const useProjects = () => {
   const handleCategoryChange = useCallback((category: string) => {
     setActiveCategory(category);
     setCurrentPage(0);
+    setDirection(null);
   }, []);
 
   const goToNextPage = useCallback(() => {
+    setDirection("next");
     setCurrentPage((prev) => (prev + 1) % totalPages);
   }, [totalPages]);
 
   const goToPrevPage = useCallback(() => {
+    setDirection("prev");
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
   }, [totalPages]);
 
   return {
-    ref,
-    isInView,
     activeCategory,
     handleCategoryChange,
     currentProjects,
@@ -110,5 +107,6 @@ export const useProjects = () => {
     goToPrevPage,
     filterCategories,
     projectsPerPage,
+    direction,
   };
 };

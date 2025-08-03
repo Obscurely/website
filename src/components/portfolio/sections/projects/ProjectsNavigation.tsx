@@ -2,10 +2,10 @@
 
 import { memo } from "react";
 
-import { navigationButtonVariants } from "@data/portfolio/animations";
+import dynamic from "next/dynamic";
+
 import { IconChevronLeft, IconChevronRight } from "@data/portfolio/icons/icons";
 import { Button } from "@ui/button";
-import { m } from "framer-motion";
 
 interface ProjectsNavigationProps {
   currentPage: number;
@@ -14,71 +14,52 @@ interface ProjectsNavigationProps {
   onNextPage: () => void;
 }
 
-export const ProjectsNavigation = memo(
-  ({
-    currentPage,
-    totalPages,
-    onPrevPage,
-    onNextPage,
-  }: ProjectsNavigationProps) => {
-    // Ensure totalPages is at least 1
-    const pages = Math.max(totalPages, 1);
-    const isPrevDisabled = totalPages <= 1 || currentPage === 0;
-    const isNextDisabled = totalPages <= 1 || currentPage >= totalPages - 1;
-
-    return (
+const ProjectsNavigationAnimated = dynamic(
+  () =>
+    import("./ProjectsNavigationAnimated").then((mod) => ({
+      default: mod.ProjectsNavigationAnimated,
+    })),
+  {
+    loading: () => (
       <div className="mt-12 flex items-center justify-center gap-4">
-        <m.div
-          whileHover={!isPrevDisabled ? "hover" : ""}
-          whileTap={!isPrevDisabled ? "tap" : ""}
-          variants={navigationButtonVariants}
-          className="flex-shrink-0"
-        >
+        <div className="flex-shrink-0">
           <Button
-            onClick={onPrevPage}
-            className="bg-slate-850 hover:bg-slate-790 disabled:bg-slate-980 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg disabled:cursor-not-allowed disabled:text-slate-400 disabled:opacity-100 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
+            className="bg-slate-850 h-12 w-12 rounded-full p-3 text-white shadow-lg opacity-50 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
             size="icon"
             variant="ghost"
-            aria-label="Previous page"
-            disabled={isPrevDisabled}
+            disabled
           >
             <IconChevronLeft
               size={24}
               className="sm:h-5 sm:w-5 md:h-5 md:w-5"
             />
           </Button>
-        </m.div>
-
-        <div className="min-w-[2rem] flex-shrink-0 text-center text-sm text-slate-400 sm:text-sm md:text-sm">
-          <span className="font-mono font-medium text-cyan-400">
-            {currentPage + 1}
-          </span>
-          <span className="font-mono font-medium"> / {pages}</span>
         </div>
-
-        <m.div
-          whileHover={!isNextDisabled ? "hover" : ""}
-          whileTap={!isNextDisabled ? "tap" : ""}
-          variants={navigationButtonVariants}
-          className="flex-shrink-0"
-        >
+        <div className="min-w-[2rem] flex-shrink-0 text-center text-sm text-slate-400 sm:text-sm md:text-sm">
+          <span className="font-mono font-medium text-cyan-400">1</span>
+          <span className="font-mono font-medium"> / 5</span>
+        </div>
+        <div className="flex-shrink-0">
           <Button
-            onClick={onNextPage}
-            className="bg-slate-850 hover:bg-slate-790 disabled:bg-slate-980 h-12 w-12 cursor-pointer rounded-full p-3 text-white shadow-lg disabled:cursor-not-allowed disabled:text-slate-400 disabled:opacity-100 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
+            className="bg-slate-850 h-12 w-12 rounded-full p-3 text-white shadow-lg opacity-50 sm:h-10 sm:w-10 sm:p-3 md:h-10 md:w-10 md:p-3"
             size="icon"
             variant="ghost"
-            aria-label="Next page"
-            disabled={isNextDisabled}
+            disabled
           >
             <IconChevronRight
               size={24}
               className="sm:h-5 sm:w-5 md:h-5 md:w-5"
             />
           </Button>
-        </m.div>
+        </div>
       </div>
-    );
+    ),
+    ssr: false,
   }
 );
+
+export const ProjectsNavigation = memo((props: ProjectsNavigationProps) => {
+  return <ProjectsNavigationAnimated {...props} />;
+});
 
 ProjectsNavigation.displayName = "ProjectsNavigation";

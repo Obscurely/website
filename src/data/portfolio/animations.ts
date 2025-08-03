@@ -1,5 +1,6 @@
 import { Variants } from "framer-motion";
 
+// Legacy framer-motion variants for other components (blog, etc.)
 export const cardVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
@@ -12,42 +13,4 @@ export const cardVariants: Variants = {
       ease: "easeOut",
     },
   }),
-};
-
-export const carouselVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-      when: "beforeChildren",
-      duration: 0.1,
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 0.2,
-    },
-  },
-};
-
-export const navigationButtonVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.1,
-    },
-  },
-  hover: {
-    scale: 1.05,
-    transition: {
-      duration: 0.2,
-    },
-  },
-  tap: {
-    scale: 0.95,
-  },
 };
