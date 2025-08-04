@@ -1,10 +1,11 @@
 "use client";
 
-import { memo, useState } from "react";
+import { memo } from "react";
 
+import { navigationButtonVariants } from "@data/portfolio/animations";
 import { IconChevronLeft, IconChevronRight } from "@data/portfolio/icons/icons";
-import { animated, useSpring } from "@react-spring/web";
 import { Button } from "@ui/button";
+import { m } from "framer-motion";
 
 interface ProjectsNavigationAnimatedProps {
   currentPage: number;
@@ -25,30 +26,13 @@ export const ProjectsNavigationAnimated = memo(
     const isPrevDisabled = totalPages <= 1 || currentPage === 0;
     const isNextDisabled = totalPages <= 1 || currentPage >= totalPages - 1;
 
-    const [prevHovered, setPrevHovered] = useState(false);
-    const [prevPressed, setPrevPressed] = useState(false);
-    const [nextHovered, setNextHovered] = useState(false);
-    const [nextPressed, setNextPressed] = useState(false);
-
-    const prevButtonSpring = useSpring({
-      scale: isPrevDisabled ? 1 : prevPressed ? 0.95 : prevHovered ? 1.05 : 1,
-      config: { tension: 300, friction: 20 },
-    });
-
-    const nextButtonSpring = useSpring({
-      scale: isNextDisabled ? 1 : nextPressed ? 0.95 : nextHovered ? 1.05 : 1,
-      config: { tension: 300, friction: 20 },
-    });
-
     return (
       <div className="mt-12 flex items-center justify-center gap-4">
-        <animated.div
-          style={prevButtonSpring}
+        <m.div
+          whileHover={!isPrevDisabled ? "hover" : ""}
+          whileTap={!isPrevDisabled ? "tap" : ""}
+          variants={navigationButtonVariants}
           className="flex-shrink-0"
-          onMouseEnter={() => !isPrevDisabled && setPrevHovered(true)}
-          onMouseLeave={() => setPrevHovered(false)}
-          onMouseDown={() => !isPrevDisabled && setPrevPressed(true)}
-          onMouseUp={() => setPrevPressed(false)}
         >
           <Button
             onClick={onPrevPage}
@@ -63,7 +47,7 @@ export const ProjectsNavigationAnimated = memo(
               className="sm:h-5 sm:w-5 md:h-5 md:w-5"
             />
           </Button>
-        </animated.div>
+        </m.div>
 
         <div className="min-w-[2rem] flex-shrink-0 text-center text-sm text-slate-400 sm:text-sm md:text-sm">
           <span className="font-mono font-medium text-cyan-400">
@@ -72,13 +56,11 @@ export const ProjectsNavigationAnimated = memo(
           <span className="font-mono font-medium"> / {pages}</span>
         </div>
 
-        <animated.div
-          style={nextButtonSpring}
+        <m.div
+          whileHover={!isNextDisabled ? "hover" : ""}
+          whileTap={!isNextDisabled ? "tap" : ""}
+          variants={navigationButtonVariants}
           className="flex-shrink-0"
-          onMouseEnter={() => !isNextDisabled && setNextHovered(true)}
-          onMouseLeave={() => setNextHovered(false)}
-          onMouseDown={() => !isNextDisabled && setNextPressed(true)}
-          onMouseUp={() => setNextPressed(false)}
         >
           <Button
             onClick={onNextPage}
@@ -93,10 +75,10 @@ export const ProjectsNavigationAnimated = memo(
               className="sm:h-5 sm:w-5 md:h-5 md:w-5"
             />
           </Button>
-        </animated.div>
+        </m.div>
       </div>
     );
   }
 );
 
-ProjectsNavigationAnimated.displayName = "ProjectsNavigationAnimated";
+ProjectsNavigationAnimated.displayName = "ProjectsNavigation";

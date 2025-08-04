@@ -4,7 +4,7 @@ import { memo, useEffect, useRef } from "react";
 
 import { Project } from "@data/portfolio/projects";
 import { useMaxCardHeight } from "@hooks/portfolio/useMaxCardHeight";
-import { animated, easings, useTransition } from "@react-spring/web";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 
 import { ProjectCard } from "./ProjectCard";
 
@@ -47,68 +47,52 @@ export const ProjectsListAnimated = memo(
       }
     }, [activeCategory, isCategoryChange]);
 
-    // Transition for individual card animations
-    const cardTransitions = useTransition(currentProjects, {
-      keys: (project: Project) => `${activeCategory}-${project.name}`,
-      from: {
-        opacity: 1,
-        transform: shouldAnimateY ? "translateY(30px)" : "translateY(0px)",
-      },
-      enter: (_, index) => ({
-        opacity: 1,
-        transform: "translateY(0px)",
-        delay: Math.min(100 * (index % 3), 200),
-        config: {
-          easing: easings.linear,
-        },
-      }),
-      onStart: () => {
-        previousCategory.current = activeCategory;
-      },
-    });
-
-    // Transition for page changes
-    const pageTransitions = useTransition(currentPage, {
-      keys: `${activeCategory}-${currentPage}`,
-      from: {
-        opacity: 1,
-        transform: isCategoryChange
-          ? "translateX(0px)"
-          : direction === "prev"
-            ? "translateX(-300px)"
-            : "translateX(300px)",
-      },
-      enter: {
-        opacity: 1,
-        transform: "translateX(0px)",
-        config: {
-          easing: easings.linear,
-        },
-      },
-    });
+    const pageKey = `${activeCategory}-${currentPage}`;
 
     return (
       <div className="min-h-[550px]">
-        <animated.div>
-          {pageTransitions((pageStyle, page) => (
-            <animated.div
-              key={page}
-              style={pageStyle}
-              className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-            >
-              {cardTransitions((cardStyle, project, _, index) => (
-                <animated.div key={project.name} style={cardStyle}>
-                  <ProjectCard
-                    project={project}
-                    index={index}
-                    registerCard={registerCard}
-                    maxHeight={maxHeight}
-                  />
-                </animated.div>
-              ))}
-            </animated.div>
-          ))}
-        </animated.div>
+        <LazyMotion features={domAnimation}>
+          <m.div
+            key={pageKey}
+            initial={{
+              opacity: 1,
+              x: isCategoryChange ? 0 : direction === "prev" ? -300 : 300,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              ease: "linear",
+            }}
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {currentProjects.map((project, index) => (
+              <m.div
+                key={`${activeCategory}-${project.name}`}
+                initial={{
+                  opacity: 1,
+                  y: shouldAnimateY ? 30 : 0,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: Math.min(0.1 * (index % 3), 0.2),
+                  ease: "linear",
+                }}
+              >
+                <ProjectCard
+                  project={project}
+                  index={index}
+                  registerCard={registerCard}
+                  maxHeight={maxHeight}
+                />
+              </m.div>
+            ))}
+          </m.div>
+        </LazyMotion>
       </div>
     );
   }
