@@ -71,7 +71,7 @@ export const ProjectsListAnimated = memo(
               <m.div
                 key={`${activeCategory}-${project.name}`}
                 initial={{
-                  opacity: 1,
+                  opacity: shouldAnimateY ? 0 : 1,
                   y: shouldAnimateY ? 30 : 0,
                 }}
                 animate={{
