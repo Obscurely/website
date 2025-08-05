@@ -5,6 +5,7 @@ import { memo, useState } from "react";
 import dynamic from "next/dynamic";
 
 import { Project } from "@data/portfolio/projects";
+import { usePrefersReducedMotion } from "@hooks/common/usePrefersReducedMotion";
 import { useMaxCardHeight } from "@hooks/portfolio/useMaxCardHeight";
 
 import { ProjectCard } from "./ProjectCard";
@@ -52,7 +53,13 @@ const ProjectsListStatic = memo(({ currentProjects }: ProjectsListProps) => {
 ProjectsListStatic.displayName = "ProjectsListStatic";
 
 export const ProjectsList = memo((props: ProjectsListProps) => {
+  const prefersReducedMotion = usePrefersReducedMotion();
   const [isAnimatedLoaded, setIsAnimatedLoaded] = useState(false);
+
+  if (prefersReducedMotion) {
+    // If user prefers reduced motion, show static version immediately
+    return <ProjectsListStatic {...props} />;
+  }
 
   return (
     <>

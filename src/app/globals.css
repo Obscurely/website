@@ -240,3 +240,27 @@
     transform: scale(1);
   }
 }
+
+/* Handle prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse,
+  .animate-in,
+  .repeat-infinite,
+  [data-state="once"],
+  [data-state="show"],
+  
+  /* Target all tw-animate-css classes */
+  [class*="animate-"],
+  .animate-in,
+  .animate-in * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Disable custom animations */
+  .spring,
+  .spring-bounce,
+  .spring-scale {
+    animation: none !important;
+  }
+}
