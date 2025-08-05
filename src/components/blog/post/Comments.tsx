@@ -1,6 +1,16 @@
 "use client";
 
-import Giscus from "@giscus/react";
+import dynamic from "next/dynamic";
+
+// Dynamically import Giscus with no SSR
+const Giscus = dynamic(() => import("@giscus/react"), {
+  ssr: false,
+  loading: () => (
+    <div className="border-slate-730 bg-slate-820 min-h-[250px] rounded-lg border p-3 sm:min-h-[320px] sm:rounded-xl sm:p-4 lg:min-h-[380px] lg:p-6 flex items-center justify-center">
+      <div className="text-slate-400">Loading comments...</div>
+    </div>
+  ),
+});
 
 /**
  * Comments component integrates Giscus for blog post comments.
