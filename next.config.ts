@@ -63,11 +63,11 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline'", // unsafe-eval and unsafe-inline needed for Next.js hydration
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app", // unsafe-eval and unsafe-inline needed for Next.js hydration
               "style-src 'self' 'unsafe-inline'", // unsafe-inline needed for Next.js CSS-in-JS
               "img-src 'self' data: blob:",
               "font-src 'self' data:",
-              "connect-src 'self'",
+              "connect-src 'self' api.github.com",
               "media-src 'self'",
               "object-src 'none'",
               "child-src 'none'",
