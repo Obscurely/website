@@ -1,6 +1,7 @@
 "use server";
 
 import { compileMDX } from "next-mdx-remote/rsc";
+import { unstable_cache } from "next/cache";
 
 import {
   Callout,
@@ -57,9 +58,9 @@ function isValidPostPath(filePath: string): boolean {
 }
 
 /**
- * Get all the blog posts parsed
+ * Get all the blog posts parsed (internal function)
  */
-export async function getAllPosts(): Promise<Post[]> {
+async function _getAllPosts(): Promise<Post[]> {
   // Get all years (directories)
 
   const yearDirs = fs.readdirSync(POSTS_PATH).filter((dir) => {
@@ -132,113 +133,87 @@ export async function getAllPosts(): Promise<Post[]> {
 }
 
 /**
- * Get a specific post content
+ * Get all the blog posts parsed (cached)
+ */
+export const getAllPosts = unstable_cache(
+  _getAllPosts,
+  ["all-posts", process.env.NODE_ENV || "development"],
+  {
+    tags: ["posts"],
+    revalidate: process.env.NODE_ENV === "production" ? 3600 : 60, // Shorter cache in dev
+  }
+);
+
+/**
+ * Get post data by slug (cached individually)
+ */
+const _getPostDataBySlug = async (slug: string): Promise<Post | null> => {
+  const allPosts = await getAllPosts();
+  return allPosts.find((post) => post.slug === slug) || null;
+};
+
+export const getPostDataBySlug = unstable_cache(
+  _getPostDataBySlug,
+  ["post-data"],
+  {
+    tags: ["posts"],
+    revalidate: 3600,
+  }
+);
+
+/**
+ * Get a specific post with compiled MDX (not cached)
  */
 export async function getPostBySlug(slug: string): Promise<MDXPost | null> {
-  // Sanitize slug to prevent path traversal
-  const sanitizedSlug = slug.replace(/[^a-zA-Z0-9-_]/g, "");
-  if (sanitizedSlug !== slug) {
+  const postData = await getPostDataBySlug(slug);
+
+  if (!postData) {
     return null;
   }
 
-  // Find the post in all year directories
-  let yearDirs: string[];
-  try {
-    yearDirs = fs.readdirSync(POSTS_PATH).filter((dir) => {
-      const dirPath = path.join(POSTS_PATH, dir);
-      if (!isValidPostPath(dirPath)) return false;
-      try {
-        // eslint-disable-next-line security/detect-non-literal-fs-filename
-        return fs.statSync(dirPath).isDirectory();
-      } catch {
-        return false;
-      }
-    });
-  } catch {
-    return null;
-  }
+  // Compile MDX fresh each time (React elements can't be cached)
+  const { content: mdxContent } = await compileMDX({
+    source: postData.content,
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: {
+        rehypePlugins: [
+          rehypeSlug,
+          [
+            rehypePrettyCode,
+            {
+              theme: "github-dark-high-contrast",
+              keepBackground: true,
+            },
+          ],
+          [
+            rehypeAutolinkHeadings,
+            {
+              behavior: "wrap",
+              properties: {
+                className: ["anchor"],
+              },
+            },
+          ],
+        ],
+        remarkPlugins: [remarkGfm],
+      },
+    },
+    components: {
+      ...MDXHeadings,
+      Callout,
+      pre: CodeBlock,
+      FeatureGrid,
+      FeatureCard,
+      StepGuide,
+      Step,
+      QuickLinks,
+      Separator,
+    },
+  });
 
-  for (const year of yearDirs) {
-    const filePath = path.join(POSTS_PATH, year, `${sanitizedSlug}.mdx`);
-    if (!isValidPostPath(filePath)) continue;
-
-    let fileExists: boolean;
-    try {
-      // eslint-disable-next-line security/detect-non-literal-fs-filename
-      fileExists = fs.existsSync(filePath);
-    } catch {
-      continue;
-    }
-
-    if (fileExists) {
-      let fileContent: string;
-      try {
-        // eslint-disable-next-line security/detect-non-literal-fs-filename
-        fileContent = fs.readFileSync(filePath, "utf8");
-      } catch {
-        continue;
-      }
-
-      const { data, content } = matter(fileContent);
-
-      // Skip draft posts in production
-      if (process.env.NODE_ENV === "production" && data["draft"] === true) {
-        return null;
-      }
-
-      const readingTimeResult = readingTime(content);
-
-      // Compile MDX
-      const { content: mdxContent } = await compileMDX({
-        source: content,
-        options: {
-          parseFrontmatter: true,
-          mdxOptions: {
-            rehypePlugins: [
-              rehypeSlug,
-              [
-                rehypePrettyCode,
-                {
-                  theme: "github-dark-high-contrast",
-                  keepBackground: true,
-                },
-              ],
-              [
-                rehypeAutolinkHeadings,
-                {
-                  behavior: "wrap",
-                  properties: {
-                    className: ["anchor"],
-                  },
-                },
-              ],
-            ],
-            remarkPlugins: [remarkGfm],
-          },
-        },
-        components: {
-          ...MDXHeadings,
-          Callout,
-          pre: CodeBlock,
-          FeatureGrid,
-          FeatureCard,
-          StepGuide,
-          Step,
-          QuickLinks,
-          Separator,
-        },
-      });
-
-      return {
-        slug: sanitizedSlug,
-        frontmatter: data as PostFrontmatter,
-        content,
-        readingTime: readingTimeResult.text,
-        mdxContent,
-        year,
-      };
-    }
-  }
-
-  return null;
+  return {
+    ...postData,
+    mdxContent,
+  };
 }
