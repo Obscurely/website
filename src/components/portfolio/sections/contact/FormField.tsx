@@ -6,6 +6,7 @@ import { Input } from "@ui/input";
 interface FormFieldProps {
   id: string;
   label: string;
+  autoComplete: string;
   type?: string;
   value: string;
   error?: string | undefined;
@@ -34,6 +35,7 @@ export const FormField = memo(
   ({
     id,
     label,
+    autoComplete,
     type = "text",
     value,
     error,
@@ -68,6 +70,7 @@ export const FormField = memo(
           maxLength={maxLength}
           aria-invalid={!!error}
           aria-required={true}
+          autoComplete={autoComplete}
           className={`dark:bg-slate-830 focus:!ring-cyan-570 h-11 rounded-lg border-1 text-slate-200 transition-all duration-300 placeholder:text-slate-500 hover:border-slate-600 focus:shadow-lg focus:!ring-2 focus:!outline-none ${
             error
               ? "border-red-500 focus:border-red-400"

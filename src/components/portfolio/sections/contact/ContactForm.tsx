@@ -71,6 +71,7 @@ export const ContactForm = () => {
                     value={formData.name}
                     error={errors.name}
                     placeholder="John Doe"
+                    autoComplete="name"
                     required
                     maxLength={100}
                     onChange={(value) => handleInputChange("name", value)}
@@ -81,6 +82,7 @@ export const ContactForm = () => {
                   <FormField
                     id="email"
                     label="Email Address"
+                    autoComplete="email"
                     type="email"
                     value={formData.email}
                     error={errors.email}
