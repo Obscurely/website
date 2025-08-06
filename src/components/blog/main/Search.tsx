@@ -44,10 +44,12 @@ export const Search = memo(function Search({
       <Input
         type="text"
         placeholder="Search posts..."
+        name="search"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         onKeyDown={handleKeyDown}
         className="border-slate-750 bg-slate-830 focus:!ring-cyan-570 w-full rounded-lg pr-10 pl-10 text-slate-200 transition-all duration-200 placeholder:text-slate-500 hover:border-slate-600 focus:shadow-lg focus:!ring-2 focus:!outline-none"
+        autoComplete="off"
         aria-label="Search posts"
       />
       {searchQuery && (

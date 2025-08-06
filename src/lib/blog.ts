@@ -140,7 +140,7 @@ export const getAllPosts = unstable_cache(
   ["all-posts", process.env.NODE_ENV || "development"],
   {
     tags: ["posts"],
-    revalidate: process.env.NODE_ENV === "production" ? 3600 : 60, // Shorter cache in dev
+    revalidate: process.env.NODE_ENV === "production" ? 86400 : 30, // 24 hours in production, 30 seconds in development
   }
 );
 
@@ -157,7 +157,7 @@ export const getPostDataBySlug = unstable_cache(
   ["post-data"],
   {
     tags: ["posts"],
-    revalidate: 3600,
+    revalidate: 86400, // 24 hours cache for individual posts
   }
 );
 

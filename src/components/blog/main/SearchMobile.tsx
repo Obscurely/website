@@ -21,6 +21,7 @@ export const SearchMobile = () => {
         />
         <Input
           type="text"
+          name="search"
           placeholder="Search posts..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -31,6 +32,7 @@ export const SearchMobile = () => {
           }}
           className="border-slate-750 bg-slate-830 focus:!ring-cyan-570 w-full rounded-lg py-3 pr-10 pl-10 text-slate-200 transition-all duration-200 placeholder:text-slate-500 hover:border-slate-600 focus:shadow-lg focus:!ring-2 focus:!outline-none"
           aria-label="Search posts"
+          autoComplete="off"
         />
         {searchQuery && (
           <button

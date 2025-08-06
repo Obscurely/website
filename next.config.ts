@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
     domains: [], // External images
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 3600,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
@@ -58,6 +58,32 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: [
+          // CSP
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline'", // unsafe-eval and unsafe-inline needed for Next.js hydration
+              "style-src 'self' 'unsafe-inline'", // unsafe-inline needed for Next.js CSS-in-JS
+              "img-src 'self' data: blob:",
+              "font-src 'self' data:",
+              "connect-src 'self'",
+              "media-src 'self'",
+              "object-src 'none'",
+              "child-src 'none'",
+              "frame-src 'none'",
+              "worker-src 'self' blob:",
+              "manifest-src 'self'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'none'",
+              "upgrade-insecure-requests",
+            ].join("; "),
+          },
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin",
+          },
           {
             key: "X-Content-Type-Options",
             value: "nosniff",
@@ -78,6 +104,10 @@ const nextConfig: NextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
           },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains; preload",
+          },
         ],
       },
       {
@@ -86,6 +116,10 @@ const nextConfig: NextConfig = {
           {
             key: "Cache-Control",
             value: "no-store, max-age=0",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: "default-src 'none'",
           },
         ],
       },
