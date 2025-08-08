@@ -11,7 +11,7 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="data-[state=once]:animate-in fade-in slide-in-from-bottom-10 relative z-0 overflow-hidden bg-main-bg-light sm:bg-slate-900/80 py-20 opacity-0 duration-500 ease-out data-[state=once]:opacity-100"
+      className="data-[state=once]:animate-slide-fade-in relative z-0 overflow-hidden bg-main-bg-light sm:bg-slate-900/80 py-20 opacity-0 data-[state=once]:opacity-100"
       data-state="once"
     >
       {/* Subtle background elements */}

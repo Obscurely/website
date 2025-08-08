@@ -189,6 +189,8 @@
     cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --animate-spring-scale: spring-scale 0.5s
     cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --animate-zoom-fade-in: zoom-fade-in 0.5s ease-out;
+  --animate-slide-fade-in: slide-fade-in 0.5s ease-out;
 }
 
 @keyframes spring {
@@ -241,18 +243,41 @@
   }
 }
 
+@keyframes zoom-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Handle prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .animate-pulse,
-  .animate-in,
+  /* Target all animation classes */
+  [class*="animate-"],
   .repeat-infinite,
   [data-state="once"],
-  [data-state="show"],
-  
-  /* Target all tw-animate-css classes */
-  [class*="animate-"],
-  .animate-in,
-  .animate-in * {
+  [data-state="show"] {
     animation: none !important;
     transition: none !important;
   }

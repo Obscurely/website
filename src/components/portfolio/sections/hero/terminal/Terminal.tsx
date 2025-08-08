@@ -15,7 +15,7 @@ import { TerminalClock } from "./TerminalClock";
 export const Terminal = () => {
   return (
     <div
-      className="data-[state=once]:animate-in data-[state=once]:zoom-in-90 flex rounded-2xl opacity-0 duration-500 ease-out will-change-transform data-[state=once]:opacity-100 lg:col-span-2"
+      className="data-[state=once]:animate-zoom-fade-in flex rounded-2xl  will-change-transform lg:col-span-2"
       data-state="once"
     >
       <div className="relative flex w-full flex-col overflow-hidden rounded-2xl border border-slate-600/30 bg-slate-900/40 shadow-2xl shadow-black/20">

@@ -11,11 +11,11 @@ import { SidebarClock } from "./SidebarClock";
 export const Sidebar = () => {
   return (
     <div
-      className="data-[state=once]:animate-in data-[state=once]:zoom-in-90 flex flex-col justify-between space-y-8 rounded-2xl opacity-0 duration-500 ease-out will-change-transform data-[state=once]:opacity-100 md:flex-row md:space-y-0 md:space-x-6 lg:flex-col lg:space-y-8 lg:space-x-0"
+      className="flex flex-col justify-between space-y-8 rounded-2xl will-change-transform md:flex-row md:space-y-0 md:space-x-6 lg:flex-col lg:space-y-8 lg:space-x-0 data-[state=once]:animate-zoom-fade-in"
       data-state="once"
     >
       {/* Profile Widget */}
-      <div className="flex flex-1 flex-col rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10 md:w-1/2 lg:w-full">
+      <div className="flex flex-1 flex-col rounded-2xl border border-slate-600/30 bg-slate-900/40 p-6 shadow-xl shadow-black/10 md:w-1/2 lg:w-full ">
         <div className="mb-3.25 flex items-center gap-2 font-mono text-sm text-slate-400">
           <IconUser size={16} />
           <span>profile.sys</span>

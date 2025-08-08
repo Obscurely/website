@@ -27,10 +27,7 @@ export const Hero = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div
-          className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 transform sm:block"
-          data-state="once"
-        >
+        <div className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 transform sm:block">
           <ArrowDown />
         </div>
       </div>
