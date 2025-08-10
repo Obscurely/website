@@ -38,12 +38,12 @@ export const Blog = () => {
 
         {/* Blog posts grid */}
         {/* <PostsList /> HACK: Keeping this disabled since there are not posts yet, so there is better performance without it */}
-        <div className="pb-16 text-center">
+        <div className="pb-18 text-center">
           <p className="text-lg text-slate-400">No blog posts available yet.</p>
         </div>
 
         {/* View all posts button */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mb-1">
           <Link href="/blog" passHref>
             <Button className="group relative h-10 w-full cursor-pointer overflow-hidden px-4 py-3 text-white transition-all duration-300">
               <span className="relative z-10 flex items-center gap-2 text-sm font-medium">
