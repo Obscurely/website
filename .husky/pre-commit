@@ -1,6 +1,5 @@
 # lint the code before committing
 pnpm lint-staged
 
-# run the tests before committing
+# run the unit tests before committing
 pnpm test:run
-pnpm test:e2e

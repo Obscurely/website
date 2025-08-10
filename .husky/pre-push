@@ -1,2 +1,5 @@
 # do a full check before pushing
 pnpm run type-check && pnpm run lint && pnpm run build
+
+# also run end-to-end tests
+pnpm test:e2e
