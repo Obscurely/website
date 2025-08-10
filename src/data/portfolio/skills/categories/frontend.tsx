@@ -124,8 +124,7 @@ const frontendSkills: Skill[] = [
     description: (
       <p>
         Some <strong>components used</strong> in the <strong>Next.js</strong>{" "}
-        static <strong>website you are currently on</strong> are imported from
-        it.
+        static <strong>website you are currently on</strong> are built on it.
       </p>
     ),
     proficiency: SkillProficiency.Skilled,
@@ -195,13 +194,12 @@ const frontendSkills: Skill[] = [
     description: (
       <p>
         <strong>Improved core metrics</strong> through methods like{" "}
-        <strong>FCP reduction</strong>,{" "}
-        <strong>efficient network waterfalls</strong>,{" "}
+        <strong>FCP reduction</strong>, <strong>lazy loading</strong>,{" "}
         <strong>optimized images</strong>, <strong>code splitting</strong>, and{" "}
         <strong>bundle size reduction</strong>.
       </p>
     ),
-    proficiency: SkillProficiency.Intermediate,
+    proficiency: SkillProficiency.Skilled,
     notableProjects: [projects["RekoSearch"], projects["website"]],
   },
 ];

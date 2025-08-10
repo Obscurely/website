@@ -159,7 +159,7 @@ export const personJsonLd = {
       "@type": "SoftwareApplication",
       name: "Falion",
       description:
-        "A privacy-focused tool and library for interacting with programming resources fast, efficiently, and asynchronously/parallelly using the CLI or GUI.",
+        "A privacy-focused tool and library for interacting with multiple developer resources (like Stack Overflow) at once with combined sub-1.5 seconds response times for full results.",
       applicationCategory: "DeveloperApplication",
       operatingSystem: "Cross-Platform",
       programmingLanguage: "Rust",
@@ -169,7 +169,7 @@ export const personJsonLd = {
       "@type": "SoftwareApplication",
       name: "EStash",
       description:
-        "A cross-platform, highly secure encrypted digital vault capable of setting a path and copying the contents to that file with the click of a button.",
+        "A cross-platform, highly secure encrypted digital vault using using ECIES (X25519 + XChaCha20Poly1305), capable of setting a path and copying the contents to that file with the click of a button.",
       applicationCategory: "SecurityApplication",
       operatingSystem: "Cross-Platform",
       programmingLanguage: "Rust",
@@ -179,7 +179,7 @@ export const personJsonLd = {
       "@type": "SoftwareApplication",
       name: "Personal Website",
       description:
-        "My personal static tech website portfolio and blog, made with Next.js, React, Typescript, TailwindCSS and Shadcn/ui, deployed using CI/CD on AWS.",
+        "My personal static tech website portfolio and blog, made with Next.js, React, Typescript, TailwindCSS and Shadcn/ui, deployed using CI/CD on Vercel. Optimized for performance and SEO.",
       url: SITE_CONFIG.url,
       applicationCategory: "WebApplication",
       operatingSystem: "Web",
@@ -198,7 +198,7 @@ export const personJsonLd = {
       "@type": "SoftwareApplication",
       name: "NixObscurely",
       description:
-        "My fully customized and automated NixOS (advanced Linux distribution) home-manager + flakes system configuration.",
+        "Infrastructure-as-Code NixOS (advanced Linux distribution) system configuration. Actively maintained with 500+ commits across multiple machines with reproducible builds.",
       applicationCategory: "SystemApplication",
       operatingSystem: "NixOS",
       programmingLanguage: "Nix",

@@ -94,8 +94,8 @@ const keySkills: Skill[] = [
     ),
     description: (
       <p>
-        Built a substantial frontend of <strong>~23k LoC</strong> with advanced
-        patterns, including <strong>custom hooks</strong>,{" "}
+        Built frontends, including one of <strong>~23k LoC</strong>, with
+        advanced patterns, such as <strong>custom hooks</strong>,{" "}
         <strong>compound components</strong> and <strong>shared state</strong>{" "}
         management for{" "}
         <span className="font-semibold italic">
@@ -270,7 +270,8 @@ const keySkills: Skill[] = [
     description: (
       <p>
         Implemented Github Actions <strong>build</strong>, <strong>test</strong>
-        , and <strong>multi-platform release pipelines</strong>.
+        , and <strong>multi-platform release pipelines</strong> across multiple
+        projects and templates.
       </p>
     ),
     proficiency: SkillProficiency.Intermediate,

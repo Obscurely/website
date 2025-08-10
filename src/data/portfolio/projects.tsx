@@ -94,9 +94,9 @@ export const projects: Record<ProjectKey, Project> = {
     description: (
       <p>
         A privacy-focused <strong>tool and library</strong> for interacting with
-        programming resources (like Stackoverflow) fast, efficiently, and{" "}
-        <strong>asynchronously/parallelly</strong> using the{" "}
-        <strong>CLI or GUI</strong>.
+        multiple developer resources (like Stack Overflow){" "}
+        <strong>at once</strong> with combined <strong>sub-1.5 seconds</strong>{" "}
+        response times for full results.
       </p>
     ),
     image: "/projects/falion.avif",
@@ -113,12 +113,13 @@ export const projects: Record<ProjectKey, Project> = {
       <p>
         My personal <strong>static tech website</strong> portfolio and blog,
         made with Next.js, React, Typescript, <strong>TailwindCSS</strong> and
-        Shadcn/ui, <strong>deployed using CI/CD on AWS</strong>.
+        Shadcn/ui, <strong>deployed using CI/CD on Vercel</strong>. Optimized
+        for performance and SEO.
       </p>
     ),
     image: "/projects/nextjs.svg",
     imageSize: 75,
-    tags: ["Next.js", "React", "TailwindCSS", "Shadcn/ui", "AWS"],
+    tags: ["Next.js", "React", "TailwindCSS", "Shadcn/ui", "Vercel"],
     liveUrl: SITE_CONFIG.url,
     githubUrl: `${SITE_CONFIG.social.github}/website`,
     featured: true,
@@ -130,8 +131,9 @@ export const projects: Record<ProjectKey, Project> = {
     description: (
       <p>
         A <strong>cross-platform</strong>, highly secure{" "}
-        <strong>encrypted digital vault</strong> capable of setting a path and
-        copying the contents to that file with the click of a button.
+        <strong>encrypted digital vault</strong> using ECIES (X25519 +
+        XChaCha20Poly1305), capable of setting a path and copying the contents
+        to that file with the click of a button.
       </p>
     ),
     image: "/projects/estash.avif",
@@ -162,9 +164,10 @@ export const projects: Record<ProjectKey, Project> = {
     index: 5,
     description: (
       <p>
-        My fully customized and <strong>automated</strong> NixOS (
-        <strong>advanced Linux distribution</strong>) home-manager + flakes
-        system configuration.{" "}
+        <strong>Infrastructure-as-Code</strong> NixOS (
+        <strong>advanced Linux distribution</strong>) system configuration.
+        Actively maintained with 500+ commits across{" "}
+        <strong>multiple machines</strong> with reproducible builds.
       </p>
     ),
     image: "/projects/nix.svg",
