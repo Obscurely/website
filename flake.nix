@@ -45,20 +45,54 @@
               grub2
               cmake
               gcc
+
+              # Playwright dependencies
+			  playwright-driver.browsers
+			  playwright
+              glib
+              nss
+              nspr
+              dbus
+              atk
+              at-spi2-atk
+              cups
+              expat
+              xorg.libxcb
+              libxkbcommon
+              at-spi2-core
+              xorg.libX11
+              xorg.libXcomposite
+              xorg.libXdamage
+              xorg.libXext
+              xorg.libXfixes
+              xorg.libXrandr
+              mesa # for libgbm
+              cairo
+              pango
+              systemd # for libudev
+              alsa-lib
             ];
 
             shellHook = ''
               # set root path
               ROOT=$(pwd)
 
+			  #configure playwright
+			  export PLAYWRIGHT_BROWSERS_PATH=${pkgs.playwright-driver.browsers}
+			  export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
+			  export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+
               # setup dependencies for frontend
               echo "Setup dependencies"
               pnpm install --silent
+			  #pnpm playwright install --silent
               echo "Nodejs updates: $(pnpm outdated)"
               echo ""
 
               # run in dev mode
               pnpm dev &>/dev/null 2>&1 &
+              nohup pnpm test:ui --silent </dev/null &>/dev/null & 
+              chromium --incognito --new-window http://localhost:3000 &>/dev/null 2>&1 &
               echo "Frontend started in dev mode."
 
               # run zsh in order to pause exec
@@ -78,7 +112,7 @@
 
             TO_EMAIL = "contact@adriancrismaruc.com";
             FROM_EMAIL = "contact@adriancrismaruc.com";
-			NEXT_PUBLIC_SITE_URL = "https://adriancrismaruc.com";
+            NEXT_PUBLIC_SITE_URL = "https://adriancrismaruc.com";
           };
 
           # HACK: these don't actually have any effect (I don't think so at least), but they are here so you know what you need to do in your config

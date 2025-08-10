@@ -46,3 +46,5 @@ magick_command
 # ignore 
 public/**/*.min.js
 lighthouse-mobile-report.html
+test-results
+playwright-report

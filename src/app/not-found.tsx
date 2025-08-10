@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <div className="bg-main-bg-light flex min-h-screen flex-col items-center justify-center px-6 text-center">
-      <div className="border-slate-730 bg-slate-850 relative mx-auto max-w-2xl rounded-2xl border p-8 shadow-xl">
+      <main className="border-slate-730 bg-slate-850 relative mx-auto max-w-2xl rounded-2xl border p-8 shadow-xl">
         <div className="absolute -top-20 left-1/2 -translate-x-1/2">
           <div className="bg-slate-880 relative flex h-40 w-40 items-center justify-center rounded-full shadow-lg">
             <span className="bg-blue-400 bg-clip-text text-6xl font-bold text-transparent">
@@ -44,7 +44,7 @@ export default function NotFound() {
             </Button>
           </Link>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

@@ -53,7 +53,7 @@ export default async function Blog({ searchParams }: BlogPageProps) {
 
       <div className="relative min-h-screen overflow-x-hidden bg-[#0c1327] text-slate-200">
         <Navbar isBlog={true} />
-        <main className="relative">
+        <div className="relative">
           <div className="relative z-10">
             <Suspense fallback={<BlogLoadingFallback />}>
               <BlogPage
@@ -64,7 +64,7 @@ export default async function Blog({ searchParams }: BlogPageProps) {
               />
             </Suspense>
           </div>
-        </main>
+        </div>
         <Footer isBlog={true} />
       </div>
     </>

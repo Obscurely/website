@@ -43,7 +43,7 @@ export function BlogPage({
         <MobileFilterDrawer allTags={allTags} allYears={allYears} />
 
         {/* Main container */}
-        <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
+        <main className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
           {/* Mobile search and filter controls */}
           <div>
             <SearchMobile />
@@ -76,7 +76,7 @@ export function BlogPage({
               </div>
             </aside>
           </div>
-        </div>
+        </main>
       </FilterProvider>
     </div>
   );
