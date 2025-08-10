@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { useIsMobile } from "../../hooks/common/useIsMobile";
@@ -54,11 +54,14 @@ describe("useIsMobile Hook", () => {
     const { result, rerender } = renderHook(() => useIsMobile());
     expect(result.current).toBe(false);
 
-    Object.defineProperty(window, "innerWidth", {
-      value: 600,
+    act(() => {
+      Object.defineProperty(window, "innerWidth", {
+        value: 600,
+      });
+
+      window.dispatchEvent(new Event("resize"));
     });
 
-    window.dispatchEvent(new Event("resize"));
     rerender();
 
     // Wait for the effect to update
