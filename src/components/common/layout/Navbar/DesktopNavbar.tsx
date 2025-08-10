@@ -39,7 +39,7 @@ export const DesktopNavbar = ({ isBlog, isMain }: DesktopNavbarProps) => {
 
       <div className="ml-0 lg:ml-1">
         <a
-          href="/resume.pdf"
+          href="/Adrian-Crismaruc-Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(

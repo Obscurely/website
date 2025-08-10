@@ -13,7 +13,7 @@ export interface FooterSection {
 }
 
 export const getResourceLinks = (): FooterLink[] => [
-  { name: "Resume", href: "/resume.pdf", external: true },
+  { name: "Resume", href: "/Adrian-Crismaruc-Resume.pdf", external: true },
   { name: "RSS Feed", href: "/rss.xml", external: true },
   { name: "Sitemap", href: "/sitemap.xml", external: true },
 ];

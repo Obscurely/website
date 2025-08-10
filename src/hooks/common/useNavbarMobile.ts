@@ -36,7 +36,7 @@ export const useNavbarMobile = () => {
 
   const handleResumeClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
-    window.open("/resume.pdf", "_blank");
+    window.open("/Adrian-Crismaruc-Resume.pdf", "_blank");
   }, []);
 
   return {

@@ -43,7 +43,7 @@ export const Buttons = () => {
         className="border-cyan-570 hover:border-cyan-590 h-10 w-full cursor-pointer rounded-lg px-4 py-3 text-slate-300 transition-all duration-300 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
         onClick={(e) => {
           e.preventDefault();
-          window.open("/resume.pdf", "_blank");
+          window.open("/Adrian-Crismaruc-Resume.pdf", "_blank");
         }}
       >
         <span className="flex items-center justify-center gap-2 text-sm">
