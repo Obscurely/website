@@ -33,13 +33,15 @@ tracking cookies**.
 
 ## What I Use Instead
 
-I use **Umami Analytics**, a privacy-focused analytics tool that:
+I use privacy-focused analytics tools that respect your privacy:
 
-- Uses local browser storage (not cookies)
-- Collects anonymous usage data only
-- Cannot identify or track individual users
-- Stores data temporarily in your browser
-- Resets when you close your browser
+**Vercel Analytics:**
+
+- Does not use cookies or store personal data
+- Collects anonymous performance and usage metrics
+- Cannot track individual users across sessions
+- Does not store IP addresses
+- Automatically aggregates and anonymizes all data
 
 ## Essential Website Functions
 
@@ -54,9 +56,10 @@ The analytics collect only anonymous information:
 
 - Pages you visit on my site
 - How you found my site (referral source)
-- General location (country level)
+- General location (country/region level)
 - Device type (mobile, desktop, tablet)
 - Browser type
+- Website performance metrics (page load times, Core Web Vitals)
 
 ## Your Control
 
@@ -70,7 +73,8 @@ Since I don't use tracking cookies:
 ## Third-Party Services
 
 I do not use third-party advertising or tracking services that would place
-cookies on your device.
+cookies on your device. The analytics service I use (Vercel Analytics) is
+specifically chosen for its privacy-first approach and cookie-free operation.
 
 ## Contact Me
 
