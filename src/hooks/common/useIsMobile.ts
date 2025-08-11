@@ -8,11 +8,7 @@ export const useIsMobile = () => {
 
   useEffect(() => {
     const checkIsMobile = () => {
-      return (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        ) || window.innerWidth < 768
-      );
+      return window.innerWidth < 640;
     };
 
     setIsMobile(checkIsMobile());
