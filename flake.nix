@@ -91,7 +91,7 @@
 
               # run in dev mode
               pnpm dev &>/dev/null 2>&1 &
-              nohup pnpm test:ui --silent </dev/null &>/dev/null & 
+              pnpm test:ui --watch </dev/null &>/dev/null & 
               chromium --incognito --new-window http://localhost:3000 &>/dev/null 2>&1 &
               echo "Frontend started in dev mode."
 
