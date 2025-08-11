@@ -18,6 +18,7 @@ export const IconPlaceholder = memo(function IconPlaceholder({
         minHeight: size,
       }}
       aria-label="Loading icon..."
+      role="img"
     />
   );
 });

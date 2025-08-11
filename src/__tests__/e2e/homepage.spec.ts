@@ -1,3 +1,4 @@
+import { AxeBuilder } from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 test.describe("Homepage", () => {
@@ -71,5 +72,11 @@ test.describe("Homepage", () => {
     );
 
     expect(criticalErrors).toHaveLength(0);
+  });
+
+  test("should pass basic accessibility checks", async ({ page }) => {
+    await page.goto("/");
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+    expect(accessibilityScanResults.violations).toEqual([]);
   });
 });
