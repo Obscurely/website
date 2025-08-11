@@ -140,7 +140,8 @@ const devopsSkills: Skill[] = [
     description: (
       <p>
         Implemented Github Actions <strong>build</strong>, <strong>test</strong>
-        , and <strong>multi-platform release pipelines</strong>.
+        , and <strong>multi-platform release pipelines</strong> across multiple
+        projects and templates..
       </p>
     ),
     proficiency: SkillProficiency.Intermediate,
