@@ -33,6 +33,7 @@ export const ProjectsNavigationAnimated = memo(
           whileTap={!isPrevDisabled ? "tap" : ""}
           variants={navigationButtonVariants}
           className="flex-shrink-0"
+          tabIndex={-1}
         >
           <Button
             onClick={onPrevPage}
@@ -61,6 +62,7 @@ export const ProjectsNavigationAnimated = memo(
           whileTap={!isNextDisabled ? "tap" : ""}
           variants={navigationButtonVariants}
           className="flex-shrink-0"
+          tabIndex={-1}
         >
           <Button
             onClick={onNextPage}
