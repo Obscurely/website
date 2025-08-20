@@ -84,7 +84,7 @@ export const projects: Record<ProjectKey, Project> = {
     imageSize: 75,
     tags: ["AWS", "Kubernetes", "Rust", "Python", "React", "MUI", "Flask"],
     liveUrl: "https://rekosearch.com",
-    githubUrl: `${SITE_CONFIG.social.github}/RekoSearch`,
+    githubUrl: `${SITE_CONFIG.social.github}/RekoSearch-Public`,
     featured: true,
   },
   Falion: {
