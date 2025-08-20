@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 
 import { SITE_CONFIG } from "@data/common/site";
+import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
 
@@ -120,6 +121,7 @@ export default function RootLayout({
       >
         <div className="flex flex-1 flex-col">{children}</div>
         <Script src="/animations.min.js" strategy="afterInteractive" />
+        <Analytics />
       </body>
     </html>
   );
