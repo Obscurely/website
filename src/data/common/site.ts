@@ -17,7 +17,7 @@ export const SITE_CONFIG = {
   toEmail: process.env["TO_EMAIL"] || "contact@adriancrismaruc.com",
   social: {
     github: "https://github.com/Obscurely",
-    linkedIn: "https://www.linkedin.com/in/adrian-crismaruc-2a1b832a0",
+    linkedIn: "https://www.linkedin.com/in/adrian-crismaruc",
     reddit: "https://www.reddit.com/user/CrismarucAdrian",
   },
   websiteSource: "https://github.com/Obscurely/website",
