@@ -86,7 +86,7 @@ export const BlogCard = memo(
                     height={350}
                     src={post.frontmatter.image}
                     alt={post.frontmatter.title}
-                    className="h-auto max-h-full w-auto max-w-full object-contain transition-transform duration-300 will-change-transform group-hover:scale-105"
+                    className="h-auto max-h-full w-auto max-w-full object-contain transition-transform duration-300 will-change-transform group-hover:scale-105 mt-8"
                     style={{
                       maxWidth: "82%",
                       maxHeight: "82%",

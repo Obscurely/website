@@ -21,6 +21,7 @@ const createLoadingPost = (index: number): Post => ({
 });
 
 // Memoize loading posts array to avoid recreation on every render
-export const LOADING_POSTS = Array.from({ length: 3 }, (_, index) =>
+// HACK: update the length as it changes
+export const LOADING_POSTS = Array.from({ length: 1 }, (_, index) =>
   createLoadingPost(index)
 );

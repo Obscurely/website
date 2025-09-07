@@ -43,10 +43,13 @@ export const PostsList = () => {
     }
   }, [latestPosts.length]);
 
+  // HACK: for loading posts if there are 3 add this:
+  // /* <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"> */
+
   return (
     <div className="mb-12">
       {loading ? (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 mx-auto max-w-[475px] grid-cols-1">
           {LOADING_POSTS.map((post) => (
             <div key={post.slug}>
               <BlogCard post={post} isLoadingCard={true} />

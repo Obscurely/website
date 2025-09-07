@@ -54,6 +54,7 @@ export const PostRow = memo(function PostRow({ post }: PostRowProps) {
                     width: "auto",
                     height: "auto",
                     objectFit: "contain",
+                    maxWidth: "85%",
                   }}
                   sizes="(max-width: 768px) 100vw, 33vw"
                   priority={true}

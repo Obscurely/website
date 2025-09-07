@@ -4,6 +4,8 @@ import { SITE_CONFIG } from "@data/common/site";
 import { IconArrowRight } from "@tabler/icons-react";
 import { Button } from "@ui/button";
 
+import { PostsList } from "./PostsList";
+
 // import { PostsList } from "./PostsList";
 
 /**
@@ -37,10 +39,10 @@ export const Blog = () => {
         </div>
 
         {/* Blog posts grid */}
-        {/* <PostsList /> HACK: Keeping this disabled since there are not posts yet, so there is better performance without it */}
-        <div className="pb-18 text-center">
-          <p className="text-lg text-slate-400">No blog posts available yet.</p>
-        </div>
+        <PostsList />
+        {/* <div className="pb-18 text-center"> */}
+        {/* <p className="text-lg text-slate-400">No blog posts available yet.</p> */}
+        {/* </div> */}
 
         {/* View all posts button */}
         <div className="flex flex-col items-center mb-1">
