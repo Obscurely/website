@@ -18,6 +18,7 @@ export const SITE_CONFIG = {
   social: {
     github: "https://github.com/Obscurely",
     linkedIn: "https://www.linkedin.com/in/adrian-crismaruc",
+    upwork: "https://www.upwork.com/freelancers/adriancrismaruc",
     reddit: "https://www.reddit.com/user/CrismarucAdrian",
   },
   websiteSource: "https://github.com/Obscurely/website",

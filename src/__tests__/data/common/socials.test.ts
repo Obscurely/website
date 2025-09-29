@@ -12,6 +12,7 @@ describe("Socials Configuration", () => {
     const platformNames = socials.map((social) => social.name);
 
     expect(platformNames).toContain("GitHub");
+    expect(platformNames).toContain("Upwork");
     expect(platformNames).toContain("LinkedIn");
     expect(platformNames).toContain("Reddit");
   });
@@ -58,6 +59,14 @@ describe("Socials Configuration", () => {
     expect(linkedin?.href).toContain("adrian-crismaruc");
   });
 
+  it("should have correct Upwork configuration", () => {
+    const linkedin = socials.find((social) => social.name === "Upwork");
+
+    expect(linkedin).toBeDefined();
+    expect(linkedin?.href).toContain("upwork.com");
+    expect(linkedin?.href).toContain("adriancrismaruc");
+  });
+
   it("should have correct Reddit configuration", () => {
     const reddit = socials.find((social) => social.name === "Reddit");
 
@@ -83,6 +92,7 @@ describe("Socials Configuration", () => {
   it("should have proper social media domains", () => {
     const expectedDomains = {
       GitHub: "github.com",
+      Upwork: "upwork.com",
       LinkedIn: "linkedin.com",
       Reddit: "reddit.com",
     };
@@ -97,7 +107,7 @@ describe("Socials Configuration", () => {
   });
 
   it("should be ordered consistently", () => {
-    const expectedOrder = ["GitHub", "LinkedIn", "Reddit"];
+    const expectedOrder = ["GitHub", "LinkedIn", "Upwork", "Reddit"];
     const actualOrder = socials.map((social) => social.name);
 
     expect(actualOrder).toEqual(expectedOrder);
@@ -106,6 +116,7 @@ describe("Socials Configuration", () => {
   it("should link to the correct profiles", () => {
     const profileChecks = {
       GitHub: (href: string) => href.includes("/Obscurely"),
+      Upwork: (href: string) => href.includes("/freelancers/adriancrismaruc"),
       LinkedIn: (href: string) => href.includes("/in/adrian-crismaruc"),
       Reddit: (href: string) => href.includes("/user/CrismarucAdrian"),
     };

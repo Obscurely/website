@@ -2,6 +2,7 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandReddit,
+  IconBrandUpwork,
 } from "@tabler/icons-react";
 
 import { SITE_CONFIG } from "./site";
@@ -18,6 +19,11 @@ export const socials: Social[] = [
     name: "LinkedIn",
     icon: IconBrandLinkedin,
     href: SITE_CONFIG.social.linkedIn,
+  },
+  {
+    name: "Upwork",
+    icon: IconBrandUpwork,
+    href: SITE_CONFIG.social.upwork,
   },
   {
     name: "Reddit",

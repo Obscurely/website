@@ -88,6 +88,7 @@ describe("Site Configuration", () => {
       expect(SITE_CONFIG.social).toEqual({
         github: "https://github.com/Obscurely",
         linkedIn: "https://www.linkedin.com/in/adrian-crismaruc",
+        upwork: "https://www.upwork.com/freelancers/adriancrismaruc",
         reddit: "https://www.reddit.com/user/CrismarucAdrian",
       });
     });
@@ -145,7 +146,7 @@ describe("Site Configuration", () => {
     });
 
     it("should have all required social media platforms", () => {
-      const requiredSocials = ["github", "linkedIn", "reddit"];
+      const requiredSocials = ["github", "upwork", "linkedIn", "reddit"];
 
       requiredSocials.forEach((platform) => {
         expect(SITE_CONFIG.social).toHaveProperty(platform);
