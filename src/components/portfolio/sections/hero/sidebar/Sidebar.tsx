@@ -30,8 +30,8 @@ export const Sidebar = () => {
             <div className="group relative mx-auto h-full w-full overflow-hidden rounded-full border-2 border-cyan-500/20 bg-slate-900">
               <Image
                 src="/profile.webp"
-                width={256}
-                height={256}
+                width={512}
+                height={512}
                 alt={SITE_CONFIG.name}
                 className="h-full w-full object-cover"
                 priority
