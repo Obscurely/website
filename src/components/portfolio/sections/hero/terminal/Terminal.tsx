@@ -86,7 +86,7 @@ export const Terminal = () => {
 
           {/* Action Buttons */}
           <div className="mb-6">
-            <div className="grid grid-cols-1 gap-3 sm:max-w-[480px] sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 sm:max-w-[640px] sm:grid-cols-2 lg:grid-cols-4">
               <Buttons />
             </div>
           </div>

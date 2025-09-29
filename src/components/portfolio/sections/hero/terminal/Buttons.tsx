@@ -1,10 +1,16 @@
 "use client";
 
-import { IconArrowRight, IconCode, IconUser } from "@tabler/icons-react";
+import { SITE_CONFIG } from "@data/common/site";
+import {
+  IconArrowRight,
+  IconBrandYoutube,
+  IconCode,
+  IconUser,
+} from "@tabler/icons-react";
 import { Button } from "@ui/button";
 
 /**
- * The get in touch, view projects, and view resume buttons.
+ * The get in touch, view projects, view resume, and watch intro buttons.
  */
 export const Buttons = () => {
   return (
@@ -49,6 +55,19 @@ export const Buttons = () => {
         <span className="flex items-center justify-center gap-2 text-sm">
           View Resume
           <IconUser className="h-4 w-4" />
+        </span>
+      </Button>
+      <Button
+        variant="outline"
+        className="border-cyan-570 hover:border-cyan-590 h-10 w-full cursor-pointer rounded-lg px-4 py-3 text-slate-300 transition-all duration-300 hover:text-white hover:shadow-lg hover:shadow-cyan-500/10"
+        onClick={(e) => {
+          e.preventDefault();
+          window.open(SITE_CONFIG.videoIntroductionUrl, "_blank");
+        }}
+      >
+        <span className="flex items-center justify-center gap-2 text-sm">
+          Watch Intro
+          <IconBrandYoutube className="h-4 w-4" />
         </span>
       </Button>
     </>

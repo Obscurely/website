@@ -22,4 +22,5 @@ export const SITE_CONFIG = {
     reddit: "https://www.reddit.com/user/CrismarucAdrian",
   },
   websiteSource: "https://github.com/Obscurely/website",
+  videoIntroductionUrl: "https://www.youtube.com/watch?v=x_kMa2OHZiA",
 } as const;
