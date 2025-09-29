@@ -100,7 +100,7 @@ export function MyJourney() {
         >
           RekoSearch
         </a>{" "}
-        - an almost 50k LoC SaaS app made with Rust, Python and web technologies
+        - an over 50k LoC SaaS app made with Rust, Python and web technologies
         on AWS and Kubernetes
       </span>{" "}
       - and my <span className="font-bold">Home Lab</span> with{" "}

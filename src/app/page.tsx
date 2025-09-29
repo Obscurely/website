@@ -3,6 +3,7 @@ import Script from "next/script";
 
 import { Footer } from "@common/layout/Footer/Footer";
 import { Navbar } from "@common/layout/Navbar/Navbar";
+import { Experience } from "@components/portfolio/sections/experience/Experience";
 import { Background } from "@components/portfolio/sections/hero/Background";
 import {
   organizationJsonLd,
@@ -41,6 +42,7 @@ export default function Home() {
           <div className="relative z-10">
             <Hero />
             <About />
+            <Experience />
             <Projects />
             <Blog />
             <Contact />

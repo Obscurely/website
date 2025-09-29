@@ -10,14 +10,8 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="bg-main-bg-dark relative z-0 overflow-hidden py-20"
+      className="bg-main-bg-light relative z-0 overflow-hidden py-20"
     >
-      {/* Background elements */}
-      <div className="absolute inset-0 -z-10 opacity-10">
-        <div className="absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-purple-600 blur-[100px]"></div>
-        <div className="absolute bottom-1/3 left-1/4 h-64 w-64 rounded-full bg-indigo-600 blur-[100px]"></div>
-      </div>
-
       {/* Main content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}

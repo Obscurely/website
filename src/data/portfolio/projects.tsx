@@ -76,7 +76,8 @@ export const projects: Record<ProjectKey, Project> = {
       <p>
         An <strong>AI-powered</strong> file search engine for images, videos,
         documents and audio that understands the content of your files, enabling{" "}
-        <strong>semantic search</strong> across them. (<strong>~50k LoC</strong>
+        <strong>semantic search</strong> across them. (
+        <strong>over 50k LoC</strong>
         ).
       </p>
     ),
