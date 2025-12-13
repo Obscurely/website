@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, memo, useContext, useState } from "react";
 
 import { Skill } from "@data/portfolio/skills/types";
 import {
@@ -52,7 +52,7 @@ interface SkillBadgeProps {
   colorClass: string;
 }
 
-export const SkillBadge = React.memo(function SkillBadge({
+export const SkillBadge = memo(function SkillBadge({
   skill,
   colorClass,
 }: SkillBadgeProps) {
