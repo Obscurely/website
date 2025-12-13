@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Project } from "@data/portfolio/skills/types";
 import { IconExternalLink } from "@tabler/icons-react";
 import {

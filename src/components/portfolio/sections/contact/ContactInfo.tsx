@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 import { socials } from "@data/common/socials";
 import { contactInfo } from "@data/portfolio/contact";
