@@ -22,7 +22,9 @@ export const usePostPage = (sidebarWidth: number) => {
   // Capture initial width to prevent flickering
   useEffect(() => {
     if (sidebarWidth > 0 && initialWidth === null) {
-      setInitialWidth(sidebarWidth);
+      // This won't cause cascading re-renders because we are checking for prev ?? sidebarWidth
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setInitialWidth((prev) => prev ?? sidebarWidth);
     }
   }, [sidebarWidth, initialWidth]);
 

@@ -99,6 +99,8 @@ export const SkillBadge = memo(function SkillBadge({
 
       {isExpanded && (
         <div
+          // floating-ui libary's ref callbacks are safe to use conditionally
+          // eslint-disable-next-line react-hooks/refs
           ref={refs.setFloating}
           {...getFloatingProps()}
           className="border-slate-760 animate-in fade-in zoom-in-90 duraton-500 absolute z-[60] w-lg max-w-[95vw] overflow-hidden rounded-xl border bg-gradient-to-b from-slate-800 to-slate-900 p-4 text-slate-200 shadow-xl ease-out will-change-transform"

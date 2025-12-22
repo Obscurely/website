@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import { TocItem } from "@data/blog/toc";
 
@@ -21,6 +28,29 @@ export const useToc = (toc: TocItem[]) => {
     }),
     []
   );
+
+  useLayoutEffect(() => {
+    if (activeId) return;
+
+    const validSlugs = new Set(toc.map((item) => item.slug));
+    const headings = Array.from(
+      document.querySelectorAll("h1, h2, h3, h4, h5, h6")
+    ).filter((heading) => heading.id && validSlugs.has(heading.id));
+
+    if (headings.length === 0) return;
+
+    const firstHeading = headings.find((heading) => {
+      const rect = heading.getBoundingClientRect();
+      return rect.top >= 0 && rect.top <= window.innerHeight * 0.3;
+    });
+
+    const initialId = firstHeading?.id || headings[0]?.id;
+    if (initialId) {
+      // This is safe
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setActiveId(initialId);
+    }
+  }, [toc, activeId]);
 
   // Debounced setActiveId with persistence logic
   const debouncedSetActiveId = useCallback((id: string) => {
@@ -66,23 +96,6 @@ export const useToc = (toc: TocItem[]) => {
 
     if (headings.length === 0) {
       return;
-    }
-
-    // Set initial active heading if none is set
-    if (!activeId && headings.length > 0) {
-      const firstHeading = headings.find((heading) => {
-        const rect = heading.getBoundingClientRect();
-        return rect.top >= 0 && rect.top <= window.innerHeight * 0.3;
-      });
-
-      if (firstHeading) {
-        setActiveId(firstHeading.id);
-      } else {
-        // Default to first heading if none are visible
-        if (headings[0]) {
-          setActiveId(headings[0].id);
-        }
-      }
     }
 
     const observer = new IntersectionObserver((entries) => {
@@ -155,7 +168,7 @@ export const useToc = (toc: TocItem[]) => {
       }
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [toc, debouncedSetActiveId, observerOptions, activeId, handleScroll]);
+  }, [toc, debouncedSetActiveId, observerOptions, handleScroll]);
 
   // Smooth scroll handler
   const handleClick = useCallback((e: React.MouseEvent, slug: string) => {

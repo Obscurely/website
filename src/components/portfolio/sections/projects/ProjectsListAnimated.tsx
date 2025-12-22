@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useRef, useSyncExternalStore } from "react";
 
 import { Project } from "@data/portfolio/projects";
 import { useMaxCardHeight } from "@hooks/portfolio/useMaxCardHeight";
@@ -28,11 +28,18 @@ export const ProjectsListAnimated = memo(
     const previousCategory = useRef<string | null>(null);
     const isFirstRender = useRef(true);
 
-    // Check if this is a category change
-    const isCategoryChange = previousCategory.current !== activeCategory;
+    // Use useSyncExternalStore to safely read refs during render
+    const isCategoryChange = useSyncExternalStore(
+      () => () => {}, // subscribe (no-op since refs don't notify)
+      () => previousCategory.current !== activeCategory, // getSnapshot
+      () => false // getServerSnapshot
+    );
 
-    // Determine if we should apply translateY animation
-    const shouldAnimateY = isCategoryChange && !isFirstRender.current;
+    const shouldAnimateY = useSyncExternalStore(
+      () => () => {},
+      () => isCategoryChange && !isFirstRender.current,
+      () => false
+    );
 
     // mark component as loaded
     useEffect(() => {

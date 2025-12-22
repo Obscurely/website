@@ -8,13 +8,12 @@ import {
   useState,
 } from "react";
 
-const TimeContext = createContext<Date | null>(null);
+const TimeContext = createContext<Date>(new Date());
 
 export const TimeProvider = ({ children }: { children: ReactNode }) => {
-  const [currentTime, setCurrentTime] = useState<Date | null>(null);
+  const [currentTime, setCurrentTime] = useState<Date>(new Date());
 
   useEffect(() => {
-    setCurrentTime(new Date());
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
