@@ -2,37 +2,55 @@
 title: "Building RekoSearch: My 18-Month Journey"
 date: "2025-09-07"
 description:
-  "After struggling to find specific files in my 10,000+ media library, I spent 18 months building RekoSearch—a SaaS that lets you semantically search photos, videos, documents, and audio using natural language queries. Here's the technical journey and lessons learned."
+  "After struggling to find specific files in my 10,000+ media library, I spent
+  18 months building RekoSearch—a SaaS that lets you semantically search photos,
+  videos, documents, and audio using natural language queries. Here's the
+  technical journey and lessons learned."
 tags: ["RekoSearch", "AWS", "Kubernetes", "Rust", "Python", "React", "SaaS"]
 image: "/blog/rekosearch_logo.svg"
 draft: false
 featured: true
 ---
 
-<div className="my-12 text-center border-l-4 border-cyan-500 bg-slate-970 p-8 rounded-r-xl">
-  <div className="text-lg md:text-xl font-bold text-white leading-relaxed mb-4">
-    10,000+ photos. Hundreds of videos. One specific memory I desperately needed to find.
+<div className="bg-slate-970 my-12 rounded-r-xl border-l-4 border-cyan-500 p-8 text-center">
+  <div className="mb-4 text-lg leading-relaxed font-bold text-white md:text-xl">
+    10,000+ photos. Hundreds of videos. One specific memory I desperately needed
+    to find.
   </div>
-  <div className="text-lg text-cyan-400 font-semibold">
-    Sound familiar?
-  </div>
+  <div className="text-lg font-semibold text-cyan-400">Sound familiar?</div>
 </div>
 
 <Callout type="tip" title="🚀 Skip to the solution">
-  Try the [RekoSearch Demo](https://rekosearch.com/demo) yourself, sign up for the [RekoSearch Closed Beta](https://rekosearch.com/beta?utm_source=blog&utm_medium=referral&utm_campaign=blog-rekosearch-initial) or explore the [technical deep-dive](https://github.com/Obscurely/RekoSearch-Public) if you're curious about the architecture and implementation.
+  Try the [RekoSearch Demo](https://rekosearch.com/demo) yourself, sign up for
+  the [RekoSearch Closed
+  Beta](https://rekosearch.com/beta?utm_source=blog&utm_medium=referral&utm_campaign=blog-rekosearch-initial)
+  or explore the [technical
+  deep-dive](https://github.com/Obscurely/RekoSearch-Public) if you're curious
+  about the architecture and implementation.
 </Callout>
 
 ## When Digital Hoarding Becomes a Real Problem
 
-About a year and a half ago, I was looking for my next big project, but I wasn't sure what it would be. Fortunately, while I was trying to filter through my media and find some very specific photos and videos, I encountered a problem that motivated me to build this.
+About a year and a half ago, I was looking for my next big project, but I wasn't
+sure what it would be. Fortunately, while I was trying to filter through my
+media and find some very specific photos and videos, I encountered a problem
+that motivated me to build this.
 
-The problem is that I have literally over 10,000 photos and videos, and while they are organized by year and even by period, that still results in hundreds per folder. Going through everything to find exactly what I need takes time, and a lot of it.
+The problem is that I have literally over 10,000 photos and videos, and while
+they are organized by year and even by period, that still results in hundreds
+per folder. Going through everything to find exactly what I need takes time, and
+a lot of it.
 
-While there are tools that allow you to find a piece of media by face or search for text within them, they either don't provide in-depth enough searching capabilities, a broad enough scope of things to search for, or are tailored to a particular use case.
+While there are tools that allow you to find a piece of media by face or search
+for text within them, they either don't provide in-depth enough searching
+capabilities, a broad enough scope of things to search for, or are tailored to a
+particular use case.
 
 ## RekoSearch: Semantic Search Across All Your Content
 
-RekoSearch, on the other hand, allows you to simultaneously search across photos, videos, documents, and audio files semantically, using natural language queries.
+RekoSearch, on the other hand, allows you to simultaneously search across
+photos, videos, documents, and audio files semantically, using natural language
+queries.
 
 <FeatureGrid>
   <FeatureCard
@@ -52,42 +70,83 @@ RekoSearch, on the other hand, allows you to simultaneously search across photos
   />
 </FeatureGrid>
 
-For example, you may be looking for something simple like "dog mountain" which in this case would return all photos and videos having a mountain and a dog in them or a phrase like "happy birthday" which will return photos, videos, documents and audio files containing either the sentence "happy birthday" or happy people and a birthday-like scene.
+For example, you may be looking for something simple like "dog mountain" which
+in this case would return all photos and videos having a mountain and a dog in
+them or a phrase like "happy birthday" which will return photos, videos,
+documents and audio files containing either the sentence "happy birthday" or
+happy people and a birthday-like scene.
 
-Or you may have a more advanced need, in which case, consider this example: you have created a new product, such as a couch, and recorded a promotional video for it, but it required many takes. You specifically want to look at those that feature the product, the brand name, and the person in them is not sad. In this case, you could do an advanced search query like this:
+Or you may have a more advanced need, in which case, consider this example: you
+have created a new product, such as a couch, and recorded a promotional video
+for it, but it required many takes. You specifically want to look at those that
+feature the product, the brand name, and the person in them is not sad. In this
+case, you could do an advanced search query like this:
 
 ```
 label:couch AND text:"brand name" NOT face:sad
 ```
 
-Furthermore, RekoSearch also features functions such as filtering, saving searches, downloading results, and many more features planned for implementation.
+Furthermore, RekoSearch also features functions such as filtering, saving
+searches, downloading results, and many more features planned for
+implementation.
 
-Building this, however, turned out to be far more complex than I initially anticipated.
+Building this, however, turned out to be far more complex than I initially
+anticipated.
 
 <Separator />
 
 ## The Technical Challenge: Why This Was Hard to Build
 
-At first, thinking about how to build it didn't seem that hard, but I soon realized this was way more complex than I expected. Even a simple thing, such as authentication and authorization for someone like me who hasn't implemented OAuth 2.0 from scratch before, was challenging. Still, you have to ensure it's secure when actual people's money is involved.
+At first, thinking about how to build it didn't seem that hard, but I soon
+realized this was way more complex than I expected. Even a simple thing, such as
+authentication and authorization for someone like me who hasn't implemented
+OAuth 2.0 from scratch before, was challenging. Still, you have to ensure it's
+secure when actual people's money is involved.
 
-Another challenge that has arisen as I've delved deeper into the project is the sheer size and complexity of managing everything. You have infrastructure, API methods each with their own program (15+ Lambda functions), backend processing servers, which in themselves could be entirely separate projects, and the frontend Homepage and Dashboard (which are both separate entities). To make a change or add something new, you need to ensure it propagates and works well with everything else, from the backbone to what the user sees.
+Another challenge that has arisen as I've delved deeper into the project is the
+sheer size and complexity of managing everything. You have infrastructure, API
+methods each with their own program (15+ Lambda functions), backend processing
+servers, which in themselves could be entirely separate projects, and the
+frontend Homepage and Dashboard (which are both separate entities). To make a
+change or add something new, you need to ensure it propagates and works well
+with everything else, from the backbone to what the user sees.
 
-Plus many other challenges related, but not limited to (with non-exhaustive examples):
+Plus many other challenges related, but not limited to (with non-exhaustive
+examples):
 
-- **Scalability**: processing many files without delays, wasting resources and unnecessary costs (solution: scheduling job processors on AWS Fargate).
-- **Security**: ensuring user data is handled securely, encrypted, and access to it is limited.
-- **Performance**: not leaving out resources unused in case of processing simple files like images, and thus processing multiple in parallel for faster processing times.
-- **Cost Optimization**: Utilizing the cheapest hosting options (e.g, using Digital Ocean instead of AWS for the Kubernetes cluster) and building more efficient components (e.g, using Rust Lambda functions).
-- **AWS Service Integration**: Learning and utilizing the SDK for each AWS service, all of them having their own tricks and ways of handling things.
-- **Niche Implementation Challenges**: Things that you would think someone has to have implemented a way to do this, or there has to be a standard defined, only to find out there isn't, and you are all on your own. An example in this case would be reliably counting the pages in a PDF file, tamper-proof and exploit-proof, by streaming it and doing so exceptionally fast.
+- **Scalability**: processing many files without delays, wasting resources and
+  unnecessary costs (solution: scheduling job processors on AWS Fargate).
+- **Security**: ensuring user data is handled securely, encrypted, and access to
+  it is limited.
+- **Performance**: not leaving out resources unused in case of processing simple
+  files like images, and thus processing multiple in parallel for faster
+  processing times.
+- **Cost Optimization**: Utilizing the cheapest hosting options (e.g, using
+  Digital Ocean instead of AWS for the Kubernetes cluster) and building more
+  efficient components (e.g, using Rust Lambda functions).
+- **AWS Service Integration**: Learning and utilizing the SDK for each AWS
+  service, all of them having their own tricks and ways of handling things.
+- **Niche Implementation Challenges**: Things that you would think someone has
+  to have implemented a way to do this, or there has to be a standard defined,
+  only to find out there isn't, and you are all on your own. An example in this
+  case would be reliably counting the pages in a PDF file, tamper-proof and
+  exploit-proof, by streaming it and doing so exceptionally fast.
 
-Combine all of these, and from the 3-4 months I initially thought it would take me to develop this, I am **1.5 years and over 60,000 lines of code later**, and this is only the start of the beta.
+Combine all of these, and from the 3-4 months I initially thought it would take
+me to develop this, I am **1.5 years and over 60,000 lines of code later**, and
+this is only the start of the beta.
 
-Yet, by no means do I regret taking on this project; in fact, I am actually thrilled. The amount of knowledge I gained in this year and a half of building a proper, enterprise-like SaaS application is something I could never have acquired by building smaller desktop apps.
+Yet, by no means do I regret taking on this project; in fact, I am actually
+thrilled. The amount of knowledge I gained in this year and a half of building a
+proper, enterprise-like SaaS application is something I could never have
+acquired by building smaller desktop apps.
 
 ## The Tech Stack
 
-I could not possibly explain everything in a paragraph or two here, so if you are interested in a deep dive, please don't hesitate to check the public repository containing highly in-depth documentation and technical diagrams that cover every aspect of it: https://github.com/Obscurely/RekoSearch-Public
+I could not possibly explain everything in a paragraph or two here, so if you
+are interested in a deep dive, please don't hesitate to check the public
+repository containing highly in-depth documentation and technical diagrams that
+cover every aspect of it: https://github.com/Obscurely/RekoSearch-Public
 
 <StepGuide>
   <Step number={1} title="Infrastructure">
@@ -97,9 +156,12 @@ I could not possibly explain everything in a paragraph or two here, so if you ar
     - **Kubernetes Cluster** on DigitalOcean for hosting the Dashboard, the Queue Processor (which listens to jobs pushed to the SQS queue and spins up job processing applications on AWS Fargate, allowing for infinite job processing scalability), the stats application (Grafana), and the analytics application (Umami).
   </Step>
 
-  <Step number={2} title="Backend">
-    All programmed in **Rust**, allowing for fast and safe execution of all the backend services, as well as lower costs in case of AWS Lambda (pre-compiled Rust functions are much quicker and lighter weight and can also run on arm64, making them dirt cheap).
-  </Step>
+<Step number={2} title="Backend">
+  All programmed in **Rust**, allowing for fast and safe execution of all the
+  backend services, as well as lower costs in case of AWS Lambda (pre-compiled
+  Rust functions are much quicker and lighter weight and can also run on arm64,
+  making them dirt cheap).
+</Step>
 
   <Step number={3} title="Frontend">
     Built using **TypeScript and Python**, it's split into two components:
@@ -110,25 +172,38 @@ I could not possibly explain everything in a paragraph or two here, so if you ar
 </StepGuide>
 
 <Callout type="success" title="The Power of Rust + ARM64">
-  Here's how much of a crazy difference developing your Lambda functions in Rust and running them on ARM makes:
-  
-  - Rust lambda functions execute on average **10 to 100 times faster** than Python-based ones.
-  - Say you pay about $100 a month for Lambda functions written in Python that run on x86. If you convert to arm64, you save about 20%, so you are down to about 80%. If you convert to Rust due to its greater efficiency, you will be down to about $15-30 per month. **That's a 70-85% reduction in costs!**
+  Here's how much of a crazy difference developing your Lambda functions in Rust
+  and running them on ARM makes: - Rust lambda functions execute on average **10
+  to 100 times faster** than Python-based ones. - Say you pay about $100 a month
+  for Lambda functions written in Python that run on x86. If you convert to
+  arm64, you save about 20%, so you are down to about 80%. If you convert to
+  Rust due to its greater efficiency, you will be down to about $15-30 per
+  month. **That's a 70-85% reduction in costs!**
 </Callout>
 
 <Separator />
 
 ## What's Next
 
-I plan to continually work on and improve this project, as it's very close to my heart and I genuinely enjoy working on it. Some of the features I have planned that are in my immediate attention include:
+I plan to continually work on and improve this project, as it's very close to my
+heart and I genuinely enjoy working on it. Some of the features I have planned
+that are in my immediate attention include:
 
-- **Implementing the use of parentheses** in the search query to allow writing complex queries easier. Currently, the search follows the algebraic Boolean order.
-- **Implementing an API keys system**, allowing the use of the API outside the Dashboard.
+- **Implementing the use of parentheses** in the search query to allow writing
+  complex queries easier. Currently, the search follows the algebraic Boolean
+  order.
+- **Implementing an API keys system**, allowing the use of the API outside the
+  Dashboard.
 - **Adding support for more file types** by converting them on the server.
 - **Adding social provider identities** for login (OIDC for Google, etc.)
-- **Implementing a library-like feature** for organizing searches, files, combining multiple jobs and other features to turn it into a fully fledged knowledge mining platform.
+- **Implementing a library-like feature** for organizing searches, files,
+  combining multiple jobs and other features to turn it into a fully fledged
+  knowledge mining platform.
 
-My long-term vision for RekoSearch is tied to the last feature I mentioned. I want to implement multiple features, including organizing, filtering, combining various data sources, adding integrations with other platforms, and others, to make it a one-stop solution for all knowledge mining-related needs.
+My long-term vision for RekoSearch is tied to the last feature I mentioned. I
+want to implement multiple features, including organizing, filtering, combining
+various data sources, adding integrations with other platforms, and others, to
+make it a one-stop solution for all knowledge mining-related needs.
 
 ## Experience RekoSearch Yourself
 
@@ -137,25 +212,30 @@ My long-term vision for RekoSearch is tied to the last feature I mentioned. I wa
     {
       title: "Get Started with Closed Beta",
       href: "https://rekosearch.com/beta?utm_source=blog&utm_medium=referral&utm_campaign=blog-rekosearch-initial",
-      description: "50 free credits ($5 value) • Perfect for testing with your own files • No commitment required"
+      description:
+        "50 free credits ($5 value) • Perfect for testing with your own files • No commitment required",
     },
     {
       title: "GitHub Repository",
       href: "https://github.com/Obscurely/RekoSearch-Public",
-      description: "Complete architecture documentation • Technical diagrams and implementation details • Deep dive into how I built it"
+      description:
+        "Complete architecture documentation • Technical diagrams and implementation details • Deep dive into how I built it",
     },
     {
       title: "Main Website",
       href: "https://rekosearch.com",
-      description: "Learn more about RekoSearch and its capabilities"
-    }
+      description: "Learn more about RekoSearch and its capabilities",
+    },
   ]}
 />
 
 <Callout type="info" title="Want to Connect?">
-  - Send me an email straight at [contact@adriancrismaruc.com](mailto:contact@adriancrismaruc.com) or use the contact form on my [portfolio](https://adriancrismaruc.com/#contact)
-  - Reach out to me on [LinkedIn](https://www.linkedin.com/in/adrian-crismaruc)
-  - Or even send me a message on [Reddit](https://www.reddit.com/user/CrismarucAdrian/)
+  - Send me an email straight at
+  [contact@adriancrismaruc.com](mailto:contact@adriancrismaruc.com) or use the
+  contact form on my [portfolio](https://adriancrismaruc.com/#contact) - Reach
+  out to me on [LinkedIn](https://www.linkedin.com/in/adrian-crismaruc) - Or
+  even send me a message on
+  [Reddit](https://www.reddit.com/user/CrismarucAdrian/)
 </Callout>
 
 ---

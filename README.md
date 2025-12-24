@@ -19,10 +19,11 @@ My personal static Next.js tech website portfolio.
 - Conventional commits with CommitLint
 - Automated testing with Vitest and Playwright
 - Performance monitoring with Lighthouse
+- ESLint config with Next.js 16 and native flat config support
 
 ## Deployment
 
-Deployed on [Vercel](https://vercel.com/) with automatic deployments from main
+Deployed on [Vercel](https://vercel.com/) with automatic deployments from master
 branch.
 
 ## Stack

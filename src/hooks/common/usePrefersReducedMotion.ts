@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 // Type definitions for experimental Navigator APIs
 interface NavigatorWithMemory extends Navigator {
@@ -50,23 +50,19 @@ const isLowEndDevice = (): boolean => {
   return lowEndPatterns.some((pattern) => userAgent.includes(pattern));
 };
 
+const subscribe = (callback: () => void) => {
+  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mediaQuery.addEventListener("change", callback);
+  return () => mediaQuery.removeEventListener("change", callback);
+};
+
+const getSnapshot = () => {
+  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  return mediaQuery.matches || isLowEndDevice();
+};
+
+const getServerSnapshot = () => false;
+
 export const usePrefersReducedMotion = () => {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const isLowEnd = isLowEndDevice();
-
-    const shouldReduceMotion = mediaQuery.matches || isLowEnd;
-    setPrefersReducedMotion(shouldReduceMotion);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches || isLowEnd);
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
-
-  return prefersReducedMotion;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 };

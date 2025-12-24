@@ -188,7 +188,13 @@ describe("usePrefersReducedMotion", () => {
       const calls = mockMediaQueryList.addEventListener.mock.calls;
       expect(calls.length).toBeGreaterThan(0);
       const changeHandler = calls[0]?.[1];
+
       if (changeHandler && typeof changeHandler === "function") {
+        // Update the source of truth FIRST
+        mockMediaQueryList.matches = true;
+
+        // Then signal the change (the event object itself is ignored by getSnapshot,
+        // but required to satisfy the type definition of the handler)
         changeHandler({ matches: true } as MediaQueryListEvent);
       }
     });

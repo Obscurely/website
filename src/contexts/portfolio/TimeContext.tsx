@@ -14,6 +14,9 @@ export const TimeProvider = ({ children }: { children: ReactNode }) => {
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
 
   useEffect(() => {
+    // We have to set the date to not null inside the useEffect on the client side once resources have been loaded.
+    // Otherwise this will throw hydration errors in production
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentTime(new Date());
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);

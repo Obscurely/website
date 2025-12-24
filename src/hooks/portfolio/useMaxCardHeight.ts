@@ -50,7 +50,7 @@ export const useMaxCardHeight = () => {
       // Cleanup
       resizeObserver.current?.disconnect();
     };
-  }, [cardRefs.current.length, maxHeight]);
+  }, [maxHeight]);
 
   return { maxHeight, registerCard };
 };

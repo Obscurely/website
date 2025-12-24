@@ -4,14 +4,12 @@ import { useEffect, useState } from "react";
  * Hook to detect if the device is mobile
  */
 export const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 640);
 
   useEffect(() => {
     const checkIsMobile = () => {
       return window.innerWidth < 640;
     };
-
-    setIsMobile(checkIsMobile());
 
     const handleResize = () => {
       setIsMobile(checkIsMobile());

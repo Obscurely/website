@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 import { IconAlertCircle } from "@tabler/icons-react";
 import { Input } from "@ui/input";

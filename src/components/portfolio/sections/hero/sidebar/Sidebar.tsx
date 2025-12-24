@@ -35,6 +35,7 @@ export const Sidebar = () => {
                 alt={SITE_CONFIG.name}
                 className="h-full w-full object-cover"
                 priority
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/20"></div>
             </div>

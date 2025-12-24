@@ -69,16 +69,17 @@ export const useProjects = () => {
     [filteredProjects.length, projectsPerPage]
   );
 
-  // Reset to first page when category changes or projects per page changes
-  useEffect(() => {
-    setCurrentPage(0);
-    setDirection(null); // Reset direction when category changes
-  }, [activeCategory, projectsPerPage]);
-
   // Get current page projects
   const currentProjects = useMemo(() => {
     const startIndex = currentPage * projectsPerPage;
-    return filteredProjects.slice(startIndex, startIndex + projectsPerPage);
+    const endIndex = startIndex + projectsPerPage;
+
+    // If current page is out of bounds, return first page
+    if (startIndex >= filteredProjects.length && filteredProjects.length > 0) {
+      return filteredProjects.slice(0, projectsPerPage);
+    }
+
+    return filteredProjects.slice(startIndex, endIndex);
   }, [filteredProjects, currentPage, projectsPerPage]);
 
   const handleCategoryChange = useCallback((category: string) => {

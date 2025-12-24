@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import { useSearchParams } from "next/navigation";
 
@@ -10,23 +10,18 @@ import { Post } from "@lib/blog";
 export function useSearchPosts(posts: Post[]) {
   const searchParams = useSearchParams();
 
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [selectedYear, setSelectedYear] = useState<string | null>(null);
-  const [isFeatured, setIsFeatured] = useState(false);
-
-  // Initialize from URL params
-  useEffect(() => {
-    const tagParam = searchParams.get("tag");
-    const yearParam = searchParams.get("year");
-    const searchParam = searchParams.get("search");
-    const featuredParam = searchParams.get("featured");
-
-    if (tagParam) setSelectedTag(tagParam);
-    if (yearParam) setSelectedYear(yearParam);
-    if (searchParam) setSearchQuery(searchParam);
-    if (featuredParam === "true") setIsFeatured(true);
-  }, [searchParams]);
+  const [searchQuery, setSearchQuery] = useState(
+    () => searchParams.get("search") || ""
+  );
+  const [selectedTag, setSelectedTag] = useState<string | null>(() =>
+    searchParams.get("tag")
+  );
+  const [selectedYear, setSelectedYear] = useState<string | null>(() =>
+    searchParams.get("year")
+  );
+  const [isFeatured, setIsFeatured] = useState(
+    () => searchParams.get("featured") === "true"
+  );
 
   // Extract all unique tags from posts
   const allTags = useMemo(() => {

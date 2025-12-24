@@ -15,11 +15,6 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
 
-  // ESLint configuration
-  eslint: {
-    ignoreDuringBuilds: false,
-  },
-
   // Image optimization
   images: {
     domains: [], // External images
@@ -63,7 +58,7 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app vercel-scripts.com va.vercel-scripts.com vercel.com", // unsafe-eval and unsafe-inline needed for Next.js hydration
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app vercel-scripts.com va.vercel-scripts.com vercel.com vercel.live", // unsafe-eval and unsafe-inline needed for Next.js hydration
               "style-src 'self' 'unsafe-inline'", // unsafe-inline needed for Next.js CSS-in-JS
               "img-src 'self' data: blob:",
               "font-src 'self' data:",
@@ -71,7 +66,7 @@ const nextConfig: NextConfig = {
               "media-src 'self'",
               "object-src 'none'",
               "child-src 'none'",
-              "frame-src giscus.app",
+              "frame-src giscus.app vercel.live",
               "worker-src 'self' blob:",
               "manifest-src 'self'",
               "base-uri 'self'",

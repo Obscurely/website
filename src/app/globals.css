@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark * ) );
-@plugin 'tailwind-scrollbar';
+@plugin "tailwind-scrollbar";
 
 :root {
   --card: oklch(100% 0 0deg);

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
@@ -26,14 +26,6 @@ export const useFilter = (currentFilters: CurrentFilters) => {
     currentFilters.featured === "true"
   );
   const [drawerOpen, setDrawerOpen] = useState(false); // handle mobile drawer state
-
-  // Update state when current filters change
-  useEffect(() => {
-    setSearchQuery(currentFilters.search || "");
-    setSelectedTag(currentFilters.tag || null);
-    setSelectedYear(currentFilters.year || null);
-    setIsFeatured(currentFilters.featured === "true");
-  }, [currentFilters]);
 
   // Apply filters
   const applyFilters = (overrideSearchQuery?: string) => {
