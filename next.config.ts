@@ -66,7 +66,7 @@ const nextConfig: NextConfig = {
               "media-src 'self'",
               "object-src 'none'",
               "child-src 'none'",
-              "frame-src giscus.app",
+              "frame-src giscus.app vercel.live",
               "worker-src 'self' blob:",
               "manifest-src 'self'",
               "base-uri 'self'",

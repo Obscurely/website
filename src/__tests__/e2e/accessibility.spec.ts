@@ -4,12 +4,14 @@ import { expect, test } from "@playwright/test";
 test.describe("Accessibility", () => {
   test("homepage should be accessible", async ({ page }) => {
     await page.goto("/");
+    // @ts-expect-error: Axe types mismatch with modern Playwright Page object
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
     expect(accessibilityScanResults.violations).toEqual([]);
   });
 
   test("homepage should have no WCAG violations", async ({ page }) => {
     await page.goto("/");
+    // @ts-expect-error: Axe types mismatch with modern Playwright Page object
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
       .analyze();
@@ -22,6 +24,7 @@ test.describe("Accessibility", () => {
     // Test main navigation
     const navigation = page.locator("nav");
     if ((await navigation.count()) > 0) {
+      // @ts-expect-error: Axe types mismatch with modern Playwright Page object
       const accessibilityScanResults = await new AxeBuilder({ page })
         .include("nav")
         .analyze();
@@ -36,6 +39,7 @@ test.describe("Accessibility", () => {
     const contactLink = page.getByRole("link", { name: /#contact/i });
     if ((await contactLink.count()) > 0) {
       await contactLink.click();
+      // @ts-expect-error: Axe types mismatch with modern Playwright Page object
       const accessibilityScanResults = await new AxeBuilder({ page })
         .include("form")
         .withTags(["wcag2a", "wcag2aa"])
@@ -46,6 +50,7 @@ test.describe("Accessibility", () => {
 
   test("images should have alt text", async ({ page }) => {
     await page.goto("/");
+    // @ts-expect-error: Axe types mismatch with modern Playwright Page object
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withRules(["image-alt"])
       .analyze();
@@ -60,6 +65,7 @@ test.describe("Accessibility", () => {
     const focusedElement = page.locator(":focus");
     await expect(focusedElement).toBeVisible();
 
+    // @ts-expect-error: Axe types mismatch with modern Playwright Page object
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withRules(["focus-order-semantics", "tabindex"])
       .analyze();
@@ -68,6 +74,7 @@ test.describe("Accessibility", () => {
 
   test("should have proper headings structure", async ({ page }) => {
     await page.goto("/");
+    // @ts-expect-error: Axe types mismatch with modern Playwright Page object
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withRules(["heading-order", "empty-heading"])
       .analyze();
@@ -76,6 +83,7 @@ test.describe("Accessibility", () => {
 
   test("should have proper color contrast", async ({ page }) => {
     await page.goto("/");
+    // @ts-expect-error: Axe types mismatch with modern Playwright Page object
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withRules(["color-contrast"])
       .analyze();
@@ -86,6 +94,7 @@ test.describe("Accessibility", () => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto("/");
 
+    // @ts-expect-error: Axe types mismatch with modern Playwright Page object
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
       .analyze();

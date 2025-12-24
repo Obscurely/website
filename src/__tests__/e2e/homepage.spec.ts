@@ -76,6 +76,8 @@ test.describe("Homepage", () => {
 
   test("should pass basic accessibility checks", async ({ page }) => {
     await page.goto("/");
+
+    // @ts-expect-error: Axe types mismatch with modern Playwright Page object
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
     expect(accessibilityScanResults.violations).toEqual([]);
   });
