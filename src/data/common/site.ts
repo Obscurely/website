@@ -5,9 +5,12 @@ export const SITE_CONFIG = {
   name: "Adrian Crîșmaruc",
   firstName: "Adrian",
   lastName: "Crîșmaruc",
+  jobTitle: "Software & Cloud Engineer",
   description: `Full-Stack Developer Adrian Crîșmaruc (Adrian Crismaruc) specializing in Rust, Python, React, TypeScript, Next.js, Flask and cloud-native technologies. AWS & Kubernetes certified with experience in building secure and scalable systems.`,
   blogDescription:
     "Practical tutorials, in-depth guides and insights on software development, Linux, servers and more. Created by Adrian Crîșmaruc, a Full-Stack Developer and IT enthusiast.",
+  solutionsDescription:
+    "High-performance, enterprise-grade Engineering Solutions delivered as fixed-price packages. Including Rust Lambda migrations, production Kubernetes clusters and hardened VPS setups. Deployed by Adrian Crîșmaruc, a Software & Cloud Engineer.",
   url: SITE_URL,
   author: {
     name: "Adrian Crîșmaruc",

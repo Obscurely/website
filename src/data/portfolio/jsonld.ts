@@ -27,6 +27,16 @@ export const personJsonLd = {
       "DevOps Engineering",
     ],
   },
+  subjectOf: {
+    "@type": "VideoObject",
+    name: `Introduction to ${SITE_CONFIG.name}`,
+    description:
+      "Introduction to my software & cloud engineering skill and background.",
+    thumbnailUrl: `${SITE_CONFIG.url}/og-home.jpg`,
+    uploadDate: "2025-09-29",
+    contentUrl: SITE_CONFIG.videoIntroductionUrl,
+    embedUrl: SITE_CONFIG.videoIntroductionUrl.replace("watch?v=", "embed/"),
+  },
   address: {
     "@type": "PostalAddress",
     addressLocality: "Iași",
@@ -36,6 +46,7 @@ export const personJsonLd = {
     SITE_CONFIG.social.github,
     SITE_CONFIG.social.linkedIn,
     SITE_CONFIG.social.reddit,
+    SITE_CONFIG.social.upwork,
   ],
   potentialAction: [
     {
@@ -264,6 +275,7 @@ export const organizationJsonLd = {
     SITE_CONFIG.social.github,
     SITE_CONFIG.social.linkedIn,
     SITE_CONFIG.social.reddit,
+    SITE_CONFIG.social.upwork,
   ],
   knowsAbout: [
     "Full-Stack Development",
