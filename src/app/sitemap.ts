@@ -2,10 +2,12 @@ import { MetadataRoute } from "next";
 
 import { SITE_CONFIG } from "@data/common/site";
 import { getAllPosts } from "@lib/blog";
+import { getAllSolutions } from "@lib/solutions";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Get all blog posts for dynamic routes
+  // Get all blog posts and solutions for dynamic routes
   const posts = await getAllPosts();
+  const solutions = await getAllSolutions();
 
   // Static routes with their priorities and change frequencies
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -20,6 +22,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${SITE_CONFIG.url}/solutions`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.95,
     },
     {
       url: `${SITE_CONFIG.url}/privacy-policy`,
@@ -49,5 +57,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  // Dynamic solution routes
+  const solutionRoutes: MetadataRoute.Sitemap = solutions.map((solution) => ({
+    url: `${SITE_CONFIG.url}/solutions/${solution.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...solutionRoutes];
 }
