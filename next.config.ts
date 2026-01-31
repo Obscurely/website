@@ -49,6 +49,11 @@ const nextConfig: NextConfig = {
 
   // Headers
   async headers() {
+    // Skip security headers in development
+    if (process.env.NODE_ENV === "development") {
+      return [];
+    }
+
     return [
       {
         source: "/(.*)",
