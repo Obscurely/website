@@ -48,3 +48,6 @@ public/**/*.min.js
 lighthouse-mobile-report.html
 test-results
 playwright-report
+
+# temporary dev files
+temp
