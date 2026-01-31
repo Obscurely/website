@@ -23,7 +23,8 @@ const devopsSkills: Skill[] = [
     ),
     description: (
       <p>
-        Dual-certified (<strong>Developer Associate</strong> &{" "}
+        Triple-certified (<strong>Generative AI Developer Professional</strong>,{" "}
+        <strong>Developer Associate</strong> &{" "}
         <strong>Cloud Practitioner</strong>) with{" "}
         <strong>production experience</strong> across{" "}
         <strong>25+ services</strong>, including <strong>EC2</strong>,{" "}
