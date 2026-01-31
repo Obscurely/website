@@ -105,6 +105,7 @@
               killall pnpm &>/dev/null 2>&1
               killall node &>/dev/null 2>&1
               killall next-server &>/dev/null 2>&1
+			  pkill -f "$HOME/Code/Web/portfolio"
               echo "Server shutdown."
               echo "Exited"
               exit
