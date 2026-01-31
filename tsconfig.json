@@ -42,6 +42,7 @@
       "@components/*": ["./src/components/*"],
       "@portfolio/*": ["./src/components/portfolio/*"],
       "@blog/*": ["./src/components/blog/*"],
+      "@solutions/*": ["./src/components/solutions/*"],
       "@common/*": ["./src/components/common/*"],
       "@utils/*": ["./src/utils/*"],
       "@ui/*": ["./src/components/common/ui/*"],
