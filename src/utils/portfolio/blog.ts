@@ -10,14 +10,14 @@ const createLoadingPost = (index: number): Post => ({
     title: "Loading...",
     description:
       "Exercitationem et voluptates possimus adipisci delectus delectus est. Aut non soluta iure similique ab unde. Quas excepturi omnis reiciendis repudiandae labore quam. Eum voluptas ut odio nulla est voluptate. Consequuntur enim voluptatem dolorem blanditiis. ",
-    date: "2025-01-01T00:00:00.000Z",
+    date: "2026-01-01T00:00:00.000Z",
     tags: ["Loading", "Please", "Wait"],
     image: "", // No image for loading state
     featured: false,
   },
   content: "",
   readingTime: "Loading...",
-  year: "2025",
+  year: "2026",
 });
 
 // Memoize loading posts array to avoid recreation on every render

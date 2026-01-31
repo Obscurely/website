@@ -25,7 +25,7 @@
     Amazon Web Services - AWS Certifications
 
 /* SITE */
-    Last update: July 2025
+    Last update: Jan 2026
     Language: English
     Doctype: HTML5
     IDE: NeoVim

@@ -182,7 +182,7 @@ export const blogJsonLd = {
     "@type": "Person",
     name: SITE_CONFIG.name,
   },
-  copyrightYear: "2025",
+  copyrightYear: "2026",
   license: `${SITE_CONFIG.websiteSource}/blob/main/LICENSE`,
   accessibilityFeature: [
     "readingOrder",

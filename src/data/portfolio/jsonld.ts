@@ -85,7 +85,7 @@ export const personJsonLd = {
     description:
       "Remote development roles focusing on cloud-native applications, DevOps, and performance optimization.",
     eligibleRegion: "Worldwide",
-    availabilityStarts: "2025-01-01",
+    availabilityStarts: "2026-01-01",
   },
   hasCredential: [
     {
