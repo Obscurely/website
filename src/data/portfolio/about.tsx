@@ -8,7 +8,7 @@ export const services = [
     icon: <IconCode className="h-10 w-10 text-cyan-400" />,
     title: "Full-Stack Development",
     description:
-      "I build responsive, fast and secure end-to-end applications with modern, type-safe technologies like React, Next.js and Rust.",
+      "I build responsive, fast and secure end-to-end applications with modern, type-safe technologies like Rust, React and Next.js.",
   },
   {
     icon: <IconCloud className="h-10 w-10 text-cyan-400" />,
