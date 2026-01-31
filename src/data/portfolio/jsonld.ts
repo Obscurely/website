@@ -79,6 +79,18 @@ export const personJsonLd = {
   hasCredential: [
     {
       "@type": "EducationalOccupationalCredential",
+      name: "AWS Certified Generative AI Developer - Professional",
+      credentialCategory: "Professional Certification",
+      dateEarned: "2026-01-22",
+      url: "https://www.credly.com/badges/e8fbc33d-ce96-415e-b60c-3167f0d3f9a4",
+      recognizedBy: {
+        "@type": "Organization",
+        name: "Amazon Web Services",
+        url: "https://aws.amazon.com",
+      },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
       name: "Kubernetes Certified Application Developer (CKAD)",
       credentialCategory: "Professional Certification",
       dateEarned: "2024-04-02",
