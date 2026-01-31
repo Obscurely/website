@@ -2,6 +2,15 @@ import { Certification } from "./types";
 
 export const certifications: Certification[] = [
   {
+    id: "aws-aip",
+    name: "AWS Certified Generative AI Developer - Professional (Early Adopter)",
+    issuer: "Amazon Web Services",
+    icon: "/certifications/aws-aip.avif",
+    date: "2026-01-22",
+    url: "https://www.credly.com/badges/e8fbc33d-ce96-415e-b60c-3167f0d3f9a4",
+  },
+
+  {
     id: "k8s-ckad",
     name: "Kubernetes Certified Application Developer",
     issuer: "The Linux Foundation",
