@@ -31,6 +31,7 @@ const config = {
       "always",
       [
         "build",
+        "dev",
         "chore",
         "ci",
         "docs",
@@ -90,6 +91,12 @@ const config = {
             description:
               "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
             title: "Builds",
+            emoji: "🛠",
+          },
+          dev: {
+            description:
+              "Changes that affect the development environment. Software run using dev or the dev environment is being setup.",
+            title: "Development",
             emoji: "🛠",
           },
           ci: {
