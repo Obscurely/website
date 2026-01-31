@@ -14,7 +14,7 @@ export const CertificationsSection = () => {
     <div className="border-slate-730 rounded-xl border bg-slate-800/20 p-6">
       <h3 className="mb-6 text-2xl font-bold text-white">My Certifications</h3>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 [&>*:nth-child(4):last-child]:lg:col-start-2">
         {certifications.map((cert) => (
           <CertificationCard key={cert.id} certification={cert} />
         ))}
@@ -49,7 +49,7 @@ const CertificationCard = memo(function CertificationCard({
       href={certification.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group border-slate-730 hover:border-cyan-590 flex flex-col rounded-lg border bg-slate-800/40 p-4 transition-all duration-300 ease-out hover:bg-slate-800/40 hover:shadow-lg hover:shadow-cyan-500/5"
+      className="group border-slate-730 hover:border-cyan-590 flex h-full flex-col justify-between rounded-lg border bg-slate-800/40 p-4 transition-all duration-300 ease-out hover:bg-slate-800/40 hover:shadow-lg hover:shadow-cyan-500/5"
     >
       <div className="flex items-center">
         <div className="relative h-16 w-16 overflow-hidden">

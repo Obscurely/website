@@ -14,7 +14,7 @@ export const contactInfo = [
   {
     icon: <IconMapPin2 />,
     title: "Location",
-    value: "Iași, Romania (UTC+3)",
+    value: "Iași, Romania (UTC+2)",
     link: "https://maps.google.com/?q=Iași,+Romania",
     description: "Available for remote work",
   },
