@@ -7,7 +7,7 @@
     "prebuild": "pnpm run minify",
     "build": "eslint . && next build",
     "predev": "pnpm run minify",
-    "dev": "concurrently \"pnpm run minify:watch\" \"next dev --turbopack\"",
+    "dev": "concurrently \"pnpm run minify:watch\" \"next dev --turbopack -H 0.0.0.0\"",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lighthouse-mobile": "pnpx lighthouse http://localhost:3000 --preset=perf --form-factor=mobile --screenEmulation.mobile=true --throttling-method=devtools --output=html --output-path=./lighthouse-mobile-report.html",
