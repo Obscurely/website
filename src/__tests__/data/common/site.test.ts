@@ -27,7 +27,7 @@ describe("Site Configuration", () => {
       delete process.env["NEXT_PUBLIC_SITE_URL"];
 
       const { SITE_URL } = await import("../../../data/common/site");
-      expect(SITE_URL).toBe("https://adriancrismaruc.com");
+      expect(SITE_URL).toBe("https://adrian.tech");
     });
   });
 
@@ -80,8 +80,8 @@ describe("Site Configuration", () => {
       delete process.env["TO_EMAIL"];
 
       const { SITE_CONFIG } = await import("../../../data/common/site");
-      expect(SITE_CONFIG.fromEmail).toBe("contact@adriancrismaruc.com");
-      expect(SITE_CONFIG.toEmail).toBe("contact@adriancrismaruc.com");
+      expect(SITE_CONFIG.fromEmail).toBe("me@adrian.tech");
+      expect(SITE_CONFIG.toEmail).toBe("me@adrian.tech");
     });
 
     it("should have social media links", () => {

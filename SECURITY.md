@@ -35,7 +35,7 @@ known as the attack surface. (Source:
 **Please do not report security vulnerabilities through public GitHub issues.**
 
 Instead, please report it by sending an email to
-[contact@adriancrismaruc.com](mailto:contact@adriancrismaruc.com)
+[contact@adrian.tech](mailto:contact@adrian.tech)
 
 You should receive a response within 24 hours. If for some reason you do not,
 please resend that email to ensure I received your original message. I may not
