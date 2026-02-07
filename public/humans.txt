@@ -1,13 +1,13 @@
 /* TEAM */
     Developer: Adrian Crîșmaruc
-    Contact: contact [at] adriancrismaruc.com
+    Contact: contact [at] adrian.tech
     From: Iași, Romania
 
 /* CONTACT */
     GitHub: https://github.com/Obscurely
     LinkedIn:https://www.linkedin.com/in/adrian-crismaruc
     Reddit:https://www.reddit.com/user/CrismarucAdrian 
-    Website: https://adriancrismaruc.com
+    Website: https://adrian.tech
     
 /* THANKS */
     Next.js - React Framework
@@ -24,11 +24,11 @@
     Amazon Web Services - AWS Certifications
 
 /* SITE */
-    Last update: July 2025
+    Last update: Feb 2026
     Language: English
     Doctype: HTML5
     IDE: NeoVim
-    URL: https://adriancrismaruc.com
+    URL: https://adrian.tech
     Components: Next.js, React, TypeScript, TailwindCSS, Shadcn/ui
     Software: Node.js, NixOS, Docker, Git, Zsh, Terraform, AWS
     

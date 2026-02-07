@@ -13,8 +13,8 @@ This Privacy Notice for Adrian Crîșmaruc ("I," "me," or "my"), describes how a
 why I might access, collect, store, use, and/or share ("process") your personal
 information when you use my services ("Services"), including when you:
 
-- Visit my website at https://adriancrismaruc.com or any website of mine that
-  links to this Privacy Notice
+- Visit my website at https://adrian.tech or any website of mine that links to
+  this Privacy Notice
 - Use Adrian Crîșmaruc. Adrian Crîșmaruc's tech website portfolio and blog.
 - Engage with me in other related ways, including any sales, marketing, or
   events
@@ -23,7 +23,7 @@ information when you use my services ("Services"), including when you:
 your privacy rights and choices. I am responsible for making decisions about how
 your personal information is processed. If you do not agree with my policies and
 practices, please do not use my Services. If you still have any questions or
-concerns, please contact me at privacy@adriancrismaruc.com.
+concerns, please contact me at privacy@adrian.tech.
 
 ## SUMMARY OF KEY POINTS
 
@@ -234,7 +234,7 @@ processing of your personal information conducted in reliance on lawful
 processing grounds other than consent.
 
 If you have questions or comments about your privacy rights, you may email me at
-privacy@adriancrismaruc.com.
+privacy@adrian.tech.
 
 ## 6. DO I COLLECT INFORMATION FROM MINORS?
 
@@ -252,7 +252,7 @@ specified by law in your jurisdiction has been collected, I will deactivate the
 account and take reasonable measures to promptly delete such data from my
 records. If you become aware of any data I may have collected from children
 under age 18 or the equivalent age as specified by law in your jurisdiction,
-please contact me at privacy@adriancrismaruc.com.
+please contact me at privacy@adrian.tech.
 
 ## 7. WHAT LEGAL BASES DO I RELY ON TO PROCESS YOUR INFORMATION?
 
@@ -397,7 +397,7 @@ laws, including the right to:
 - Request deletion of your personal information
 - Withdraw consent where applicable
 
-To exercise these rights, contact me at privacy@adriancrismaruc.com.
+To exercise these rights, contact me at privacy@adrian.tech.
 
 ### Australia and New Zealand
 
@@ -471,7 +471,7 @@ informed of how I am protecting your information.
 ## 14. HOW CAN YOU CONTACT ME ABOUT THIS NOTICE?
 
 If you have questions or comments about this notice, you may email me at
-privacy@adriancrismaruc.com.
+privacy@adrian.tech.
 
 ## 15. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA I COLLECT FROM YOU?
 

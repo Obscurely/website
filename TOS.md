@@ -39,7 +39,7 @@ I am Adrian Crîșmaruc ("I," "me," "my"). I operate this website, as well as an
 other related services that refer or link to these legal terms (the "Legal
 Terms") (collectively, the "Services").
 
-You can contact me by email at contact@adriancrismaruc.com.
+You can contact me by email at contact@adrian.tech.
 
 These Legal Terms constitute a legally binding agreement made between you,
 whether personally or on behalf of an entity ("you"), and me, concerning your
@@ -246,8 +246,8 @@ acknowledge that you are also subject to the laws of your local jurisdiction.
 ### Dispute Resolution
 
 **Informal Resolution:** Before initiating any formal legal proceedings, you
-agree to first contact me at contact@adriancrismaruc.com to attempt to resolve
-any dispute informally. I will respond to your inquiry within 30 days.
+agree to first contact me at contact@adrian.tech to attempt to resolve any
+dispute informally. I will respond to your inquiry within 30 days.
 
 **Jurisdiction:** You and I irrevocably consent that the courts of Romania shall
 have jurisdiction to resolve any dispute which may arise in connection with
@@ -317,9 +317,9 @@ writing.
 
 I strive to make the Services accessible to users with disabilities. If you
 encounter any accessibility barriers while using the Services, please contact me
-at contact@adriancrismaruc.com, and I will work to address your concerns in a
-timely manner. I am committed to providing reasonable accommodations where
-possible to ensure equal access to the Services.
+at contact@adrian.tech, and I will work to address your concerns in a timely
+manner. I am committed to providing reasonable accommodations where possible to
+ensure equal access to the Services.
 
 ## 19. Miscellaneous
 
@@ -336,7 +336,7 @@ remaining provisions.
 
 In order to resolve a complaint regarding the Services or to receive further
 information regarding use of the Services, please contact me at
-contact@adriancrismaruc.com. I will respond to inquiries within 5 business days.
+contact@adrian.tech. I will respond to inquiries within 5 business days.
 
 For accessibility-related concerns or requests for accommodations, please use
 the same contact information and specify the nature of your accessibility needs.

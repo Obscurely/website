@@ -6,7 +6,7 @@ export const contactInfo = [
   {
     icon: <IconMail />,
     title: "Email",
-    value: "contact@​adriancrismaruc.com",
+    value: "me@​adrian.tech",
     link: `mailto:${SITE_CONFIG.toEmail}`,
     description: "Send me an email anytime",
     sameTab: true,

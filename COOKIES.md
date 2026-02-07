@@ -79,4 +79,4 @@ specifically chosen for its privacy-first approach and cookie-free operation.
 ## Contact Me
 
 If you have questions about the cookie practices, contact me at
-[contact@adriancrismaruc.com].
+[contact@adrian.tech].

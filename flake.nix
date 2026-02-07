@@ -110,9 +110,9 @@
               exit
             '';
 
-            TO_EMAIL = "contact@adriancrismaruc.com";
-            FROM_EMAIL = "contact@adriancrismaruc.com";
-            NEXT_PUBLIC_SITE_URL = "https://adriancrismaruc.com";
+            TO_EMAIL = "me@adrian.tech";
+            FROM_EMAIL = "me@adrian.tech";
+            NEXT_PUBLIC_SITE_URL = "https://adrian.tech";
           };
 
           # HACK: these don't actually have any effect (I don't think so at least), but they are here so you know what you need to do in your config

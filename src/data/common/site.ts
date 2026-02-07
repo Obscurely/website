@@ -1,5 +1,5 @@
 export const SITE_URL =
-  process.env["NEXT_PUBLIC_SITE_URL"] || "https://adriancrismaruc.com";
+  process.env["NEXT_PUBLIC_SITE_URL"] || "https://adrian.tech";
 
 export const SITE_CONFIG = {
   name: "Adrian Crîșmaruc",
@@ -13,8 +13,8 @@ export const SITE_CONFIG = {
     name: "Adrian Crîșmaruc",
     url: SITE_URL,
   },
-  fromEmail: process.env["FROM_EMAIL"] || "contact@adriancrismaruc.com",
-  toEmail: process.env["TO_EMAIL"] || "contact@adriancrismaruc.com",
+  fromEmail: process.env["FROM_EMAIL"] || "me@adrian.tech",
+  toEmail: process.env["TO_EMAIL"] || "me@adrian.tech",
   social: {
     github: "https://github.com/Obscurely",
     linkedIn: "https://www.linkedin.com/in/adrian-crismaruc",

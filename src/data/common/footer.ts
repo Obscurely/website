@@ -44,7 +44,7 @@ export const contactInfo = [
   {
     icon: IconMail,
     label: "Email",
-    value: "contact@​adriancrismaruc.com",
+    value: "me@​adrian.tech",
     href: `mailto:${SITE_CONFIG.toEmail}`,
   },
   {
