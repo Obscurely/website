@@ -4,8 +4,8 @@ import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { fromEnv, fromIni } from "@aws-sdk/credential-providers";
 import { SITE_CONFIG } from "@data/common/site";
 import { rateLimit } from "@lib/rate-limit";
-import { checkEmail } from "@utils/portfolio/contact";
-import DOMPurify from "isomorphic-dompurify";
+import { checkEmail, decodeHtml } from "@utils/portfolio/contact";
+import sanitizeHtml from "sanitize-html";
 
 // Validate required environment variables
 const requiredEnvVars = {
@@ -158,11 +158,17 @@ function validateInput(data: unknown): { isValid: boolean; errors: string[] } {
 }
 
 function sanitizeInput(data: ContactFormData): ContactFormData {
+  const options = {
+    allowedTags: [], // Remove ALL HTML tags
+    allowedAttributes: {}, // Remove ALL attributes
+    textFilter: (text: string) => text, // Prevent accidental text modification
+  };
+
   return {
-    name: DOMPurify.sanitize(data.name.trim()),
-    email: DOMPurify.sanitize(data.email.trim().toLowerCase()),
-    subject: DOMPurify.sanitize(data.subject.trim()),
-    message: DOMPurify.sanitize(data.message.trim()),
+    name: decodeHtml(sanitizeHtml(data.name.trim(), options)),
+    email: sanitizeHtml(data.email.trim().toLowerCase(), options),
+    subject: decodeHtml(sanitizeHtml(data.subject.trim(), options)),
+    message: decodeHtml(sanitizeHtml(data.message.trim(), options)),
   };
 }
 
